@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Landing from "@/views/Landing.vue";
+import Landing from "@/views/notAuthenticated/Landing.vue";
 import NotFound from "@/views/NotFound.vue";
 // import Forbidden from "@/views/Forbidden.vue";
 

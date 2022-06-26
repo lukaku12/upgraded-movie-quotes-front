@@ -84,8 +84,8 @@ import LandingQuote from "@/components/LandingQuote.vue";
 import interstellar from "@/assets/images/interstellar-image.png";
 import lordOfRings from "@/assets/images/lord-of-rings-image.png";
 import theRoyalTenenebaums from "@/assets/images/the-royal-tenenbaums-image.png";
-import Login from "@/views/Login.vue";
-import Register from "@/views/Register.vue";
+import Login from "@/views/notAuthenticated/Login.vue";
+import Register from "@/views/notAuthenticated/Register.vue";
 
 export default {
   name: "Landing",
