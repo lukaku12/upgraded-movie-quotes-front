@@ -2,7 +2,7 @@
   <section
     class="w-screen h-screen flex flex-col items-center bg-login-background"
   >
-    <div class="text-center flex flex-col gap-3 mt-20 mb-14">
+    <div class="text-center flex flex-col gap-3 mt-20 mb-10">
       <h1 class="text-white text-[24px] font-bold">
         {{ mainTitle }}
       </h1>
@@ -24,14 +24,14 @@
           class="w-full border border-white py-[7px] text-white rounded-[4px] flex justify-center items-center gap-2 font-bold"
         >
           <img src="@/assets/icons/google.svg" alt="google" class="w-5 h-5" />
-          <p class="pt-[3px]">{{ action }} with Google</p>
+          <p class="pt-[3px]">{{ googleAction }} with Google</p>
         </button>
       </div>
     </form>
     <div class="flex w-full justify-center mt-10 font-bold">
       <h1 class="text-[#6C757D]">{{ redirectToTitle }}&nbsp;</h1>
       <router-link
-        :to="{ name: 'sign-up' }"
+        :to="{ name: redirectUrlName }"
         class="text-[#0D6EFD] font-bold text-base underline"
         >{{ redirectTo }}</router-link
       >
@@ -55,11 +55,19 @@ export default {
       type: String,
       required: true,
     },
+    googleAction: {
+      type: String,
+      required: true,
+    },
     redirectToTitle: {
       type: String,
       required: true,
     },
     redirectTo: {
+      type: String,
+      required: true,
+    },
+    redirectUrlName: {
       type: String,
       required: true,
     },

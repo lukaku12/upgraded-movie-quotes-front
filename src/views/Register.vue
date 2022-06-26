@@ -1,13 +1,18 @@
 <template>
   <form-layout
-    main-title="Log in to your account"
-    sub-title="Welcome back! Please enter your details."
-    action="Sign in"
-    google-action="Sign in"
-    redirect-to-title="Don't have an account?"
-    redirect-to="Sign up"
-    redirect-url-name="sign-up"
+    main-title="Create an account"
+    sub-title="Start your journey!"
+    action="Get started"
+    google-action="Sign up"
+    redirect-to-title="Already have an account?"
+    redirect-to="Log in"
+    redirect-url-name="login"
   >
+    <basic-input
+      title="Name"
+      name="name"
+      placeholder="Enter your name"
+    ></basic-input>
     <basic-input
       title="Email"
       name="email"
@@ -16,6 +21,12 @@
     <basic-input
       title="Password"
       name="password"
+      type="password"
+      placeholder="Password"
+    ></basic-input>
+    <basic-input
+      title="Confirm password"
+      name="confirm-password"
       type="password"
       placeholder="Password"
     ></basic-input>
@@ -28,7 +39,7 @@ import BasicInput from "@/components/Inputs/BasicInput.vue";
 import CheckBox from "@/components/Inputs/CheckBox.vue";
 import FormLayout from "../components/Layouts/FormLayout.vue";
 export default {
-  name: "Login",
+  name: "Register",
   components: { BasicInput, CheckBox, FormLayout },
 };
 </script>
