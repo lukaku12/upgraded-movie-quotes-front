@@ -1,7 +1,10 @@
 <template>
-  <div></div>
+  <div>Hello World</div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "AuthLanding",
+  components: {},
+};
 </script>

@@ -88,7 +88,7 @@ import Login from "@/views/notAuthenticated/Login.vue";
 import Register from "@/views/notAuthenticated/Register.vue";
 
 export default {
-  name: "Landing",
+  name: "NotAuthLanding",
   components: {
     LandingQuote,
     Login,
