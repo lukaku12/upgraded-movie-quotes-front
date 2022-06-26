@@ -21,11 +21,12 @@
         Find any quote in <br />
         milions of movie lines
       </h1>
-      <button
+      <router-link
+        :to="{ name: 'sign-up' }"
         class="bg-[#E31221] font-semibold px-5 py-2 rounded-[4px] text-white"
       >
         Get started
-      </button>
+      </router-link>
     </main>
     <div class="mt-20 w-full h-full">
       <landing-quote

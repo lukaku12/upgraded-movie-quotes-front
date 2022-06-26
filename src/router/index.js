@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import Landing from "@/views/Landing.vue";
 import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
+import NotFound from "@/views/NotFound.vue";
+// import Forbidden from "@/views/Forbidden.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -9,7 +11,7 @@ const router = createRouter({
     { path: "/", component: Landing, name: "home" },
     { path: "/login", component: Login, name: "login" },
     { path: "/register", component: Register, name: "sign-up" },
-    { path: "/:notFound(.*)", redirect: "/" },
+    { path: "/:notFound(.*)", component: NotFound, name: "not-fount" },
   ],
 });
 
