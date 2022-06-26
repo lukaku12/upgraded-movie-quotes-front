@@ -1,15 +1,18 @@
 <template>
-  <div class="flex flex-col gap-5 w-full p-10 bg-black text-white mb-12">
+  <div
+    class="flex flex-col gap-5 w-full max-w-4xl p-10 bg-black text-white mb-12 lg:rounded-[10px]"
+  >
     <div class="flex items-center gap-3">
       <img src="@/assets/post/profile-picture.png" alt="profile-picture" />
       <p>{{ post.userName }}</p>
     </div>
     <div class="flex flex-col gap-5">
-      <div class="flex gap-1">
-        <p>“{{ post.quote }}”</p>
-        <p>movie-</p>
-        <p>{{ post.movie }}.</p>
-        <p>({{ post.movieReleaseDate }})</p>
+      <div class="flex">
+        <p>
+          “{{ post.quote }} movie- {{ post.movie }}. ({{
+            post.movieReleaseDate
+          }})”
+        </p>
       </div>
       <img class="w-full" src="@/assets/post/post-image.png" alt="post-image" />
     </div>

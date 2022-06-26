@@ -1,5 +1,7 @@
 <template>
-  <header class="flex w-10/12 justify-between h-[86px] items-center md:w-11/12">
+  <header
+    class="flex w-10/12 justify-between h-[86px] items-center md:w-11/12 bg-[#222030]"
+  >
     <div>
       <router-link
         :to="{ name: 'home' }"
