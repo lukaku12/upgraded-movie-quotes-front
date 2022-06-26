@@ -1,12 +1,12 @@
 <template>
   <section
-    class="flex flex-col items-center justify-center w-screen h-[431px] relative"
+    class="flex flex-col items-center justify-center w-screen h-[431px] md:h-[600px] xl:h-screen relative"
   >
     <div class="flex w-full z-50 text-white font-bold">
-      <h1 class="pl-8 pr-1">&#9866;</h1>
-      <div class="w-8/12">
-        <h1 class="text-[20px]">“{{ quote }}”</h1>
-        <div class="flex text-[#D9D9D9]">
+      <h1 class="pl-8 pr-1 text-[20px] md:text-[50px] md:pl-20">&#9866;</h1>
+      <div class="w-8/12 md:w-5/12">
+        <h1 class="text-[20px] lg:text-[50px]">“{{ quote }}”</h1>
+        <div class="flex text-[#D9D9D9] lg:text-[30px]">
           <h1>{{ movie }}</h1>
           <h1>,&nbsp;</h1>
           <h1>{{ year }}</h1>
