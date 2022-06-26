@@ -2,7 +2,7 @@
   <login v-if="routeLogin"></login>
   <Register v-else-if="routeRegister"></Register>
   <section
-    class="w-full h-full flex flex-col items-center bg-main-background overflow-y-auto"
+    class="w-full h-full flex flex-col items-center bg-landing-background overflow-y-auto"
     :class="(routeLogin || routeRegister) && 'overflow-y-hidden'"
   >
     <header
@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import LandingQuote from "@/components/LandingQuote.vue";
+import LandingQuote from "@/components/notAuthenticated/LandingQuote.vue";
 import interstellar from "@/assets/images/interstellar-image.png";
 import lordOfRings from "@/assets/images/lord-of-rings-image.png";
 import theRoyalTenenebaums from "@/assets/images/the-royal-tenenbaums-image.png";

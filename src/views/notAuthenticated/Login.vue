@@ -26,7 +26,7 @@
 <script>
 import BasicInput from "@/components/Inputs/BasicInput.vue";
 import CheckBox from "@/components/Inputs/CheckBox.vue";
-import FormLayout from "@/components/Layouts/FormLayout.vue";
+import FormLayout from "@/components/notAuthenticated/FormLayout.vue";
 export default {
   name: "Login",
   components: { BasicInput, CheckBox, FormLayout },
