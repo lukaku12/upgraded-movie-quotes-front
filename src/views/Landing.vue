@@ -1,5 +1,10 @@
 <template>
-  <section class="w-full h-full flex flex-col items-center bg-main-background">
+  <login v-if="routeLogin"></login>
+  <Register v-else-if="routeRegister"></Register>
+  <section
+    class="w-full h-full flex flex-col items-center bg-main-background overflow-y-auto"
+    :class="(routeLogin || routeRegister) && 'overflow-y-hidden'"
+  >
     <header
       class="flex w-10/12 justify-between h-20 items-center mt-4 md:w-11/12"
     >
@@ -34,7 +39,7 @@
       class="h-full w-full mt-44 flex flex-col items-center justify-center gap-8 mb-10"
     >
       <h1
-        class="text-[#DDCCAA] text-2xl font-bold text-center md:text-6xl md:leading-[90px]"
+        class="text-[#DDCCAA] text-2xl font-bold text-center xl:text-6xl xl:leading-[90px]"
       >
         Find any quote in <br />
         milions of movie lines
@@ -55,7 +60,7 @@
       ></landing-quote>
       <landing-quote
         :image="theRoyalTenenebaums"
-        quote="I think we’re just gonnahave to be secretly in lovewith earch other and leave it that"
+        quote="I think we`re just gonnahave to be secretly in lovewith earch other and leave it that"
         movie="The Royal Tenenbaums"
         year="2001"
       ></landing-quote>
@@ -79,11 +84,15 @@ import LandingQuote from "@/components/LandingQuote.vue";
 import interstellar from "@/assets/images/interstellar-image.png";
 import lordOfRings from "@/assets/images/lord-of-rings-image.png";
 import theRoyalTenenebaums from "@/assets/images/the-royal-tenenbaums-image.png";
+import Login from "@/views/Login.vue";
+import Register from "@/views/Register.vue";
 
 export default {
   name: "Landing",
   components: {
     LandingQuote,
+    Login,
+    Register,
   },
   data() {
     return {
@@ -91,6 +100,14 @@ export default {
       lordOfRings,
       theRoyalTenenebaums,
     };
+  },
+  computed: {
+    routeLogin() {
+      return this.$route.path === "/login";
+    },
+    routeRegister() {
+      return this.$route.path === "/register";
+    },
   },
 };
 </script>

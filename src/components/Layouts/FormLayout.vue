@@ -1,6 +1,10 @@
 <template>
+  <div
+    class="w-screen h-screen max-h-screen bg-[#000000e1] flex flex-col justify-center items-center fixed top-0 left-0 z-50"
+    @click="redirectToHome"
+  ></div>
   <section
-    class="w-screen h-screen flex flex-col items-center bg-login-background"
+    class="w-screen h-screen fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col pb-16 items-center bg-login-background md:w-full md:h-auto md:max-w-2xl md:rounded-[10px] z-50"
   >
     <div class="text-center flex flex-col gap-3 mt-20 mb-10">
       <h1 class="text-white text-[24px] font-bold">
@@ -72,6 +76,10 @@ export default {
       required: true,
     },
   },
-  methods: {},
+  methods: {
+    redirectToHome() {
+      this.$router.push({ name: "home" });
+    },
+  },
 };
 </script>
