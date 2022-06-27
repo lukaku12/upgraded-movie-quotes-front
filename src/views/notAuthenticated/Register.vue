@@ -10,36 +10,69 @@
   >
     <basic-input
       title="Name"
-      name="name"
+      name="username"
       placeholder="Enter your name"
+      :value="userNameValue"
+      :on-input="updateUserNameValue"
+      rules="required|min:3|max:15"
     ></basic-input>
     <basic-input
       title="Email"
       name="email"
       placeholder="Enter your email"
+      :value="emailValue"
+      :on-input="updateEmailValue"
+      rules="required|email"
     ></basic-input>
     <basic-input
       title="Password"
       name="password"
       type="password"
       placeholder="Password"
+      :value="passwordValue"
+      :on-input="updatePasswordValue"
+      rules="required|min:8|max:15"
     ></basic-input>
     <basic-input
       title="Confirm password"
-      name="confirm-password"
+      name="confirm_password"
       type="password"
       placeholder="Password"
+      :value="confirmPasswordValue"
+      :on-input="updateConfirmPasswordValue"
+      rules="required|min:8|max:15"
     ></basic-input>
-    <check-box></check-box>
   </form-layout>
 </template>
 
 <script>
 import BasicInput from "@/components/Inputs/BasicInput.vue";
-import CheckBox from "@/components/Inputs/CheckBox.vue";
 import FormLayout from "@/components/notAuthenticated/FormLayout.vue";
+
 export default {
   name: "Register",
-  components: { BasicInput, CheckBox, FormLayout },
+  components: { BasicInput, FormLayout },
+  data() {
+    return {
+      userNameValue: "",
+      emailValue: "",
+      passwordValue: "",
+      confirmPasswordValue: "",
+    };
+  },
+  methods: {
+    updateUserNameValue(e) {
+      this.userNameValue = e.target.value;
+    },
+    updateEmailValue(e) {
+      this.emailValue = e.target.value;
+    },
+    updatePasswordValue(e) {
+      this.passwordValue = e.target.value;
+    },
+    updateConfirmPasswordValue(e) {
+      this.confirmPasswordValue = e.target.value;
+    },
+  },
 };
 </script>

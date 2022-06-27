@@ -1,17 +1,24 @@
 <template>
   <div class="flex flex-col py-3 w-full">
     <label class="text-white mb-2" :for="name">{{ title }}</label>
-    <input
+    <Field
       :id="name"
+      :name="name"
+      class="border rounded py-2 px-4 focus:outline-none bg-[#CED4DA] text-[#6C757D] font-semibold"
       :type="type"
       :placeholder="placeholder"
-      class="border rounded py-2 px-4 focus:outline-none bg-[#CED4DA] text-[#6C757D] font-semibold"
+      :rules="rules"
+      :value="value"
+      @input="onInput"
     />
+    <ErrorMessage class="text-red-600" :name="name"></ErrorMessage>
   </div>
 </template>
 <script>
+import { Field, ErrorMessage } from "vee-validate";
 export default {
   name: "BasicInput",
+  components: { Field, ErrorMessage },
   props: {
     title: {
       type: String,
@@ -28,6 +35,18 @@ export default {
     placeholder: {
       type: String,
       required: true,
+    },
+    value: {
+      type: String,
+      required: true,
+    },
+    onInput: {
+      type: Function,
+      required: true,
+    },
+    rules: {
+      type: String,
+      default: "required",
     },
   },
 };

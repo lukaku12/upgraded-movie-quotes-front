@@ -14,7 +14,8 @@
         {{ subTitle }}
       </h1>
     </div>
-    <form class="w-10/12">
+    <VeeForm v-slot="{ handleSubmit, meta, values }" as="div" class="w-10/12">
+      <form @submit.prevent="handleSubmit($event, submitForm(meta, values))">
       <slot />
       <div class="flex flex-col w-full mt-4 gap-4">
         <button
@@ -31,7 +32,8 @@
           <p class="pt-[3px]">{{ googleAction }} with Google</p>
         </button>
       </div>
-    </form>
+      </form>
+    </VeeForm>
     <div class="flex w-full justify-center mt-10 font-bold">
       <h1 class="text-[#6C757D]">{{ redirectToTitle }}&nbsp;</h1>
       <router-link
@@ -44,8 +46,14 @@
 </template>
 
 <script>
+import axios from "axios";
+import { Form as VeeForm } from "vee-validate";
+import { useAuthStore } from "../../stores";
+import { mapActions } from "pinia/dist/pinia";
+
 export default {
   name: "FormLayout",
+  components: { VeeForm },
   props: {
     mainTitle: {
       type: String,
@@ -77,8 +85,22 @@ export default {
     },
   },
   methods: {
+    ...mapActions(useAuthStore, ['setAuthenticated']),
     redirectToHome() {
       this.$router.push({ name: "home" });
+    },
+    submitForm(meta, values) {
+      if (!meta.valid) return
+      axios
+        .post("http://127.0.0.1:8000/api/register/create", values)
+        .then(() => {
+          this.setAuthenticated(true);
+          this.$router.push({ name: "home" });
+        })
+        .catch(err => {
+          console.log('caught it!',JSON.parse(err.request.response));
+        });
+
     },
   },
 };

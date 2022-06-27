@@ -3,38 +3,38 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: Montserrat;
-    src: url(./assets/fonts/Montserrat-Regular.ttf);
+  font-family: Montserrat;
+  src: url(./assets/fonts/Montserrat-Regular.ttf);
 }
 
 * {
-    font-family: Montserrat;
+  font-family: Montserrat;
 }
 
 html,
 body {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 /* width */
 ::-webkit-scrollbar {
-    width: 7px;
-    border-radius: 7px;
+  width: 7px;
+  border-radius: 7px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 7px;
+  background: #f1f1f1;
+  border-radius: 7px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 7px;
+  background: #888;
+  border-radius: 7px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
 }
