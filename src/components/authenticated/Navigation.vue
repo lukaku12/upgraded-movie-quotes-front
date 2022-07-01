@@ -1,5 +1,13 @@
 <template>
-  <div class="pl-14 pr-8 h-96 mt-10 hidden lg:flex md:flex-col md:w-1/4">
+  <div
+    :class="navBarIsOpen ? 'visible' : 'hidden'"
+    class="absolute w-screen h-screen top-0 left-0"
+    @click="hideNavbar"
+  ></div>
+  <div
+    :class="navBarIsOpen ? 'visible' : 'hidden'"
+    class="fixed z-50 top-0 left-0 h-[658px] rounded-tr-xl rounded-br-xl px-16 pr-20 pt-12 bg-[#11101A] lg:pl-14 lg:pr-8 lg:bg-transparent lg:h-96 lg:mt-10 lg:static lg:flex lg:flex-col lg:w-1/4"
+  >
     <div class="flex w-full h-[60px] gap-3 text-white">
       <img
         class="w-[60px] h-[60px]"
@@ -8,22 +16,27 @@
       />
       <div class="flex flex-col items-center justify-center">
         <h1 class="font-bold text-base">Nino Tabagari</h1>
-        <button class="text-xs text-start">Edit your profile</button>
+        <button class="text-xs text-start opacity-70 hover:opacity-100">
+          Edit your profile
+        </button>
       </div>
     </div>
     <nav>
-      <ul class="text-white mt-5 flex flex-col gap-5">
+      <ul class="text-white mt-5 flex flex-col gap-5 font-bold">
         <li>
           <router-link
             :to="{ name: 'home' }"
-            class="flex mt-5 items-center gap-6 ml-3"
+            class="flex mt-5 items-center gap-6 ml-3 hover:opacity-60"
           >
             <img src="@/assets/icons/home.svg" alt="home" />
             <p>News feed</p>
           </router-link>
         </li>
         <li>
-          <router-link to="/movies" class="flex mt-5 items-center gap-6 ml-3">
+          <router-link
+            to="/movies"
+            class="flex mt-5 items-center gap-6 ml-3 hover:opacity-60"
+          >
             <img src="@/assets/icons/camera-reels.svg" alt="camera-reels" />
             <p>List of movies</p>
           </router-link>
@@ -34,12 +47,17 @@
 </template>
 
 <script>
+import { mapState } from "pinia";
+import { useAuthStore } from "@/stores/index.js";
+import { mapActions } from "pinia/dist/pinia.esm-browser";
+
 export default {
   name: "Navigation",
-  //   computed: {
-  //     getRouteName() {
-  //       return this.$route.name;
-  //     },
-  //   },
+  computed: {
+    ...mapState(useAuthStore, ["navBarIsOpen"]),
+  },
+  methods: {
+    ...mapActions(useAuthStore, ["hideNavbar"]),
+  },
 };
 </script>

@@ -8,11 +8,9 @@
     </div>
     <div class="flex flex-col gap-5">
       <div class="flex">
-        <p>
-          “{{ post.quote }} movie- {{ post.movie }}. ({{
-            post.movieReleaseDate
-          }})”
-        </p>
+        <p>“{{ post.quote }}” movie-</p>
+        <p class="text-[#DDCCAA]">{{ post.movie }}</p>
+        <p>. ({{ post.movieReleaseDate }})</p>
       </div>
       <img class="w-full" src="@/assets/post/post-image.png" alt="post-image" />
     </div>
@@ -23,7 +21,9 @@
       </div>
       <div class="flex gap-2">
         <p>{{ post.likes }}</p>
-        <button><img src="@/assets/icons/heart.svg" alt="comment" /></button>
+        <button>
+          <img src="@/assets/icons/heart.svg" class="like-post" alt="comment" />
+        </button>
       </div>
     </div>
     <div>

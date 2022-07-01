@@ -41,7 +41,7 @@ export default {
     return {
       emailValue: "",
       passwordValue: "",
-    }
+    };
   },
   methods: {
     updateEmailValue(e) {

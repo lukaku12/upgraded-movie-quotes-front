@@ -16,23 +16,23 @@
     </div>
     <VeeForm v-slot="{ handleSubmit, meta, values }" as="div" class="w-10/12">
       <form @submit.prevent="handleSubmit($event, submitForm(meta, values))">
-      <slot />
+        <slot />
         <p class="text-center text-red-600">{{ apiErrors }}</p>
-      <div class="flex flex-col w-full mt-4 gap-4">
-        <button
-          type="submit"
-          class="w-full bg-[#E31221] py-[7px] rounded-[4px] text-white"
-        >
-          {{ action }}
-        </button>
-        <button
-          type="button"
-          class="w-full border border-white py-[7px] text-white rounded-[4px] flex justify-center items-center gap-2 font-bold"
-        >
-          <img src="@/assets/icons/google.svg" alt="google" class="w-5 h-5" />
-          <p class="pt-[3px]">{{ googleAction }} with Google</p>
-        </button>
-      </div>
+        <div class="flex flex-col w-full mt-4 gap-4">
+          <button
+            type="submit"
+            class="w-full bg-[#E31221] py-[7px] rounded-[4px] text-white"
+          >
+            {{ action }}
+          </button>
+          <button
+            type="button"
+            class="w-full border border-white py-[7px] text-white rounded-[4px] flex justify-center items-center gap-2 font-bold"
+          >
+            <img src="@/assets/icons/google.svg" alt="google" class="w-5 h-5" />
+            <p class="pt-[3px]">{{ googleAction }} with Google</p>
+          </button>
+        </div>
       </form>
     </VeeForm>
     <div class="flex w-full justify-center mt-10 font-bold">
@@ -92,26 +92,25 @@ export default {
   data() {
     return {
       apiErrors: "",
-      }
-    },
+    };
+  },
   methods: {
-    ...mapActions(useAuthStore, ['setAuthenticated']),
+    ...mapActions(useAuthStore, ["setAuthenticated"]),
     redirectToHome() {
       this.$router.push({ name: "home" });
     },
     submitForm(meta, values) {
-      if (!meta.valid) return
+      if (!meta.valid) return;
       axios
         .post(this.requestUrl, values)
         .then(() => {
           this.setAuthenticated(true);
           this.$router.push({ name: "home" });
         })
-        .catch(err => {
-          const errors = JSON.parse(err.request.response)
+        .catch((err) => {
+          const errors = JSON.parse(err.request.response);
           this.apiErrors = errors.message;
         });
-
     },
   },
 };

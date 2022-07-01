@@ -9,7 +9,7 @@
       >
         MOVIE QUOTES
       </router-link>
-      <button class="flex lg:hidden">
+      <button class="flex lg:hidden" @click="openNavbar">
         <img src="@/assets/icons/burger-menu.svg" alt="burger-menu" />
       </button>
     </div>
@@ -40,3 +40,15 @@
     </div>
   </header>
 </template>
+
+<script>
+import { mapActions } from "pinia";
+import { useAuthStore } from "@/stores/index.js";
+
+export default {
+  name: "NotAuthHeader",
+  methods: {
+    ...mapActions(useAuthStore, ["openNavbar"]),
+  },
+};
+</script>

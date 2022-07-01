@@ -8,14 +8,16 @@
       <img src="@/assets/icons/pencil-square.svg" alt="pencil-square" />
       <p>Write new quote</p>
     </button>
-    <div class="relative hidden lg:flex justify-center items-center text-center lg:w-[15%] lg:pl-4 lg:gap-4">
+    <button
+      class="relative hidden lg:flex justify-center items-center text-center lg:w-[15%] lg:pl-4 lg:gap-4 opacity-100 hover:opacity-70 font-bold"
+    >
       <img
         class="w-[20px] h-[20px]"
         src="@/assets/icons/search.svg"
         alt="search"
       />
       <p>Search By</p>
-    </div>
+    </button>
   </div>
 </template>
 

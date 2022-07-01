@@ -15,7 +15,7 @@ html,
 body {
   overflow-x: hidden;
 }
-.landing-quote-image{
+.landing-quote-image {
   mask-image: linear-gradient(to right, transparent 7%, black);
 }
 .Interstellar {
