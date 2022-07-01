@@ -15,7 +15,12 @@ html,
 body {
   overflow-x: hidden;
 }
-
+.landing-quote-image{
+  mask-image: linear-gradient(to right, transparent 7%, black);
+}
+.Interstellar {
+  mask-image: linear-gradient(to bottom, transparent 1%, black);
+}
 /* width */
 ::-webkit-scrollbar {
   width: 7px;

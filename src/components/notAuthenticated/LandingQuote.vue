@@ -1,6 +1,6 @@
 <template>
   <section
-    class="flex flex-col items-center justify-center w-screen h-[431px] md:h-[600px] xl:h-screen relative"
+    class="flex flex-col items-center justify-center w-full h-[431px] md:h-[600px] xl:aspect-video xl:h-auto relative"
   >
     <div class="flex w-full z-40 text-white font-bold">
       <h1 class="pl-8 pr-1 text-[20px] md:text-[50px] md:pl-20">&#9866;</h1>
@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="w-full h-full absolute">
-      <img class="w-full h-full" :src="image" alt="interstellar-image" />
+      <img :class="movie" class="w-full h-full opacity-90 landing-quote-image" :src="image" alt="interstellar-image" />
     </div>
   </section>
 </template>

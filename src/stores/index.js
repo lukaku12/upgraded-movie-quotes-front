@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 export const useAuthStore = defineStore({
   id: "auth",
   state: () => ({
-    isAuthenticated: false,
+    isAuthenticated: !false,
   }),
   // getters: {
   //   doubleCount: (state) => state.counter * 2,

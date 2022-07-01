@@ -8,7 +8,7 @@
       <img src="@/assets/icons/pencil-square.svg" alt="pencil-square" />
       <p>Write new quote</p>
     </button>
-    <div class="relative hidden lg:flex lg:w-[15%] lg:pl-4 lg:gap-4">
+    <div class="relative hidden lg:flex justify-center items-center text-center lg:w-[15%] lg:pl-4 lg:gap-4">
       <img
         class="w-[20px] h-[20px]"
         src="@/assets/icons/search.svg"
