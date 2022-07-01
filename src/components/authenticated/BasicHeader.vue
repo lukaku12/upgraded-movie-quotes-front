@@ -9,13 +9,13 @@
       >
         MOVIE QUOTES
       </router-link>
-      <button class="flex lg:hidden" @click="openNavbar">
+      <button class="flex lg:hidden" @click="setNavbarIsOpen(true)">
         <img src="@/assets/icons/burger-menu.svg" alt="burger-menu" />
       </button>
     </div>
     <div class="flex items-center gap-7">
       <div class="flex items-center gap-12">
-        <button class="flex lg:hidden">
+        <button class="flex lg:hidden" @click="setSearchBarIsOpen(true)">
           <img src="@/assets/icons/search.svg" alt="" />
         </button>
         <button class="flex items-center text-white gap-1 relative">
@@ -43,12 +43,12 @@
 
 <script>
 import { mapActions } from "pinia";
-import { useAuthStore } from "@/stores/index.js";
+import { useStylesStore } from "@/stores/styling/styles";
 
 export default {
   name: "NotAuthHeader",
   methods: {
-    ...mapActions(useAuthStore, ["openNavbar"]),
+    ...mapActions(useStylesStore, ["setNavbarIsOpen", "setSearchBarIsOpen"]),
   },
 };
 </script>

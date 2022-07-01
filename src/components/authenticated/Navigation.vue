@@ -2,7 +2,7 @@
   <div
     :class="navBarIsOpen ? 'visible' : 'hidden'"
     class="absolute w-screen h-screen top-0 left-0"
-    @click="hideNavbar"
+    @click="setNavbarIsOpen(false)"
   ></div>
   <div
     :class="navBarIsOpen ? 'visible' : 'hidden'"
@@ -48,16 +48,16 @@
 
 <script>
 import { mapState } from "pinia";
-import { useAuthStore } from "@/stores/index.js";
 import { mapActions } from "pinia/dist/pinia.esm-browser";
+import { useStylesStore } from "@/stores/styling/styles";
 
 export default {
   name: "Navigation",
   computed: {
-    ...mapState(useAuthStore, ["navBarIsOpen"]),
+    ...mapState(useStylesStore, ["navBarIsOpen"]),
   },
   methods: {
-    ...mapActions(useAuthStore, ["hideNavbar"]),
+    ...mapActions(useStylesStore, ["setNavbarIsOpen"]),
   },
 };
 </script>
