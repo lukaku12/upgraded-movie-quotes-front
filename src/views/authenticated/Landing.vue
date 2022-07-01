@@ -22,7 +22,7 @@ import BasicHeader from "@/components/authenticated/BasicHeader.vue";
 import Post from "@/components/authenticated/Post.vue";
 import AddQuote from "@/components/authenticated/AddQuote.vue";
 import Navigation from "@/components/authenticated/Navigation.vue";
-import MobileSearch from "@/components/authenticated/mobileSearch.vue";
+import MobileSearch from "@/components/authenticated/MobileSearch.vue";
 export default {
   name: "AuthLanding",
   components: {
