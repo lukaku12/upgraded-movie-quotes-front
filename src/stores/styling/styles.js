@@ -5,6 +5,7 @@ export const useStylesStore = defineStore({
   state: () => ({
     navBarIsOpen: false,
     searchBarIsOpen: false,
+    notificationBarIsOpen: true,
   }),
   actions: {
     setNavbarIsOpen(payload) {
@@ -12,6 +13,9 @@ export const useStylesStore = defineStore({
     },
     setSearchBarIsOpen(payload) {
       this.searchBarIsOpen = payload;
+    },
+    setNotificationBarIsOpen() {
+      this.notificationBarIsOpen = !this.notificationBarIsOpen;
     }
   },
 });

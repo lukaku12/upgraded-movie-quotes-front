@@ -14,18 +14,23 @@
       </button>
     </div>
     <div class="flex items-center gap-7">
-      <div class="flex items-center gap-12">
+      <div class="flex items-center gap-12 relative">
         <button class="flex lg:hidden" @click="setSearchBarIsOpen(true)">
-          <img src="@/assets/icons/search.svg" alt="" />
+          <img src="@/assets/icons/search.svg" alt="search" />
         </button>
-        <button class="flex items-center text-white gap-1 relative">
-          <p
-            class="absolute bg-red-600 text-sm px-[6px] rounded-[50%] -top-[5px] -right-2"
-          >
-            3
-          </p>
-          <img src="@/assets/icons/notification-bell.svg" alt="bell" />
-        </button>
+        <div>
+          <button class="flex items-center text-white gap-1 relative" @click="setNotificationBarIsOpen">
+            <p
+              class="absolute bg-red-600 text-sm px-[6px] rounded-[50%] -top-[5px] -right-2"
+            >
+              3
+            </p>
+            <img src="@/assets/icons/notification-bell.svg" alt="bell" />
+          </button>
+          <div v-if="notificationBarIsOpen" class="relative">
+            <img class="absolute top-3 right-0" src="@/assets/icons/triangle.svg" alt="triangle" />
+          </div>
+        </div>
         <button class="hidden lg:flex items-center text-white gap-1">
           <p>Eng</p>
           <img src="@/assets/icons/down-arrow.svg" alt="down-arrow" />
@@ -42,13 +47,16 @@
 </template>
 
 <script>
-import { mapActions } from "pinia";
+import { mapActions,mapState } from "pinia";
 import { useStylesStore } from "@/stores/styling/styles";
 
 export default {
   name: "NotAuthHeader",
+  computed: {
+    ...mapState(useStylesStore, ["notificationBarIsOpen"]),
+  },
   methods: {
-    ...mapActions(useStylesStore, ["setNavbarIsOpen", "setSearchBarIsOpen"]),
+    ...mapActions(useStylesStore, ["setNavbarIsOpen", "setSearchBarIsOpen", "setNotificationBarIsOpen"]),
   },
 };
 </script>
