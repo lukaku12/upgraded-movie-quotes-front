@@ -7,17 +7,24 @@
     redirect-to-title="Don't have an account?"
     redirect-to="Sign up"
     redirect-url-name="sign-up"
+    request-url="http://localhost:8000/api/login"
   >
     <basic-input
       title="Email"
       name="email"
       placeholder="Enter your email"
+      :value="emailValue"
+      :on-input="updateEmailValue"
+      rules="required|email"
     ></basic-input>
     <basic-input
       title="Password"
       name="password"
       type="password"
       placeholder="Password"
+      :value="passwordValue"
+      :on-input="updatePasswordValue"
+      rules="required|min:8|max:15"
     ></basic-input>
     <check-box></check-box>
   </form-layout>
@@ -30,5 +37,19 @@ import FormLayout from "@/components/notAuthenticated/FormLayout.vue";
 export default {
   name: "Login",
   components: { BasicInput, CheckBox, FormLayout },
+  data() {
+    return {
+      emailValue: "",
+      passwordValue: "",
+    }
+  },
+  methods: {
+    updateEmailValue(e) {
+      this.emailValue = e.target.value;
+    },
+    updatePasswordValue(e) {
+      this.passwordValue = e.target.value;
+    },
+  },
 };
 </script>

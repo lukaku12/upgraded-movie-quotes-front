@@ -7,6 +7,7 @@
     redirect-to-title="Already have an account?"
     redirect-to="Log in"
     redirect-url-name="login"
+    request-url="http://127.0.0.1:8000/api/register/create"
   >
     <basic-input
       title="Name"

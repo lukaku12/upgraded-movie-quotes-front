@@ -17,6 +17,7 @@
     <VeeForm v-slot="{ handleSubmit, meta, values }" as="div" class="w-10/12">
       <form @submit.prevent="handleSubmit($event, submitForm(meta, values))">
       <slot />
+        <p class="text-center text-red-600">{{ apiErrors }}</p>
       <div class="flex flex-col w-full mt-4 gap-4">
         <button
           type="submit"
@@ -83,7 +84,16 @@ export default {
       type: String,
       required: true,
     },
+    requestUrl: {
+      type: String,
+      required: true,
+    },
   },
+  data() {
+    return {
+      apiErrors: "",
+      }
+    },
   methods: {
     ...mapActions(useAuthStore, ['setAuthenticated']),
     redirectToHome() {
@@ -92,13 +102,14 @@ export default {
     submitForm(meta, values) {
       if (!meta.valid) return
       axios
-        .post("http://127.0.0.1:8000/api/register/create", values)
+        .post(this.requestUrl, values)
         .then(() => {
           this.setAuthenticated(true);
           this.$router.push({ name: "home" });
         })
         .catch(err => {
-          console.log('caught it!',JSON.parse(err.request.response));
+          const errors = JSON.parse(err.request.response)
+          this.apiErrors = errors.message;
         });
 
     },
