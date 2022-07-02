@@ -1,4 +1,9 @@
 <template>
+  <div
+    v-if="languagesAreVisible"
+    class="w-screen h-screen bg-transparent top-0 left-0 fixed z-50"
+    @click="hideLanguages"
+  ></div>
   <div class="relative text-white hidden md:block">
     <button class="flex items-center gap-1" @click="showLanguages">
       <button v-if="selectedLanguage === 'Eng'">Eng</button>
@@ -38,6 +43,9 @@ export default {
   methods: {
     showLanguages() {
       this.languagesAreVisible = !this.languagesAreVisible;
+    },
+    hideLanguages() {
+      this.languagesAreVisible = false;
     },
     setLanguage() {
       this.selectedLanguage = this.selectedLanguage === "Eng" ? "Geo" : "Eng";
