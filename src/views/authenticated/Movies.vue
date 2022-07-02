@@ -10,20 +10,16 @@
       <div class="w-full flex flex-col items-center">
         <MobileSearch></MobileSearch>
         <Notifications></Notifications>
-        <div class="flex flex-col md:items-center md:flex-row px-10 py-8 gap-5 w-full text-white">
+        <div
+          class="flex flex-col md:items-center md:flex-row px-10 py-8 gap-5 w-full text-white"
+        >
           <h1 class="text-2xl">My list of movies</h1>
-          <p>(total 25)</p>
+          <p>(total {{ movies.length }})</p>
         </div>
-        <div class="flex flex-col items-center w-full h-full sm:grid md:grid-cols-2 2xl:grid-cols-3 mb-10">
-          <Movie></Movie>
-          <Movie></Movie>
-          <Movie></Movie>
-          <Movie></Movie>
-          <Movie></Movie>
-          <Movie></Movie>
-          <Movie></Movie>
-          <Movie></Movie>
-          <Movie></Movie>
+        <div
+          class="flex flex-col items-center w-full h-full sm:grid md:grid-cols-2 2xl:grid-cols-3 mb-10"
+        >
+          <Movie v-for="movie in movies" :key="movie.id" :movie="movie"></Movie>
         </div>
       </div>
     </div>
@@ -36,6 +32,8 @@ import Navigation from "@/components/authenticated/Sidebar.vue";
 import MobileSearch from "@/components/authenticated/MobileSearch.vue";
 import Notifications from "@/components/authenticated/Notifications.vue";
 import Movie from "@/components/authenticated/movies/Movie.vue";
+import axios from "axios";
+
 export default {
   name: "Movies",
   components: {
@@ -44,6 +42,16 @@ export default {
     Movie,
     Navigation,
     Notifications,
+  },
+  data() {
+    return {
+      movies: [],
+    };
+  },
+  mounted() {
+    axios.get("http://127.0.0.1:8000/api/movies").then((response) => {
+      this.movies = response.data;
+    });
   },
 };
 </script>
