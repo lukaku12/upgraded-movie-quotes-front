@@ -26,7 +26,7 @@
             <p
               class="absolute bg-red-600 text-sm px-[6px] rounded-[50%] -top-[5px] -right-2"
             >
-              3
+              2
             </p>
             <img src="@/assets/icons/notification-bell.svg" alt="bell" />
           </button>
