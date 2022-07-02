@@ -4,15 +4,18 @@
   >
     <AuthHeader></AuthHeader>
     <div
-      class="w-full h-full flex justify-center lg:justify-start bg-[#0f0e14]"
+      class="w-full h-full flex justify-center lg:justify-start bg-[#0f0e14] font-bold"
     >
       <Navigation></Navigation>
-      <div>
+      <div class="w-full flex flex-col items-center">
         <MobileSearch></MobileSearch>
         <Notifications></Notifications>
-        <AddQuote></AddQuote>
-        <Post></Post>
-        <Post></Post>
+        <div class="flex flex-col px-10 py-8 gap-5 w-full max-w-4xl text-white">
+        <h1 class="text-2xl">My list of movies</h1>
+        <p>(total 25)</p>
+        </div>
+        <Movie></Movie>
+        <Movie></Movie>
       </div>
     </div>
   </section>
@@ -20,18 +23,16 @@
 
 <script>
 import AuthHeader from "@/components/authenticated/BasicHeader.vue";
-import Post from "@/components/authenticated/landing/Post.vue";
-import AddQuote from "@/components/authenticated/landing/AddQuote.vue";
 import Navigation from "@/components/authenticated/Sidebar.vue";
 import MobileSearch from "@/components/authenticated/MobileSearch.vue";
 import Notifications from "@/components/authenticated/Notifications.vue";
+import Movie from "@/components/authenticated/movies/Movie.vue";
 export default {
-  name: "AuthLanding",
+  name: "Movies",
   components: {
     MobileSearch,
     AuthHeader,
-    Post,
-    AddQuote,
+    Movie,
     Navigation,
     Notifications
   },

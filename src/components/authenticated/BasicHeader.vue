@@ -51,7 +51,7 @@ import { mapActions,mapState } from "pinia";
 import { useStylesStore } from "@/stores/styling/styles";
 
 export default {
-  name: "NotAuthHeader",
+  name: "AuthHeader",
   computed: {
     ...mapState(useStylesStore, ["notificationBarIsOpen"]),
   },
