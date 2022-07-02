@@ -8,7 +8,11 @@
     </div>
     <div class="flex flex-col gap-5">
       <div class="flex">
-        <p>“{{ post.quote }}” movie- {{ post.movie }}. ({{ post.movieReleaseDate }})</p>
+        <p>
+          “{{ post.quote }}” movie- {{ post.movie }}. ({{
+            post.movieReleaseDate
+          }})
+        </p>
       </div>
       <img class="w-full" src="@/assets/post/post-image.png" alt="post-image" />
     </div>

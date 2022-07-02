@@ -11,8 +11,8 @@
         <MobileSearch></MobileSearch>
         <Notifications></Notifications>
         <div class="flex flex-col px-10 py-8 gap-5 w-full max-w-4xl text-white">
-        <h1 class="text-2xl">My list of movies</h1>
-        <p>(total 25)</p>
+          <h1 class="text-2xl">My list of movies</h1>
+          <p>(total 25)</p>
         </div>
         <Movie></Movie>
         <Movie></Movie>
@@ -34,7 +34,7 @@ export default {
     AuthHeader,
     Movie,
     Navigation,
-    Notifications
+    Notifications,
   },
 };
 </script>

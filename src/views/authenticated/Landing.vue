@@ -33,7 +33,7 @@ export default {
     Post,
     AddQuote,
     Navigation,
-    Notifications
+    Notifications,
   },
 };
 </script>

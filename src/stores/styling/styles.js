@@ -16,6 +16,6 @@ export const useStylesStore = defineStore({
     },
     setNotificationBarIsOpen() {
       this.notificationBarIsOpen = !this.notificationBarIsOpen;
-    }
+    },
   },
 });

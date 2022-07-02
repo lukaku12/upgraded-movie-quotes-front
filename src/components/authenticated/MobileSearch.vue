@@ -5,7 +5,11 @@
   >
     <div class="flex gap-6 p-[15px] border-[#EFEFEF4D] border-b-2 w-full flex">
       <button @click="setSearchBarIsOpen(false)">
-        <img class="min-w-min" src="@/assets/icons/left-arrow.svg" alt="left-arrow" />
+        <img
+          class="min-w-min"
+          src="@/assets/icons/left-arrow.svg"
+          alt="left-arrow"
+        />
       </button>
       <input
         class="text-white focus:outline-0 bg-transparent font-bold py-1"
@@ -22,7 +26,7 @@
       <div class="flex text-[#EFEFEF99] gap-1">
         <p>Enter</p>
         <p class="text-white font-bold">#</p>
-        <p> to search quotes</p>
+        <p>to search quotes</p>
       </div>
     </div>
   </div>
