@@ -1,10 +1,10 @@
 <template>
   <div
-    class="flex flex-col gap-5 w-full max-w-4xl p-10 text-white lg:rounded-[10px] md:pb-0"
+    class="flex flex-col items-center gap-5 w-full h-full max-w-4xl pr-4 pb-4 pl-4 text-white lg:rounded-[10px]"
   >
-    <div class="flex flex-col gap-5">
+    <div class="flex flex-col items-center md:items-start gap-5 w-full h-full">
       <img
-        class="w-full aspect-video lg:aspect-square"
+        class="w-full w-full h-full max-w-[440px] max-h-[371px]"
         src="@/assets/post/post-image.png"
         alt="post-image"
       />

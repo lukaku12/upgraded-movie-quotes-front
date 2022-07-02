@@ -10,11 +10,11 @@
       <div class="w-full flex flex-col items-center">
         <MobileSearch></MobileSearch>
         <Notifications></Notifications>
-        <div class="flex flex-col px-10 py-8 gap-5 w-full text-white">
+        <div class="flex flex-col md:items-center md:flex-row px-10 py-8 gap-5 w-full text-white">
           <h1 class="text-2xl">My list of movies</h1>
           <p>(total 25)</p>
         </div>
-        <div class="grid w-full h-full grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 mb-10">
+        <div class="flex flex-col items-center w-full h-full sm:grid md:grid-cols-2 2xl:grid-cols-3 mb-10">
           <Movie></Movie>
           <Movie></Movie>
           <Movie></Movie>

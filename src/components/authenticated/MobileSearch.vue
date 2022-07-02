@@ -1,9 +1,9 @@
 <template>
   <div
     :class="searchBarIsOpen ? 'visible' : 'hidden'"
-    class="fixed w-screen top-0 left-0 h-5/6 min-h-[500px] bg-[#12101A] lg:hidden"
+    class="fixed w-screen top-0 left-0 h-5/6 min-h-[500px] bg-[#12101A] lg:hidden z-50"
   >
-    <div class="flex gap-6 p-[15px] border-[#EFEFEF4D] border-b-2 w-full flex">
+    <div class="flex gap-6 p-[15px] z-50 border-[#EFEFEF4D] border-b-2 w-full flex">
       <button @click="setSearchBarIsOpen(false)">
         <img
           class="min-w-min"
@@ -12,7 +12,7 @@
         />
       </button>
       <input
-        class="text-white focus:outline-0 bg-transparent font-bold py-1"
+        class="text-white focus:outline-0 bg-transparent font-bold py-1 w-full"
         type="text"
         placeholder="Search"
       />

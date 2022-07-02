@@ -1,5 +1,5 @@
 <template>
-  <div class="relative text-white">
+  <div class="relative text-white hidden md:block">
     <button class="flex items-center gap-1" @click="showLanguages">
       <button v-if="selectedLanguage === 'Eng'">Eng</button>
       <button v-else>Geo</button>
