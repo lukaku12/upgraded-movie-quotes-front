@@ -36,12 +36,12 @@
           <img src="@/assets/icons/down-arrow.svg" alt="down-arrow" />
         </button>
       </div>
-      <router-link
-        to=""
+      <button
+        @click="logout"
         class="border border-white text-white px-5 py-1 rounded-[4px] hover:bg-[#4d4d4d] hidden lg:flex"
       >
         Log out
-      </router-link>
+      </button>
     </div>
   </header>
 </template>
@@ -49,6 +49,7 @@
 <script>
 import { mapActions,mapState } from "pinia";
 import { useStylesStore } from "@/stores/styling/styles";
+import { useAuthStore } from "@/stores";
 
 export default {
   name: "AuthHeader",
@@ -57,6 +58,11 @@ export default {
   },
   methods: {
     ...mapActions(useStylesStore, ["setNavbarIsOpen", "setSearchBarIsOpen", "setNotificationBarIsOpen"]),
+    ...mapActions(useAuthStore, ["setAuthenticated"]),
+    logout() {
+      this.setAuthenticated(false);
+      this.$router.push({ name: "home" });
+    },
   },
 };
 </script>
