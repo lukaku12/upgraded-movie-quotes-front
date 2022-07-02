@@ -6,7 +6,7 @@
   ></div>
   <div
     :class="navBarIsOpen ? 'visible' : 'hidden'"
-    class="fixed z-50 top-0 left-0 h-[658px] rounded-tr-xl rounded-br-xl px-16 pr-20 pt-12 bg-[#11101A] lg:pl-14 lg:pr-8 lg:bg-transparent lg:h-96 lg:mt-10 lg:static lg:flex lg:flex-col lg:w-1/4"
+    class="fixed top-0 left-0 h-[658px] rounded-tr-xl rounded-br-xl px-16 pr-20 pt-12 bg-[#11101A] lg:pl-14 lg:pr-8 lg:bg-transparent lg:h-96 lg:mt-10 lg:static lg:flex lg:flex-col lg:w-1/4"
   >
     <div class="flex w-full h-[60px] gap-3 text-white">
       <img
@@ -52,7 +52,7 @@ import { mapActions } from "pinia/dist/pinia.esm-browser";
 import { useStylesStore } from "@/stores/styling/styles";
 
 export default {
-  name: "Navigation",
+  name: "Sidebar",
   computed: {
     ...mapState(useStylesStore, ["navBarIsOpen"]),
   },

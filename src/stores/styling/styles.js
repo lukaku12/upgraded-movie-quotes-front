@@ -5,7 +5,7 @@ export const useStylesStore = defineStore({
   state: () => ({
     navBarIsOpen: false,
     searchBarIsOpen: false,
-    notificationBarIsOpen: true,
+    notificationBarIsOpen: false,
   }),
   actions: {
     setNavbarIsOpen(payload) {

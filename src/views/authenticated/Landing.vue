@@ -20,9 +20,9 @@
 
 <script>
 import BasicHeader from "@/components/authenticated/BasicHeader.vue";
-import Post from "@/components/authenticated/Post.vue";
-import AddQuote from "@/components/authenticated/AddQuote.vue";
-import Navigation from "@/components/authenticated/Navigation.vue";
+import Post from "@/components/authenticated/landing/Post.vue";
+import AddQuote from "@/components/authenticated/landing/AddQuote.vue";
+import Navigation from "@/components/authenticated/landing/Sidebar.vue";
 import MobileSearch from "@/components/authenticated/MobileSearch.vue";
 import Notifications from "@/components/authenticated/Notifications.vue";
 export default {
