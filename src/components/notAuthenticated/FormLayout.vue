@@ -49,8 +49,8 @@
 <script>
 import axios from "axios";
 import { Form as VeeForm } from "vee-validate";
-import { useAuthStore } from "../../stores";
-import { mapActions } from "pinia/dist/pinia";
+import { useAuthStore } from "@/stores/index.js";
+import { mapActions } from "pinia";
 
 export default {
   name: "FormLayout",
