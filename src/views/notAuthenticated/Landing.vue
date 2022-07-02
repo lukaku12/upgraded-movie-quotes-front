@@ -16,10 +16,7 @@
       </router-link>
       <div class="flex items-center gap-3">
         <div class="hidden md:flex items-center gap-8">
-          <button class="flex items-center text-white gap-1">
-            <p>Eng</p>
-            <img src="@/assets/icons/down-arrow.svg" alt="" />
-          </button>
+          <Language></Language>
           <router-link
             :to="{ name: 'sign-up' }"
             class="bg-[#E31221] border border-[#E31221] font-semibold px-4 py-1 rounded-[4px] text-white"
@@ -86,10 +83,12 @@ import lordOfRings from "@/assets/images/lord-of-rings-image.png";
 import theRoyalTenenebaums from "@/assets/images/the-royal-tenenbaums-image.png";
 import Login from "@/views/notAuthenticated/Login.vue";
 import Register from "@/views/notAuthenticated/Register.vue";
+import Language from "@/components/Language.vue";
 
 export default {
   name: "NotAuthLanding",
   components: {
+    Language,
     LandingQuote,
     Login,
     Register,

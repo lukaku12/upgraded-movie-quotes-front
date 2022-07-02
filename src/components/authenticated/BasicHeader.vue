@@ -38,10 +38,7 @@
             />
           </div>
         </div>
-        <button class="hidden lg:flex items-center text-white gap-1">
-          <p>Eng</p>
-          <img src="@/assets/icons/down-arrow.svg" alt="down-arrow" />
-        </button>
+        <Language></Language>
       </div>
       <button
         class="border border-white text-white px-5 py-1 rounded-[4px] hover:bg-[#4d4d4d] hidden lg:flex"
@@ -57,9 +54,11 @@
 import { mapActions, mapState } from "pinia";
 import { useStylesStore } from "@/stores/styling/styles";
 import { useAuthStore } from "@/stores";
+import Language from "@/components/Language.vue";
 
 export default {
   name: "AuthHeader",
+  components: { Language },
   computed: {
     ...mapState(useStylesStore, ["notificationBarIsOpen"]),
   },
