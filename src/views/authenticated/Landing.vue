@@ -1,4 +1,5 @@
 <template>
+  <AddQuote v-if="addQuoteIsVisible"></AddQuote>
   <section
     class="w-full h-full flex flex-col items-center overflow-y-auto bg-[#222030]"
   >
@@ -10,7 +11,7 @@
       <div class="w-full flex flex-col items-center">
         <MobileSearch></MobileSearch>
         <Notifications></Notifications>
-        <AddQuote></AddQuote>
+        <AddQuoteComponent></AddQuoteComponent>
         <Post></Post>
         <Post></Post>
         <Post></Post>
@@ -22,19 +23,26 @@
 <script>
 import AuthHeader from "@/components/authenticated/BasicHeader.vue";
 import Post from "@/components/authenticated/landing/Post.vue";
-import AddQuote from "@/components/authenticated/landing/AddQuote.vue";
+import AddQuoteComponent from "@/components/authenticated/landing/AddQuote.vue";
 import Navigation from "@/components/authenticated/Sidebar.vue";
 import MobileSearch from "@/components/authenticated/MobileSearch.vue";
 import Notifications from "@/components/authenticated/Notifications.vue";
+import AddQuote from "@/views/authenticated/AddQuote.vue";
 export default {
   name: "AuthLanding",
   components: {
     MobileSearch,
     AuthHeader,
     Post,
-    AddQuote,
+    AddQuoteComponent,
     Navigation,
     Notifications,
+    AddQuote,
+  },
+  computed: {
+    addQuoteIsVisible() {
+      return this.$route.name === "add-quote";
+    },
   },
 };
 </script>

@@ -12,6 +12,7 @@ const router = createRouter({
     { path: "/", component: Landing, name: "home" },
     { path: "/login", component: Landing, name: "login" },
     { path: "/register", component: Landing, name: "sign-up" },
+    { path: "/quote/create", component: Landing, name: "add-quote" },
     { path: "/movies", component: Movies, name: "movies" },
     { path: "/movies/:movie", component: Movie, name: "movie" },
     { path: "/profile/edit", component: EditProfile, name: "edit-profile" },

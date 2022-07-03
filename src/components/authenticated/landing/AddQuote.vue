@@ -2,13 +2,14 @@
   <div
     class="w-full lg:my-10 px-0 flex items-center text-white gap-3 max-w-4xl h-[95px] lg:h-auto"
   >
-    <button
+    <router-link
+      :to="{ name: 'add-quote' }"
       class="w-full py-2 h-full pl-5 flex items-center lg:bg-[#23222F] lg:px-3 lg:py-2 lg:rounded gap-3"
       :class="desktopSearchBarIsOpen ? 'w-[28%]' : 'lg:w-[80%]'"
     >
       <img src="@/assets/icons/pencil-square.svg" alt="pencil-square" />
       <p>Write new quote</p>
-    </button>
+    </router-link>
     <button
       v-if="!desktopSearchBarIsOpen"
       class="relative hidden lg:flex justify-center items-center text-center lg:w-[20%] lg:pl-4 lg:gap-4 opacity-100 hover:opacity-70 font-bold"
