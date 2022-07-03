@@ -10,10 +10,6 @@
       <div class="w-full flex flex-col items-center">
         <MobileSearch></MobileSearch>
         <Notifications></Notifications>
-        <AddQuote></AddQuote>
-        <Post></Post>
-        <Post></Post>
-        <Post></Post>
       </div>
     </div>
   </section>
@@ -21,20 +17,20 @@
 
 <script>
 import AuthHeader from "@/components/authenticated/BasicHeader.vue";
-import Post from "@/components/authenticated/landing/Post.vue";
-import AddQuote from "@/components/authenticated/landing/AddQuote.vue";
 import Navigation from "@/components/authenticated/Sidebar.vue";
 import MobileSearch from "@/components/authenticated/MobileSearch.vue";
 import Notifications from "@/components/authenticated/Notifications.vue";
+
 export default {
-  name: "AuthLanding",
+  name: "Movies",
   components: {
     MobileSearch,
     AuthHeader,
-    Post,
-    AddQuote,
     Navigation,
     Notifications,
+  },
+  mounted() {
+    console.log(this.$route);
   },
 };
 </script>

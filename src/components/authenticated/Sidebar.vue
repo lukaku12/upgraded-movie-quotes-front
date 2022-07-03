@@ -6,17 +6,20 @@
   ></div>
   <div
     :class="navBarIsOpen ? 'visible' : 'hidden'"
-    class="fixed top-0 left-0 h-[658px] rounded-tr-xl z-50 rounded-br-xl px-16 pr-20 pt-12 bg-[#11101A] lg:z-0 lg:pl-14 lg:pr-8 lg:bg-transparent lg:h-96 lg:mt-10 lg:static lg:flex lg:flex-col lg:w-1/4"
+    class="fixed top-0 left-0 h-[658px] rounded-tr-xl z-50 rounded-br-xl px-16 pr-20 bg-[#11101A] lg:z-0 lg:pl-14 lg:pr-8 lg:bg-transparent lg:h-96 lg:mt-10 lg:static lg:flex lg:flex-col lg:w-1/4"
   >
     <div class="flex w-full h-[60px] gap-3 text-white min-w-[300px]">
       <img
         class="w-[60px] h-[60px]"
-        :class="routeName === 'edit-profile' && 'border-green-600 border-2 rounded-[50%]'"
+        :class="
+          routeName === 'edit-profile' &&
+          'border-green-600 border-2 rounded-[50%]'
+        "
         src="@/assets/post/profile-picture.png"
         alt="profile-picture"
       />
       <div class="flex flex-col items-center justify-center">
-        <h1 class="font-bold text-base">Nino Tabagari</h1>
+        <h1 class="font-bold">Nino Tabagari</h1>
         <router-link
           :to="{ name: 'edit-profile' }"
           class="text-xs text-start opacity-70 hover:opacity-100"
