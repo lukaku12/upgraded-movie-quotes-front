@@ -22,7 +22,10 @@
       />
       Search By
     </button>
-    <div v-if="desktopSearchBarIsOpen" class="w-[72%] hidden lg:block relative">
+    <div
+      v-if="desktopSearchBarIsOpen"
+      class="w-[72%] hidden lg:block relative animate-pop-up"
+    >
       <input
         class="text-white w-full pl-9 h-[37px] border-[#efefef5b] border-b-2 bg-transparent focus:outline-none"
         type="text"

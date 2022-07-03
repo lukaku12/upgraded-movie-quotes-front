@@ -12,6 +12,15 @@ module.exports = {
         "login-background":
           "linear-gradient(187.16deg, #181623 0.07%, #191725 51.65%, #0D0B14 98.75%)",
       },
+      animation: {
+        'pop-up': 'pop 0.1s linear forwards',
+      },
+      keyframes: {
+        pop: {
+          '0%': { transform: 'scale(0)' },
+          '100%': { transform: 'scale(1)' },
+        },
+      },
     },
   },
   variants: {
