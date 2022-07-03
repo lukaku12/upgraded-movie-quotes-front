@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="languagesAreVisible"
-    class="w-screen h-screen bg-transparent top-0 left-0 fixed z-50"
+    class="w-screen h-screen bg-transparent top-0 left-0 fixed z-40"
     @click="hideLanguages"
   ></div>
   <div class="relative text-white hidden md:block">
@@ -16,14 +16,14 @@
     </button>
     <button
       v-if="languagesAreVisible && selectedLanguage === 'Eng'"
-      class="absolute top-6"
+      class="absolute top-6 z-50"
       @click="setLanguage"
     >
       Geo
     </button>
     <button
       v-if="languagesAreVisible && selectedLanguage !== 'Eng'"
-      class="absolute top-6"
+      class="absolute top-6 z-50"
       @click="setLanguage"
     >
       Eng
