@@ -59,6 +59,7 @@ export default {
   mounted() {
     axios.get("http://127.0.0.1:8000/api/movies").then((response) => {
       this.movies = response.data;
+      console.log(response.data);
     });
   },
 };

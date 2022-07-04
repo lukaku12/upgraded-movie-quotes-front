@@ -55,7 +55,7 @@
             @click="setNavbarIsOpen(false)"
           >
             <img
-              v-if="routeName === 'movies'"
+              v-if="routePath.includes('movies')"
               src="@/assets/icons/camera-reels-red.svg"
               alt="camera-reels"
             />
@@ -83,6 +83,9 @@ export default {
     ...mapState(useStylesStore, ["navBarIsOpen"]),
     routeName() {
       return this.$route.name;
+    },
+    routePath() {
+      return this.$route.path;
     },
   },
   methods: {

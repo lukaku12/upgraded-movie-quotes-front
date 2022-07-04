@@ -6,12 +6,12 @@
       class="flex flex-col items-center md:items-start gap-5 w-full h-full max-w-[440px]"
     >
       <router-link
-        :to="'/movies/' + movieSlug"
+        :to="'/movies/' + movie.slug"
         class="w-full overflow-hidden rounded-2xl h-full cursor-pointer"
       >
         <img
           class="w-full h-full max-h-[371px] scale-110 rounded-2xl hover:scale-100 duration-300"
-          src="@/assets/movies/thumbnail.png"
+          :src="'http://127.0.0.1:8000/storage/thumbnails/' + movie.thumbnail"
           alt="post-image"
         />
       </router-link>
@@ -20,7 +20,8 @@
           {{ movie.title.en }} ({{ movie.created_at.substring(0, 4) }})
         </h1>
         <p class="flex gap-3">
-          10 <img src="@/assets/icons/chat-quote.svg" alt="quotes" />
+          {{ movie.number_of_quotes }}
+          <img src="@/assets/icons/chat-quote.svg" alt="quotes" />
         </p>
       </div>
     </div>
