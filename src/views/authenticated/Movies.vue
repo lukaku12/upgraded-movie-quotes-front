@@ -11,7 +11,7 @@
         <MobileSearch></MobileSearch>
         <Notifications></Notifications>
         <div
-          class="w-full flex flex-col items-center min-h-[calc(100vh-86px)] bg-black"
+          class="w-full flex flex-col items-center min-h-[calc(100vh-86px)] bg-[#0f0e14]"
         >
           <div
             class="flex flex-col md:items-center md:flex-row px-10 py-8 gap-5 w-full text-white"

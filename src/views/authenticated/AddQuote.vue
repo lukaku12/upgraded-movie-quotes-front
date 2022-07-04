@@ -22,12 +22,20 @@
           <p>Nino Tabagari</p>
         </div>
       </header>
-      <main class="w-10/12 h-auto flex flex-col gap-3">
+      <VueForm
+        v-slot="{ meta, values }"
+        class="w-10/12 h-auto flex flex-col gap-3"
+      >
         <TextArea
+          name="titleEn"
           placeholder="Start create new quote"
           language="Eng"
         ></TextArea>
-        <TextArea placeholder="ახალი ციტატა" language="ქარ"></TextArea>
+        <TextArea
+          name="titleKa"
+          placeholder="ახალი ციტატა"
+          language="ქარ"
+        ></TextArea>
         <div class="w-full flex flex-col gap-3">
           <button class="bg-black w-full py-6 px-5 text-start flex gap-4">
             <img src="@/assets/icons/photo.svg" alt="" />
@@ -48,22 +56,43 @@
           </button>
         </div>
         <button
-          type="button"
+          type="submit"
           class="bg-[#E31221] border border-[#E31221] mt-7 font-bold px-7 py-1 rounded-[4px] text-white"
+          @click="createQuote(meta, values)"
         >
           Post
         </button>
-      </main>
+      </VueForm>
     </div>
   </div>
 </template>
 
 <script>
 import TextArea from "@/components/Inputs/TextArea.vue";
+import { Form as VueForm } from "vee-validate";
+import axios from "axios";
 export default {
   name: "AddQuote",
   components: {
     TextArea,
+    VueForm,
+  },
+  methods: {
+    createQuote(meta, values) {
+      console.log(meta, values);
+      if (!meta.valid) return;
+      axios
+        .post("http://127.0.0.1:8000/api/quotes/create", {
+          titleEn: values.titleEn,
+          titleKa: values.titleKa,
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
 };
 </script>
