@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full h-full flex flex-col items-center py-5 bg-black gap-6 md:rounded-2xl"
+    class="w-full h-full flex flex-col items-center py-5 bg-[#0a090f] gap-6 md:rounded-2xl relative"
   >
     <div
       class="w-full flex flex-col md:w-11/12 md:flex-row items-center md:items-start gap-6"
@@ -16,6 +16,16 @@
         <h1 class="text-start text-[#CED4DA] text-2xl">
           "{{ quote.title.en }}"
         </h1>
+      </div>
+      <div class="absolute right-5 bottom-5 md:top-5">
+        <button class="w-[24px] h-[24px]" @click="toggleOptions">
+          <img
+            class="w-full h-full"
+            src="@/assets/icons/three-dots.svg"
+            alt="three-dots"
+          />
+        </button>
+        <QuoteOptions v-if="optionsAreVisible"></QuoteOptions>
       </div>
     </div>
     <div class="flex gap-4 w-11/12 border-[#efefef5b] border-t-2 pt-7">
@@ -36,14 +46,25 @@
 </template>
 
 <script>
+import QuoteOptions from "./QuoteOptions.vue";
 export default {
   name: "Quote",
+  components: { QuoteOptions },
   props: {
     quote: {
       type: Object,
       required: true,
     },
   },
-  methods: {},
+  data() {
+    return {
+      optionsAreVisible: false,
+    };
+  },
+  methods: {
+    toggleOptions() {
+      this.optionsAreVisible = !this.optionsAreVisible;
+    },
+  },
 };
 </script>

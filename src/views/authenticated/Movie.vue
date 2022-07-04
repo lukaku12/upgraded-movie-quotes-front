@@ -20,7 +20,7 @@
           >
             <div class="flex flex-col gap-5 w-full xl:w-[60%] xl:max-w-[809px]">
               <img
-                class="h-full max-h-[450px] rounded-2xl aspect-video xl:aspect-auto"
+                class="h-full max-h-[450px] rounded-2xl aspect-square md:aspect-video xl:aspect-auto"
                 :src="
                   'http://127.0.0.1:8000/storage/thumbnails/' +
                   movie.quotes[0].thumbnail
