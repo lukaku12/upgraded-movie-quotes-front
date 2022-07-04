@@ -25,7 +25,11 @@
             alt="three-dots"
           />
         </button>
-        <QuoteOptions v-if="optionsAreVisible"></QuoteOptions>
+        <QuoteOptions
+          v-if="optionsAreVisible"
+          :quote-id="quote.id"
+          :movie-slug="movieSlug"
+        ></QuoteOptions>
       </div>
     </div>
     <div class="flex gap-4 w-11/12 border-[#efefef5b] border-t-2 pt-7">
@@ -53,6 +57,10 @@ export default {
   props: {
     quote: {
       type: Object,
+      required: true,
+    },
+    movieSlug: {
+      type: String,
       required: true,
     },
   },

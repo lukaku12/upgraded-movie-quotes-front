@@ -16,7 +16,7 @@
         >
           <!-- <pre class="text-white font-bold">{{ movie }}</pre> -->
           <div
-            class="flex flex-col xl:items-center xl:flex-row px-10 py-8 xl:px-0 gap-5 w-full text-white"
+            class="flex flex-col xl:flex-row px-5 md:px-10 py-8 xl:px-0 gap-5 w-full text-white"
           >
             <div class="flex flex-col gap-5 w-full xl:w-[60%] xl:max-w-[809px]">
               <img
@@ -79,6 +79,7 @@
                 v-for="quote in movie.quotes"
                 :key="quote.id"
                 :quote="quote"
+                :movie-slug="movie.movie.slug"
               ></Quote>
             </div>
           </main>
