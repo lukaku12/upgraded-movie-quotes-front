@@ -11,15 +11,23 @@
         <MobileSearch></MobileSearch>
         <Notifications></Notifications>
         <div
-          class="flex flex-col md:items-center md:flex-row px-10 py-8 gap-5 w-full text-white"
+          class="w-full flex flex-col items-center min-h-[calc(100vh-86px)] bg-black"
         >
-          <h1 class="text-2xl">My list of movies</h1>
-          <p>(total {{ movies.length }})</p>
-        </div>
-        <div
-          class="flex flex-col items-center w-full h-full sm:grid md:grid-cols-2 2xl:grid-cols-3 mb-10"
-        >
-          <Movie v-for="movie in movies" :key="movie.id" :movie="movie"></Movie>
+          <div
+            class="flex flex-col md:items-center md:flex-row px-10 py-8 gap-5 w-full text-white"
+          >
+            <h1 class="text-2xl">My list of movies</h1>
+            <p>(total {{ movies.length }})</p>
+          </div>
+          <div
+            class="flex flex-col items-center w-full h-full sm:grid md:grid-cols-2 2xl:grid-cols-3 mb-10"
+          >
+            <Movie
+              v-for="movie in movies"
+              :key="movie.id"
+              :movie="movie"
+            ></Movie>
+          </div>
         </div>
       </div>
     </div>

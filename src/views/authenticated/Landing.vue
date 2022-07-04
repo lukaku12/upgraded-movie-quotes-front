@@ -8,7 +8,7 @@
       class="w-full h-full flex justify-center lg:justify-start bg-[#0f0e14] font-bold"
     >
       <Navigation></Navigation>
-      <div class="w-full flex flex-col items-center">
+      <div>
         <MobileSearch></MobileSearch>
         <Notifications></Notifications>
         <AddQuoteComponent></AddQuoteComponent>

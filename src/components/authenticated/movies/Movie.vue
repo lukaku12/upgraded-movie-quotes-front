@@ -7,7 +7,7 @@
     >
       <router-link
         :to="'/movies/' + movieSlug"
-        class="w-full overflow-hidden rounded-2xl h-full bg-black cursor-pointer"
+        class="w-full overflow-hidden rounded-2xl h-full cursor-pointer"
       >
         <img
           class="w-full h-full max-h-[371px] scale-110 rounded-2xl hover:scale-100 duration-300"

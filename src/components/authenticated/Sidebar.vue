@@ -6,7 +6,7 @@
   ></div>
   <div
     :class="navBarIsOpen ? 'visible' : 'hidden'"
-    class="fixed top-0 animate-pop-up left-0 h-[658px] rounded-tr-xl z-50 rounded-br-xl px-16 pr-20 bg-[#11101A] lg:z-0 lg:pl-14 lg:pr-8 lg:bg-transparent lg:h-96 lg:mt-10 lg:static lg:flex lg:flex-col lg:w-1/4"
+    class="fixed top-0 animate-pop-up lg:animate-none left-0 h-[658px] rounded-tr-xl z-50 rounded-br-xl px-16 pr-20 bg-[#11101A] lg:z-0 lg:pl-14 lg:pr-8 lg:bg-transparent lg:h-96 lg:mt-10 lg:static lg:flex lg:flex-col lg:w-1/4"
   >
     <div
       class="flex w-full h-[60px] gap-3 text-white min-w-[300px] mt-14 lg:mt-0"
