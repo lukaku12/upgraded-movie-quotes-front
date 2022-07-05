@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full h-full flex flex-col items-center py-5 bg-[#0a090f] gap-6 md:rounded-2xl relative"
+    class="w-full h-full flex flex-col items-center py-5 bg-[#0a090f] gap-6 md:rounded-2xl relative hover:outline outline-1 outline-[gray]"
   >
     <div
       class="w-full flex flex-col md:w-11/12 md:flex-row items-center md:items-start gap-6"

@@ -14,7 +14,6 @@
           v-if="movie.length !== 0"
           class="w-full flex flex-col items-center min-h-[calc(100vh-86px)] bg-[#0f0e14]"
         >
-          <!-- <pre class="text-white font-bold">{{ movie }}</pre> -->
           <div
             class="flex flex-col xl:flex-row px-5 md:px-10 py-8 xl:px-0 gap-5 w-full text-white"
           >

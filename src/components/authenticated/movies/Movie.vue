@@ -7,7 +7,7 @@
     >
       <router-link
         :to="'/movies/' + movie.slug"
-        class="w-full overflow-hidden rounded-2xl h-full cursor-pointer"
+        class="w-full overflow-hidden rounded-2xl h-full cursor-pointer max-h-[450px]"
       >
         <img
           class="w-full h-full max-h-[371px] scale-110 rounded-2xl hover:scale-100 duration-300"
@@ -20,7 +20,7 @@
           {{ movie.title.en }} ({{ movie.created_at.substring(0, 4) }})
         </h1>
         <p class="flex gap-3">
-          {{ movie.number_of_quotes }}
+          {{ movie.quotes.length }}
           <img src="@/assets/icons/chat-quote.svg" alt="quotes" />
         </p>
       </div>
