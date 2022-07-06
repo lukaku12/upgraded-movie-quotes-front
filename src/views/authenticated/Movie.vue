@@ -1,5 +1,6 @@
 <template>
   <section
+    v-if="movie.length !== 0 && !isLoading"
     class="w-full h-full flex flex-col items-center overflow-y-auto bg-[#222030]"
   >
     <AuthHeader></AuthHeader>
@@ -86,6 +87,7 @@
       </div>
     </div>
   </section>
+  <NotFound v-else></NotFound>
 </template>
 
 <script>
@@ -94,6 +96,7 @@ import Navigation from "@/components/authenticated/Sidebar.vue";
 import MobileSearch from "@/components/authenticated/MobileSearch.vue";
 import Notifications from "@/components/authenticated/Notifications.vue";
 import Quote from "@/components/authenticated/movies/Quote.vue";
+import NotFound from "@/views/NotFound.vue";
 import axios from "axios";
 
 export default {
@@ -103,11 +106,13 @@ export default {
     AuthHeader,
     Navigation,
     Notifications,
+    NotFound,
     Quote,
   },
   data() {
     return {
       movie: [],
+      isLoading: true,
     };
   },
   computed: {
@@ -115,13 +120,12 @@ export default {
       return this.$route.params.movie;
     },
   },
-  mounted() {
+  created() {
     axios
       .get(`http://127.0.0.1:8000/api/movies/${this.movieSlug}`)
       .then((response) => {
         this.movie = response.data;
-        console.log(response.data);
-        console.log(this.movieSlug);
+        this.isLoading = false;
       });
   },
 };
