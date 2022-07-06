@@ -1,6 +1,6 @@
 <template>
   <section
-    v-if="movie.length !== 0 && !isLoading"
+    v-if="movie.length !== 0 && movieExists"
     class="w-full h-full flex flex-col items-center overflow-y-auto bg-[#222030]"
   >
     <AuthHeader></AuthHeader>
@@ -42,7 +42,7 @@
                 <p>Director: Nick cassavetes</p>
                 <p>Budget: 2.000.000$</p>
               </div>
-              <div class="w-full">
+              <div class="w-full md:pr-4">
                 <p>
                   In a nursing home, resident Duke reads a romance story to an
                   old woman who has senile dementia with memory loss. In the
@@ -87,7 +87,7 @@
       </div>
     </div>
   </section>
-  <NotFound v-else></NotFound>
+  <NotFound v-if="!movieExists"></NotFound>
 </template>
 
 <script>
@@ -112,7 +112,7 @@ export default {
   data() {
     return {
       movie: [],
-      isLoading: true,
+      movieExists: true,
     };
   },
   computed: {
@@ -125,8 +125,10 @@ export default {
       .get(`http://127.0.0.1:8000/api/movies/${this.movieSlug}`)
       .then((response) => {
         this.movie = response.data;
-        this.isLoading = false;
-      });
+      })
+      .catch(() => {
+      this.movieExists = false;
+    });
   },
 };
 </script>
