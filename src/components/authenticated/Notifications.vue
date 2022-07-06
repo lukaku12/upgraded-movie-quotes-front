@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="notificationBarIsOpen"
-    class="w-screen h-screen fixed top-0 left-0 bg-[#0000007c]"
+    class="w-screen h-screen fixed top-0 left-0 bg-[#0000007c] z-50"
     @click="setNotificationBarIsOpen(false)"
   ></div>
   <div

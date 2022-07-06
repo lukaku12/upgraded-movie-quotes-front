@@ -17,14 +17,14 @@
             /></router-link>
           </div>
         </div>
-        <div class="flex items-center gap-3 py-10 w-10/12">
+        <div class="flex items-center gap-3 py-10 w-10/12 md:w-11/12">
           <img src="@/assets/post/profile-picture.png" alt="profile-picture" />
           <p>Nino Tabagari</p>
         </div>
       </header>
       <VueForm
         v-slot="{ meta, values }"
-        class="w-10/12 h-auto flex flex-col gap-3"
+        class="w-10/12 h-auto flex flex-col gap-3 md:w-11/12"
       >
         <TextArea
           name="titleEn"

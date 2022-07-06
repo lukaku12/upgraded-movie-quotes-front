@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute z-40 rounded-[10px] flex flex-col gap-y-8 items-start p-7 pr-10 w-[250px] h-[200px] bottom-10 right-0 md:top-7 md:-right-5 bg-[#24222F]"
+    class="absolute z-40 rounded-[10px] flex flex-col gap-y-8 items-start p-7 pr-10 w-[250px] h-[200px] bottom-10 right-0 md:top-7 md:-right-5 bg-[#24222F] cursor-default"
   >
     <router-link
       :to="'/movies/' + movieSlug + '/quote/' + quoteId"

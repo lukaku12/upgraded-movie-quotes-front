@@ -21,6 +21,9 @@ module.exports = {
           "100%": { transform: "scale(1)" },
         },
       },
+      zIndex: {
+        "1000": "1000",
+      }
     },
   },
   variants: {

@@ -120,7 +120,7 @@ export default {
       return this.$route.params.movie;
     },
   },
-  created() {
+  mounted() {
     axios
       .get(`http://127.0.0.1:8000/api/movies/${this.movieSlug}`)
       .then((response) => {

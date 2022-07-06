@@ -7,7 +7,9 @@
       class="w-full bg-transparent h-[86px] min-h-[86px] max-h-[162px] p-2 pr-14 rounded border border-[#efefef5b] focus:outline-none font-bold text-lg"
       :placeholder="placeholder"
       rules="required|min:3|max:255"
-      >{{ value }}</Field
+      :readonly="readOnly"
+      :value="value"
+      ></Field
     >
     <h1 class="absolute right-4 top-3 pointer-default select-none">
       {{ language }}
@@ -38,6 +40,10 @@ export default {
     name: {
       type: String,
       default: "",
+    },
+    readOnly: {
+      type: Boolean,
+      default: false,
     },
   },
 };
