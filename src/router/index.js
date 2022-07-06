@@ -16,8 +16,16 @@ const router = createRouter({
     { path: "/quotes/create", component: Landing, name: "add-quote" },
     { path: "/movies", component: Movies, name: "movies" },
     { path: "/movies/:movie", component: Movie, name: "movie" },
-    { path: "/movies/:movie/quote/:quote", component: ViewQuote, name: "view-quote" },
-    { path: "/movies/:movie/quote/:quote/edit", component: ViewQuote, name: "edit-quote" },
+    {
+      path: "/movies/:movie/quote/:quote",
+      component: ViewQuote,
+      name: "view-quote",
+    },
+    {
+      path: "/movies/:movie/quote/:quote/edit",
+      component: ViewQuote,
+      name: "edit-quote",
+    },
     { path: "/profile/edit", component: EditProfile, name: "edit-profile" },
     { path: "/:notFound(.*)", component: NotFound, name: "not-found" },
   ],

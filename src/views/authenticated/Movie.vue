@@ -127,8 +127,8 @@ export default {
         this.movie = response.data;
       })
       .catch(() => {
-      this.movieExists = false;
-    });
+        this.movieExists = false;
+      });
   },
 };
 </script>

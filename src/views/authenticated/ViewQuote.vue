@@ -12,7 +12,7 @@
         <Notifications></Notifications>
         <div
           v-if="dataIsFetched"
-          class=" bg-landing-background-reverse pb-10 text-white z-50 md:max-w-[961px]"
+          class="bg-landing-background-reverse pb-10 text-white z-50 md:max-w-[961px]"
         >
           <div class="flex flex-col items-center lg:my-10">
             <header
@@ -34,25 +34,26 @@
                   <router-link
                     :to="'/movies/' + movieSlug"
                     class="absolute right-5 top-1/2 -translate-y-[50%] opacity-80 hover:opacity-100"
-                  ><img src="@/assets/icons/close.svg" alt=""
+                    ><img src="@/assets/icons/close.svg" alt=""
                   /></router-link>
                 </div>
               </div>
               <div class="flex items-center gap-3 py-10 w-10/12 md:w-11/12">
-                <img src="@/assets/post/profile-picture.png" alt="profile-picture" />
+                <img
+                  src="@/assets/post/profile-picture.png"
+                  alt="profile-picture"
+                />
                 <p>Nino Tabagari</p>
               </div>
             </header>
-            <div
-              class="w-10/12 h-auto flex flex-col gap-3 md:w-11/12"
-            >
-        <TextArea
-          name="titleEn"
-          placeholder="Start create new quote"
-          language="Eng"
-          :value="quote.title.en"
-          :read-only="true"
-        ></TextArea>
+            <div class="w-10/12 h-auto flex flex-col gap-3 md:w-11/12">
+              <TextArea
+                name="titleEn"
+                placeholder="Start create new quote"
+                language="Eng"
+                :value="quote.title.en"
+                :read-only="true"
+              ></TextArea>
               <TextArea
                 name="titleKa"
                 placeholder="ახალი ციტატა"
@@ -61,29 +62,46 @@
                 :read-only="true"
               ></TextArea>
             </div>
-            <div class=" w-10/12 md:w-11/12 flex items-center justify-center my-5">
-              <img class="w-full aspect-square md:aspect-video" :src="'http://127.0.0.1:8000/storage/thumbnails/' + quote.thumbnail" alt="thumbnail">
+            <div
+              class="w-10/12 md:w-11/12 flex items-center justify-center my-5"
+            >
+              <img
+                class="w-full aspect-square md:aspect-video"
+                :src="
+                  'http://127.0.0.1:8000/storage/thumbnails/' + quote.thumbnail
+                "
+                alt="thumbnail"
+              />
             </div>
             <div class="flex gap-4 w-10/12 md:w-11/12 mb-4">
               <div class="flex gap-2">
                 <p>{{ post.comments.length }}</p>
-                <button><img src="@/assets/icons/comment.svg" alt="comment" /></button>
+                <button>
+                  <img src="@/assets/icons/comment.svg" alt="comment" />
+                </button>
               </div>
               <div class="flex gap-2">
                 <p>{{ post.likes }}</p>
                 <button>
-                  <img src="@/assets/icons/heart.svg" class="like-post" alt="comment" />
+                  <img
+                    src="@/assets/icons/heart.svg"
+                    class="like-post"
+                    alt="comment"
+                  />
                 </button>
               </div>
             </div>
-            <div class=" w-10/12 md:w-11/12">
+            <div class="w-10/12 md:w-11/12">
               <div
                 v-for="comment in post.comments"
                 :key="comment.id"
                 class="border-t-[#efefef5b] border-t-2 py-4 gap-3 flex flex-col"
               >
                 <div class="flex items-center gap-3">
-                  <img src="@/assets/post/profile-picture.png" alt="profile-picture" />
+                  <img
+                    src="@/assets/post/profile-picture.png"
+                    alt="profile-picture"
+                  />
                   <p>{{ comment.userName }}</p>
                 </div>
                 <div>
@@ -91,8 +109,13 @@
                 </div>
               </div>
             </div>
-            <div class="flex  w-10/12 md:w-11/12 items-center gap-3 border-t-[#efefef5b] border-t-2 pt-5">
-              <img src="@/assets/post/profile-picture.png" alt="profile-picture" />
+            <div
+              class="flex w-10/12 md:w-11/12 items-center gap-3 border-t-[#efefef5b] border-t-2 pt-5"
+            >
+              <img
+                src="@/assets/post/profile-picture.png"
+                alt="profile-picture"
+              />
               <input
                 type="text"
                 placeholder="Write a comment"
@@ -109,7 +132,6 @@
 <script>
 import TextArea from "@/components/Inputs/TextArea.vue";
 import AuthHeader from "@/components/authenticated/BasicHeader.vue";
-import AddQuoteComponent from "@/components/authenticated/landing/AddQuote.vue";
 import Navigation from "@/components/authenticated/Sidebar.vue";
 import MobileSearch from "@/components/authenticated/MobileSearch.vue";
 import Notifications from "@/components/authenticated/Notifications.vue";
@@ -120,7 +142,6 @@ export default {
   components: {
     MobileSearch,
     AuthHeader,
-    AddQuoteComponent,
     Navigation,
     Notifications,
     TextArea,

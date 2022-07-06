@@ -63,10 +63,9 @@
 
 <script>
 import QuoteOptions from "./QuoteOptions.vue";
-import ViewQuote from "@/views/authenticated/ViewQuote.vue";
 export default {
   name: "Quote",
-  components: { QuoteOptions, ViewQuote },
+  components: { QuoteOptions },
   props: {
     quote: {
       type: Object,
@@ -84,7 +83,9 @@ export default {
   },
   computed: {
     viewQuoteIsVisible() {
-      return this.$route.path === `/movies/${this.movieSlug}/quote/${this.quote.id}`
+      return (
+        this.$route.path === `/movies/${this.movieSlug}/quote/${this.quote.id}`
+      );
     },
   },
   methods: {
