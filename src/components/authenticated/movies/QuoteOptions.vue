@@ -8,9 +8,12 @@
     >
       <img src="@/assets/icons/eye.svg" alt="eye" /> view post
     </router-link>
-    <button class="flex gap-4 w-full">
+    <router-link
+      :to="'/movies/' + movieSlug + '/quote/' + quoteId + '/edit'"
+      class="flex gap-4 w-full"
+    >
       <img src="@/assets/icons/pen.svg" alt="pen" /> Edit
-    </button>
+    </router-link>
     <button class="flex gap-4 w-full">
       <img src="@/assets/icons/trash.svg" alt="trash" />Delete
     </button>

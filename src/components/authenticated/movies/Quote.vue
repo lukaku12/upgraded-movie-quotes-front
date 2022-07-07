@@ -81,13 +81,6 @@ export default {
       optionsAreVisible: false,
     };
   },
-  computed: {
-    viewQuoteIsVisible() {
-      return (
-        this.$route.path === `/movies/${this.movieSlug}/quote/${this.quote.id}`
-      );
-    },
-  },
   methods: {
     toggleOptions() {
       this.optionsAreVisible = !this.optionsAreVisible;

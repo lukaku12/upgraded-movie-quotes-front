@@ -13,14 +13,9 @@
               <div
                 class="absolute top-[50%] left-7 flex gap-4 items-center -translate-y-[50%]"
               >
-                <router-link
-                  :to="'/movies/' + movieSlug + '/quote/' + quoteId + '/edit'"
-                >
-                  <img src="@/assets/icons/pen.svg" alt="pen" />
-                </router-link>
-                <p>|</p>
-                <router-link to="">
+                <router-link to="" class="flex gap-2 items-center h-[18px]">
                   <img src="@/assets/icons/trash.svg" alt="trash" />
+                  <h1 class="text-sm h-full">Delete</h1>
                 </router-link>
               </div>
               <router-link
@@ -44,69 +39,38 @@
             placeholder="Start create new quote"
             language="Eng"
             :value="quote.title.en"
-            :read-only="true"
           ></TextArea>
           <TextArea
             name="titleKa"
             placeholder="ახალი ციტატა"
             :value="quote.title.ka"
             language="ქარ"
-            :read-only="true"
           ></TextArea>
         </div>
-        <div class="w-10/12 md:w-11/12 flex items-center justify-center my-5">
+        <div
+          class="w-10/12 md:w-11/12 flex items-center justify-center my-5 relative"
+        >
           <img
-            class="w-full aspect-square md:aspect-video"
+            class="w-full aspect-square md:aspect-video rounded-xl"
             :src="'http://127.0.0.1:8000/storage/thumbnails/' + quote.thumbnail"
             alt="thumbnail"
           />
-        </div>
-        <div class="flex gap-4 w-10/12 md:w-11/12 mb-4">
-          <div class="flex gap-2">
-            <p>{{ post.comments.length }}</p>
-            <button>
-              <img src="@/assets/icons/comment.svg" alt="comment" />
-            </button>
-          </div>
-          <div class="flex gap-2">
-            <p>{{ post.likes }}</p>
-            <button>
-              <img
-                src="@/assets/icons/heart.svg"
-                class="like-post"
-                alt="comment"
-              />
-            </button>
-          </div>
-        </div>
-        <div class="w-10/12 md:w-11/12">
           <div
-            v-for="comment in post.comments"
-            :key="comment.id"
-            class="border-t-[#efefef5b] border-t-2 py-4 gap-3 flex flex-col"
+            class="absolute top-[50%] rounded-xl left-[50%] w-[135px] h-[84px] bg-[#222030] -translate-y-[50%] -translate-x-[50%] opacity-80"
           >
-            <div class="flex items-center gap-3">
-              <img
-                src="@/assets/post/profile-picture.png"
-                alt="profile-picture"
-              />
-              <p>{{ comment.userName }}</p>
-            </div>
-            <div>
-              <p>{{ comment.comment }}</p>
-            </div>
+            <button
+              class="w-full h-full flex flex-col justify-center items-center gap-2"
+            >
+              <img src="@/assets/icons/photo.svg" alt="photo" /> Change Photo
+            </button>
           </div>
         </div>
-        <div
-          class="flex w-10/12 md:w-11/12 items-center gap-3 border-t-[#efefef5b] border-t-2 pt-5"
+        <button
+          type="button"
+          class="bg-[#E31221] w-10/12 md:w-11/12 border border-[#E31221] mt-1 font-bold px-7 py-2 rounded-[4px] text-white"
         >
-          <img src="@/assets/post/profile-picture.png" alt="profile-picture" />
-          <input
-            type="text"
-            placeholder="Write a comment"
-            class="rounded-[10px] bg-[#24222F] px-4 py-2 w-full focus:outline-none"
-          />
-        </div>
+          Save changes
+        </button>
       </div>
     </div>
   </AuthWrapper>
@@ -152,6 +116,7 @@ export default {
   },
   computed: {
     movieSlug() {
+      console.log(this.$route.params.movie);
       return this.$route.params.movie;
     },
     quoteId() {

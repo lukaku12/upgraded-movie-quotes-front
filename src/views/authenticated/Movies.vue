@@ -1,66 +1,48 @@
 <template>
-  <section
-    class="w-full h-full flex flex-col items-center overflow-y-auto bg-[#222030]"
-  >
-    <AuthHeader></AuthHeader>
+  <AuthWrapper>
     <div
-      class="w-full h-full flex justify-center lg:justify-start bg-[#0f0e14] font-bold"
+      class="w-full flex flex-col items-center min-h-[calc(100vh-86px)] bg-[#0f0e14]"
     >
-      <Navigation></Navigation>
-      <div class="w-full flex flex-col items-center">
-        <MobileSearch></MobileSearch>
-        <Notifications></Notifications>
+      <div
+        class="flex flex-col md:items-center justify-between md:flex-row px-10 py-8 gap-5 w-full text-white"
+      >
         <div
-          class="w-full flex flex-col items-center min-h-[calc(100vh-86px)] bg-[#0f0e14]"
+          class="flex flex-col gap-5 lg:flex-row lg:items-center lg:h-[37px]"
         >
-          <div
-            class="flex flex-col md:items-center justify-between md:flex-row px-10 py-8 gap-5 w-full text-white"
-          >
-            <div
-              class="flex flex-col gap-5 lg:flex-row lg:items-center lg:h-[37px]"
-            >
-              <h1 class="text-2xl">My list of movies</h1>
-              <p>(total {{ searchedMovies.length }})</p>
-            </div>
-            <DesktopSearch
-              :movies="movies"
-              :search-value="searchValue"
-              :search-movie="searchMovie"
-              width="w-[56%]"
-            ></DesktopSearch>
-          </div>
-          <div
-            class="flex flex-col items-center w-full h-full sm:grid md:grid-cols-2 2xl:grid-cols-3 mb-10"
-          >
-            <Movie
-              v-for="movie in searchedMovies"
-              :key="movie.id"
-              :movie="movie"
-            ></Movie>
-          </div>
+          <h1 class="text-2xl">My list of movies</h1>
+          <p>(total {{ searchedMovies.length }})</p>
         </div>
+        <DesktopSearch
+          :movies="movies"
+          :search-value="searchValue"
+          :search-movie="searchMovie"
+          width="w-[56%]"
+        ></DesktopSearch>
+      </div>
+      <div
+        class="flex flex-col items-center w-full h-full sm:grid md:grid-cols-2 2xl:grid-cols-3 mb-10"
+      >
+        <Movie
+          v-for="movie in searchedMovies"
+          :key="movie.id"
+          :movie="movie"
+        ></Movie>
       </div>
     </div>
-  </section>
+  </AuthWrapper>
 </template>
 
 <script>
-import AuthHeader from "@/components/authenticated/BasicHeader.vue";
-import Navigation from "@/components/authenticated/Sidebar.vue";
-import MobileSearch from "@/components/authenticated/MobileSearch.vue";
-import Notifications from "@/components/authenticated/Notifications.vue";
 import DesktopSearch from "@/components/authenticated/DesktopSearch.vue";
+import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import Movie from "@/components/authenticated/movies/Movie.vue";
 import axios from "axios";
 
 export default {
   name: "Movies",
   components: {
-    MobileSearch,
-    AuthHeader,
+    AuthWrapper,
     Movie,
-    Navigation,
-    Notifications,
     DesktopSearch,
   },
   data() {
