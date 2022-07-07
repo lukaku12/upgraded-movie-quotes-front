@@ -1,125 +1,95 @@
 <template>
   <AuthWrapper>
-    <div
-      v-if="dataIsFetched"
-      class="w-full bg-landing-background-reverse pb-10 text-white z-50 md:max-w-[961px] min-h-[calc(100vh-86px)]"
+    <QuoteWrapper
+      :movie-slug="movieSlug"
+      :quote="quote"
+      :quote-id="quoteId"
+      :data-is-fetched="dataIsFetched"
+      :view-quote="true"
     >
-      <div class="flex flex-col items-center lg:my-10">
-        <header
-          class="w-full h-auto text-center text-xl font-bold relative flex flex-col items-center"
+      <div class="w-10/12 h-auto flex flex-col gap-3 md:w-11/12">
+        <TextArea
+          name="titleEn"
+          placeholder="Start create new quote"
+          language="Eng"
+          :value="quote.title.en"
+          :read-only="true"
+        ></TextArea>
+        <TextArea
+          name="titleKa"
+          placeholder="ახალი ციტატა"
+          :value="quote.title.ka"
+          language="ქარ"
+          :read-only="true"
+        ></TextArea>
+      </div>
+      <div class="w-10/12 md:w-11/12 flex items-center justify-center my-5">
+        <img
+          class="w-full aspect-square md:aspect-video rounded-xl"
+          :src="'http://127.0.0.1:8000/storage/thumbnails/' + quote.thumbnail"
+          alt="thumbnail"
+        />
+      </div>
+      <div class="flex gap-4 w-10/12 md:w-11/12 mb-4">
+        <div class="flex gap-2">
+          <p>{{ post.comments.length }}</p>
+          <button>
+            <img src="@/assets/icons/comment.svg" alt="comment" />
+          </button>
+        </div>
+        <div class="flex gap-2">
+          <p>{{ post.likes }}</p>
+          <button>
+            <img
+              src="@/assets/icons/heart.svg"
+              class="like-post"
+              alt="comment"
+            />
+          </button>
+        </div>
+      </div>
+      <div class="w-10/12 md:w-11/12">
+        <div
+          v-for="comment in post.comments"
+          :key="comment.id"
+          class="border-t-[#efefef5b] border-t-2 py-4 gap-3 flex flex-col"
         >
-          <div class="w-full relative border-b-[#efefef5b] border-b py-10">
-            <div>
-              <div
-                class="absolute top-[50%] left-7 flex gap-4 items-center -translate-y-[50%]"
-              >
-                <router-link
-                  :to="'/movies/' + movieSlug + '/quote/' + quoteId + '/edit'"
-                >
-                  <img src="@/assets/icons/pen.svg" alt="pen" />
-                </router-link>
-                <p>|</p>
-                <router-link to="">
-                  <img src="@/assets/icons/trash.svg" alt="trash" />
-                </router-link>
-              </div>
-              <router-link
-                :to="'/movies/' + movieSlug"
-                class="absolute right-5 top-1/2 -translate-y-[50%] opacity-80 hover:opacity-100"
-                ><img src="@/assets/icons/close.svg" alt=""
-              /></router-link>
-            </div>
-          </div>
-          <div class="flex items-center gap-3 py-10 w-10/12 md:w-11/12">
+          <div class="flex items-center gap-3">
             <img
               src="@/assets/post/profile-picture.png"
               alt="profile-picture"
             />
-            <p>Nino Tabagari</p>
+            <p>{{ comment.userName }}</p>
           </div>
-        </header>
-        <div class="w-10/12 h-auto flex flex-col gap-3 md:w-11/12">
-          <TextArea
-            name="titleEn"
-            placeholder="Start create new quote"
-            language="Eng"
-            :value="quote.title.en"
-            :read-only="true"
-          ></TextArea>
-          <TextArea
-            name="titleKa"
-            placeholder="ახალი ციტატა"
-            :value="quote.title.ka"
-            language="ქარ"
-            :read-only="true"
-          ></TextArea>
-        </div>
-        <div class="w-10/12 md:w-11/12 flex items-center justify-center my-5">
-          <img
-            class="w-full aspect-square md:aspect-video"
-            :src="'http://127.0.0.1:8000/storage/thumbnails/' + quote.thumbnail"
-            alt="thumbnail"
-          />
-        </div>
-        <div class="flex gap-4 w-10/12 md:w-11/12 mb-4">
-          <div class="flex gap-2">
-            <p>{{ post.comments.length }}</p>
-            <button>
-              <img src="@/assets/icons/comment.svg" alt="comment" />
-            </button>
+          <div>
+            <p>{{ comment.comment }}</p>
           </div>
-          <div class="flex gap-2">
-            <p>{{ post.likes }}</p>
-            <button>
-              <img
-                src="@/assets/icons/heart.svg"
-                class="like-post"
-                alt="comment"
-              />
-            </button>
-          </div>
-        </div>
-        <div class="w-10/12 md:w-11/12">
-          <div
-            v-for="comment in post.comments"
-            :key="comment.id"
-            class="border-t-[#efefef5b] border-t-2 py-4 gap-3 flex flex-col"
-          >
-            <div class="flex items-center gap-3">
-              <img
-                src="@/assets/post/profile-picture.png"
-                alt="profile-picture"
-              />
-              <p>{{ comment.userName }}</p>
-            </div>
-            <div>
-              <p>{{ comment.comment }}</p>
-            </div>
-          </div>
-        </div>
-        <div
-          class="flex w-10/12 md:w-11/12 items-center gap-3 border-t-[#efefef5b] border-t-2 pt-5"
-        >
-          <img src="@/assets/post/profile-picture.png" alt="profile-picture" />
-          <input
-            type="text"
-            placeholder="Write a comment"
-            class="rounded-[10px] bg-[#24222F] px-4 py-2 w-full focus:outline-none"
-          />
         </div>
       </div>
-    </div>
+      <div
+        class="flex w-10/12 md:w-11/12 items-center gap-3 border-t-[#efefef5b] border-t-2 pt-5"
+      >
+        <img src="@/assets/post/profile-picture.png" alt="profile-picture" />
+        <input
+          type="text"
+          placeholder="Write a comment"
+          class="rounded-[10px] bg-[#24222F] px-4 py-2 w-full focus:outline-none"
+        />
+      </div>
+    </QuoteWrapper>
   </AuthWrapper>
 </template>
 
 <script>
 import TextArea from "@/components/Inputs/TextArea.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
+import QuoteWrapper from "@/components/authenticated/movies/QuoteWrapper.vue";
 import axios from "axios";
 
 export default {
   name: "ViewQuote",
   components: {
+    QuoteWrapper,
     AuthWrapper,
     TextArea,
   },
