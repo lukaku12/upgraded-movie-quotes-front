@@ -1,7 +1,6 @@
 <template>
-  <AuthWrapper>
+  <AuthWrapper  v-if="movie.length !== 0">
     <div
-      v-if="movie.length !== 0"
       class="w-full flex flex-col items-center min-h-[calc(100vh-86px)] bg-[#0f0e14] min-h-[calc(100vh-86px)]"
     >
       <div
@@ -45,17 +44,18 @@
             </p>
           </div>
           <div class="pb-10 border-[#efefef5b] border-b-2 md:border-none">
-            <button
-              class="bg-[#E31221] border border-[#E31221] mt-7 px-5 py-1 rounded-[4px] text-white flex justify-center items-center gap-2"
+            <router-link
+              :to="'/movies/' + movieSlug + '/quote/add'"
+              class="bg-[#E31221] border border-[#E31221] mt-7 px-5 py-1 max-w-[152px] rounded-[4px] text-white flex justify-center items-center gap-2"
             >
               <img src="@/assets/icons/plus.svg" alt="plus" />
               Add quote
-            </button>
+            </router-link>
           </div>
         </div>
       </div>
       <main class="flex w-full flex-col items-center text-white lg:items-start">
-        <div class="w-full py-8 gap-5 text-start px-10">
+        <div class="w-full py-8 gap-5 text-start px-10 flex flex-col lg:flex-row">
           <h1 class="text-2xl">All Quotes</h1>
           <h2>(Total {{ movie.quotes.length }})</h2>
         </div>

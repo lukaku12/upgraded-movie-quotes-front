@@ -5,6 +5,7 @@
       :quote="quote"
       :quote-id="quoteId"
       :data-is-fetched="dataIsFetched"
+      name="Edit Quote"
       :view-quote="false"
     >
         <div class="w-10/12 h-auto flex flex-col gap-3 md:w-11/12">

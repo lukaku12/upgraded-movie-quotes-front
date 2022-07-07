@@ -18,7 +18,11 @@
           </div>
         </div>
         <div class="flex items-center gap-3 py-10 w-10/12 md:w-11/12">
-          <img src="@/assets/post/profile-picture.png" alt="profile-picture" />
+          <img
+            class="max-w-[52px] max-h-[52px]"
+            src="@/assets/post/profile-picture.png"
+            alt="profile-picture"
+          />
           <p>Nino Tabagari</p>
         </div>
       </header>

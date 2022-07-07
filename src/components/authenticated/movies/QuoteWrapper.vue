@@ -8,9 +8,9 @@
         class="w-full h-auto text-center text-xl font-bold relative flex flex-col items-center"
       >
         <div class="w-full relative border-b-[#efefef5b] border-b py-10">
-          <div>
+          <div class="flex w-full justify-center">
             <div
-              class="absolute top-[50%] left-7 flex gap-4 items-center -translate-y-[50%]"
+              class="absolute top-[50%] left-5 flex gap-4 items-center -translate-y-[50%]"
             >
               <router-link
                 v-if="viewQuote"
@@ -22,27 +22,33 @@
               <router-link v-if="viewQuote" to="">
                 <img src="@/assets/icons/trash.svg" alt="trash" />
               </router-link>
-              <router-link v-else to="" class="flex gap-2 items-center h-[18px]">
+              <router-link
+                v-else
+                to=""
+                class="flex gap-2 items-center h-[18px]"
+              >
                 <img src="@/assets/icons/trash.svg" alt="trash" />
                 <h1 class="text-sm h-full">Delete</h1>
               </router-link>
             </div>
+            <h1>{{ name }}</h1>
             <router-link
               :to="'/movies/' + movieSlug"
               class="absolute right-5 top-1/2 -translate-y-[50%] opacity-80 hover:opacity-100"
-            ><img src="@/assets/icons/close.svg" alt=""
+              ><img src="@/assets/icons/close.svg" alt="close"
             /></router-link>
           </div>
         </div>
         <div class="flex items-center gap-3 py-10 w-10/12 md:w-11/12">
           <img
+            class="max-w-[52px] max-h-[52px]"
             src="@/assets/post/profile-picture.png"
             alt="profile-picture"
           />
           <p>Nino Tabagari</p>
         </div>
       </header>
-      <slot/>
+      <slot />
     </div>
   </div>
 </template>
@@ -51,26 +57,26 @@
 export default {
   name: "QuoteWrapper",
   props: {
-    quote: {
-      type: Object,
-      required: true
+    name: {
+      type: String,
+      default: "",
     },
     movieSlug: {
       type: String,
-      required: true
+      required: true,
     },
     quoteId: {
       type: String,
-      required: true
+      default: "",
     },
     dataIsFetched: {
       type: Boolean,
-      required: true
+      required: true,
     },
     viewQuote: {
       type: Boolean,
-      required: true
-    }
+      required: true,
+    },
   },
-}
+};
 </script>

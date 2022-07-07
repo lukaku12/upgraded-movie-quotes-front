@@ -56,6 +56,7 @@
         >
           <div class="flex items-center gap-3">
             <img
+              class="max-w-[52px] max-h-[52px]"
               src="@/assets/post/profile-picture.png"
               alt="profile-picture"
             />
@@ -69,7 +70,11 @@
       <div
         class="flex w-10/12 md:w-11/12 items-center gap-3 border-t-[#efefef5b] border-t-2 pt-5"
       >
-        <img src="@/assets/post/profile-picture.png" alt="profile-picture" />
+        <img
+          class="max-w-[52px] max-h-[52px]"
+          src="@/assets/post/profile-picture.png"
+          alt="profile-picture"
+        />
         <input
           type="text"
           placeholder="Write a comment"

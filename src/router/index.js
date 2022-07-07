@@ -6,6 +6,7 @@ import Movie from "@/views/authenticated/Movie.vue";
 import EditProfile from "@/views/authenticated/EditProfile.vue";
 import ViewQuote from "@/views/authenticated/ViewQuote.vue";
 import EditQuote from "@/views/authenticated/EditQuote.vue";
+import AddQuoteForMovie from "@/views/authenticated/AddQuoteForMovie.vue";
 // import Forbidden from "@/views/Forbidden.vue";
 
 const router = createRouter({
@@ -17,6 +18,11 @@ const router = createRouter({
     { path: "/quotes/create", component: Landing, name: "add-quote" },
     { path: "/movies", component: Movies, name: "movies" },
     { path: "/movies/:movie", component: Movie, name: "movie" },
+    {
+      path: "/movies/:movie/quote/add",
+      component: AddQuoteForMovie,
+      name: "add-quote-for-movie",
+    },
     {
       path: "/movies/:movie/quote/:quote",
       component: ViewQuote,

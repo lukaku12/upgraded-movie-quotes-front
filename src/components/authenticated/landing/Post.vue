@@ -3,7 +3,11 @@
     class="flex flex-col gap-5 w-full max-w-4xl p-10 bg-black text-white mb-12 lg:rounded-[10px]"
   >
     <div class="flex items-center gap-3">
-      <img src="@/assets/post/profile-picture.png" alt="profile-picture" />
+      <img
+        class="max-w-[52px] max-h-[52px]"
+        src="@/assets/post/profile-picture.png"
+        alt="profile-picture"
+      />
       <p>{{ post.userName }}</p>
     </div>
     <div class="flex flex-col gap-5">
@@ -35,7 +39,11 @@
         class="border-t-[#efefef5b] border-t-2 py-4 gap-3 flex flex-col"
       >
         <div class="flex items-center gap-3">
-          <img src="@/assets/post/profile-picture.png" alt="profile-picture" />
+          <img
+            class="max-w-[52px] max-h-[52px]"
+            src="@/assets/post/profile-picture.png"
+            alt="profile-picture"
+          />
           <p>{{ comment.userName }}</p>
         </div>
         <div>
@@ -44,7 +52,11 @@
       </div>
     </div>
     <div class="flex items-center gap-3 border-t-[#efefef5b] border-t-2 pt-5">
-      <img src="@/assets/post/profile-picture.png" alt="profile-picture" />
+      <img
+        class="max-w-[52px] max-h-[52px]"
+        src="@/assets/post/profile-picture.png"
+        alt="profile-picture"
+      />
       <input
         type="text"
         placeholder="Write a comment"

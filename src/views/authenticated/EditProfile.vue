@@ -15,8 +15,8 @@
           class="w-full flex flex-col justify-center items-center gap-4 mb-5"
         >
           <img
-            class="max-w-[188px] absolute top-0 -translate-y-[50%]"
-            src="@/assets/post/profile-picture2.png"
+            class="absolute top-0 -translate-y-[50%] max-w-[52px] max-h-[52px]"
+            src="@/assets/post/profile-picture.png"
             alt="profile-picture"
           />
           <button class="text-white text-center mt-12">Upload new photo</button>

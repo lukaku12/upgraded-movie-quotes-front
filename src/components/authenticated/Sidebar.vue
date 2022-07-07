@@ -12,7 +12,7 @@
       class="flex w-full h-[60px] gap-3 text-white min-w-[300px] mt-14 lg:mt-0"
     >
       <img
-        class="w-[60px] h-[60px]"
+        class="max-w-[52px] max-h-[52px]"
         :class="
           routeName === 'edit-profile' &&
           'border-green-600 border-2 rounded-[50%]'
