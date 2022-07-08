@@ -40,11 +40,7 @@
         <div class="flex gap-2">
           <p>{{ post.likes }}</p>
           <button>
-            <img
-              src="@/assets/icons/heart.svg"
-              class="like-post"
-              alt="comment"
-            />
+            <HeartSvg />
           </button>
         </div>
       </div>
@@ -89,6 +85,7 @@
 import TextArea from "@/components/Inputs/TextArea.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import QuoteWrapper from "@/components/authenticated/movies/QuoteWrapper.vue";
+import HeartSvg from "@/components/icons/Heart.vue";
 import axios from "@/config/axios/index.js";
 
 export default {
@@ -97,6 +94,7 @@ export default {
     QuoteWrapper,
     AuthWrapper,
     TextArea,
+    HeartSvg,
   },
   data() {
     return {

@@ -23,6 +23,9 @@ body {
 .Interstellar {
   mask-image: linear-gradient(to bottom, transparent 1%, black);
 }
+svg:hover .heart {
+  fill: red;
+}
 
 /* width */
 ::-webkit-scrollbar {

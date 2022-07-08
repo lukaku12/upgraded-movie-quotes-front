@@ -39,12 +39,7 @@
             class="flex mt-5 items-center gap-6 ml-3 hover:opacity-60"
             @click="setNavbarIsOpen(false)"
           >
-            <img
-              v-if="routeName === 'home'"
-              src="@/assets/icons/home-red.svg"
-              alt="camera-reels"
-            />
-            <img v-else src="@/assets/icons/home.svg" alt="home" />
+            <HomeSvg :fill-color="routeName === 'home' ? '#FF0000' : '#FFFFFF'"/>
             <p>News feed</p>
           </router-link>
         </li>
@@ -54,16 +49,7 @@
             class="flex mt-5 items-center gap-6 ml-3 hover:opacity-60"
             @click="setNavbarIsOpen(false)"
           >
-            <img
-              v-if="routePath.includes('movies')"
-              src="@/assets/icons/camera-reels-red.svg"
-              alt="camera-reels"
-            />
-            <img
-              v-else
-              src="@/assets/icons/camera-reels.svg"
-              alt="camera-reels"
-            />
+            <CameraReelsSvg :fill-color="routePath.includes('movies') ? '#FF0000' : '#FFFFFF'"/>
             <p>List of movies</p>
           </router-link>
         </li>
@@ -73,6 +59,8 @@
 </template>
 
 <script>
+import HomeSvg from "@/components/icons/Home.vue";
+import CameraReelsSvg from "@/components/icons/CameraReels.vue";
 import { mapState, mapActions } from "pinia";
 import { useStylesStore } from "@/stores/styling/styles";
 import { useUserStore } from "@/stores/user/user";
@@ -80,6 +68,7 @@ import axios from "@/config/axios/index";
 
 export default {
   name: "Sidebar",
+  components: { CameraReelsSvg, HomeSvg },
   computed: {
     ...mapState(useStylesStore, ["navBarIsOpen"]),
     ...mapState(useUserStore, ["user"]),

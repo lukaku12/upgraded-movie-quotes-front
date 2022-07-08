@@ -49,11 +49,7 @@
             class="bg-black w-full py-6 px-5 text-start flex justify-between"
           >
             <div class="flex gap-4 justify-center">
-              <img
-                class="w-[24px] h-[24px]"
-                src="@/assets/icons/camera-reels.svg"
-                alt="camera"
-              />
+              <CameraReelsSvg fill-color="#FFFFFF"/>
               Choose movie
             </div>
             <img src="@/assets/icons/down-arrow.svg" alt="" />
@@ -73,11 +69,13 @@
 
 <script>
 import TextArea from "@/components/Inputs/TextArea.vue";
+import CameraReelsSvg from "@/components/icons/CameraReels.vue";
 import { Form as VueForm } from "vee-validate";
 import axios from "@/config/axios/index.js";
 export default {
   name: "AddQuote",
   components: {
+    CameraReelsSvg,
     TextArea,
     VueForm,
   },

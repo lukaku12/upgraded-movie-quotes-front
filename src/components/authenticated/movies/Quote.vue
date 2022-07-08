@@ -50,11 +50,7 @@
       <div class="flex gap-2 z-40">
         <p>10</p>
         <button>
-          <img
-            class="hover:bg-red-600 like-post"
-            src="@/assets/icons/heart.svg"
-            alt="comment"
-          />
+          <HeartSvg />
         </button>
       </div>
     </div>
@@ -63,9 +59,10 @@
 
 <script>
 import QuoteOptions from "./QuoteOptions.vue";
+import HeartSvg from "@/components/icons/Heart.vue";
 export default {
   name: "Quote",
-  components: { QuoteOptions },
+  components: { QuoteOptions, HeartSvg },
   props: {
     quote: {
       type: Object,

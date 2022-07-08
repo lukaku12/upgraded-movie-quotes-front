@@ -31,7 +31,7 @@
         />
         <div class="flex flex-col gap-2">
           <div class="flex h-auto items-center justify-center">
-            <img src="@/assets/icons/camera-reels.svg" alt="camera-reels" />
+            <CameraReelsSvg fill-color="#FFFFFF"/>
             <h1 class="text-xl mx-3">
               {{ movie.movie.title.en }} ({{
                 movie.movie.created_at.substring(0, 4)
@@ -55,10 +55,11 @@
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import TextArea from "@/components/Inputs/TextArea.vue";
 import QuoteWrapper from "@/components/authenticated/movies/QuoteWrapper.vue";
+import CameraReelsSvg from "@/components/icons/CameraReels.vue";
 import axios from "@/config/axios/index.js";
 export default {
   name: "AddQuoteForMovie",
-  components: { QuoteWrapper, AuthWrapper, TextArea },
+  components: { QuoteWrapper, AuthWrapper, TextArea, CameraReelsSvg },
   data() {
     return {
       movie: {},
