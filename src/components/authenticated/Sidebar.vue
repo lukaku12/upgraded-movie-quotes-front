@@ -73,20 +73,16 @@
 </template>
 
 <script>
-import { mapState } from "pinia";
-import { mapActions } from "pinia/dist/pinia.esm-browser";
+import { mapState, mapActions } from "pinia";
 import { useStylesStore } from "@/stores/styling/styles";
+import { useUserStore } from "@/stores/user/user";
 import axios from "@/config/axios/index";
 
 export default {
   name: "Sidebar",
-  data() {
-    return {
-      user: "",
-    };
-  },
   computed: {
     ...mapState(useStylesStore, ["navBarIsOpen"]),
+    ...mapState(useUserStore, ["user"]),
     routeName() {
       return this.$route.name;
     },
@@ -95,13 +91,15 @@ export default {
     },
   },
   mounted() {
-    axios.get("user").then((res) => {
-      console.log(res.data);
-      this.user = res.data;
-    });
+    if (this.user.username === "") {
+      axios.get("user").then((res) => {
+        this.setUser(res.data);
+      });
+    }
   },
   methods: {
     ...mapActions(useStylesStore, ["setNavbarIsOpen"]),
+    ...mapActions(useUserStore, ["setUser"]),
   },
 };
 </script>

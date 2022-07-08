@@ -9,7 +9,6 @@
         My profile
       </h1>
       <div
-        v-if="dataIsFetched"
         class="w-full flex flex-col justify-center items-center h-auto bg-[#11101A] px-4 py-16 md:p-16 lg:rounded-xl relative mt-40 max-w-[936px]"
       >
         <div
@@ -59,27 +58,19 @@
 <script>
 import BasicInput from "@/components/Inputs/BasicInput.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
-import axios from "@/config/axios/index";
+import { mapState, mapActions } from "pinia";
+import { useUserStore } from "@/stores/user/user";
 export default {
   name: "EditProfile",
   components: {
     AuthWrapper,
     BasicInput,
   },
-  data() {
-    return {
-      user: {},
-      dataIsFetched: false,
-    };
-  },
-  mounted() {
-    axios.get("user").then((res) => {
-      console.log(res.data);
-      this.user = res.data;
-      this.dataIsFetched = true;
-    });
+  computed: {
+    ...mapState(useUserStore, ["user"]),
   },
   methods: {
+    ...mapActions(useUserStore, ["setUser"]),
     TODO() {
       return;
     },
