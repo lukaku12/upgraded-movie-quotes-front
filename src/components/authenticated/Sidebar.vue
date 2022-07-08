@@ -21,7 +21,7 @@
         alt="profile-picture"
       />
       <div class="flex flex-col items-center justify-center">
-        <h1 class="font-bold">Nino Tabagari</h1>
+        <h1 class="font-bold h-[25px]">{{ user.username }}</h1>
         <router-link
           :to="{ name: 'edit-profile' }"
           class="text-xs text-start opacity-70 hover:opacity-100"
@@ -76,9 +76,15 @@
 import { mapState } from "pinia";
 import { mapActions } from "pinia/dist/pinia.esm-browser";
 import { useStylesStore } from "@/stores/styling/styles";
+import axios from "@/config/axios/index";
 
 export default {
   name: "Sidebar",
+  data() {
+    return {
+      user: "",
+    };
+  },
   computed: {
     ...mapState(useStylesStore, ["navBarIsOpen"]),
     routeName() {
@@ -87,6 +93,12 @@ export default {
     routePath() {
       return this.$route.path;
     },
+  },
+  mounted() {
+    axios.get("user").then((res) => {
+      console.log(res.data);
+      this.user = res.data;
+    });
   },
   methods: {
     ...mapActions(useStylesStore, ["setNavbarIsOpen"]),

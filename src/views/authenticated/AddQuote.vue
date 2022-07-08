@@ -74,7 +74,7 @@
 <script>
 import TextArea from "@/components/Inputs/TextArea.vue";
 import { Form as VueForm } from "vee-validate";
-import axios from "axios";
+import axios from "@/config/axios/index.js";
 export default {
   name: "AddQuote",
   components: {
@@ -86,7 +86,7 @@ export default {
       console.log(meta, values);
       if (!meta.valid) return;
       axios
-        .post("http://127.0.0.1:8000/api/quotes/create", {
+        .post("quotes/create", {
           titleEn: values.titleEn,
           titleKa: values.titleKa,
         })

@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="dataIsFetched"
-    class="w-full bg-landing-background-reverse pb-10 text-white z-50 md:max-w-[961px] min-h-[calc(100vh-86px)]"
+    class="w-full bg-landing-background-reverse pb-10 text-white z-50 md:max-w-[1024px] min-h-[calc(100vh-86px)]"
   >
     <div class="flex flex-col items-center lg:my-10">
       <header

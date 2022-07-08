@@ -6,8 +6,6 @@
 <script>
 import NotAuthLanding from "@/views/notAuthenticated/Landing.vue";
 import AuthLanding from "@/views/authenticated/Landing.vue";
-import { mapState } from "pinia";
-import { useAuthStore } from "@/stores/index";
 
 export default {
   components: {
@@ -15,7 +13,9 @@ export default {
     AuthLanding,
   },
   computed: {
-    ...mapState(useAuthStore, ["isAuthenticated"]),
+    isAuthenticated() {
+      return document.cookie.includes("jwt_token");
+    },
   },
 };
 </script>

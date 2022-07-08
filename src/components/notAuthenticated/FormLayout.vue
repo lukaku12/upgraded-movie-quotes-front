@@ -47,10 +47,9 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "@/config/axios/index.js";
 import { Form as VeeForm } from "vee-validate";
-import { useAuthStore } from "@/stores/index.js";
-import { mapActions } from "pinia";
+import { setJwtToken } from "@/helpers/jwt";
 
 export default {
   name: "FormLayout",
@@ -95,7 +94,6 @@ export default {
     };
   },
   methods: {
-    ...mapActions(useAuthStore, ["setAuthenticated"]),
     redirectToHome() {
       this.$router.push({ name: "home" });
     },
@@ -103,13 +101,12 @@ export default {
       if (!meta.valid) return;
       axios
         .post(this.requestUrl, values)
-        .then(() => {
-          this.setAuthenticated(true);
-          this.$router.push({ name: "home" });
+        .then((response) => {
+          setJwtToken(response.data.access_token, response.data.expires_in);
+          this.$router.replace({ name: "home" });
         })
         .catch((err) => {
-          const errors = JSON.parse(err.request.response);
-          this.apiErrors = errors.message;
+          this.apiErrors = JSON.parse(err.request.response);
         });
     },
   },

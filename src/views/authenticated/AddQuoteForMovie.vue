@@ -18,7 +18,9 @@
           language="ქარ"
         ></TextArea>
       </div>
-      <div class="flex w-10/12 md:w-11/12 py-3 my-3 h-auto bg-black rounded-lg gap-6 items-center">
+      <div
+        class="flex w-10/12 md:w-11/12 py-3 my-3 h-auto bg-black rounded-lg gap-6 items-center"
+      >
         <img
           class="h-full max-h-[108px] max-w-[155px] rounded-lg aspect-video xl:aspect-auto"
           :src="
@@ -53,7 +55,7 @@
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import TextArea from "@/components/Inputs/TextArea.vue";
 import QuoteWrapper from "@/components/authenticated/movies/QuoteWrapper.vue";
-import axios from "axios";
+import axios from "@/config/axios/index.js";
 export default {
   name: "AddQuoteForMovie",
   components: { QuoteWrapper, AuthWrapper, TextArea },
@@ -73,12 +75,10 @@ export default {
     },
   },
   mounted() {
-    axios
-      .get(`http://127.0.0.1:8000/api/movies/${this.movieSlug}`)
-      .then((response) => {
-        this.movie = response.data;
-        this.dataIsFetched = true;
-      });
+    axios.get(`movies/${this.movieSlug}`).then((response) => {
+      this.movie = response.data;
+      this.dataIsFetched = true;
+    });
   },
 };
 </script>

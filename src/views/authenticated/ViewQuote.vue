@@ -89,7 +89,7 @@
 import TextArea from "@/components/Inputs/TextArea.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import QuoteWrapper from "@/components/authenticated/movies/QuoteWrapper.vue";
-import axios from "axios";
+import axios from "@/config/axios/index.js";
 
 export default {
   name: "ViewQuote",
@@ -135,9 +135,7 @@ export default {
   },
   mounted() {
     axios
-      .get(
-        `http://127.0.0.1:8000/api/movies/${this.movieSlug}/quote/${this.quoteId}`
-      )
+      .get(`movies/${this.movieSlug}/quote/${this.quoteId}`)
       .then((response) => {
         this.quote = response.data;
         this.dataIsFetched = true;

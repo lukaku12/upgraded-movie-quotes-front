@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col gap-5 w-full max-w-4xl p-10 bg-black text-white mb-12 lg:rounded-[10px]"
+    class="flex flex-col gap-5 w-full max-w-[1024px] p-10 bg-black text-white mb-12 lg:rounded-[10px]"
   >
     <div class="flex items-center gap-3">
       <img

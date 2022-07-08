@@ -7,7 +7,7 @@
     redirect-to-title="Don't have an account?"
     redirect-to="Sign up"
     redirect-url-name="sign-up"
-    request-url="http://localhost:8000/api/login"
+    request-url="login"
   >
     <basic-input
       title="Email"

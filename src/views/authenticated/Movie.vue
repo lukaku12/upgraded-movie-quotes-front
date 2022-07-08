@@ -1,5 +1,5 @@
 <template>
-  <AuthWrapper  v-if="movie.length !== 0">
+  <AuthWrapper v-if="movie.length !== 0">
     <div
       class="w-full flex flex-col items-center min-h-[calc(100vh-86px)] bg-[#0f0e14] min-h-[calc(100vh-86px)]"
     >
@@ -55,7 +55,9 @@
         </div>
       </div>
       <main class="flex w-full flex-col items-center text-white lg:items-start">
-        <div class="w-full py-8 gap-5 text-start px-10 flex flex-col lg:flex-row">
+        <div
+          class="w-full py-8 gap-5 text-start px-10 flex flex-col lg:flex-row"
+        >
           <h1 class="text-2xl">All Quotes</h1>
           <h2>(Total {{ movie.quotes.length }})</h2>
         </div>
@@ -79,7 +81,7 @@
 import Quote from "@/components/authenticated/movies/Quote.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import NotFound from "@/views/NotFound.vue";
-import axios from "axios";
+import axios from "@/config/axios/index.js";
 
 export default {
   name: "Movie",
@@ -101,7 +103,7 @@ export default {
   },
   mounted() {
     axios
-      .get(`http://127.0.0.1:8000/api/movies/${this.movieSlug}`)
+      .get(`movies/${this.movieSlug}`)
       .then((response) => {
         this.movie = response.data;
       })

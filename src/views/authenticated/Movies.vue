@@ -36,7 +36,7 @@
 import DesktopSearch from "@/components/authenticated/DesktopSearch.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import Movie from "@/components/authenticated/movies/Movie.vue";
-import axios from "axios";
+import axios from "@/config/axios/index.js";
 
 export default {
   name: "Movies",
@@ -53,7 +53,7 @@ export default {
     };
   },
   mounted() {
-    axios.get("http://127.0.0.1:8000/api/movies").then((response) => {
+    axios.get("movies").then((response) => {
       this.movies = response.data;
       this.searchedMovies = response.data;
     });

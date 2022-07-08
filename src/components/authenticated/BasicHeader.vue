@@ -53,8 +53,8 @@
 <script>
 import { mapActions, mapState } from "pinia";
 import { useStylesStore } from "@/stores/styling/styles";
-import { useAuthStore } from "@/stores";
 import Language from "@/components/Language.vue";
+import axios from "@/config/axios";
 
 export default {
   name: "AuthHeader",
@@ -68,10 +68,18 @@ export default {
       "setSearchBarIsOpen",
       "setNotificationBarIsOpen",
     ]),
-    ...mapActions(useAuthStore, ["setAuthenticated"]),
     logout() {
-      this.setAuthenticated(false);
-      this.$router.push({ name: "home" });
+      axios
+        .post("logout")
+        .then((response) => {
+          console.log(response);
+          document.cookie =
+            "jwt_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+          this.$router.push({ name: "home" });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
 };

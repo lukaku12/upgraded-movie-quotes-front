@@ -4,7 +4,7 @@
   >
     <router-link
       :to="{ name: 'add-quote' }"
-      class="w-full py-2 h-full pl-5 flex items-center lg:bg-[#23222F] lg:px-3 lg:py-2 lg:rounded gap-3"
+      class="w-full py-2 h-full pl-5 z-30 flex items-center lg:bg-[#23222F] lg:px-3 lg:py-2 lg:rounded gap-3"
       :class="desktopSearchBarIsOpen ? 'w-[28%]' : 'lg:w-[80%]'"
     >
       <img src="@/assets/icons/pencil-square.svg" alt="pencil-square" />

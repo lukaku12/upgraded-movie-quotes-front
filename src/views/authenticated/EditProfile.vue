@@ -9,13 +9,14 @@
         My profile
       </h1>
       <div
+        v-if="dataIsFetched"
         class="w-full flex flex-col justify-center items-center h-auto bg-[#11101A] px-4 py-16 md:p-16 lg:rounded-xl relative mt-40 max-w-[936px]"
       >
         <div
           class="w-full flex flex-col justify-center items-center gap-4 mb-5"
         >
           <img
-            class="absolute top-0 -translate-y-[50%] max-w-[52px] max-h-[52px]"
+            class="absolute top-0 -translate-y-[50%] max-w-[188px] max-h-[188px]"
             src="@/assets/post/profile-picture.png"
             alt="profile-picture"
           />
@@ -23,24 +24,24 @@
         </div>
         <BasicInput
           title="Username"
-          on-input=""
-          value=""
+          :on-input="TODO"
+          :value="user.username || ''"
           placeholder="Enter username"
           name="username"
         ></BasicInput>
         <BasicInput
           title="Email"
           type="email"
-          on-input=""
-          value=""
+          :on-input="TODO"
+          :value="user.email || ''"
           placeholder="Enter email"
           name="email"
         ></BasicInput>
         <BasicInput
           title="Password"
           type="password"
-          on-input=""
-          value=""
+          :on-input="TODO"
+          :value="user.password || ''"
           placeholder="Enter password"
           name="password"
         ></BasicInput>
@@ -58,11 +59,30 @@
 <script>
 import BasicInput from "@/components/Inputs/BasicInput.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
+import axios from "@/config/axios/index";
 export default {
   name: "EditProfile",
   components: {
     AuthWrapper,
     BasicInput,
+  },
+  data() {
+    return {
+      user: {},
+      dataIsFetched: false,
+    };
+  },
+  mounted() {
+    axios.get("user").then((res) => {
+      console.log(res.data);
+      this.user = res.data;
+      this.dataIsFetched = true;
+    });
+  },
+  methods: {
+    TODO() {
+      return;
+    },
   },
 };
 </script>
