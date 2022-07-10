@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full lg:my-10 px-0 flex items-center text-white gap-3 max-w-4xl h-[95px] lg:h-auto"
+    class="w-full lg:my-10 px-0 flex items-center text-white gap-3 max-w-[1054px] h-[95px] lg:h-auto"
   >
     <router-link
       :to="{ name: 'add-quote' }"
