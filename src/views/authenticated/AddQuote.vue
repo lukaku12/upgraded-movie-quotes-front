@@ -13,7 +13,7 @@
             <router-link
               :to="{ name: 'home' }"
               class="absolute right-5 top-1/2 -translate-y-[50%] opacity-80 hover:opacity-100"
-              ><img src="@/assets/icons/close.svg" alt=""
+              ><CloseIcon
             /></router-link>
           </div>
         </div>
@@ -42,17 +42,17 @@
         ></TextArea>
         <div class="w-full flex flex-col gap-3">
           <button class="bg-black w-full py-6 px-5 text-start flex gap-4">
-            <img src="@/assets/icons/photo.svg" alt="" />
+            <Photo />
             Upload photo
           </button>
           <button
             class="bg-black w-full py-6 px-5 text-start flex justify-between"
           >
             <div class="flex gap-4 justify-center">
-              <CameraReelsSvg fill-color="#FFFFFF"/>
+              <CameraReelsSvg fill-color="#FFFFFF" />
               Choose movie
             </div>
-            <img src="@/assets/icons/down-arrow.svg" alt="" />
+            <DownArrow />
           </button>
         </div>
         <button
@@ -72,12 +72,18 @@ import TextArea from "@/components/Inputs/TextArea.vue";
 import CameraReelsSvg from "@/components/icons/CameraReels.vue";
 import { Form as VueForm } from "vee-validate";
 import axios from "@/config/axios/index.js";
+import CloseIcon from "@/components/icons/CloseIcon.vue";
+import Photo from "@/components/icons/Photo.vue";
+import DownArrow from "@/components/icons/DownArrow.vue";
 export default {
   name: "AddQuote",
   components: {
     CameraReelsSvg,
     TextArea,
     VueForm,
+    CloseIcon,
+    Photo,
+    DownArrow,
   },
   methods: {
     createQuote(meta, values) {

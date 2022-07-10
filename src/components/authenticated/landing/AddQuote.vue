@@ -7,7 +7,7 @@
       class="w-full py-2 h-full pl-5 z-30 flex items-center lg:bg-[#23222F] lg:px-3 lg:py-2 lg:rounded gap-3"
       :class="desktopSearchBarIsOpen ? 'w-[28%]' : 'lg:w-[80%]'"
     >
-      <img src="@/assets/icons/pencil-square.svg" alt="pencil-square" />
+      <PencilSquare />
       <p>Write new quote</p>
     </router-link>
     <DesktopSearch></DesktopSearch>
@@ -18,10 +18,11 @@
 import DesktopSearch from "../DesktopSearch.vue";
 import { mapState, mapActions } from "pinia";
 import { useStylesStore } from "@/stores/styling/styles";
+import PencilSquare from "@/components/icons/PencilSquare.vue";
 
 export default {
   name: "AddQuote",
-  components: { DesktopSearch },
+  components: { DesktopSearch, PencilSquare },
   computed: {
     ...mapState(useStylesStore, ["desktopSearchBarIsOpen"]),
   },

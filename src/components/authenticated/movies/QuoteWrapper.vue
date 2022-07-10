@@ -16,18 +16,18 @@
                 v-if="viewQuote"
                 :to="'/movies/' + movieSlug + '/quote/' + quoteId + '/edit'"
               >
-                <img src="@/assets/icons/pen.svg" alt="pen" />
+                <Pen />
               </router-link>
               <p v-if="viewQuote">|</p>
               <router-link v-if="viewQuote" to="">
-                <img src="@/assets/icons/trash.svg" alt="trash" />
+                <Trash />
               </router-link>
               <router-link
                 v-else
                 to=""
                 class="flex gap-2 items-center h-[18px]"
               >
-                <img src="@/assets/icons/trash.svg" alt="trash" />
+                <Trash />
                 <h1 class="text-sm h-full">Delete</h1>
               </router-link>
             </div>
@@ -35,8 +35,8 @@
             <router-link
               :to="'/movies/' + movieSlug"
               class="absolute right-5 top-1/2 -translate-y-[50%] opacity-80 hover:opacity-100"
-              ><img src="@/assets/icons/close.svg" alt="close"
-            /></router-link>
+              ><CloseIcon />
+            </router-link>
           </div>
         </div>
         <div class="flex items-center gap-3 py-10 w-10/12 md:w-11/12">
@@ -54,8 +54,12 @@
 </template>
 
 <script>
+import Pen from "@/components/icons/Pen.vue";
+import Trash from "@/components/icons/Trash.vue";
+import CloseIcon from "@/components/icons/CloseIcon.vue";
 export default {
   name: "QuoteWrapper",
+  components: { Pen, Trash, CloseIcon },
   props: {
     name: {
       type: String,

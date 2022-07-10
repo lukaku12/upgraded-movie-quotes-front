@@ -34,7 +34,7 @@
             <div class="flex flex-col gap-1">
               <p class="text-xl font-bold">Nino Tabagari</p>
               <div class="flex items-center gap-2">
-                <img src="@/assets/icons/chat-quote.svg" alt="chat-quote" />
+                <ChatQuote />
                 <p>Commented to your quote..</p>
               </div>
             </div>
@@ -58,7 +58,7 @@
             <div class="flex flex-col gap-1">
               <p class="text-xl font-bold">Maia Nakashidze</p>
               <div class="flex items-center gap-2">
-                <img src="@/assets/icons/heart-fill.svg" alt="chat-quote" />
+                <HeartFillRed />
                 <p>Reacted to your quote</p>
               </div>
             </div>
@@ -73,9 +73,12 @@
 <script>
 import { mapState, mapActions } from "pinia";
 import { useStylesStore } from "@/stores/styling/styles";
+import ChatQuote from "../icons/ChatQuote.vue";
+import HeartFillRed from "../icons/HeartFillRed.vue";
 
 export default {
   name: "Notifications",
+  components: { ChatQuote, HeartFillRed },
   data() {
     return {
       notifications: ["s"],

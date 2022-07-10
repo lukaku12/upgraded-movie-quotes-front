@@ -10,13 +10,13 @@
         MOVIE QUOTES
       </router-link>
       <button class="flex lg:hidden" @click="setNavbarIsOpen(true)">
-        <img src="@/assets/icons/burger-menu.svg" alt="burger-menu" />
+        <BurgerMenu />
       </button>
     </div>
     <div class="flex items-center gap-7">
       <div class="flex items-center gap-12 relative">
         <button class="flex lg:hidden" @click="setSearchBarIsOpen(true)">
-          <img src="@/assets/icons/search.svg" alt="search" />
+          <Search />
         </button>
         <div>
           <button
@@ -28,14 +28,10 @@
             >
               2
             </p>
-            <img src="@/assets/icons/notification-bell.svg" alt="bell" />
+            <NotificationBell />
           </button>
           <div v-if="notificationBarIsOpen" class="relative">
-            <img
-              class="absolute top-3 right-0"
-              src="@/assets/icons/triangle.svg"
-              alt="triangle"
-            />
+            <Triangle />
           </div>
         </div>
         <Language></Language>
@@ -55,10 +51,14 @@ import { mapActions, mapState } from "pinia";
 import { useStylesStore } from "@/stores/styling/styles";
 import Language from "@/components/Language.vue";
 import axios from "@/config/axios";
+import BurgerMenu from "../icons/BurgerMenu.vue";
+import Search from "../icons/Search.vue";
+import Triangle from "../icons/Triangle.vue";
+import NotificationBell from "../icons/NotificationBell.vue";
 
 export default {
   name: "AuthHeader",
-  components: { Language },
+  components: { Language, BurgerMenu, Search, Triangle, NotificationBell },
   computed: {
     ...mapState(useStylesStore, ["notificationBarIsOpen"]),
   },

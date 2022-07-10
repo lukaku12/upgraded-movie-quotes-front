@@ -34,7 +34,7 @@
         <div class="flex gap-2">
           <p>{{ post.comments.length }}</p>
           <button>
-            <img src="@/assets/icons/comment.svg" alt="comment" />
+            <CommentIcon />
           </button>
         </div>
         <div class="flex gap-2">
@@ -87,6 +87,7 @@ import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import QuoteWrapper from "@/components/authenticated/movies/QuoteWrapper.vue";
 import HeartSvg from "@/components/icons/Heart.vue";
 import axios from "@/config/axios/index.js";
+import CommentIcon from "@/components/icons/CommentIcon.vue";
 
 export default {
   name: "ViewQuote",
@@ -95,6 +96,7 @@ export default {
     AuthWrapper,
     TextArea,
     HeartSvg,
+    CommentIcon,
   },
   data() {
     return {

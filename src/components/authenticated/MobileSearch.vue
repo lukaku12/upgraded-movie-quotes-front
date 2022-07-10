@@ -5,11 +5,7 @@
   >
     <div class="flex gap-6 p-[15px] z-50 border-[#EFEFEF4D] border-b-2 w-full">
       <button @click="setSearchBarIsOpen(false)">
-        <img
-          class="min-w-min"
-          src="@/assets/icons/left-arrow.svg"
-          alt="left-arrow"
-        />
+        <LeftArrow />
       </button>
       <input
         class="text-white focus:outline-0 bg-transparent font-bold py-1 w-full"
@@ -36,9 +32,11 @@
 import { mapActions } from "pinia";
 import { useStylesStore } from "@/stores/styling/styles";
 import { mapState } from "pinia";
+import LeftArrow from "../icons/LeftArrow.vue";
 
 export default {
   name: "MobileSearch",
+  components: { LeftArrow },
   computed: {
     ...mapState(useStylesStore, ["searchBarIsOpen"]),
   },

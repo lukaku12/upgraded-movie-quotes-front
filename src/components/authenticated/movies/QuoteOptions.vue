@@ -6,23 +6,25 @@
       :to="'/movies/' + movieSlug + '/quote/' + quoteId"
       class="flex gap-4 w-full"
     >
-      <img src="@/assets/icons/eye.svg" alt="eye" /> view post
+      <EyeIcon />view post
     </router-link>
     <router-link
       :to="'/movies/' + movieSlug + '/quote/' + quoteId + '/edit'"
       class="flex gap-4 w-full"
     >
-      <img src="@/assets/icons/pen.svg" alt="pen" /> Edit
+      <Pen />edit
     </router-link>
-    <button class="flex gap-4 w-full">
-      <img src="@/assets/icons/trash.svg" alt="trash" />Delete
-    </button>
+    <button class="flex gap-4 w-full"><Trash />delete</button>
   </div>
 </template>
 
 <script>
+import Trash from "@/components/icons/Trash.vue";
+import Pen from "@/components/icons/Pen.vue";
+import EyeIcon from "@/components/icons/EyeIcon.vue";
 export default {
   name: "QuoteOptions",
+  components: { Trash, Pen, EyeIcon },
   props: {
     quoteId: {
       type: Number,

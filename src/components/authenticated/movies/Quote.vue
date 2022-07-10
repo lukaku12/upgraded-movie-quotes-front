@@ -17,17 +17,13 @@
         />
       </div>
       <div class="w-11/12 h-full flex flex-col justify-center items-center">
-        <h1 class="text-start text-[#CED4DA] text-2xl z-40">
+        <h1 class="text-start text-[#CED4DA] text-2xl z-10 mr-4">
           "{{ quote.title.en }}"
         </h1>
       </div>
-      <div class="absolute right-5 bottom-5 md:top-5">
-        <button class="w-[24px] h-[24px]" @click="toggleOptions">
-          <img
-            class="w-full h-full z-40"
-            src="@/assets/icons/three-dots.svg"
-            alt="three-dots"
-          />
+      <div class="absolute right-5 bottom-5 md:top-5 w-[30px] h-[30px]">
+        <button class="w-full h-full" @click="toggleOptions">
+          <ThreeDots />
         </button>
         <QuoteOptions
           v-if="optionsAreVisible"
@@ -40,11 +36,7 @@
       <div class="flex gap-2 z-40">
         <p>3</p>
         <button>
-          <img
-            class="hover:bg-red-600"
-            src="@/assets/icons/comment.svg"
-            alt="comment"
-          />
+          <CommentIcon />
         </button>
       </div>
       <div class="flex gap-2 z-40">
@@ -60,9 +52,11 @@
 <script>
 import QuoteOptions from "./QuoteOptions.vue";
 import HeartSvg from "@/components/icons/Heart.vue";
+import ThreeDots from "@/components/icons/ThreeDots.vue";
+import CommentIcon from "@/components/icons/CommentIcon.vue";
 export default {
   name: "Quote",
-  components: { QuoteOptions, HeartSvg },
+  components: { QuoteOptions, HeartSvg, ThreeDots, CommentIcon },
   props: {
     quote: {
       type: Object,

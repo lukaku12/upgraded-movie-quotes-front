@@ -23,12 +23,12 @@
     <div class="flex gap-4">
       <div class="flex gap-2">
         <p>{{ post.comments.length }}</p>
-        <button><img src="@/assets/icons/comment.svg" alt="comment" /></button>
+        <button><CommentIcon /></button>
       </div>
       <div class="flex gap-2">
         <p>{{ post.likes }}</p>
         <button>
-          <HeartSvg fill-color="#FFFFFF" hover:fill-color="#FF0000"/>
+          <HeartSvg fill-color="#FFFFFF" hover:fill-color="#FF0000" />
         </button>
       </div>
     </div>
@@ -68,9 +68,10 @@
 
 <script>
 import HeartSvg from "@/components/icons/Heart.vue";
+import CommentIcon from "@/components/icons/CommentIcon.vue";
 export default {
   name: "Post",
-  components: { HeartSvg },
+  components: { HeartSvg, CommentIcon },
   data() {
     return {
       post: {

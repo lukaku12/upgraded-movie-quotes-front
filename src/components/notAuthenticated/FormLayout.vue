@@ -29,7 +29,7 @@
             type="button"
             class="w-full border border-white py-[7px] text-white rounded-[4px] flex justify-center items-center gap-2 font-bold"
           >
-            <img src="@/assets/icons/google.svg" alt="google" class="w-5 h-5" />
+            <GoogleIcon />
             <p class="pt-[3px]">{{ googleAction }} with Google</p>
           </button>
         </div>
@@ -50,10 +50,11 @@
 import axios from "@/config/axios/index.js";
 import { Form as VeeForm } from "vee-validate";
 import { setJwtToken } from "@/helpers/jwt";
+import GoogleIcon from "../icons/GoogleIcon.vue";
 
 export default {
   name: "FormLayout",
-  components: { VeeForm },
+  components: { VeeForm, GoogleIcon },
   props: {
     mainTitle: {
       type: String,

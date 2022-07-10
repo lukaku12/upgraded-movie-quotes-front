@@ -21,7 +21,7 @@
         </h1>
         <p class="flex gap-3">
           {{ movie.quotes.length }}
-          <img src="@/assets/icons/chat-quote.svg" alt="quotes" />
+          <ChatQuote />
         </p>
       </div>
     </div>
@@ -29,8 +29,10 @@
 </template>
 
 <script>
+import ChatQuote from "@/components/icons/ChatQuote.vue";
 export default {
   name: "Movie",
+  components: { ChatQuote },
   props: {
     movie: {
       type: Object,

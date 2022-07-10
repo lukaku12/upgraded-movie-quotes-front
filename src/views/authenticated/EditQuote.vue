@@ -36,7 +36,7 @@
           <button
             class="w-full h-full flex flex-col justify-center items-center gap-2"
           >
-            <img src="@/assets/icons/photo.svg" alt="photo" /> Change Photo
+            <Photo />
           </button>
         </div>
       </div>
@@ -56,6 +56,7 @@ import TextArea from "@/components/Inputs/TextArea.vue";
 import QuoteWrapper from "@/components/authenticated/movies/QuoteWrapper.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import axios from "@/config/axios/index.js";
+import Photo from "@/components/icons/Photo.vue";
 
 export default {
   name: "ViewQuote",
@@ -63,6 +64,7 @@ export default {
     AuthWrapper,
     QuoteWrapper,
     TextArea,
+    Photo,
   },
   data() {
     return {

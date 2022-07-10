@@ -8,11 +8,7 @@
     <button class="flex items-center gap-1" @click="showLanguages">
       <button v-if="selectedLanguage === 'Eng'">Eng</button>
       <button v-else>Geo</button>
-      <img
-        :class="languagesAreVisible && 'rotate-180'"
-        src="@/assets/icons/down-arrow.svg"
-        alt="down-arrow"
-      />
+      <DownArrow />
     </button>
     <button
       v-if="languagesAreVisible && selectedLanguage === 'Eng'"
@@ -32,8 +28,10 @@
 </template>
 
 <script>
+import DownArrow from "./icons/DownArrow.vue";
 export default {
   name: "Language",
+  components: { DownArrow },
   data() {
     return {
       languagesAreVisible: false,

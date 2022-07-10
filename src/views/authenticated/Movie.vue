@@ -48,7 +48,7 @@
               :to="'/movies/' + movieSlug + '/quote/add'"
               class="bg-[#E31221] border border-[#E31221] mt-7 px-5 py-1 max-w-[152px] rounded-[4px] text-white flex justify-center items-center gap-2"
             >
-              <img src="@/assets/icons/plus.svg" alt="plus" />
+              <Plus />
               Add quote
             </router-link>
           </div>
@@ -82,6 +82,7 @@ import Quote from "@/components/authenticated/movies/Quote.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import NotFound from "@/views/NotFound.vue";
 import axios from "@/config/axios/index.js";
+import Plus from "@/components/icons/Plus.vue";
 
 export default {
   name: "Movie",
@@ -89,6 +90,7 @@ export default {
     AuthWrapper,
     NotFound,
     Quote,
+    Plus,
   },
   data() {
     return {
