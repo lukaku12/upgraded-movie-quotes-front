@@ -1,9 +1,10 @@
 <template>
   <svg
+    class="w-[30px] h-[30px]"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 32 32"
-    width="32px"
-    height="32px"
+    viewBox="0 0 46 46"
+    width="46px"
+    height="46px"
   >
     <path
       fill="#fbc02d"

@@ -1,7 +1,7 @@
 <template>
   <AuthWrapper v-if="movie.length !== 0">
     <div
-      class="w-full flex flex-col items-center min-h-[calc(100vh-86px)] bg-[#0f0e14] min-h-[calc(100vh-86px)]"
+      class="w-full flex flex-col items-center min-h-[calc(100vh-86px)] bg-[#0f0e14]"
     >
       <div
         class="flex flex-col xl:flex-row px-5 md:px-10 py-8 xl:px-0 gap-5 w-full text-white"

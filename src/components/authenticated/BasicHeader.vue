@@ -75,7 +75,8 @@ export default {
           console.log(response);
           document.cookie =
             "jwt_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-          this.$router.push({ name: "home" });
+          // this.$router.push({ name: "home" });
+          document.location.reload();
         })
         .catch((err) => {
           console.log(err);

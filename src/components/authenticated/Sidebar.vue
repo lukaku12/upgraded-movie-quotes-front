@@ -9,7 +9,7 @@
     class="fixed top-0 animate-pop-up lg:animate-none left-0 h-[658px] rounded-tr-xl z-50 rounded-br-xl px-16 pr-20 bg-[#11101A] lg:z-0 lg:pl-14 lg:pr-8 lg:bg-transparent lg:h-96 lg:mt-10 lg:static lg:flex lg:flex-col lg:w-1/4"
   >
     <div
-      class="flex w-full h-[60px] gap-3 text-white min-w-[300px] mt-14 lg:mt-0"
+      class="flex w-full items-center h-[60px] gap-3 text-white min-w-[300px] mt-14 lg:mt-0"
     >
       <img
         class="max-w-[52px] max-h-[52px]"
@@ -39,7 +39,9 @@
             class="flex mt-5 items-center gap-6 ml-3 hover:opacity-60"
             @click="setNavbarIsOpen(false)"
           >
-            <HomeSvg :fill-color="routeName === 'home' ? '#FF0000' : '#FFFFFF'"/>
+            <HomeSvg
+              :fill-color="routeName === 'home' ? '#FF0000' : '#FFFFFF'"
+            />
             <p>News feed</p>
           </router-link>
         </li>
@@ -49,7 +51,9 @@
             class="flex mt-5 items-center gap-6 ml-3 hover:opacity-60"
             @click="setNavbarIsOpen(false)"
           >
-            <CameraReelsSvg :fill-color="routePath.includes('movies') ? '#FF0000' : '#FFFFFF'"/>
+            <CameraReelsSvg
+              :fill-color="routePath.includes('movies') ? '#FF0000' : '#FFFFFF'"
+            />
             <p>List of movies</p>
           </router-link>
         </li>

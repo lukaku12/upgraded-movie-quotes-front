@@ -1,9 +1,11 @@
 <template>
   <div
     v-if="dataIsFetched"
-    class="w-full bg-landing-background-reverse pb-10 text-white z-50 md:max-w-[1024px] min-h-[calc(100vh-86px)]"
+    class="w-full text-white z-50 md:max-w-[1024px] min-h-[calc(100vh-86px)]"
   >
-    <div class="flex flex-col items-center lg:my-10">
+    <div
+      class="flex flex-col items-center lg:my-10 bg-landing-background-reverse pb-10"
+    >
       <header
         class="w-full h-auto text-center text-xl font-bold relative flex flex-col items-center"
       >

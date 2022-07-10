@@ -105,6 +105,9 @@ export default {
         .then((response) => {
           setJwtToken(response.data.access_token, response.data.expires_in);
           this.$router.replace({ name: "home" });
+          setTimeout(() => {
+            document.location.reload();
+          }, 100);
         })
         .catch((err) => {
           this.apiErrors = JSON.parse(err.request.response);
