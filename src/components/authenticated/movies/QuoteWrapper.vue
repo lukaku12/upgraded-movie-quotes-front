@@ -21,9 +21,9 @@
                 <Pen />
               </router-link>
               <p v-if="viewQuote">|</p>
-              <router-link v-if="viewQuote" to="">
+              <button v-if="viewQuote" @click="deleteQuote">
                 <Trash />
-              </router-link>
+              </button>
               <router-link
                 v-else
                 to=""
@@ -59,6 +59,7 @@
 import Pen from "@/components/icons/Pen.vue";
 import Trash from "@/components/icons/Trash.vue";
 import CloseIcon from "@/components/icons/CloseIcon.vue";
+import axios from "@/config/axios";
 export default {
   name: "QuoteWrapper",
   components: { Pen, Trash, CloseIcon },
@@ -82,6 +83,19 @@ export default {
     viewQuote: {
       type: Boolean,
       required: true,
+    },
+  },
+  methods: {
+    deleteQuote() {
+      axios
+        .delete("movies/" + this.movieSlug + "/quote/" + this.quoteId)
+        .then((response) => {
+          console.log(response);
+          this.$router.push("/movies/" + this.movieSlug);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };

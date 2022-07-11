@@ -14,7 +14,9 @@
     >
       <Pen />edit
     </router-link>
-    <button class="flex gap-4 w-full"><Trash />delete</button>
+    <button class="flex gap-4 w-full" @click="deleteQuote">
+      <Trash />delete
+    </button>
   </div>
 </template>
 
@@ -22,6 +24,7 @@
 import Trash from "@/components/icons/Trash.vue";
 import Pen from "@/components/icons/Pen.vue";
 import EyeIcon from "@/components/icons/EyeIcon.vue";
+import axios from "@/config/axios";
 export default {
   name: "QuoteOptions",
   components: { Trash, Pen, EyeIcon },
@@ -38,6 +41,19 @@ export default {
   computed: {
     currentRoute() {
       return this.$route.path;
+    },
+  },
+  methods: {
+    deleteQuote() {
+      axios
+        .delete("movies/" + this.movieSlug + "/quote/" + this.quoteId)
+        .then((response) => {
+          console.log(response);
+          this.$router.push("/movies/" + this.movieSlug);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };
