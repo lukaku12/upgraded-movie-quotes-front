@@ -28,6 +28,7 @@
           <button
             type="button"
             class="w-full border border-white py-[7px] text-white rounded-[4px] flex justify-center items-center gap-2 font-bold"
+            @click="googleAuth"
           >
             <GoogleIcon />
             <p class="pt-[3px]">{{ googleAction }} with Google</p>
@@ -112,6 +113,14 @@ export default {
         .catch((err) => {
           this.apiErrors = JSON.parse(err.request.response);
         });
+    },
+    googleAuth() {
+      window.location.href = "http://localhost:8000/api/auth/redirect";
+      // axios
+      //   .get("/auth/redirect", { params: { provider: "google" } })
+      //   .then((response) => {
+      //     window.location.href = "http://localhost:8000/auth/google/redirect";
+      //   });
     },
   },
 };

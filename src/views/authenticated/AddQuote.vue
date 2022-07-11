@@ -41,14 +41,16 @@
           language="ქარ"
         ></TextArea>
         <div class="w-full flex flex-col gap-3">
-          <button class="bg-black w-full py-6 px-5 text-start flex gap-4">
+          <button
+            class="bg-black w-full py-6 px-5 text-start flex gap-4 items-center"
+          >
             <Photo />
             Upload photo
           </button>
           <button
             class="bg-black w-full py-6 px-5 text-start flex justify-between"
           >
-            <div class="flex gap-4 justify-center">
+            <div class="flex gap-4 justify-center items-center">
               <CameraReelsSvg fill-color="#FFFFFF" />
               Choose movie
             </div>

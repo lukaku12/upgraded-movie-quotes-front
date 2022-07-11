@@ -9,6 +9,7 @@
       rules="required|min:3|max:255"
       :readonly="readOnly"
       :value="value"
+      @input="onInput"
     ></Field>
     <h1 class="absolute right-4 top-3 pointer-default select-none">
       {{ language }}
@@ -43,6 +44,10 @@ export default {
     readOnly: {
       type: Boolean,
       default: false,
+    },
+    onInput: {
+      type: Function,
+      default: () => {},
     },
   },
 };

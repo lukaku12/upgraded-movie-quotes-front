@@ -23,8 +23,14 @@ body {
 .Interstellar {
   mask-image: linear-gradient(to bottom, transparent 1%, black);
 }
+
 svg:hover .heart {
   fill: red;
+}
+
+input[type=file],
+input[type=file]::-webkit-file-upload-button {
+  cursor: pointer;
 }
 
 /* width */

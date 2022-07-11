@@ -31,7 +31,7 @@
         />
         <div class="flex flex-col gap-2">
           <div class="flex h-auto items-center justify-center">
-            <CameraReelsSvg fill-color="#FFFFFF"/>
+            <CameraReelsSvg fill-color="#FFFFFF" />
             <h1 class="text-xl mx-3">
               {{ movie.movie.title.en }} ({{
                 movie.movie.created_at.substring(0, 4)
