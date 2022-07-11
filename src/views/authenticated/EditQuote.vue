@@ -31,7 +31,11 @@
         >
           <img
             class="w-full aspect-square md:aspect-video rounded-xl"
-            :src="'http://127.0.0.1:8000/storage/thumbnails/' + quote.thumbnail"
+            :src="
+              thumbnail === ''
+                ? 'http://127.0.0.1:8000/storage/thumbnails/' + quote.thumbnail
+                : thumbnail
+            "
             alt="thumbnail"
           />
           <div
@@ -46,6 +50,7 @@
               type="file"
               name="thumbnail"
               class="w-full h-full absolute z-20 top-0 left-0 opacity-0"
+              @change="updateThumbnail"
             />
           </div>
         </div>
@@ -70,7 +75,7 @@ import axios from "@/config/axios/index.js";
 import Photo from "@/components/icons/Photo.vue";
 
 export default {
-  name: "ViewQuote",
+  name: "EditQuote",
   components: {
     AuthWrapper,
     QuoteWrapper,
@@ -109,21 +114,10 @@ export default {
       formData.append("title_ka", values.title_ka);
       formData.append("movie_id", this.quote.movie_id);
       if (values.thumbnail) {
-        formData.append("thumbnail", values.thumbnail);
-      }
-      // const data = {
-      //   title_en: values.title_en,
-      //   title_ka: values.title_ka,
-      //   movie_id: this.quote.movie_id,
-      //   ...(values.thumbnail !== undefined && {
-      //     thumbnail: values.thumbnail[0],
-      //   }),
-      // };
-      for (var pair of formData.entries()) {
-        console.log(pair[0] + ", " + pair[1]);
+        formData.append("thumbnail", values.thumbnail[0]);
       }
       axios
-        .patchForm(`movies/${this.movieSlug}/quote/${this.quoteId}`, formData, {
+        .post(`movies/${this.movieSlug}/quote/${this.quoteId}`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -134,6 +128,9 @@ export default {
         .catch((error) => {
           console.log(error.request.response);
         });
+    },
+    updateThumbnail(e) {
+      this.thumbnail = URL.createObjectURL(e.target.files[0]);
     },
   },
 };
