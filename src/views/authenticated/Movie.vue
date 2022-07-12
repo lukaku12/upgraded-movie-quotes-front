@@ -1,4 +1,5 @@
 <template>
+  <PopupMessage v-if="apiSuccess" :message="apiSuccess" />
   <AuthWrapper v-if="movie.length !== 0">
     <div
       class="w-full flex flex-col items-center min-h-[calc(100vh-86px)] bg-[#0f0e14]"
@@ -80,6 +81,7 @@
 <script>
 import Quote from "@/components/authenticated/movies/Quote.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
+import PopupMessage from "@/components/authenticated/PopupMessage.vue";
 import NotFound from "@/views/NotFound.vue";
 import axios from "@/config/axios/index.js";
 import Plus from "@/components/icons/Plus.vue";
@@ -91,6 +93,7 @@ export default {
     NotFound,
     Quote,
     Plus,
+    PopupMessage,
   },
   data() {
     return {
@@ -101,6 +104,9 @@ export default {
   computed: {
     movieSlug() {
       return this.$route.params.movie;
+    },
+    apiSuccess() {
+      return this.$route.params.apiSuccess;
     },
   },
   mounted() {

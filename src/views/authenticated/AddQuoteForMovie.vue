@@ -1,4 +1,5 @@
 <template>
+  <PopupMessage v-if="apiError" :message="apiError" text-color="text-red-600" />
   <AuthWrapper>
     <QuoteWrapper
       :movie-slug="movieSlug"
@@ -7,7 +8,7 @@
       :view-quote="false"
     >
       <VueForm
-        v-slot="{ values }"
+        v-slot="{ values, meta }"
         class="w-full h-auto flex flex-col items-center"
       >
         <div class="w-10/12 h-auto flex flex-col gap-3 md:w-11/12">
@@ -26,7 +27,7 @@
           class="flex w-10/12 md:w-11/12 py-3 my-3 h-auto bg-black rounded-lg gap-6 items-center"
         >
           <img
-            class="h-full max-h-[108px] max-w-[155px] rounded-lg aspect-square xl:aspect-auto"
+            class="h-full max-h-[108px] max-w-[155px] rounded-lg aspect-square md:aspect-video"
             :src="
               'http://127.0.0.1:8000/storage/thumbnails/' +
               movie.quotes[0].thumbnail
@@ -47,6 +48,7 @@
         </div>
         <button
           type="button"
+          :disabled="!meta.valid"
           class="bg-[#E31221] w-10/12 md:w-11/12 border border-[#E31221] mt-1 font-bold px-7 py-2 rounded-[4px] text-white"
           @click="addQuote(values)"
         >
@@ -61,16 +63,26 @@
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import TextArea from "@/components/Inputs/TextArea.vue";
 import QuoteWrapper from "@/components/authenticated/movies/QuoteWrapper.vue";
+import PopupMessage from "@/components/authenticated/PopupMessage.vue";
 import CameraReelsSvg from "@/components/icons/CameraReels.vue";
 import { Form as VueForm } from "vee-validate";
 import axios from "@/config/axios/index.js";
 export default {
   name: "AddQuoteForMovie",
-  components: { QuoteWrapper, AuthWrapper, TextArea, CameraReelsSvg, VueForm },
+  components: {
+    QuoteWrapper,
+    AuthWrapper,
+    TextArea,
+    CameraReelsSvg,
+    VueForm,
+    PopupMessage,
+  },
   data() {
     return {
       movie: {},
       dataIsFetched: false,
+      apiSuccess: "",
+      apiError: "",
     };
   },
   computed: {
@@ -89,20 +101,24 @@ export default {
   },
   methods: {
     addQuote(values) {
+      this.apiError = "";
       const data = {
         title_en: values.title_en,
         title_ka: values.title_ka,
         movie_id: this.movie.movie.id,
       };
-      console.log(data);
       axios
         .post(`movies/${this.movieSlug}/quote/add`, data)
         .then((response) => {
-          console.log(response);
-          // this.$router.push(`/movies/${this.movieSlug}`);
+          this.$router.push({
+            path: `/movies/${this.movieSlug}`,
+            name: "movie",
+            params: { apiSuccess: response.data },
+            props: true,
+          });
         })
-        .catch((error) => {
-          console.log(error);
+        .catch(() => {
+          this.apiError = "Something went wrong!";
         });
     },
   },

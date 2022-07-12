@@ -1,4 +1,5 @@
 <template>
+  <PopupMessage v-if="apiError" :message="apiError" text-color="text-red-600" />
   <AuthWrapper>
     <QuoteWrapper
       :movie-slug="movieSlug"
@@ -9,7 +10,7 @@
       :view-quote="false"
     >
       <VueForm
-        v-slot="{ values }"
+        v-slot="{ values, meta }"
         class="w-full h-auto flex flex-col items-center"
       >
         <div class="w-10/12 h-auto flex flex-col gap-3 md:w-11/12">
@@ -56,6 +57,7 @@
         </div>
         <button
           type="button"
+          :disabled="!meta.valid"
           class="bg-[#E31221] w-10/12 md:w-11/12 border border-[#E31221] mt-1 font-bold px-7 py-2 rounded-[4px] text-white"
           @click="EditQuote(values)"
         >
@@ -73,6 +75,7 @@ import QuoteWrapper from "@/components/authenticated/movies/QuoteWrapper.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import axios from "@/config/axios/index.js";
 import Photo from "@/components/icons/Photo.vue";
+import PopupMessage from "@/components/authenticated/PopupMessage.vue";
 
 export default {
   name: "EditQuote",
@@ -83,12 +86,14 @@ export default {
     Photo,
     VueForm,
     Field,
+    PopupMessage,
   },
   data() {
     return {
       quote: {},
       thumbnail: "",
       dataIsFetched: false,
+      apiError: "",
     };
   },
   computed: {
@@ -109,6 +114,8 @@ export default {
   },
   methods: {
     EditQuote(values) {
+      this.apiError = "";
+
       const formData = new FormData();
       formData.append("title_en", values.title_en);
       formData.append("title_ka", values.title_ka);
@@ -116,6 +123,7 @@ export default {
       if (values.thumbnail) {
         formData.append("thumbnail", values.thumbnail[0]);
       }
+
       axios
         .post(`movies/${this.movieSlug}/quote/${this.quoteId}`, formData, {
           headers: {
@@ -123,10 +131,15 @@ export default {
           },
         })
         .then((response) => {
-          console.log(response);
+          this.$router.push({
+            path: `/movies/${this.movieSlug}`,
+            name: "movie",
+            params: { apiSuccess: response.data },
+            props: true,
+          });
         })
-        .catch((error) => {
-          console.log(error.request.response);
+        .catch(() => {
+          this.apiError = "Something went wrong!";
         });
     },
     updateThumbnail(e) {

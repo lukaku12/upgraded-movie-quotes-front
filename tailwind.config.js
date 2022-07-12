@@ -14,12 +14,17 @@ module.exports = {
       },
       animation: {
         "pop-up": "pop 0.1s linear forwards",
+        "disappear": "disappear 0.1s linear forwards",
       },
       keyframes: {
         pop: {
           "0%": { transform: "scale(0)" },
           "100%": { transform: "scale(1)" },
         },
+        disappear: {
+          "0%": { transform: "scale(1)" },
+          "100%": { transform: "scale(0)" },
+        }
       },
       zIndex: {
         1000: "1000",
