@@ -12,12 +12,9 @@
       class="flex w-full items-center h-[60px] gap-3 text-white min-w-[300px] mt-14 lg:mt-0"
     >
       <img
-        class="max-w-[52px] max-h-[52px]"
-        :class="
-          routeName === 'edit-profile' &&
-          'border-green-600 border-2 rounded-[50%]'
-        "
-        src="@/assets/post/profile-picture.png"
+        class="max-w-[52px] max-h-[52px] rounded-[50%] aspect-square"
+        :class="routeName === 'edit-profile' && 'border-green-600 border-2'"
+        :src="'http://127.0.0.1:8000/storage/thumbnails/' + user.picture"
         alt="profile-picture"
       />
       <div class="flex flex-col items-center justify-center">

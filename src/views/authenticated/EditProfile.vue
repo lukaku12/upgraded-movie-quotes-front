@@ -15,8 +15,8 @@
           class="w-full flex flex-col justify-center items-center gap-4 mb-5"
         >
           <img
-            class="absolute top-0 -translate-y-[50%] max-w-[188px] max-h-[188px]"
-            src="@/assets/post/profile-picture.png"
+            class="absolute top-0 -translate-y-[50%] max-w-[188px] max-h-[188px] rounded-[50%] aspect-square"
+            :src="'http://127.0.0.1:8000/storage/thumbnails/' + user.picture"
             alt="profile-picture"
           />
           <button class="text-white text-center mt-12">Upload new photo</button>

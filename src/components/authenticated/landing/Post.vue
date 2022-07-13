@@ -4,8 +4,8 @@
   >
     <div class="flex items-center gap-3">
       <img
-        class="max-w-[52px] max-h-[52px]"
-        src="@/assets/post/profile-picture.png"
+        class="max-w-[52px] max-h-[52px] rounded-[50%] aspect-square"
+        :src="'http://127.0.0.1:8000/storage/thumbnails/' + post.user.picture"
         alt="profile-picture"
       />
       <p>{{ post.user.username }}</p>
@@ -44,7 +44,7 @@
       >
         <div class="flex items-center gap-3">
           <img
-            class="max-w-[45px] max-h-[45px]"
+            class="max-w-[45px] max-h-[45px] rounded-[50%] aspect-square"
             src="@/assets/post/profile-picture.png"
             alt="profile-picture"
           />
@@ -60,8 +60,8 @@
       @submit="addComment"
     >
       <img
-        class="max-w-[52px] max-h-[52px]"
-        src="@/assets/post/profile-picture.png"
+        class="max-w-[52px] max-h-[52px] rounded-[50%] aspect-square"
+        :src="'http://127.0.0.1:8000/storage/thumbnails/' + user.picture"
         alt="profile-picture"
       />
       <Field
@@ -81,6 +81,8 @@ import HeartSvg from "@/components/icons/Heart.vue";
 import CommentIcon from "@/components/icons/CommentIcon.vue";
 import { Form as VueFrom, Field } from "vee-validate";
 import axios from "@/config/axios";
+import { mapState } from "pinia";
+import { useUserStore } from "@/stores/user/user";
 export default {
   name: "Post",
   components: { HeartSvg, CommentIcon, VueFrom, Field },
@@ -94,6 +96,9 @@ export default {
     return {
       commentData: "",
     };
+  },
+  computed: {
+    ...mapState(useUserStore, ["user"]),
   },
   methods: {
     addComment() {

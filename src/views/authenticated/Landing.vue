@@ -33,6 +33,7 @@ export default {
   mounted() {
     axios.get("quotes").then((response) => {
       this.posts = response.data;
+      console.log(this.posts);
     });
   },
 };
