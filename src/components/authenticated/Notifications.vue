@@ -6,7 +6,7 @@
   ></div>
   <div
     v-if="notificationBarIsOpen"
-    class="absolute w-screen bg-black h-auto right-0 pb-12 p-5 sm:p-12 text-white z-50 max-w-[961px] lg:right-10 lg:rounded-[12px]"
+    class="fixed w-screen bg-black h-auto right-0 pb-12 p-5 sm:p-12 text-white z-50 max-w-[961px] lg:right-10 lg:rounded-[12px]"
   >
     <div class="flex flex-col gap-10">
       <div class="flex justify-between">

@@ -1,47 +1,51 @@
 <template>
   <header
-    class="flex w-10/12 justify-between h-[86px] items-center md:w-11/12 bg-[#222030]"
+    class="flex w-full justify-between h-[86px] items-center bg-[#222030] relative"
   >
-    <div>
-      <router-link
-        :to="{ name: 'home' }"
-        class="text-[#DDCCAA] text-base font-bold hidden lg:flex"
-      >
-        MOVIE QUOTES
-      </router-link>
-      <button class="flex lg:hidden" @click="setNavbarIsOpen(true)">
-        <BurgerMenu />
-      </button>
-    </div>
-    <div class="flex items-center gap-7">
-      <div class="flex items-center gap-12 relative">
-        <button class="flex lg:hidden" @click="setSearchBarIsOpen(true)">
-          <Search />
+    <div
+      class="flex w-full px-6 md:px-16 justify-between h-[86px] items-center fixed top-0 bg-[#222030] z-50"
+    >
+      <div>
+        <router-link
+          :to="{ name: 'home' }"
+          class="text-[#DDCCAA] text-base font-bold hidden lg:flex"
+        >
+          MOVIE QUOTES
+        </router-link>
+        <button class="flex lg:hidden" @click="setNavbarIsOpen(true)">
+          <BurgerMenu />
         </button>
-        <div>
-          <button
-            class="flex items-center text-white gap-1 relative"
-            @click="setNotificationBarIsOpen"
-          >
-            <p
-              class="absolute bg-red-600 text-sm px-[6px] rounded-[50%] -top-[5px] -right-2"
-            >
-              2
-            </p>
-            <NotificationBell />
-          </button>
-          <div v-if="notificationBarIsOpen" class="relative">
-            <Triangle />
-          </div>
-        </div>
-        <Language></Language>
       </div>
-      <button
-        class="border border-white text-white px-5 py-1 rounded-[4px] hover:bg-[#4d4d4d] hidden lg:flex"
-        @click="logout"
-      >
-        Log out
-      </button>
+      <div class="flex items-center gap-7">
+        <div class="flex items-center gap-12 relative">
+          <button class="flex lg:hidden" @click="setSearchBarIsOpen(true)">
+            <Search />
+          </button>
+          <div>
+            <button
+              class="flex items-center text-white gap-1 relative"
+              @click="setNotificationBarIsOpen"
+            >
+              <p
+                class="absolute bg-red-600 text-sm px-[6px] rounded-[50%] -top-[5px] -right-2"
+              >
+                2
+              </p>
+              <NotificationBell />
+            </button>
+            <div v-if="notificationBarIsOpen" class="relative">
+              <Triangle />
+            </div>
+          </div>
+          <Language></Language>
+        </div>
+        <button
+          class="border border-white text-white px-5 py-1 rounded-[4px] hover:bg-[#4d4d4d] hidden lg:flex"
+          @click="logout"
+        >
+          Log out
+        </button>
+      </div>
     </div>
   </header>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div
     :class="navBarIsOpen ? 'visible' : 'hidden'"
-    class="absolute w-screen h-screen top-0 left-0 z-50"
+    class="fixed w-screen h-screen top-0 left-0 z-50"
     @click="setNavbarIsOpen(false)"
   ></div>
   <div
