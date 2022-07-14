@@ -15,6 +15,7 @@
     "@vee-validate/rules": "^4.5.11",
     "axios": "^0.27.2",
     "pinia": "^2.0.14",
+    "pusher-js": "^7.1.1-beta",
     "vee-validate": "^4.5.11",
     "vue": "^3.2.37",
     "vue-axios": "^3.4.1",

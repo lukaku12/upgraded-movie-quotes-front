@@ -30,9 +30,12 @@
         <button><CommentIcon /></button>
       </div>
       <div class="flex gap-2">
-        <p>TODO</p>
-        <button>
+        <p>{{ post.likes.length }}</p>
+        <button v-if="!quoteLikesUserIDs.includes(user.id)" @click="likeQuote">
           <HeartSvg fill-color="#FFFFFF" hover:fill-color="#FF0000" />
+        </button>
+        <button v-else @click="unlikeQuote">
+          <HeartFillRed />
         </button>
       </div>
     </div>
@@ -83,9 +86,10 @@ import { Form as VueFrom, Field } from "vee-validate";
 import axios from "@/config/axios";
 import { mapState } from "pinia";
 import { useUserStore } from "@/stores/user/user";
+import HeartFillRed from "@/components/icons/HeartFillRed.vue";
 export default {
   name: "Post",
-  components: { HeartSvg, CommentIcon, VueFrom, Field },
+  components: { HeartSvg, CommentIcon, VueFrom, Field, HeartFillRed },
   props: {
     post: {
       type: Object,
@@ -99,6 +103,9 @@ export default {
   },
   computed: {
     ...mapState(useUserStore, ["user"]),
+    quoteLikesUserIDs() {
+      return this.post.likes.map((like) => like.user_id);
+    },
   },
   methods: {
     addComment() {
@@ -111,6 +118,28 @@ export default {
         .post("comment/add", sendCommentData)
         .then(() => {
           this.commentData = "";
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    likeQuote() {
+      axios
+        .post("like/add", { quote_id: this.post.id })
+        .then((response) => {
+          console.log(response);
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    unlikeQuote() {
+      axios
+        .post("like/remove", { quote_id: this.post.id })
+        .then((response) => {
+          console.log(response);
+          window.location.reload();
         })
         .catch((error) => {
           console.log(error);
