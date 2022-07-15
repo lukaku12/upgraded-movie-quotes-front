@@ -1,95 +1,27 @@
 <template>
   <div
-    class="flex flex-col gap-5 w-full max-w-[1024px] p-10 bg-[#090a0e] text-white mb-12 lg:rounded-[10px]"
+    class="flex flex-col gap-5 w-full max-w-[1024px] p-6 md:p-10 bg-[#090a0e] text-white mb-12 lg:rounded-[10px]"
   >
-    <div class="flex items-center gap-3">
-      <img
-        class="max-w-[52px] max-h-[52px] rounded-[50%] aspect-square"
-        :src="'http://127.0.0.1:8000/storage/thumbnails/' + post.user.picture"
-        alt="profile-picture"
-      />
-      <p>{{ post.user.username }}</p>
-    </div>
-    <div class="flex flex-col gap-5">
-      <div class="flex">
-        <p>
-          “{{ post.title.en }}” movie-{{ post.movie.title.en }} ({{
-            post.movieReleaseDate || 2021
-          }})
-        </p>
-      </div>
-      <img
-        class="w-full max-h-[501px]"
-        :src="'http://127.0.0.1:8000/storage/thumbnails/' + post.thumbnail"
-        alt="post-image"
-      />
-    </div>
-    <div class="flex gap-4">
-      <div class="flex gap-2">
-        <p>{{ post.comments.length }}</p>
-        <button><CommentIcon /></button>
-      </div>
-      <div class="flex gap-2">
-        <p>{{ post.likes.length }}</p>
-        <button v-if="!quoteLikesUserIDs.includes(user.id)" @click="likeQuote">
-          <HeartSvg fill-color="#FFFFFF" hover:fill-color="#FF0000" />
-        </button>
-        <button v-else @click="unlikeQuote">
-          <HeartFillRed />
-        </button>
-      </div>
-    </div>
     <div>
-      <div
-        v-for="comment in post.comments"
-        :key="comment.id"
-        class="border-t-[#efefef5b] border-t-2 py-4 gap-3 flex flex-col"
-      >
-        <div class="flex items-center gap-3">
-          <img
-            class="max-w-[45px] max-h-[45px] rounded-[50%] aspect-square"
-            src="@/assets/post/profile-picture.png"
-            alt="profile-picture"
-          />
-          <p class="font-bold">{{ comment.username }}</p>
-        </div>
-        <div class="lg:pl-[56px] lg:-mt-4">
-          <p class="font-medium">{{ comment.body }}</p>
-        </div>
-      </div>
+      <PostInformation :current-post="currentPost"/>
+      <PostActions :current-post="currentPost" :user="user"/>
+      <PostComment v-for="comment in currentPost.comments" :key="comment.id" :comment="comment"/>
+      <PostAddComment :current-post="currentPost" :user="user"/>
     </div>
-    <VueFrom
-      class="flex items-center gap-3 border-t-[#efefef5b] border-t-2 pt-5"
-      @submit="addComment"
-    >
-      <img
-        class="max-w-[52px] max-h-[52px] rounded-[50%] aspect-square"
-        :src="'http://127.0.0.1:8000/storage/thumbnails/' + user.picture"
-        alt="profile-picture"
-      />
-      <Field
-        v-model="commentData"
-        type="text"
-        rules="required"
-        :name="post.id + 'comment'"
-        placeholder="Write a comment"
-        class="rounded-[10px] bg-[#24222F] px-4 py-2 w-full focus:outline-none"
-      />
-    </VueFrom>
   </div>
 </template>
 
 <script>
-import HeartSvg from "@/components/icons/Heart.vue";
-import CommentIcon from "@/components/icons/CommentIcon.vue";
-import { Form as VueFrom, Field } from "vee-validate";
-import axios from "@/config/axios";
-import { mapState } from "pinia";
+import PostInformation from "@/components/authenticated/landing/post/Information.vue";
+import PostComment from "@/components/authenticated/landing/post/Comment.vue";
+import PostActions from "@/components/authenticated/landing/post/Actions.vue";
+import PostAddComment from "@/components/authenticated/landing/post/AddComment.vue";
 import { useUserStore } from "@/stores/user/user";
-import HeartFillRed from "@/components/icons/HeartFillRed.vue";
+import { mapState } from "pinia";
+
 export default {
   name: "Post",
-  components: { HeartSvg, CommentIcon, VueFrom, Field, HeartFillRed },
+  components: {PostAddComment, PostInformation, PostActions, PostComment},
   props: {
     post: {
       type: Object,
@@ -98,53 +30,11 @@ export default {
   },
   data() {
     return {
-      commentData: "",
+      currentPost: this.post,
     };
   },
   computed: {
     ...mapState(useUserStore, ["user"]),
-    quoteLikesUserIDs() {
-      return this.post.likes.map((like) => like.user_id);
-    },
-  },
-  methods: {
-    addComment() {
-      if (this.commentData === "") return;
-      const sendCommentData = {
-        quote_id: this.post.id,
-        comment_body: this.commentData,
-      };
-      axios
-        .post("comment/add", sendCommentData)
-        .then(() => {
-          this.commentData = "";
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    likeQuote() {
-      axios
-        .post("like/add", { quote_id: this.post.id })
-        .then((response) => {
-          console.log(response);
-          window.location.reload();
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    unlikeQuote() {
-      axios
-        .post("like/remove", { quote_id: this.post.id })
-        .then((response) => {
-          console.log(response);
-          window.location.reload();
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
   },
 };
 </script>

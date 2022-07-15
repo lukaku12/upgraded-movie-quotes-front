@@ -1,6 +1,10 @@
 <template>
   <AuthWrapper>
+    <div v-if="loading" class="flex flex-col gap-5 w-full max-w-[1024px] p-10 bg-transparent text-white mb-12 lg:rounded-[10px]">
+      <LoadingAnimation/>
+    </div>
     <div
+      v-else
       class="w-full flex flex-col items-center min-h-[calc(100vh-86px)] bg-[#0f0e14]"
     >
       <div
@@ -29,12 +33,14 @@
         ></Movie>
       </div>
     </div>
+
   </AuthWrapper>
 </template>
 
 <script>
 import DesktopSearch from "@/components/authenticated/DesktopSearch.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
+import LoadingAnimation from "@/components/LoadingAnimation.vue";
 import Movie from "@/components/authenticated/movies/Movie.vue";
 import axios from "@/config/axios/index.js";
 
@@ -44,18 +50,22 @@ export default {
     AuthWrapper,
     Movie,
     DesktopSearch,
+    LoadingAnimation,
   },
   data() {
     return {
       movies: [],
       searchValue: "",
       searchedMovies: [],
+      loading: false,
     };
   },
   mounted() {
+    this.loading = true;
     axios.get("movies").then((response) => {
       this.movies = response.data;
       this.searchedMovies = response.data;
+      this.loading = false;
     });
   },
   methods: {

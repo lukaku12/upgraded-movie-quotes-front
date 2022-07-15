@@ -7,7 +7,7 @@
       class="w-full h-full flex justify-center lg:justify-start bg-[#0f0e14] font-bold"
     >
       <Navigation></Navigation>
-      <div class="w-full">
+      <div class="w-full min-h-[calc(100vh-86px)]">
         <MobileSearch></MobileSearch>
         <Notifications></Notifications>
         <slot />
