@@ -2,10 +2,24 @@
   <div
     class="flex flex-col gap-5 w-full max-w-[1024px] p-6 md:p-10 bg-[#090a0e] text-white mb-12 lg:rounded-[10px]"
   >
-    <div>
+    <div class="relative">
       <PostInformation :current-post="currentPost"/>
       <PostActions :current-post="currentPost" :user="user"/>
-      <PostComment v-for="comment in currentPost.comments" :key="comment.id" :comment="comment"/>
+
+      <div v-if="currentPost.comments.length < 3 || showAllComments">
+        <PostComment v-for="comment in currentPost.comments" :key="comment.id" :comment="comment"/>
+      </div>
+      <div v-else>
+        <PostComment :comment="currentPost.comments[0]"/>
+      </div>
+      <button
+          v-if="currentPost.comments.length >= 3"
+          @click="setShowAllComments"
+          class="opacity-80 underline absolute -bottom-8 right-0"
+      >
+        {{ !showAllComments ? 'see all' : 'hide' }} comments
+      </button>
+
       <PostAddComment :current-post="currentPost" :user="user"/>
     </div>
   </div>
@@ -31,10 +45,16 @@ export default {
   data() {
     return {
       currentPost: this.post,
+      showAllComments: false,
     };
   },
   computed: {
     ...mapState(useUserStore, ["user"]),
   },
+  methods: {
+    setShowAllComments() {
+      this.showAllComments = !this.showAllComments;
+    },
+  }
 };
 </script>
