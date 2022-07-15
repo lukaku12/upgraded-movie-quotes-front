@@ -1,9 +1,15 @@
-import Pusher from "pusher-js";
+import Echo from 'laravel-echo';
 
-Pusher.logToConsole = true;
+import Pusher from 'pusher-js';
+window.Pusher = Pusher;
 
-const pusher = new Pusher("3907cea223bcce7f0feb", {
-  cluster: "eu",
+window.Echo = new Echo({
+  broadcaster: 'pusher',
+  key: import.meta.env.VITE_WEBSOCKETS_KEY,
+  //
+  wsHost: 'localhost',
+  wsPort: 6001,
+  forceTLS: false,
+  disableStats: true,
+  cluster: 'eu'
 });
-
-export default pusher;

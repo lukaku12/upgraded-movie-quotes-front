@@ -47,26 +47,26 @@ export default {
   methods: {
     likeQuote() {
       this.postLikes.push({ user_id: this.user.id });
+
       axios.post("like/add", { quote_id: this.currentPost.id });
-      // .then((response) => {
-      //   console.log(response);
-      // })
-      // .catch((error) => {
-      //   console.log(error);
-      // });
+      axios.post("notify-user", {
+        quote_id: this.currentPost.id,
+        user_id: this.user.id,
+        username: this.user.username,
+        message: `Reacted to your quote`,
+      },{headers: {"X-Socket-Id": window.Echo.socketId()}
+      }).then((res) => {
+        console.log(res);
+      });
+
     },
     unlikeQuote() {
       const userLike = this.postLikes.filter(
         (like) => like.user_id === this.user.id
       );
       this.postLikes.splice(this.postLikes.indexOf(userLike[0]), 1);
+
       axios.post("like/remove", { quote_id: this.currentPost.id });
-      // .then((response) => {
-      //   console.log(response);
-      // })
-      // .catch((error) => {
-      //   console.log(error);
-      // });
     },
   },
 };

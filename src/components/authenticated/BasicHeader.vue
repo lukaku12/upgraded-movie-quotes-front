@@ -26,11 +26,12 @@
               class="flex items-center text-white gap-1 relative"
               @click="setNotificationBarIsOpen"
             >
-              <p
+              <span
+                v-if="notifications.length > 0"
                 class="absolute bg-red-600 text-sm px-[6px] rounded-[50%] -top-[5px] -right-2"
               >
-                2
-              </p>
+                {{ notifications.length }}
+              </span>
               <NotificationBell />
             </button>
             <div v-if="notificationBarIsOpen" class="relative">
@@ -59,12 +60,21 @@ import BurgerMenu from "../icons/BurgerMenu.vue";
 import Search from "../icons/Search.vue";
 import Triangle from "../icons/Triangle.vue";
 import NotificationBell from "../icons/NotificationBell.vue";
+import {useNotificationsStore} from "@/stores/notifications/notifications";
 
 export default {
   name: "AuthHeader",
   components: { Language, BurgerMenu, Search, Triangle, NotificationBell },
   computed: {
     ...mapState(useStylesStore, ["notificationBarIsOpen"]),
+    ...mapState(useNotificationsStore, ["notifications"]),
+  },
+  mounted() {
+    window.Echo.channel('notify-user')
+        .listen('NotifyUser', (e) => {
+          this.setNotifications(e);
+          console.log(this.notifications)
+        });
   },
   methods: {
     ...mapActions(useStylesStore, [
@@ -72,6 +82,7 @@ export default {
       "setSearchBarIsOpen",
       "setNotificationBarIsOpen",
     ]),
+    ...mapActions(useNotificationsStore, ["setNotifications"]),
     logout() {
       axios
         .post("logout")

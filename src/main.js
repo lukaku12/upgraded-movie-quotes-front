@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import { createPinia } from "pinia";
 import "@/config/vee-validate/rules";
 import "@/config/vee-validate/messages";
+import "@/config/pusher/index";
 import "@/index.css";
 
 import App from "./App.vue";
