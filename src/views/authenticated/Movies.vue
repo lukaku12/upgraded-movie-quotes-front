@@ -1,7 +1,10 @@
 <template>
   <AuthWrapper>
-    <div v-if="loading" class="flex flex-col gap-5 w-full max-w-[1024px] p-10 bg-transparent text-white mb-12 lg:rounded-[10px]">
-      <LoadingAnimation/>
+    <div
+      v-if="loading"
+      class="flex flex-col gap-5 w-full max-w-[1024px] p-10 bg-transparent text-white mb-12 lg:rounded-[10px]"
+    >
+      <LoadingAnimation />
     </div>
     <div
       v-else
@@ -33,7 +36,6 @@
         ></Movie>
       </div>
     </div>
-
   </AuthWrapper>
 </template>
 

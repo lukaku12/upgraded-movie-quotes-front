@@ -23,7 +23,7 @@ import CommentIcon from "@/components/icons/CommentIcon.vue";
 import axios from "@/config/axios";
 export default {
   name: "PostActions",
-  components: { HeartSvg, CommentIcon, HeartFillRed},
+  components: { HeartSvg, CommentIcon, HeartFillRed },
   props: {
     currentPost: {
       type: Object,
@@ -32,7 +32,7 @@ export default {
     user: {
       type: Object,
       required: true,
-    }
+    },
   },
   data() {
     return {
@@ -46,9 +46,8 @@ export default {
   },
   methods: {
     likeQuote() {
-      this.postLikes.push({user_id: this.user.id})
-      axios
-          .post("like/add", { quote_id: this.currentPost.id })
+      this.postLikes.push({ user_id: this.user.id });
+      axios.post("like/add", { quote_id: this.currentPost.id });
       // .then((response) => {
       //   console.log(response);
       // })
@@ -57,10 +56,11 @@ export default {
       // });
     },
     unlikeQuote() {
-      const userLike = this.postLikes.filter((like) => like.user_id === this.user.id)
-      this.postLikes.splice(this.postLikes.indexOf(userLike[0]), 1)
-      axios
-          .post("like/remove", { quote_id: this.currentPost.id })
+      const userLike = this.postLikes.filter(
+        (like) => like.user_id === this.user.id
+      );
+      this.postLikes.splice(this.postLikes.indexOf(userLike[0]), 1);
+      axios.post("like/remove", { quote_id: this.currentPost.id });
       // .then((response) => {
       //   console.log(response);
       // })
@@ -68,6 +68,6 @@ export default {
       //   console.log(error);
       // });
     },
-  }
-}
+  },
+};
 </script>

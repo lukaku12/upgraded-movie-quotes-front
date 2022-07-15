@@ -1,12 +1,20 @@
 <template>
   <AddQuote v-if="addQuoteIsVisible"></AddQuote>
   <AuthWrapper>
-    <div v-if="loading" class="flex flex-col gap-5 w-full max-w-[1024px] p-10 bg-transparent text-white mb-12 lg:rounded-[10px]">
-      <LoadingAnimation/>
+    <div
+      v-if="loading"
+      class="flex flex-col gap-5 w-full max-w-[1024px] p-10 bg-transparent text-white mb-12 lg:rounded-[10px]"
+    >
+      <LoadingAnimation />
     </div>
     <div v-else>
       <AddQuoteComponent></AddQuoteComponent>
-      <Post v-for="post in posts" :key="post.id" :loading="loading" :post="post"></Post>
+      <Post
+        v-for="post in posts"
+        :key="post.id"
+        :loading="loading"
+        :post="post"
+      ></Post>
     </div>
   </AuthWrapper>
 </template>

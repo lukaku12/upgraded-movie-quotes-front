@@ -1,12 +1,10 @@
 <template>
-  <div
-      class="border-t-[#efefef5b] border-t-2 py-4 gap-3 flex flex-col"
-  >
+  <div class="border-t-[#efefef5b] border-t-2 py-4 gap-3 flex flex-col">
     <div class="flex items-center gap-3">
       <img
-          class="max-w-[45px] max-h-[45px] rounded-[50%] aspect-square"
-          src="@/assets/post/profile-picture.png"
-          alt="profile-picture"
+        class="max-w-[45px] max-h-[45px] rounded-[50%] aspect-square"
+        src="@/assets/post/profile-picture.png"
+        alt="profile-picture"
       />
       <p class="font-bold">{{ comment.username }}</p>
     </div>
@@ -18,12 +16,12 @@
 
 <script>
 export default {
-  name: 'PostComment',
+  name: "PostComment",
   props: {
     comment: {
       type: Object,
       required: true,
-    }
-  }
-}
+    },
+  },
+};
 </script>

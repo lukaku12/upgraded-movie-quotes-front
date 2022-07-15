@@ -17,27 +17,54 @@ const router = createRouter({
     { path: "/", component: Landing, name: "home" },
     { path: "/login", component: Landing, name: "login" },
     { path: "/register", component: Landing, name: "sign-up" },
-    { path: "/quotes/create", component: Landing, name: "add-quote", beforeEnter: [isAuthenticated], },
-    { path: "/movies", component: Movies, name: "movies", beforeEnter: [isAuthenticated], },
-    { path: "/movies/:movie", component: Movie, name: "movie", beforeEnter: [isAuthenticated], },
+    {
+      path: "/quotes/create",
+      component: Landing,
+      name: "add-quote",
+      beforeEnter: [isAuthenticated],
+    },
+    {
+      path: "/movies",
+      component: Movies,
+      name: "movies",
+      beforeEnter: [isAuthenticated],
+    },
+    {
+      path: "/movies/:movie",
+      component: Movie,
+      name: "movie",
+      beforeEnter: [isAuthenticated],
+    },
     {
       path: "/movies/:movie/quote/add",
       component: AddQuoteForMovie,
-      name: "add-quote-for-movie", beforeEnter: [isAuthenticated],
+      name: "add-quote-for-movie",
+      beforeEnter: [isAuthenticated],
     },
     {
       path: "/movies/:movie/quote/:quote",
       component: ViewQuote,
-      name: "view-quote", beforeEnter: [isAuthenticated],
+      name: "view-quote",
+      beforeEnter: [isAuthenticated],
     },
     {
       path: "/movies/:movie/quote/:quote/edit",
       component: EditQuote,
-      name: "edit-quote", beforeEnter: [isAuthenticated],
-
+      name: "edit-quote",
+      beforeEnter: [isAuthenticated],
     },
-    { path: "/profile/edit", component: EditProfile, name: "edit-profile", beforeEnter: [isAuthenticated], },
-    { path: "/:notFound(.*)", component: NotFound, name: "not-found", beforeEnter: [isAuthenticated], },
+    {
+      path: "/profile/edit",
+      component: EditProfile,
+      name: "edit-profile",
+      beforeEnter: [isAuthenticated],
+    },
+    {
+      path: "/:notFound(.*)",
+      component: NotFound,
+      name: "not-found",
+      beforeEnter: [isAuthenticated],
+    },
   ],
 });
 

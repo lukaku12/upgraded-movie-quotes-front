@@ -23,12 +23,12 @@
 
 <script>
 export default {
-    name: "HomeSvg",
-    props: {
-      fillColor: {
-        type: String,
-        required: true
-      }
-    }
-  };
+  name: "HomeSvg",
+  props: {
+    fillColor: {
+      type: String,
+      required: true,
+    },
+  },
+};
 </script>

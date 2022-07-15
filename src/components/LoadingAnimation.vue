@@ -11,7 +11,7 @@
 <script>
 export default {
   name: "LoadingAnimation",
-}
+};
 </script>
 
 <style scoped>
@@ -25,11 +25,12 @@ export default {
   color: #9880ff;
   box-shadow: 9999px 0 0 0 #9880ff;
   animation: dotFalling 1s infinite linear;
-  animation-delay: .1s;
+  animation-delay: 0.1s;
 }
 
-.dot-falling::before, .dot-falling::after {
-  content: '';
+.dot-falling::before,
+.dot-falling::after {
+  content: "";
   display: inline-block;
   position: absolute;
   top: 0;
@@ -52,7 +53,7 @@ export default {
   background-color: #9880ff;
   color: #9880ff;
   animation: dotFallingAfter 1s infinite linear;
-  animation-delay: .2s;
+  animation-delay: 0.2s;
 }
 
 @keyframes dotFalling {

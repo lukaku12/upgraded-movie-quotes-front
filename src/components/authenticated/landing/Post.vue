@@ -3,24 +3,28 @@
     class="flex flex-col gap-5 w-full max-w-[1024px] p-6 md:p-10 bg-[#090a0e] text-white mb-12 lg:rounded-[10px]"
   >
     <div class="relative">
-      <PostInformation :current-post="currentPost"/>
-      <PostActions :current-post="currentPost" :user="user"/>
+      <PostInformation :current-post="currentPost" />
+      <PostActions :current-post="currentPost" :user="user" />
 
       <div v-if="currentPost.comments.length < 3 || showAllComments">
-        <PostComment v-for="comment in currentPost.comments" :key="comment.id" :comment="comment"/>
+        <PostComment
+          v-for="comment in currentPost.comments"
+          :key="comment.id"
+          :comment="comment"
+        />
       </div>
       <div v-else>
-        <PostComment :comment="currentPost.comments[0]"/>
+        <PostComment :comment="currentPost.comments[0]" />
       </div>
       <button
-          v-if="currentPost.comments.length >= 3"
-          @click="setShowAllComments"
-          class="opacity-80 underline absolute -bottom-8 right-0"
+        v-if="currentPost.comments.length >= 3"
+        class="opacity-80 underline absolute -bottom-8 right-0"
+        @click="setShowAllComments"
       >
-        {{ !showAllComments ? 'see all' : 'hide' }} comments
+        {{ !showAllComments ? "see all" : "hide" }} comments
       </button>
 
-      <PostAddComment :current-post="currentPost" :user="user"/>
+      <PostAddComment :current-post="currentPost" :user="user" />
     </div>
   </div>
 </template>
@@ -35,7 +39,7 @@ import { mapState } from "pinia";
 
 export default {
   name: "Post",
-  components: {PostAddComment, PostInformation, PostActions, PostComment},
+  components: { PostAddComment, PostInformation, PostActions, PostComment },
   props: {
     post: {
       type: Object,
@@ -55,6 +59,6 @@ export default {
     setShowAllComments() {
       this.showAllComments = !this.showAllComments;
     },
-  }
+  },
 };
 </script>
