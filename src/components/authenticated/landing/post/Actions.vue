@@ -5,7 +5,7 @@
       <button><CommentIcon /></button>
     </div>
     <div class="flex gap-2">
-      <p>{{ currentPost.likes.length }}</p>
+      <p>{{ postLikes.length }}</p>
       <button v-if="!quoteLikesUserIDs.includes(user.id)" @click="likeQuote">
         <HeartSvg fill-color="#FFFFFF" hover:fill-color="#FF0000" />
       </button>
@@ -34,14 +34,19 @@ export default {
       required: true,
     }
   },
+  data() {
+    return {
+      postLikes: this.currentPost.likes,
+    };
+  },
   computed: {
     quoteLikesUserIDs() {
-      return this.currentPost.likes.map((like) => like.user_id);
+      return this.postLikes.map((like) => like.user_id);
     },
   },
   methods: {
     likeQuote() {
-      this.currentPost.likes.push({user_id: this.user.id})
+      this.postLikes.push({user_id: this.user.id})
       axios
           .post("like/add", { quote_id: this.currentPost.id })
       // .then((response) => {
@@ -52,7 +57,8 @@ export default {
       // });
     },
     unlikeQuote() {
-      this.currentPost.likes.pop()
+      const userLike = this.postLikes.filter((like) => like.user_id === this.user.id)
+      this.postLikes.splice(this.postLikes.indexOf(userLike[0]), 1)
       axios
           .post("like/remove", { quote_id: this.currentPost.id })
       // .then((response) => {
