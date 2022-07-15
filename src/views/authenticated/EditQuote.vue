@@ -1,7 +1,14 @@
 <template>
   <PopupMessage v-if="apiError" :message="apiError" text-color="text-red-600" />
   <AuthWrapper>
+    <div
+      v-if="loading"
+      class="flex flex-col gap-5 w-full max-w-[1024px] p-10 bg-transparent text-white mb-12 lg:rounded-[10px]"
+    >
+      <LoadingAnimation />
+    </div>
     <QuoteWrapper
+      v-else
       :movie-slug="movieSlug"
       :quote="quote"
       :quote-id="quoteId"
@@ -73,6 +80,7 @@ import TextArea from "@/components/Inputs/TextArea.vue";
 import { Form as VueForm, Field } from "vee-validate";
 import QuoteWrapper from "@/components/authenticated/movies/QuoteWrapper.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
+import LoadingAnimation from "@/components/LoadingAnimation.vue";
 import axios from "@/config/axios/index.js";
 import Photo from "@/components/icons/Photo.vue";
 import PopupMessage from "@/components/authenticated/PopupMessage.vue";
@@ -87,6 +95,7 @@ export default {
     VueForm,
     Field,
     PopupMessage,
+    LoadingAnimation,
   },
   data() {
     return {
@@ -94,6 +103,7 @@ export default {
       thumbnail: "",
       dataIsFetched: false,
       apiError: "",
+      loading: false,
     };
   },
   computed: {
@@ -105,11 +115,13 @@ export default {
     },
   },
   mounted() {
+    this.loading = true;
     axios
       .get(`movies/${this.movieSlug}/quote/${this.quoteId}`)
       .then((response) => {
         this.quote = response.data;
         this.dataIsFetched = true;
+        this.loading = false;
       });
   },
   methods: {

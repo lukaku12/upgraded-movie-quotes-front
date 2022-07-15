@@ -1,7 +1,14 @@
 <template>
   <PopupMessage v-if="apiError" :message="apiError" text-color="text-red-600" />
   <AuthWrapper>
+    <div
+      v-if="loading"
+      class="flex flex-col gap-5 w-full max-w-[1024px] p-10 bg-transparent text-white mb-12 lg:rounded-[10px]"
+    >
+      <LoadingAnimation />
+    </div>
     <QuoteWrapper
+      v-else
       :movie-slug="movieSlug"
       :data-is-fetched="dataIsFetched"
       name="Add Quote"
@@ -63,6 +70,7 @@
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import TextArea from "@/components/Inputs/TextArea.vue";
 import QuoteWrapper from "@/components/authenticated/movies/QuoteWrapper.vue";
+import LoadingAnimation from "@/components/LoadingAnimation.vue";
 import PopupMessage from "@/components/authenticated/PopupMessage.vue";
 import CameraReelsSvg from "@/components/icons/CameraReels.vue";
 import { Form as VueForm } from "vee-validate";
@@ -76,6 +84,7 @@ export default {
     CameraReelsSvg,
     VueForm,
     PopupMessage,
+    LoadingAnimation,
   },
   data() {
     return {
@@ -83,6 +92,7 @@ export default {
       dataIsFetched: false,
       apiSuccess: "",
       apiError: "",
+      loading: false,
     };
   },
   computed: {
@@ -94,9 +104,11 @@ export default {
     },
   },
   mounted() {
+    this.loading = true;
     axios.get(`movies/${this.movieSlug}`).then((response) => {
       this.movie = response.data;
       this.dataIsFetched = true;
+      this.loading = false;
     });
   },
   methods: {

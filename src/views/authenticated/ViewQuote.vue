@@ -1,6 +1,13 @@
 <template>
   <AuthWrapper>
+    <div
+      v-if="loading"
+      class="flex flex-col gap-5 w-full max-w-[1024px] p-10 bg-transparent text-white mb-12 lg:rounded-[10px]"
+    >
+      <LoadingAnimation />
+    </div>
     <QuoteWrapper
+      v-else
       :movie-slug="movieSlug"
       :quote="quote"
       :quote-id="quoteId"
@@ -32,19 +39,19 @@
       </div>
       <div class="flex gap-4 w-10/12 md:w-11/12 mb-4">
         <div class="flex gap-2">
-          <p>{{ post.comments.length }}</p>
+          <!-- <p>{{ post.comments.length }}</p> -->
           <button>
             <CommentIcon />
           </button>
         </div>
         <div class="flex gap-2">
-          <p>{{ post.likes }}</p>
+          <!-- <p>{{ post.likes }}</p> -->
           <button>
             <HeartSvg />
           </button>
         </div>
       </div>
-      <div class="w-10/12 md:w-11/12">
+      <!-- <div class="w-10/12 md:w-11/12">
         <div
           v-for="comment in post.comments"
           :key="comment.id"
@@ -76,7 +83,7 @@
           placeholder="Write a comment"
           class="rounded-[10px] bg-[#24222F] px-4 py-2 w-full focus:outline-none"
         />
-      </div>
+      </div> -->
     </QuoteWrapper>
   </AuthWrapper>
 </template>
@@ -85,6 +92,7 @@
 import TextArea from "@/components/Inputs/TextArea.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import QuoteWrapper from "@/components/authenticated/movies/QuoteWrapper.vue";
+import LoadingAnimation from "@/components/LoadingAnimation.vue";
 import HeartSvg from "@/components/icons/Heart.vue";
 import axios from "@/config/axios/index.js";
 import CommentIcon from "@/components/icons/CommentIcon.vue";
@@ -97,32 +105,13 @@ export default {
     TextArea,
     HeartSvg,
     CommentIcon,
+    LoadingAnimation,
   },
   data() {
     return {
       quote: {},
       dataIsFetched: false,
-      post: {
-        id: 1,
-        userName: "Maia Nakashidze",
-        quote: "Follow your dream.",
-        movie: "Billy Elliot",
-        movieReleaseDate: "2000",
-        likes: 10,
-        comments: [
-          {
-            id: 1,
-            userName: "Nina Baldadze",
-            comment:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nunc vel massa facilisis consequat elit morbi convallis convallis. Volutpat vitae et nisl et. Adipiscing enim integer mi leo nisl. Arcu vitae mauris odio eget.",
-          },
-          {
-            id: 2,
-            userName: "Nika Tsetskhladze",
-            comment: "Lorem ipsum dolor sit amet, consectetur adipiscin",
-          },
-        ],
-      },
+      loading: true,
     };
   },
   computed: {
@@ -134,11 +123,13 @@ export default {
     },
   },
   mounted() {
+    this.loading = true;
     axios
       .get(`movies/${this.movieSlug}/quote/${this.quoteId}`)
       .then((response) => {
         this.quote = response.data;
         this.dataIsFetched = true;
+        this.loading = false;
       });
   },
 };

@@ -1,7 +1,15 @@
 <template>
   <PopupMessage v-if="apiSuccess" :message="apiSuccess" />
-  <AuthWrapper v-if="movie.length !== 0">
+  <AuthWrapper>
     <div
+      v-if="loading"
+      class="flex flex-col gap-5 w-full max-w-[1024px] p-10 bg-transparent text-white mb-12 lg:rounded-[10px]"
+    >
+      <LoadingAnimation />
+    </div>
+
+    <div
+      v-if="movie.length !== 0 && !loading"
       class="w-full flex flex-col items-center min-h-[calc(100vh-86px)] bg-[#0f0e14]"
     >
       <div
@@ -82,6 +90,7 @@
 import Quote from "@/components/authenticated/movies/Quote.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import PopupMessage from "@/components/authenticated/PopupMessage.vue";
+import LoadingAnimation from "@/components/LoadingAnimation.vue";
 import NotFound from "@/views/NotFound.vue";
 import axios from "@/config/axios/index.js";
 import Plus from "@/components/icons/Plus.vue";
@@ -94,11 +103,13 @@ export default {
     Quote,
     Plus,
     PopupMessage,
+    LoadingAnimation,
   },
   data() {
     return {
       movie: [],
       movieExists: true,
+      loading: false,
     };
   },
   computed: {
@@ -110,10 +121,12 @@ export default {
     },
   },
   mounted() {
+    this.loading = true;
     axios
       .get(`movies/${this.movieSlug}`)
       .then((response) => {
         this.movie = response.data;
+        this.loading = false;
       })
       .catch(() => {
         this.movieExists = false;
