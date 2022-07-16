@@ -69,17 +69,10 @@ export default {
   computed: {
     ...mapState(useUserStore, ["user"]),
     ...mapState(useStylesStore, ["notificationBarIsOpen"]),
-    ...mapState(useNotificationsStore, ["notifications", "unreadNotifications"]),
-  },
-  mounted() {
-    axios.get("user").then((res) => {
-      window.Echo.channel('notify-user.' + res.data.id)
-        .listen("NotifyUser", (e) => {
-            this.addNotification(e[0]);
-            console.log(e);
-          }
-        );
-    });
+    ...mapState(useNotificationsStore, [
+      "notifications",
+      "unreadNotifications",
+    ]),
   },
   methods: {
     ...mapActions(useStylesStore, [
@@ -87,7 +80,6 @@ export default {
       "setSearchBarIsOpen",
       "setNotificationBarIsOpen",
     ]),
-    ...mapActions(useNotificationsStore, ["addNotification"]),
     logout() {
       axios
         .post("logout")

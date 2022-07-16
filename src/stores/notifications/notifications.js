@@ -12,19 +12,15 @@ export const useNotificationsStore = defineStore({
             payload.sort(function(a,b){
                 return new Date(b.created_at) - new Date(a.created_at);
             });
-            // filter notifications by unread
-            const unreadNotificationsArray = payload.filter(notifications => notifications.read_at === null);
-            console.log(unreadNotificationsArray);
-            this.setUnreadNotifications(unreadNotificationsArray.length)
-
             this.notifications = payload;
+            this.setUnreadNotifications()
         },
         addNotification(payload) {
-            this.unreadNotifications += 1;
             this.notifications.unshift(payload);
+            this.setUnreadNotifications()
         },
-        setUnreadNotifications(payload) {
-            this.unreadNotifications = payload;
+        setUnreadNotifications() {
+            this.unreadNotifications = this.notifications.filter(notifications => notifications.read_at === null).length;
         },
         setAllNotificationsAsRead() {
             this.notifications.forEach(notification => {

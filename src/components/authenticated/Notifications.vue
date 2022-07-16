@@ -85,9 +85,6 @@ export default {
     markAllNotificationsAsRead() {
       this.setAllNotificationsAsRead();
       axios.post("notifications/read-all")
-        .then((res) => {
-          console.log(res);
-      });
     },
   },
 };
