@@ -11,7 +11,7 @@
     <div class="flex flex-col gap-10">
       <div class="flex justify-between">
         <h1 class="font-bold text-2xl">Notifications</h1>
-        <button class="underline">Mark as all read</button>
+        <button class="underline" @click="markAllNotificationsAsRead">Mark as all read</button>
       </div>
       <div v-if="notifications.length === 0" class="text-center">
         <p>No News Notifications!</p>
@@ -33,7 +33,7 @@
               src="@/assets/post/profile-picture.png"
               alt="profile"
             />
-            <p class="text-green-600">New</p>
+            <p class="text-green-600">{{ notification.read_at === null ? 'New' : "" }}</p>
           </div>
           <div class="flex flex-col gap-5">
             <div class="flex flex-col gap-1">
@@ -61,9 +61,9 @@
 <script>
 import { mapState, mapActions } from "pinia";
 import { useStylesStore } from "@/stores/styling/styles";
+import { useNotificationsStore } from "@/stores/notifications/notifications";
 import ChatQuote from "../icons/ChatQuote.vue";
 import HeartFillRed from "../icons/HeartFillRed.vue";
-import { useNotificationsStore } from "@/stores/notifications/notifications";
 import axios from "@/config/axios";
 
 export default {
@@ -71,7 +71,7 @@ export default {
   components: { ChatQuote, HeartFillRed },
   computed: {
     ...mapState(useStylesStore, ["notificationBarIsOpen"]),
-    ...mapState(useNotificationsStore, ["notifications"]),
+    ...mapState(useNotificationsStore, ["notifications", "unreadNotifications"]),
   },
   mounted() {
     axios.get("notifications").then((res) => {
@@ -81,7 +81,14 @@ export default {
   },
   methods: {
     ...mapActions(useStylesStore, ["setNotificationBarIsOpen"]),
-    ...mapActions(useNotificationsStore, ["setNotifications"]),
+    ...mapActions(useNotificationsStore, ["setNotifications", "setUnreadNotifications", "setAllNotificationsAsRead"]),
+    markAllNotificationsAsRead() {
+      this.setAllNotificationsAsRead();
+      axios.post("notifications/read-all")
+        .then((res) => {
+          console.log(res);
+      });
+    },
   },
 };
 </script>

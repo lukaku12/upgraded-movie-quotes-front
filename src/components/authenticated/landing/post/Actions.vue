@@ -53,6 +53,7 @@ export default {
         quote_id: this.currentPost.id,
         user_id: this.user.id,
         username: this.user.username,
+        read_at: null,
         message: `Reacted to your quote`,
       },{headers: {"X-Socket-Id": window.Echo.socketId()}
       }).then((res) => {

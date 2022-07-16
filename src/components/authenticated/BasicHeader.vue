@@ -27,10 +27,10 @@
               @click="setNotificationBarIsOpen"
             >
               <span
-                v-if="notifications.length > 0"
+                v-if="unreadNotifications > 0"
                 class="absolute bg-red-600 text-sm px-[6px] rounded-[50%] -top-[5px] -right-2"
               >
-                {{ notifications.length }}
+                {{ unreadNotifications }}
               </span>
               <NotificationBell />
             </button>
@@ -69,7 +69,7 @@ export default {
   computed: {
     ...mapState(useUserStore, ["user"]),
     ...mapState(useStylesStore, ["notificationBarIsOpen"]),
-    ...mapState(useNotificationsStore, ["notifications"]),
+    ...mapState(useNotificationsStore, ["notifications", "unreadNotifications"]),
   },
   mounted() {
     axios.get("user").then((res) => {

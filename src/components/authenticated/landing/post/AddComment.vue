@@ -48,6 +48,7 @@ export default {
       this.currentPost.comments.push({
         body: this.commentData,
         user_id: this.user.id,
+        username: this.user.username,
       });
       const sendCommentData = {
         quote_id: this.currentPost.id,
@@ -63,6 +64,7 @@ export default {
             quote_id: this.currentPost.id,
             user_id: this.user.id,
             username: this.user.username,
+            read_at: null,
             message: `Commented to your movie quote`,
           },
           { headers: { "X-Socket-Id": window.Echo.socketId() } }
