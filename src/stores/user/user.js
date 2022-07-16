@@ -7,7 +7,7 @@ export const useUserStore = defineStore({
       created_at: "",
       email: "",
       email_verified_at: null,
-      id: 1,
+      id: null,
       updated_at: "",
       username: "",
     },

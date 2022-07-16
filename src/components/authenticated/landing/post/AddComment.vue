@@ -44,6 +44,7 @@ export default {
   methods: {
     addComment() {
       if (this.commentData === "") return;
+      // eslint-disable-next-line vue/no-mutating-props
       this.currentPost.comments.push({
         body: this.commentData,
         user_id: this.user.id,
@@ -55,15 +56,20 @@ export default {
       axios.post("comment/add", sendCommentData).then(() => {
         this.commentData = "";
       });
-      axios.post("notify-user", {
-        quote_id: this.currentPost.id,
-        user_id: this.user.id,
-        username: this.user.username,
-        message: `Commented to your movie quote`,
-      },{headers: {"X-Socket-Id": window.Echo.socketId()}
-      }).then((res) => {
-        console.log(res);
-      });
+      axios
+        .post(
+          "notify-user",
+          {
+            quote_id: this.currentPost.id,
+            user_id: this.user.id,
+            username: this.user.username,
+            message: `Commented to your movie quote`,
+          },
+          { headers: { "X-Socket-Id": window.Echo.socketId() } }
+        )
+        .then((res) => {
+          console.log(res);
+        });
     },
   },
 };

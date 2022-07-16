@@ -60,21 +60,26 @@ import BurgerMenu from "../icons/BurgerMenu.vue";
 import Search from "../icons/Search.vue";
 import Triangle from "../icons/Triangle.vue";
 import NotificationBell from "../icons/NotificationBell.vue";
-import {useNotificationsStore} from "@/stores/notifications/notifications";
+import { useNotificationsStore } from "@/stores/notifications/notifications";
+import { useUserStore } from "@/stores/user/user";
 
 export default {
   name: "AuthHeader",
   components: { Language, BurgerMenu, Search, Triangle, NotificationBell },
   computed: {
+    ...mapState(useUserStore, ["user"]),
     ...mapState(useStylesStore, ["notificationBarIsOpen"]),
     ...mapState(useNotificationsStore, ["notifications"]),
   },
   mounted() {
-    window.Echo.channel('notify-user')
-        .listen('NotifyUser', (e) => {
-          this.setNotifications(e);
-          console.log(this.notifications)
-        });
+    axios.get("user").then((res) => {
+      window.Echo.channel('notify-user.' + res.data.id)
+        .listen("NotifyUser", (e) => {
+            this.addNotification(e[0]);
+            console.log(e);
+          }
+        );
+    });
   },
   methods: {
     ...mapActions(useStylesStore, [
@@ -82,7 +87,7 @@ export default {
       "setSearchBarIsOpen",
       "setNotificationBarIsOpen",
     ]),
-    ...mapActions(useNotificationsStore, ["setNotifications"]),
+    ...mapActions(useNotificationsStore, ["addNotification"]),
     logout() {
       axios
         .post("logout")
