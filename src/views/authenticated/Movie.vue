@@ -20,15 +20,15 @@
             class="h-full max-h-[450px] rounded-2xl aspect-square md:aspect-video xl:aspect-auto"
             :src="
               'http://127.0.0.1:8000/storage/thumbnails/' +
-              movie.quotes[0].thumbnail
+              movie.thumbnail
             "
             alt="post-image"
           />
         </div>
         <div class="w-full xl:w-[40%]">
           <h1 class="text-2xl text-[#DDCCAA]">
-            {{ movie.movie.title.en }} ({{
-              movie.movie.created_at.substring(0, 4)
+            {{ movie.title.en }} ({{
+              movie.created_at.substring(0, 4)
             }})
           </h1>
           <div class="w-full flex gap-2 font-bold mt-4">
@@ -71,13 +71,14 @@
           <h2>(Total {{ movie.quotes.length }})</h2>
         </div>
         <div
+          v-if="movie.quotes.length !== 0"
           class="w-full flex items-center flex-col gap-10 mb-10 h-full max-w-[809px]"
         >
           <Quote
             v-for="quote in movie.quotes"
             :key="quote.id"
             :quote="quote"
-            :movie-slug="movie.movie.slug"
+            :movie-slug="movie.slug"
           ></Quote>
         </div>
       </main>
@@ -125,6 +126,7 @@ export default {
     axios
       .get(`movies/${this.movieSlug}`)
       .then((response) => {
+        console.log(response.data);
         this.movie = response.data;
         this.loading = false;
       })

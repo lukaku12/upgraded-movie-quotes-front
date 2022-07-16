@@ -83,7 +83,7 @@ export default {
   mounted() {
     axios.get("notifications").then((res) => {
       this.setNotifications(res.data.data);
-      console.log(res.data.data);
+      // console.log(res.data.data);
     });
   },
   methods: {

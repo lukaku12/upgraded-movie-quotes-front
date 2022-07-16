@@ -30,6 +30,12 @@ const router = createRouter({
       beforeEnter: [isAuthenticated],
     },
     {
+      path: "/movies/add",
+      component: Movies,
+      name: "add-movie",
+      beforeEnter: [isAuthenticated],
+    },
+    {
       path: "/movies/:movie",
       component: Movie,
       name: "movie",

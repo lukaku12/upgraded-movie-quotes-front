@@ -2,21 +2,22 @@
   <button
     v-if="!desktopSearchBarIsOpen"
     class="relative hidden lg:flex justify-center items-center text-center lg:w-[20%] lg:pl-4 lg:gap-4 opacity-100 hover:opacity-70 font-bold"
+    :class="closedSearchBarWidth"
     @click="setDesktopSearchBarIsOpen(true)"
   >
     <Search />
-    Search By
+    {{  searchTitle }}
   </button>
   <div
     v-if="desktopSearchBarIsOpen"
     class="w-[70%] hidden lg:block relative animate-pop-up"
-    :class="width"
+    :class="openedSearchBarWidth"
   >
     <input
       :value="searchValue"
       class="text-white w-full pl-9 pr-5 h-[37px] border-[#efefef5b] border-b-2 bg-transparent focus:outline-none"
       type="text"
-      placeholder="Enter @ to search movies, Enter # to search quotes"
+      :placeholder="placeholder"
       @input="searchMovie"
     />
     <Search styling="absolute top-1" />
@@ -37,9 +38,13 @@ export default {
   name: "DesktopSearch",
   components: { Search },
   props: {
-    width: {
+    openedSearchBarWidth: {
       type: String,
       default: "w-[72%]",
+    },
+    closedSearchBarWidth: {
+      type: String,
+      default: "w-[20%]",
     },
     searchValue: {
       type: String,
@@ -52,6 +57,14 @@ export default {
     searchMovie: {
       type: Function,
       default: () => {},
+    },
+    placeholder: {
+      type: String,
+      default: "Enter @ to search movies, Enter # to search quotes",
+    },
+    searchTitle: {
+      type: String,
+      default: "Search By",
     },
   },
   computed: {
