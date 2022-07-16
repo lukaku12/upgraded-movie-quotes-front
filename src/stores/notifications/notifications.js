@@ -16,6 +16,9 @@ export const useNotificationsStore = defineStore({
       this.setUnreadNotifications();
     },
     addNotification(payload) {
+      // check if notification already exists
+      if(this.notifications.indexOf(payload) > -1) return;
+      // continue adding notification
       this.notifications.unshift(payload);
       this.setUnreadNotifications();
     },
