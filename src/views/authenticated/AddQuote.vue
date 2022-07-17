@@ -1,7 +1,7 @@
 <template>
   <div class="w-screen h-screen fixed top-0 left-0 bg-[#0000007c] z-50"></div>
   <div
-    class="fixed overflow-y-auto max-h-screen w-screen bg-landing-background-reverse h-[calc(100vh-84px)] top-[84px] right-0 pb-10 text-white z-50 max-w-[961px] md:auto md:left-[50%] md:translate-x-[-50%] md:rounded-[12px] font-bold"
+    class="fixed overflow-y-auto h-[calc(100vh-84px)] w-screen bg-landing-background-reverse md:h-auto top-[84px] right-0 pb-10 text-white z-50 max-w-[961px] md:auto md:left-[50%] md:translate-x-[-50%] md:rounded-[12px] font-bold"
   >
     <div class="flex flex-col items-center">
       <header
