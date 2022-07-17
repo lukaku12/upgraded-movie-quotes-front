@@ -1,14 +1,14 @@
 <template>
   <div
     :class="navBarIsOpen ? 'visible' : 'hidden'"
-    class="fixed w-screen h-screen top-0 left-0 z-50"
+    class="fixed w-screen h-screen top-0 left-0 z-z-1000"
     @click="setNavbarIsOpen(false)"
   ></div>
   <div class="hidden lg:w-[500px] lg:h-full lg:flex"></div>
   <div
     :class="navBarIsOpen ? 'visible' : 'hidden'"
     class="fixed top-0 animate-pop-up lg:animate-none left-0 h-[658px]
-           rounded-tr-xl z-50 rounded-br-xl px-16 pr-20 bg-[#11101A] lg:z-40
+           rounded-tr-xl z-1000 rounded-br-xl px-16 pr-20 bg-[#11101A] lg:z-40
            lg:bg-transparent lg:h-96 lg:top-[124px] lg:flex lg:flex-col
     ">
     <div

@@ -1,9 +1,9 @@
 <template>
   <div
     :class="searchBarIsOpen ? 'visible' : 'hidden'"
-    class="fixed w-screen top-0 left-0 h-5/6 min-h-[500px] bg-[#12101A] lg:hidden z-50 animate-pop-up"
+    class="fixed w-screen top-0 left-0 h-5/6 min-h-[500px] bg-[#12101A] lg:hidden  z-1000 animate-pop-up"
   >
-    <div class="flex gap-6 p-[15px] z-50 border-[#EFEFEF4D] border-b-2 w-full">
+    <div class="flex gap-6 p-[15px] z-1000 border-[#EFEFEF4D] border-b-2 w-full">
       <button @click="setSearchBarIsOpen(false)">
         <LeftArrow />
       </button>

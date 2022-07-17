@@ -1,12 +1,12 @@
 <template>
   <div
     v-if="notificationBarIsOpen"
-    class="w-screen h-screen fixed top-0 left-0 bg-[#0000006b] z-50"
+    class="w-screen h-screen fixed top-0 left-0 bg-[#0000006b] z-1000"
     @click="setNotificationBarIsOpen(false)"
   ></div>
   <div
     v-if="notificationBarIsOpen"
-    class="fixed w-screen max-h-[calc(100vh-150px)] bg-black h-auto right-0 pb-12 p-5 sm:p-12 text-white z-50 max-w-[961px] lg:right-10 lg:rounded-[12px]"
+    class="fixed w-screen max-h-[calc(100vh-150px)] bg-black h-auto right-0 pb-12 p-5 sm:p-12 text-white z-1000 max-w-[961px] lg:right-10 lg:rounded-[12px]"
   >
     <div class="flex flex-col gap-10">
       <div class="flex justify-between">

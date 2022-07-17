@@ -3,7 +3,7 @@
     class="flex w-full justify-between h-[86px] items-center bg-[#222030] relative"
   >
     <div
-      class="flex w-full px-6 md:px-16 justify-between h-[86px] items-center fixed top-0 bg-[#222030] z-1000"
+      class="flex w-full px-6 md:px-16 justify-between h-[86px] items-center fixed top-0 bg-[#222030] z-500"
     >
       <div>
         <router-link
