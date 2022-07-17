@@ -8,11 +8,11 @@
   <div
     :class="navBarIsOpen ? 'visible' : 'hidden'"
     class="fixed top-0 animate-pop-up lg:animate-none left-0 h-[658px]
-           rounded-tr-xl z-40 rounded-br-xl px-16 pr-20 bg-[#11101A]
-           lg:bg-transparent lg:h-96 lg:top-[124px] lg:flex lg:flex-col lg:w-[400px]
+           rounded-tr-xl z-50 rounded-br-xl px-16 pr-20 bg-[#11101A] lg:z-40
+           lg:bg-transparent lg:h-96 lg:top-[124px] lg:flex lg:flex-col
     ">
     <div
-      class="flex w-full items-center h-[60px] gap-3 text-white min-w-[300px] mt-14 lg:mt-0"
+      class="flex w-full items-center h-[60px] gap-3 text-white mt-14 lg:mt-0"
     >
       <img
         class="max-w-[52px] max-h-[52px] rounded-[50%] aspect-square"
