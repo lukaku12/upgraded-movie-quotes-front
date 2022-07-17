@@ -13,6 +13,7 @@
       :data-is-fetched="dataIsFetched"
       name="Add Quote"
       :view-quote="false"
+      :user="user"
     >
       <VueForm
         v-slot="{ values, meta }"
@@ -45,8 +46,8 @@
             <div class="flex h-auto items-center justify-center">
               <CameraReelsSvg fill-color="#FFFFFF" />
               <h1 class="text-xs md:text-xl mx-3">
-                {{ movie.movie.title.en }} ({{
-                  movie.movie.created_at.substring(0, 4)
+                {{ movie.title.en }} ({{
+                  movie.created_at.substring(0, 4)
                 }})
               </h1>
             </div>
@@ -75,6 +76,8 @@ import PopupMessage from "@/components/authenticated/PopupMessage.vue";
 import CameraReelsSvg from "@/components/icons/CameraReels.vue";
 import { Form as VueForm } from "vee-validate";
 import axios from "@/config/axios/index.js";
+import { mapState } from "pinia";
+import { useUserStore } from "@/stores/user/user";
 export default {
   name: "AddQuoteForMovie",
   components: {
@@ -96,6 +99,7 @@ export default {
     };
   },
   computed: {
+    ...mapState(useUserStore, ["user"]),
     movieSlug() {
       return this.$route.params.movie;
     },
@@ -106,6 +110,7 @@ export default {
   mounted() {
     this.loading = true;
     axios.get(`movies/${this.movieSlug}`).then((response) => {
+      console.log(response.data);
       this.movie = response.data;
       this.dataIsFetched = true;
       this.loading = false;

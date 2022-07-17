@@ -47,7 +47,7 @@
             src="@/assets/post/profile-picture.png"
             alt="profile-picture"
           />
-          <p>Nino Tabagari</p>
+          <p>{{ user.username }}</p>
         </div>
       </header>
       <slot />
@@ -84,6 +84,10 @@ export default {
       type: Boolean,
       required: true,
     },
+    user: {
+      type: Object,
+      required: true,
+    }
   },
   methods: {
     deleteQuote() {

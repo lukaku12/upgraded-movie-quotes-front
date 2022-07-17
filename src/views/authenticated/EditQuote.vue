@@ -15,6 +15,7 @@
       :data-is-fetched="dataIsFetched"
       name="Edit Quote"
       :view-quote="false"
+      :user="user"
     >
       <VueForm
         v-slot="{ values, meta }"
@@ -84,6 +85,8 @@ import LoadingAnimation from "@/components/LoadingAnimation.vue";
 import axios from "@/config/axios/index.js";
 import Photo from "@/components/icons/Photo.vue";
 import PopupMessage from "@/components/authenticated/PopupMessage.vue";
+import { mapState } from "pinia";
+import { useUserStore } from "@/stores/user/user";
 
 export default {
   name: "EditQuote",
@@ -107,6 +110,7 @@ export default {
     };
   },
   computed: {
+    ...mapState(useUserStore, ["user"]),
     movieSlug() {
       return this.$route.params.movie;
     },
