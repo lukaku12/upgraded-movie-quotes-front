@@ -41,24 +41,14 @@
       <div class="flex gap-4 w-10/12 md:w-11/12 mb-4">
         <PostActions :current-post="quote" :user="user"></PostActions>
       </div>
-      <div class="w-10/12 md:w-11/12">
-        <div v-if="quote.comments.length < 3 || showAllComments">
+      <div class="w-10/12 md:w-11/12 relative">
+        <div>
           <PostComment
             v-for="comment in quote.comments"
             :key="comment.id"
             :comment="comment"
           />
         </div>
-        <div v-else>
-          <PostComment :comment="quote.comments[0]" />
-        </div>
-        <button
-          v-if="quote.comments.length >= 3"
-          class="opacity-80 underline absolute -bottom-8 right-0"
-          @click="setShowAllComments"
-        >
-          {{ !showAllComments ? "see all" : "hide" }} comments
-        </button>
         <PostAddComment :current-post="quote" :user="user" />
       </div>
     </QuoteWrapper>

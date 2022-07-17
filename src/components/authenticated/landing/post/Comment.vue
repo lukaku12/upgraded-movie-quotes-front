@@ -3,7 +3,7 @@
     <div class="flex items-center gap-3">
       <img
         class="max-w-[45px] max-h-[45px] rounded-[50%] aspect-square"
-        src="@/assets/post/profile-picture.png"
+        :src="'http://127.0.0.1:8000/storage/thumbnails/' + comment.picture"
         alt="profile-picture"
       />
       <p class="font-bold">{{ comment.username }}</p>
