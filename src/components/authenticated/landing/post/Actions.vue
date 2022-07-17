@@ -1,11 +1,11 @@
 <template>
   <div class="flex gap-4 my-4">
-    <div class="flex gap-2">
-      <p>{{ currentPost.comments.length }}</p>
+    <div class="flex gap-2 z-40">
+      <p class="w-2">{{ currentPost.comments.length }}</p>
       <button><CommentIcon /></button>
     </div>
-    <div class="flex gap-2">
-      <p>{{ postLikes.length }}</p>
+    <div class="flex gap-2 z-40">
+      <p class="w-2">{{ postLikes.length }}</p>
       <button v-if="!quoteLikesUserIDs.includes(user.id)" @click="likeQuote">
         <HeartSvg fill-color="#FFFFFF" hover:fill-color="#FF0000" />
       </button>

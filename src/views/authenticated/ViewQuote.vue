@@ -38,52 +38,28 @@
         />
       </div>
       <div class="flex gap-4 w-10/12 md:w-11/12 mb-4">
-        <div class="flex gap-2">
-          <!-- <p>{{ post.comments.length }}</p> -->
-          <button>
-            <CommentIcon />
-          </button>
-        </div>
-        <div class="flex gap-2">
-          <!-- <p>{{ post.likes }}</p> -->
-          <button>
-            <HeartSvg />
-          </button>
-        </div>
+        <PostActions :current-post="quote" :user="user"></PostActions>
       </div>
-      <!-- <div class="w-10/12 md:w-11/12">
-        <div
-          v-for="comment in post.comments"
-          :key="comment.id"
-          class="border-t-[#efefef5b] border-t-2 py-4 gap-3 flex flex-col"
+      <div class="w-10/12 md:w-11/12">
+        <div v-if="quote.comments.length < 3 || showAllComments">
+          <PostComment
+            v-for="comment in quote.comments"
+            :key="comment.id"
+            :comment="comment"
+          />
+        </div>
+        <div v-else>
+          <PostComment :comment="quote.comments[0]" />
+        </div>
+        <button
+          v-if="quote.comments.length >= 3"
+          class="opacity-80 underline absolute -bottom-8 right-0"
+          @click="setShowAllComments"
         >
-          <div class="flex items-center gap-3">
-            <img
-              class="max-w-[52px] max-h-[52px]"
-              src="@/assets/post/profile-picture.png"
-              alt="profile-picture"
-            />
-            <p>{{ comment.userName }}</p>
-          </div>
-          <div>
-            <p>{{ comment.comment }}</p>
-          </div>
-        </div>
+          {{ !showAllComments ? "see all" : "hide" }} comments
+        </button>
+        <PostAddComment :current-post="quote" :user="user" />
       </div>
-      <div
-        class="flex w-10/12 md:w-11/12 items-center gap-3 border-t-[#efefef5b] border-t-2 pt-5"
-      >
-        <img
-          class="max-w-[52px] max-h-[52px]"
-          src="@/assets/post/profile-picture.png"
-          alt="profile-picture"
-        />
-        <input
-          type="text"
-          placeholder="Write a comment"
-          class="rounded-[10px] bg-[#24222F] px-4 py-2 w-full focus:outline-none"
-        />
-      </div> -->
     </QuoteWrapper>
   </AuthWrapper>
 </template>
@@ -93,18 +69,22 @@ import TextArea from "@/components/Inputs/TextArea.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import QuoteWrapper from "@/components/authenticated/movies/QuoteWrapper.vue";
 import LoadingAnimation from "@/components/LoadingAnimation.vue";
-import HeartSvg from "@/components/icons/Heart.vue";
+import PostComment from "@/components/authenticated/landing/post/Comment.vue";
+import PostActions from "@/components/authenticated/landing/post/Actions.vue";
+import PostAddComment from "@/components/authenticated/landing/post/AddComment.vue";
+import { useUserStore } from "@/stores/user/user";
 import axios from "@/config/axios/index.js";
-import CommentIcon from "@/components/icons/CommentIcon.vue";
+import { mapState } from "pinia";
 
 export default {
   name: "ViewQuote",
   components: {
+    PostAddComment,
+    PostComment,
+    PostActions,
     QuoteWrapper,
     AuthWrapper,
     TextArea,
-    HeartSvg,
-    CommentIcon,
     LoadingAnimation,
   },
   data() {
@@ -112,9 +92,11 @@ export default {
       quote: {},
       dataIsFetched: false,
       loading: true,
+      showAllComments: false,
     };
   },
   computed: {
+    ...mapState(useUserStore, ["user"]),
     movieSlug() {
       return this.$route.params.movie;
     },
@@ -127,10 +109,16 @@ export default {
     axios
       .get(`movies/${this.movieSlug}/quote/${this.quoteId}`)
       .then((response) => {
+        console.log(response.data);
         this.quote = response.data;
         this.dataIsFetched = true;
         this.loading = false;
       });
+  },
+  methods: {
+    setShowAllComments() {
+      this.showAllComments = !this.showAllComments;
+    },
   },
 };
 </script>

@@ -95,6 +95,8 @@ import LoadingAnimation from "@/components/LoadingAnimation.vue";
 import NotFound from "@/views/NotFound.vue";
 import axios from "@/config/axios/index.js";
 import Plus from "@/components/icons/Plus.vue";
+import { mapState } from "pinia";
+import { useUserStore } from "@/stores/user/user";
 
 export default {
   name: "Movie",

@@ -32,31 +32,21 @@
         ></QuoteOptions>
       </div>
     </div>
-    <div class="flex gap-4 w-11/12 border-[#efefef5b] border-t-2 pt-7">
-      <div class="flex gap-2 z-40">
-        <p>3</p>
-        <button>
-          <CommentIcon />
-        </button>
-      </div>
-      <div class="flex gap-2 z-40">
-        <p>10</p>
-        <button>
-          <HeartSvg />
-        </button>
-      </div>
+    <div class="flex gap-4 w-11/12 border-[#efefef5b] border-t-2">
+      <PostActions :current-post="quote" :user="user"/>
     </div>
   </div>
 </template>
 
 <script>
 import QuoteOptions from "./QuoteOptions.vue";
-import HeartSvg from "@/components/icons/Heart.vue";
 import ThreeDots from "@/components/icons/ThreeDots.vue";
-import CommentIcon from "@/components/icons/CommentIcon.vue";
+import PostActions from "@/components/authenticated/landing/post/Actions.vue";
+import { mapState } from "pinia";
+import { useUserStore } from "@/stores/user/user";
 export default {
   name: "Quote",
-  components: { QuoteOptions, HeartSvg, ThreeDots, CommentIcon },
+  components: { PostActions, QuoteOptions, ThreeDots },
   props: {
     quote: {
       type: Object,
@@ -71,6 +61,9 @@ export default {
     return {
       optionsAreVisible: false,
     };
+  },
+  computed: {
+    ...mapState(useUserStore, ["user"]),
   },
   methods: {
     toggleOptions() {
