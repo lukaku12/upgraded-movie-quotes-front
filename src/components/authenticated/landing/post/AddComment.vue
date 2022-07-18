@@ -49,6 +49,7 @@ export default {
         body: this.commentData,
         user_id: this.user.id,
         username: this.user.username,
+        picture: this.user.picture,
       });
       const sendCommentData = {
         quote_id: this.currentPost.id,
