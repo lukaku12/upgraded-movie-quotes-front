@@ -38,7 +38,7 @@
             class="h-full max-h-[108px] max-w-[155px] rounded-lg aspect-square md:aspect-video"
             :src="
               'http://127.0.0.1:8000/storage/thumbnails/' +
-              movie.quotes[0].thumbnail
+              movie.thumbnail
             "
             alt="post-image"
           />
@@ -122,7 +122,7 @@ export default {
       const data = {
         title_en: values.title_en,
         title_ka: values.title_ka,
-        movie_id: this.movie.movie.id,
+        movie_id: this.movie.id,
       };
       axios
         .post(`movies/${this.movieSlug}/quote/add`, data)
