@@ -74,6 +74,12 @@ export default {
       "unreadNotifications",
     ]),
   },
+  watch: {
+    unreadNotifications(newValue) {
+      document.querySelector("title").innerHTML =
+        newValue !== 0 ? `(${newValue}) Movie Quotes` : "Movie Quotes";
+    },
+  },
   methods: {
     ...mapActions(useStylesStore, [
       "setNavbarIsOpen",
