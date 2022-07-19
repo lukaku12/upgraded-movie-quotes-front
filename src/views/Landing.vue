@@ -22,7 +22,7 @@ export default {
   },
   mounted() {
     axios.get("user").then((res) => {
-      window.Echo.channel("notify-user." + res.data.id).listen(
+      window.Echo.private("notify-user." + res.data.id).listen(
         "NotifyUser",
         (e) => {
           this.addNotification(e[0]);
