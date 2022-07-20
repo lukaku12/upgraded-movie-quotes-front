@@ -40,7 +40,7 @@
             @click="setNavbarIsOpen(false)"
           >
             <HomeSvg
-              :fill-color="routeName === 'home' ? '#FF0000' : '#FFFFFF'"
+              :fill-color="routeName === 'home' || routePath.includes('/quotes/create') ? '#FF0000' : '#FFFFFF'"
             />
             <p>{{ $t('news_feed') }}</p>
           </router-link>

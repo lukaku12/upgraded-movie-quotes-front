@@ -1,5 +1,6 @@
 <template>
   <svg
+    class="w-[32px] h-[32px] fill-current"
     width="16"
     height="16"
     viewBox="0 0 16 16"
