@@ -1,41 +1,41 @@
 <template>
   <form-layout
-    main-title="Create an account"
-    sub-title="Start your journey!"
-    action="Get started"
-    google-action="Sign up"
-    redirect-to-title="Already have an account?"
-    redirect-to="Log in"
+    :main-title="$t('create_an_account')"
+    :sub-title="$t('start_your_journey')"
+    :action="$t('get_started')"
+    :google-action="$t('sign_up')"
+    :redirect-to-title="$t('already_have_an_account')"
+    :redirect-to="$t('log_in')"
     redirect-url-name="login"
-    request-url="http://127.0.0.1:8000/api/register/create"
+    request-url="register/create"
   >
     <basic-input
-      title="Name"
+      :title="$t('username')"
       name="username"
-      placeholder="Enter your name"
+      :placeholder="$t('enter_your_name')"
       :value="userNameValue"
       :on-input="updateUserNameValue"
       rules="required|min:3|max:15"
     ></basic-input>
     <basic-input
-      title="Email"
+      :title="$t('email')"
       name="email"
-      placeholder="Enter your email"
+      :placeholder="$t('enter_your_email')"
       :value="emailValue"
       :on-input="updateEmailValue"
       rules="required|email"
     ></basic-input>
     <basic-input
-      title="Password"
+      :title="$t('password')"
       name="password"
       type="password"
-      placeholder="Password"
+      :placeholder="$t('password')"
       :value="passwordValue"
       :on-input="updatePasswordValue"
       rules="required|min:8|max:15"
     ></basic-input>
     <basic-input
-      title="Confirm password"
+      :title="$t('confirm_password')"
       name="confirm_password"
       type="password"
       placeholder="Password"

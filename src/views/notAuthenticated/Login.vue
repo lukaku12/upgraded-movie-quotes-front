@@ -1,27 +1,27 @@
 <template>
   <form-layout
-    main-title="Log in to your account"
-    sub-title="Welcome back! Please enter your details."
-    action="Sign in"
-    google-action="Sign in"
-    redirect-to-title="Don't have an account?"
-    redirect-to="Sign up"
+    :main-title="$t('log_in_to_your_account')"
+    :sub-title="$t('welcome_back_please_enter_your_details')"
+    :action="$t('sign_in')"
+    :google-action="$t('sign_in')"
+    :redirect-to-title="$t('dont_have_an_account')"
+    :redirect-to="$t('sign_up')"
     redirect-url-name="sign-up"
     request-url="login"
   >
     <basic-input
-      title="Email"
+      :title="$t('email')"
       name="email"
-      placeholder="Enter your email"
+      :placeholder="$t('enter_your_email')"
       :value="emailValue"
       :on-input="updateEmailValue"
       rules="required|email"
     ></basic-input>
     <basic-input
-      title="Password"
+      :title="$t('password')"
       name="password"
       type="password"
-      placeholder="Password"
+      :placeholder="$t('password')"
       :value="passwordValue"
       :on-input="updatePasswordValue"
       rules="required|min:8|max:15"

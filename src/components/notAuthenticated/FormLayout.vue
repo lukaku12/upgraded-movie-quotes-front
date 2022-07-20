@@ -31,7 +31,7 @@
             @click="googleAuth"
           >
             <GoogleIcon />
-            <p class="pt-[3px]">{{ googleAction }} with Google</p>
+            <p class="pt-[3px]">{{ googleAction }} {{ $t('with_google') }}</p>
           </button>
         </div>
       </form>

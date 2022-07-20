@@ -8,7 +8,7 @@
         type="checkbox"
       />
       <label class="text-base text-white" for="remember_device"
-        >Remember me</label
+        >{{ $t('remember_me') }}</label
       >
     </div>
     <div class="text-right">
@@ -16,7 +16,7 @@
         type="button"
         class="text-[#0D6EFD] font-bold text-base underline"
       >
-        Forgot password
+        {{ $t('forgot_password') }}
       </button>
     </div>
   </div>

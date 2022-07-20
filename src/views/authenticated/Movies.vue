@@ -17,25 +17,25 @@
         <div
           class="flex flex-col gap-5 lg:flex-row lg:items-center lg:h-[37px]"
         >
-          <h1 class="text-xl xl:text-2xl">My list of movies</h1>
-          <p>(total {{ searchedMovies.length }})</p>
+          <h1 class="text-xl xl:text-2xl">{{ $t('my_list_of_movies') }}</h1>
+          <p>({{ $t('total') }} {{ searchedMovies.length }})</p>
         </div>
         <div class="flex items-center lg:w-[400px] lg:justify-between">
           <DesktopSearch
             :movies="movies"
             :search-value="searchValue"
             :search-movie="searchMovie"
-            placeholder="Search..."
+            :placeholder="$t('search') + '...'"
             opened-search-bar-width="w-[56%]"
             closed-search-bar-width="lg:w-[60%]"
-            search-title="Search"
+            :search-title="$t('search')"
           ></DesktopSearch>
           <router-link
             to="/movies/add"
-            class="bg-[#E31221] border border-[#E31221] px-5 py-1 max-w-[152px] rounded-[4px] text-white flex justify-center items-center gap-2"
+            class="bg-[#E31221] border border-[#E31221] px-5 py-1 max-w-[152px] rounded-[4px] text-white flex justify-center items-center gap-2 text-center"
           >
             <Plus />
-            Add quote
+            {{ $t('add_movie') }}
           </router-link>
         </div>
       </div>

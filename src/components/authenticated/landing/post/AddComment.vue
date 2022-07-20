@@ -13,7 +13,7 @@
       type="text"
       rules="required"
       :name="currentPost.id + 'comment'"
-      placeholder="Write a comment"
+      :placeholder="$t('write_a_comment')"
       class="rounded-[10px] bg-[#24222F] px-4 py-2 w-full focus:outline-none"
     />
   </VueFrom>

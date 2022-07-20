@@ -21,7 +21,7 @@
         class="opacity-80 underline absolute -bottom-8 right-0"
         @click="setShowAllComments"
       >
-        {{ !showAllComments ? "see all" : "hide" }} comments
+        {{ !showAllComments ? $t('show_all_comments') : $t('hide_comments') }}
       </button>
 
       <PostAddComment :current-post="currentPost" :user="user" />

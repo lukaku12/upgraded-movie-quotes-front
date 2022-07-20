@@ -27,7 +27,7 @@
           class="text-xs text-start opacity-70 hover:opacity-100"
           @click="setNavbarIsOpen(false)"
         >
-          Edit your profile
+          {{ $t('edit_your_profile') }}
         </router-link>
       </div>
     </div>
@@ -42,7 +42,7 @@
             <HomeSvg
               :fill-color="routeName === 'home' ? '#FF0000' : '#FFFFFF'"
             />
-            <p>News feed</p>
+            <p>{{ $t('news_feed') }}</p>
           </router-link>
         </li>
         <li>
@@ -54,7 +54,7 @@
             <CameraReelsSvg
               :fill-color="routePath.includes('movies') ? '#FF0000' : '#FFFFFF'"
             />
-            <p>List of movies</p>
+            <p>{{ $t('list_of_movies') }}</p>
           </router-link>
         </li>
       </ul>

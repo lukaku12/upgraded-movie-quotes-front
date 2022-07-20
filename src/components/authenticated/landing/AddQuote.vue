@@ -8,7 +8,7 @@
       :class="desktopSearchBarIsOpen ? 'w-[28%]' : 'lg:w-[80%]'"
     >
       <PencilSquare />
-      <p>Write new quote</p>
+      <p>{{ $t("write_new_quote") }}</p>
     </router-link>
     <DesktopSearch></DesktopSearch>
   </div>

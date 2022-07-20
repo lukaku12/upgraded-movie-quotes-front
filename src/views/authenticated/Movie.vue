@@ -36,8 +36,8 @@
             <button class="bg-gray-400 py-1 px-2 rounded">Romance</button>
           </div>
           <div class="flex flex-col gap-4 ml-3 my-4">
-            <p>Director: Nick cassavetes</p>
-            <p>Budget: 2.000.000$</p>
+            <p>{{ $t('director') }}: Nick cassavetes</p>
+            <p>{{ $t('budget') }}: 2.000.000$</p>
           </div>
           <div class="w-full md:pr-4">
             <p>
@@ -58,7 +58,7 @@
               class="bg-[#E31221] border border-[#E31221] mt-7 px-5 py-1 max-w-[152px] rounded-[4px] text-white flex justify-center items-center gap-2"
             >
               <Plus />
-              Add quote
+              {{ $t('add_quote') }}
             </router-link>
           </div>
         </div>
@@ -67,8 +67,8 @@
         <div
           class="w-full py-8 gap-5 text-start px-10 flex flex-col lg:flex-row"
         >
-          <h1 class="text-2xl">All Quotes</h1>
-          <h2>(Total {{ movie.quotes.length }})</h2>
+          <h1 class="text-2xl">{{ $t('all_quotes') }}</h1>
+          <h2>({{ $t('total') }} {{ movie.quotes.length }})</h2>
         </div>
         <div
           v-if="movie.quotes.length !== 0"
@@ -95,8 +95,6 @@ import LoadingAnimation from "@/components/LoadingAnimation.vue";
 import NotFound from "@/views/NotFound.vue";
 import axios from "@/config/axios/index.js";
 import Plus from "@/components/icons/Plus.vue";
-import { mapState } from "pinia";
-import { useUserStore } from "@/stores/user/user";
 
 export default {
   name: "Movie",

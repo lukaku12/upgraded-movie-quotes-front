@@ -44,7 +44,7 @@
           class="border border-white text-white px-5 py-1 rounded-[4px] hover:bg-[#4d4d4d] hidden lg:flex"
           @click="logout"
         >
-          Log out
+          {{ $t('log_out') }}
         </button>
       </div>
     </div>

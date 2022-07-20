@@ -10,9 +10,9 @@
   >
     <div class="flex flex-col gap-10">
       <div class="flex justify-between">
-        <h1 class="font-bold text-2xl">Notifications</h1>
+        <h1 class="font-bold text-2xl">{{ $t('notifications') }}</h1>
         <button class="underline" @click="markAllNotificationsAsRead">
-          Mark as all read
+          {{ $t('mark_as_all_read') }}
         </button>
       </div>
       <div v-if="notifications.length === 0" class="text-center">
@@ -35,8 +35,8 @@
               src="@/assets/post/profile-picture.png"
               alt="profile"
             />
-            <p class="text-green-600">
-              {{ notification.read_at === null ? "New" : "" }}
+            <p v-if="notification.read_at === null" class="text-green-600">
+              {{ $t('new') }}
             </p>
           </div>
           <div class="flex flex-col gap-5">

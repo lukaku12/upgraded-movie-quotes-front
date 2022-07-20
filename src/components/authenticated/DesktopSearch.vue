@@ -18,6 +18,7 @@
       class="text-white w-full pl-9 pr-5 h-[37px] border-[#efefef5b] border-b-2 bg-transparent focus:outline-none"
       type="text"
       :placeholder="placeholder"
+      autofocus
       @input="searchMovie"
     />
     <Search styling="absolute top-1" />
@@ -25,7 +26,7 @@
       class="w-[20px] h-[20px] opacity-80 right-0 top-1.5 absolute hover:opacity-100"
       @click="setDesktopSearchBarIsOpen(false)"
     >
-      x
+      <CloseIcon />
     </button>
   </div>
 </template>
@@ -34,9 +35,10 @@
 import { mapActions, mapState } from "pinia";
 import { useStylesStore } from "@/stores/styling/styles";
 import Search from "../icons/Search.vue";
+import CloseIcon from "@/components/icons/CloseIcon.vue";
 export default {
   name: "DesktopSearch",
-  components: { Search },
+  components: { CloseIcon, Search },
   props: {
     openedSearchBarWidth: {
       type: String,

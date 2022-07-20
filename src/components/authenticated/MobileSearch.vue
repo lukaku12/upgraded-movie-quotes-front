@@ -10,19 +10,19 @@
       <input
         class="text-white focus:outline-0 bg-transparent font-bold py-1 w-full"
         type="text"
-        placeholder="Search"
+        :placeholder="$t('search')"
       />
     </div>
     <div class="w-full flex flex-col items-start gap-12 ml-12 mt-10">
       <div class="flex text-[#EFEFEF99] gap-1">
-        <p>Enter</p>
+        <p>{{ $t('enter') }}</p>
         <p class="text-white font-bold">@</p>
-        <p>to search movies</p>
+        <p>{{ $t('to_search_movies') }}</p>
       </div>
       <div class="flex text-[#EFEFEF99] gap-1">
-        <p>Enter</p>
+        <p>{{ $t('enter') }}</p>
         <p class="text-white font-bold">#</p>
-        <p>to search quotes</p>
+        <p>{{ $t('to_search_quotes') }}</p>
       </div>
     </div>
   </div>

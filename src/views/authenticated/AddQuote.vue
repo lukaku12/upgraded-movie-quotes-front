@@ -9,7 +9,7 @@
       >
         <div class="w-full relative border-b-[#efefef5b] border-b py-10">
           <div>
-            <h1>Write New Quote</h1>
+            <h1>{{ $t('write_new_quote') }}</h1>
             <router-link
               :to="{ name: 'home' }"
               class="absolute right-5 top-1/2 -translate-y-[50%] opacity-80 hover:opacity-100"
@@ -45,14 +45,14 @@
             class="bg-black w-full py-6 px-5 text-start flex gap-4 items-center"
           >
             <Photo />
-            Upload photo
+            {{ $t('upload_image') }}
           </button>
           <button
             class="bg-black w-full py-6 px-5 text-start flex justify-between"
           >
             <div class="flex gap-4 justify-center items-center">
               <CameraReelsSvg fill-color="#FFFFFF" />
-              Choose movie
+              {{ $t('choose_movie') }}
             </div>
             <DownArrow />
           </button>
@@ -62,7 +62,7 @@
           class="bg-[#E31221] border border-[#E31221] mt-7 font-bold px-7 py-1 rounded-[4px] text-white"
           @click="createQuote(meta, values)"
         >
-          Post
+          {{ $t('post') }}
         </button>
       </VueForm>
     </div>

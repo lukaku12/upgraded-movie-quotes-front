@@ -13,7 +13,7 @@
       :quote="quote"
       :quote-id="quoteId"
       :data-is-fetched="dataIsFetched"
-      name="Edit Quote"
+      :name="$t('edit_quote')"
       :view-quote="false"
       :user="user"
     >
@@ -53,7 +53,7 @@
             <button
               class="w-full h-full flex flex-col justify-center items-center gap-2"
             >
-              <Photo />Change photo
+              <Photo />{{ $t('change_photo') }}
             </button>
             <Field
               type="file"
@@ -69,7 +69,7 @@
           class="bg-[#E31221] w-10/12 md:w-11/12 border border-[#E31221] mt-1 font-bold px-7 py-2 rounded-[4px] text-white"
           @click="EditQuote(values)"
         >
-          Save changes
+          {{ $t('save_changes') }}
         </button>
       </VueForm>
     </QuoteWrapper>

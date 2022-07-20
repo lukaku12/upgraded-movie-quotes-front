@@ -11,7 +11,7 @@
       v-else
       :movie-slug="movieSlug"
       :data-is-fetched="dataIsFetched"
-      name="Add Quote"
+      :name="$t('add_quote')"
       :view-quote="false"
       :user="user"
     >
@@ -51,7 +51,7 @@
                 }})
               </h1>
             </div>
-            <p class="text-xs md:text-xl">Director: Nick cassavetes</p>
+            <p class="text-xs md:text-xl">{{ $t('director') }}: Nick cassavetes</p>
           </div>
         </div>
         <button
@@ -60,7 +60,7 @@
           class="bg-[#E31221] w-10/12 md:w-11/12 border border-[#E31221] mt-1 font-bold px-7 py-2 rounded-[4px] text-white"
           @click="addQuote(values)"
         >
-          Add quote
+          {{ $t('add_quote') }}
         </button>
       </VueForm>
     </QuoteWrapper>

@@ -15,7 +15,7 @@
     </div>
     <div class="w-full h-full absolute">
       <img
-        :class="movie"
+        :class="movie === 'ინტერსტელარი' ? 'Interstellar' : movie"
         class="w-full h-full opacity-90 landing-quote-image"
         :src="image"
         alt="interstellar-image"

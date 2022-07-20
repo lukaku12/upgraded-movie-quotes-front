@@ -6,7 +6,7 @@
       <h1
         class="w-full font-bold text-white text-2xl text-start hidden lg:block max-w-[936px]"
       >
-        My profile
+        {{ $t('my_profile') }}
       </h1>
       <div
         class="w-full flex flex-col justify-center items-center h-auto bg-[#11101A] px-4 py-16 md:p-16 lg:rounded-xl relative mt-40 max-w-[936px]"
@@ -19,36 +19,36 @@
             :src="'http://127.0.0.1:8000/storage/thumbnails/' + user.picture"
             alt="profile-picture"
           />
-          <button class="text-white text-center mt-12">Upload new photo</button>
+          <button class="text-white text-center mt-12">{{ $t('upload_new_photo') }}</button>
         </div>
         <BasicInput
-          title="Username"
+          :title="$t('username')"
           :on-input="TODO"
           :value="user.username || ''"
-          placeholder="Enter username"
+          :placeholder="$t('enter_username')"
           name="username"
         ></BasicInput>
         <BasicInput
-          title="Email"
+          :title="$t('email')"
           type="email"
           :on-input="TODO"
           :value="user.email || ''"
-          placeholder="Enter email"
+          :placeholder="$t('enter_email')"
           name="email"
         ></BasicInput>
         <BasicInput
-          title="Password"
+          :title="$t('password')"
           type="password"
           :on-input="TODO"
           :value="user.password || ''"
-          placeholder="Enter password"
+          :placeholder="$t('enter_password')"
           name="password"
         ></BasicInput>
         <button
           type="button"
           class="bg-[#E31221] border border-[#E31221] mt-7 font-bold px-7 py-1 rounded-[4px] text-white"
         >
-          Save changes
+          {{ $t('save_changes') }}
         </button>
       </div>
     </div>

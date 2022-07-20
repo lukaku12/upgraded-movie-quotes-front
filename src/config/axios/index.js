@@ -1,5 +1,5 @@
 import axios from "axios";
-// import { getJwtToken } from "@/helpers/jwt/index.js";
+// import { getJwtToken } from "@/helpers/jwt/ui.js";
 
 const value = `; ${document.cookie}`;
 const parts = value.split(`jwt_token=`);

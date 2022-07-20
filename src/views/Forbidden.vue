@@ -8,15 +8,15 @@
       class="mb-7"
     />
     <div class="flex flex-col w-10/12 items-center text-center">
-      <h1 class="text-[24px] font-extrabold mb-5">You shall not pass!</h1>
+      <h1 class="text-[24px] font-extrabold mb-5">{{ $t('you_shall_not_pass') }}</h1>
       <p class="mb-8 font-semibold">
-        Sorry, but you don’t have permission to access this page
+        {{ $t('sorry_but_you_dont_have_permission_to_access_this_page') }}
       </p>
       <router-link
         :to="{ name: 'home' }"
         class="bg-[#E31221] mb-10 py-[7px] px-6 rounded-[4px] text-white font-semibold"
       >
-        Return Home
+        {{ $t('return_home') }}
       </router-link>
     </div>
   </div>

@@ -12,7 +12,7 @@
   <div class="flex flex-col gap-5 mt-3">
     <div class="flex">
       <p>
-        “{{ currentPost.title.en }}” movie-{{ currentPost.movie.title.en }} ({{
+        “{{ currentPost.title.en }}” {{ $t('movie') }}-{{ currentPost.movie.title.en }} ({{
           currentPost.movieReleaseDate || 2021
         }})
       </p>

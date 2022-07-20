@@ -6,16 +6,18 @@
       :to="'/movies/' + movieSlug + '/quote/' + quoteId"
       class="flex gap-4 w-full"
     >
-      <EyeIcon />view post
+      <EyeIcon />
+      {{ $t("view_post") }}
     </router-link>
     <router-link
       :to="'/movies/' + movieSlug + '/quote/' + quoteId + '/edit'"
       class="flex gap-4 w-full"
     >
-      <Pen />edit
+      <Pen />{{ $t("edit") }}
     </router-link>
     <button class="flex gap-4 w-full" @click="deleteQuote">
-      <Trash />delete
+      <Trash />
+      {{ $t("delete") }}
     </button>
   </div>
 </template>

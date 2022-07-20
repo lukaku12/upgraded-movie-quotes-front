@@ -3,7 +3,6 @@ import Pusher from "pusher-js";
 import { token } from "@/config/axios";
 
 window.Pusher = Pusher;
-Pusher.logToConsole = true;
 
 window.Echo = new Echo({
   broadcaster: 'pusher',

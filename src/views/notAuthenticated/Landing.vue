@@ -21,14 +21,14 @@
             :to="{ name: 'sign-up' }"
             class="bg-[#E31221] border border-[#E31221] font-semibold px-4 py-1 rounded-[4px] text-white"
           >
-            Sign Up
+            {{ $t('sign_up') }}
           </router-link>
         </div>
         <router-link
           :to="{ name: 'login' }"
           class="border border-white text-white px-5 py-1 rounded-[4px] hover:bg-[#4d4d4d]"
         >
-          Log in
+          {{ $t('log_in') }}
         </router-link>
       </div>
     </header>
@@ -38,39 +38,39 @@
       <h1
         class="text-[#DDCCAA] text-2xl font-bold text-center xl:text-6xl xl:leading-[90px]"
       >
-        Find any quote in <br />
-        milions of movie lines
+        {{ $t('find_any_quote_in') }} <br />
+        {{ $t('millions_of_movie_lines') }}
       </h1>
       <router-link
         :to="{ name: 'sign-up' }"
         class="bg-[#E31221] font-semibold px-5 py-2 rounded-[4px] text-white"
       >
-        Get started
+        {{ $t('get_started') }}
       </router-link>
     </main>
     <div class="mt-20 w-full h-full">
       <landing-quote
         :image="interstellar"
-        quote="You have to leave somethig behind to go forward"
-        movie="Interstellar"
+        :quote="$t('interstellar_quote')"
+        :movie="$t('interstellar')"
         year="2014"
       ></landing-quote>
       <landing-quote
         :image="theRoyalTenenebaums"
-        quote="I think we`re just gonnahave to be secretly in lovewith earch other and leave it that"
-        movie="The Royal Tenenbaums"
+        :quote="$t('the_royal_tenenbaums_quote')"
+        :movie="$t('the_royal_tenenbaums')"
         year="2001"
       ></landing-quote>
       <landing-quote
         :image="lordOfRings"
-        quote="I see in your eyes the same fear that would take the heart of me...."
-        movie="The Lord of the Rings"
+        :quote="$t('the_lord_of_the_rings_quote')"
+        :movie="$t('the_lord_of_the_rings')"
         year="2003"
       ></landing-quote>
     </div>
     <footer class="h-[32px] w-full bg-[#0D0B14] flex items-center pl-8">
       <p class="text-[#DDCCAA] text-[8px] font-bold">
-        © 2022 MOVIE QUOTES. ALL RIGHTS RESERVED.
+        © 2022 {{ $t('copyright') }}.
       </p>
     </footer>
   </section>
