@@ -37,7 +37,7 @@ export default {
       languagesAreVisible: false,
       languages: {
         en: { nativeName: 'English' },
-        de: { nativeName: 'Deutsch' }
+        ka: { nativeName: 'Georgian' }
       }
     };
   },
