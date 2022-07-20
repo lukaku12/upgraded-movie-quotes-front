@@ -55,7 +55,7 @@
           <div class="pb-10 border-[#efefef5b] border-b-2 md:border-none">
             <router-link
               :to="'/movies/' + movieSlug + '/quote/add'"
-              class="bg-[#E31221] border border-[#E31221] mt-7 px-5 py-1 max-w-[152px] rounded-[4px] text-white flex justify-center items-center gap-2 text-center"
+              class="bg-[#E31221] border border-[#E31221] mt-7 px-5 py-1 max-w-[220px] rounded-[4px] text-white flex justify-center items-center gap-2 text-center"
             >
               <Plus />
               {{ $t('add_quote') }}
