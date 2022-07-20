@@ -10,7 +10,7 @@
       <PencilSquare />
       <p>{{ $t("write_new_quote") }}</p>
     </router-link>
-    <DesktopSearch></DesktopSearch>
+    <DesktopSearch :searchTitle="$t('search')"/>
   </div>
 </template>
 

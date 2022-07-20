@@ -27,7 +27,7 @@
         </div>
         <div class="w-full xl:w-[40%]">
           <h1 class="text-2xl text-[#DDCCAA]">
-            {{ movie.title.en }} ({{
+            {{ localeMovie }} ({{
               movie.created_at.substring(0, 4)
             }})
           </h1>
@@ -119,6 +119,9 @@ export default {
     },
     apiSuccess() {
       return this.$route.params.apiSuccess;
+    },
+    localeMovie() {
+      return (this.$i18next.language === 'en') ? this.movie.title.en : this.movie.title.ka;
     },
   },
   mounted() {

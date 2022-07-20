@@ -11,9 +11,6 @@ window.Echo = new Echo({
   auth: {
     headers: {
       Authorization: "Bearer " + token,
-      'X-CSRF-Token': "CSRF_TOKEN",
-      "Access-Control-Allow-Origin": "*",
-      "X-Requested-With": "XMLHttpRequest",
     }
   },
   cluster: "eu",

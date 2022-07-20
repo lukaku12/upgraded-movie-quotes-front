@@ -12,10 +12,10 @@
       class="w-full flex flex-col items-center min-h-[calc(100vh-86px)] bg-[#0f0e14]"
     >
       <div
-        class="flex md:items-center justify-between flex-row px-10 py-8 w-full text-white"
+        class="flex items-start md:items-center justify-between flex-row px-5 gap-5 py-8 w-full text-white md:px-10"
       >
         <div
-          class="flex flex-col gap-5 lg:flex-row lg:items-center lg:h-[37px] md:text-center items-start"
+          class="flex flex-col gap-5 lg:flex-row lg:items-center lg:h-[37px] text-center"
         >
           <h1 class="text-xl xl:text-2xl">{{ $t('my_list_of_movies') }}</h1>
           <p>({{ $t('total') }} {{ searchedMovies.length }})</p>

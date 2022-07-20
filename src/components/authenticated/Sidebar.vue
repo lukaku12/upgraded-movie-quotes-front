@@ -1,10 +1,10 @@
 <template>
   <div
     :class="navBarIsOpen ? 'visible' : 'hidden'"
-    class="fixed w-screen h-screen top-0 left-0 z-z-1000"
+    class="fixed w-screen h-screen top-0 left-0 z-1000"
     @click="setNavbarIsOpen(false)"
   ></div>
-  <div class="hidden lg:w-[500px] lg:h-full lg:flex"></div>
+  <div class="hidden w-[600px] max-w-[300px] md:max-w-[300px] xl:max-w-[600px] lg:h-full lg:flex"></div>
   <div
     :class="navBarIsOpen ? 'visible' : 'hidden'"
     class="fixed top-0 animate-pop-up lg:animate-none left-0 h-[658px]
@@ -25,7 +25,7 @@
         <router-link
           :to="{ name: 'edit-profile' }"
           class="text-xs text-start opacity-70 hover:opacity-100"
-          @click="setNavbarIsOpen(false)"
+          @click="hideItems"
         >
           {{ $t('edit_your_profile') }}
         </router-link>
@@ -37,7 +37,7 @@
           <router-link
             :to="{ name: 'home' }"
             class="flex mt-5 items-center gap-6 ml-3 hover:opacity-60"
-            @click="setNavbarIsOpen(false)"
+            @click="hideItems"
           >
             <HomeSvg
               :fill-color="routeName === 'home' || routePath.includes('/quotes/create') ? '#FF0000' : '#FFFFFF'"
@@ -49,7 +49,7 @@
           <router-link
             to="/movies"
             class="flex mt-5 items-center gap-6 ml-3 hover:opacity-60"
-            @click="setNavbarIsOpen(false)"
+            @click="hideItems"
           >
             <CameraReelsSvg
               :fill-color="routePath.includes('movies') ? '#FF0000' : '#FFFFFF'"
@@ -91,8 +91,13 @@ export default {
     }
   },
   methods: {
-    ...mapActions(useStylesStore, ["setNavbarIsOpen"]),
+    ...mapActions(useStylesStore, ["setNavbarIsOpen", "setDesktopSearchBarIsOpen"]),
     ...mapActions(useUserStore, ["setUser"]),
+    hideItems() {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+      this.setDesktopSearchBarIsOpen(false);
+      this.setNavbarIsOpen(false);
+    },
   },
 };
 </script>
