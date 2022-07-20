@@ -6,21 +6,21 @@
   ></div>
   <div class="relative text-white hidden md:block">
     <button class="flex items-center gap-1" @click="showLanguages">
-      <button v-if="selectedLanguage === 'Eng'">{{ $t('eng') }}</button>
+      <button v-if="selectedLanguage === 'en'">{{ $t('eng') }}</button>
       <button v-else>{{ $t('geo') }}</button>
       <DownArrow />
     </button>
     <button
-      v-if="languagesAreVisible && selectedLanguage === 'Eng'"
+      v-if="languagesAreVisible && selectedLanguage === 'en'"
       class="absolute top-6 z-50"
-      @click="setLanguage"
+      @click="setLanguageKa"
     >
       {{ $t('geo') }}
     </button>
     <button
-      v-if="languagesAreVisible && selectedLanguage !== 'Eng'"
+      v-if="languagesAreVisible && selectedLanguage !== 'en'"
       class="absolute top-6 z-50"
-      @click="setLanguage"
+      @click="setLanguageEn"
     >
       {{ $t('eng') }}
     </button>
@@ -35,8 +35,16 @@ export default {
   data() {
     return {
       languagesAreVisible: false,
-      selectedLanguage: "Eng",
+      languages: {
+        en: { nativeName: 'English' },
+        de: { nativeName: 'Deutsch' }
+      }
     };
+  },
+  computed: {
+    selectedLanguage() {
+      return this.$i18next.language
+    }
   },
   methods: {
     showLanguages() {
@@ -45,8 +53,12 @@ export default {
     hideLanguages() {
       this.languagesAreVisible = false;
     },
-    setLanguage() {
-      this.selectedLanguage = this.selectedLanguage === "Eng" ? "Geo" : "Eng";
+    setLanguageKa() {
+      this.$i18next.changeLanguage("ka");
+      this.languagesAreVisible = false;
+    },
+    setLanguageEn() {
+      this.$i18next.changeLanguage("en");
       this.languagesAreVisible = false;
     },
   },

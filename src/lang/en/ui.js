@@ -20,7 +20,7 @@ export const messagesEn = {
   news_feed: 'News feed',
   list_of_movies: 'List of movies',
   eng: 'Eng',
-  geo: 'Ka',
+  geo: 'Geo',
   add_movie: 'Add movie',
   my_list_of_movies: 'My list of movies',
   total: 'Total',
