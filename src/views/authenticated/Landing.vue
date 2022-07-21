@@ -104,9 +104,7 @@ export default {
           document.documentElement.offsetHeight;
         if (bottomOfWindow) {
           if (this.lastPage === this.currentPage) return;
-          setTimeout(() => {
-            this.loadMore();
-          }, 100);
+          this.loadMore();
         }
       };
     },
