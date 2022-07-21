@@ -97,7 +97,8 @@ export default {
     searchMovie(e) {
       this.searchValue = e.target.value;
       this.searchedMovies = this.movies.filter((movie) =>
-        movie.title.en.toLowerCase().includes(this.searchValue.toLowerCase())
+        movie.title.en.toLowerCase().includes(this.searchValue.toLowerCase()) ||
+        movie.title.ka.toLowerCase().includes(this.searchValue.toLowerCase())
       );
     },
   },
