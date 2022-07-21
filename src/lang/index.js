@@ -6,7 +6,6 @@ import { messagesKa } from "@/lang/ka/ui";
 
 
 i18next.use(LanguageDetector).init({
-  debug: true,
   lang: "ka",
   fallbackLng: "ka",
   resources: {

@@ -15,6 +15,7 @@
         :loading="loading"
         :post="post"
       ></Post>
+      <LoadingAnimation v-if="loadingMorePosts" height="h-[100px]"/>
     </div>
   </AuthWrapper>
 </template>
@@ -39,6 +40,9 @@ export default {
     return {
       posts: [],
       loading: false,
+      currentPage: 1,
+      loadingMorePosts: false,
+      lastPage: null,
     };
   },
   computed: {
@@ -47,14 +51,19 @@ export default {
     },
   },
   mounted() {
+    this.scroll();
+
     this.loading = true;
-    axios.get("quotes").then((response) => {
-      this.posts = response.data;
+    axios.get(`quotes?page=${this.currentPage}`).then((response) => {
+      this.posts = response.data.data;
+      this.lastPage = response.data.last_page;
       this.loading = false;
     });
 
     window.Echo.channel("add-comment").listen("AddComment", (e) => {
-      const currentPost = this.posts.filter((post) => post.id === e[0].quote_id);
+      const currentPost = this.posts.filter(
+        (post) => post.id === e[0].quote_id
+      );
       const currentPostComments = currentPost[0].comments;
       currentPostComments.push(e[0]);
     });
@@ -67,10 +76,40 @@ export default {
     window.Echo.channel("remove-like").listen("RemoveLike", (e) => {
       const currentPost = this.posts.filter((post) => post.id === e.quote_id);
       const currentPostLikes = currentPost[0].likes;
-      const userLike = currentPostLikes.filter((like) => like.user_id === e.user_id);
+      const userLike = currentPostLikes.filter(
+        (like) => like.user_id === e.user_id
+      );
 
       currentPostLikes.splice(currentPostLikes.indexOf(userLike[0]), 1);
     });
+  },
+  methods: {
+    loadMore() {
+      this.loadingMorePosts = true;
+      this.currentPage++;
+      axios.get(`quotes?page=${this.currentPage}`).then((response) => {
+        this.posts.push(...response.data.data);
+        this.loadingMorePosts = false;
+      });
+    },
+    scroll() {
+      window.onscroll = () => {
+        let bottomOfWindow =
+          Math.max(
+            window.pageYOffset,
+            document.documentElement.scrollTop,
+            document.body.scrollTop
+          ) +
+            window.innerHeight ===
+          document.documentElement.offsetHeight;
+        if (bottomOfWindow) {
+          if (this.lastPage === this.currentPage) return;
+          setTimeout(() => {
+            this.loadMore();
+          }, 100);
+        }
+      };
+    },
   },
 };
 </script>
