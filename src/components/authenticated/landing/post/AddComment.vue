@@ -55,9 +55,13 @@ export default {
         quote_id: this.currentPost.id,
         comment_body: this.commentData,
       };
-      axios.post("comment/add", sendCommentData).then(() => {
-        this.commentData = "";
-      });
+      axios
+        .post("comment/add", sendCommentData, {
+          headers: { "X-Socket-Id": window.Echo.socketId() },
+        })
+        .then(() => {
+          this.commentData = "";
+        });
       axios
         .post(
           "notify-user",

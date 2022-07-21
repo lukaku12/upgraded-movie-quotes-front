@@ -52,6 +52,25 @@ export default {
       this.posts = response.data;
       this.loading = false;
     });
+
+    window.Echo.channel("add-comment").listen("AddComment", (e) => {
+      const currentPost = this.posts.filter((post) => post.id === e[0].quote_id);
+      const currentPostComments = currentPost[0].comments;
+      currentPostComments.push(e[0]);
+    });
+
+    window.Echo.channel("add-like").listen("AddLike", (e) => {
+      const currentPost = this.posts.filter((post) => post.id === e.quote_id);
+      currentPost[0].likes.push(e);
+    });
+
+    window.Echo.channel("remove-like").listen("RemoveLike", (e) => {
+      const currentPost = this.posts.filter((post) => post.id === e.quote_id);
+      const currentPostLikes = currentPost[0].likes;
+      const userLike = currentPostLikes.filter((like) => like.user_id === e.user_id);
+
+      currentPostLikes.splice(currentPostLikes.indexOf(userLike[0]), 1);
+    });
   },
 };
 </script>
