@@ -15,7 +15,7 @@
         :loading="loading"
         :post="post"
       ></Post>
-      <LoadingAnimation v-if="loadingMorePosts" height="h-[100px]"/>
+      <LoadingAnimation v-if="loadingMorePosts" classes="h-[100px]" />
     </div>
   </AuthWrapper>
 </template>

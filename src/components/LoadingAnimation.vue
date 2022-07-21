@@ -1,5 +1,5 @@
 <template>
-  <div class="col-3 w-full flex flex-col justify-center items-center" :class="height">
+  <div class="col-3 w-full flex flex-col justify-center items-center" :class="classes">
     <div class="snippet" data-title=".dot-falling">
       <div class="stage">
         <div class="dot-falling"></div>
@@ -12,7 +12,7 @@
 export default {
   name: "LoadingAnimation",
   props: {
-    height: {
+    classes: {
       type: String,
       default: "h-[500px]",
     },
