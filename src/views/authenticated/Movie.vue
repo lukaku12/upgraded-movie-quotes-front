@@ -18,26 +18,21 @@
         <div class="flex flex-col gap-5 w-full xl:w-[60%] xl:max-w-[809px]">
           <img
             class="h-full max-h-[450px] rounded-2xl aspect-square md:aspect-video xl:aspect-auto"
-            :src="
-              'http://127.0.0.1:8000/storage/thumbnails/' +
-              movie.thumbnail
-            "
+            :src="'http://127.0.0.1:8000/storage/thumbnails/' + movie.thumbnail"
             alt="post-image"
           />
         </div>
         <div class="w-full xl:w-[40%]">
           <h1 class="text-2xl text-[#DDCCAA]">
-            {{ localeMovie }} ({{
-              movie.created_at.substring(0, 4)
-            }})
+            {{ localeMovie }} ({{ movie.created_at.substring(0, 4) }})
           </h1>
           <div class="w-full flex gap-2 font-bold mt-4">
             <button class="bg-gray-400 py-1 px-2 rounded">Drama</button>
             <button class="bg-gray-400 py-1 px-2 rounded">Romance</button>
           </div>
           <div class="flex flex-col gap-4 ml-3 my-4">
-            <p>{{ $t('director') }}: Nick cassavetes</p>
-            <p>{{ $t('budget') }}: 2.000.000$</p>
+            <p>{{ $t("director") }}: Nick cassavetes</p>
+            <p>{{ $t("budget") }}: 2.000.000$</p>
           </div>
           <div class="w-full md:pr-4">
             <p>
@@ -58,7 +53,7 @@
               class="bg-[#E31221] border border-[#E31221] mt-7 px-5 py-1 max-w-[220px] rounded-[4px] text-white flex justify-center items-center gap-2 text-center"
             >
               <Plus />
-              {{ $t('add_quote') }}
+              {{ $t("add_quote") }}
             </router-link>
           </div>
         </div>
@@ -67,8 +62,8 @@
         <div
           class="w-full py-8 gap-5 text-start px-10 flex flex-col lg:flex-row"
         >
-          <h1 class="text-2xl">{{ $t('all_quotes') }}</h1>
-          <h2>({{ $t('total') }} {{ movie.quotes.length }})</h2>
+          <h1 class="text-2xl">{{ $t("all_quotes") }}</h1>
+          <h2>({{ $t("total") }} {{ movie.quotes.length }})</h2>
         </div>
         <div
           v-if="movie.quotes.length !== 0"
@@ -121,7 +116,9 @@ export default {
       return this.$route.params.apiSuccess;
     },
     localeMovie() {
-      return (this.$i18next.language === 'en') ? this.movie.title.en : this.movie.title.ka;
+      return this.$i18next.language === "en"
+        ? this.movie.title.en
+        : this.movie.title.ka;
     },
   },
   mounted() {

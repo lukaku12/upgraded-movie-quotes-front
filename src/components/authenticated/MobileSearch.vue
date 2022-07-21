@@ -1,9 +1,11 @@
 <template>
   <div
     :class="searchBarIsOpen ? 'visible' : 'hidden'"
-    class="fixed w-screen top-0 left-0 h-5/6 min-h-[500px] bg-[#12101A] lg:hidden  z-1000 animate-pop-up"
+    class="fixed w-screen top-0 left-0 h-5/6 min-h-[500px] bg-[#12101A] lg:hidden z-1000 animate-pop-up"
   >
-    <div class="flex gap-6 p-[15px] z-1000 border-[#EFEFEF4D] border-b-2 w-full">
+    <div
+      class="flex gap-6 p-[15px] z-1000 border-[#EFEFEF4D] border-b-2 w-full"
+    >
       <button @click="setSearchBarIsOpen(false)">
         <LeftArrow />
       </button>
@@ -15,14 +17,14 @@
     </div>
     <div class="w-full flex flex-col items-start gap-12 ml-12 mt-10">
       <div class="flex text-[#EFEFEF99] gap-1">
-        <p>{{ $t('enter') }}</p>
+        <p>{{ $t("enter") }}</p>
         <p class="text-white font-bold">@</p>
-        <p>{{ $t('to_search_movies') }}</p>
+        <p>{{ $t("to_search_movies") }}</p>
       </div>
       <div class="flex text-[#EFEFEF99] gap-1">
-        <p>{{ $t('enter') }}</p>
+        <p>{{ $t("enter") }}</p>
         <p class="text-white font-bold">#</p>
-        <p>{{ $t('to_search_quotes') }}</p>
+        <p>{{ $t("to_search_quotes") }}</p>
       </div>
     </div>
   </div>

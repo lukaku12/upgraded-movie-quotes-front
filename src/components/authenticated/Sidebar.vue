@@ -4,13 +4,13 @@
     class="fixed w-screen h-screen top-0 left-0 z-1000"
     @click="setNavbarIsOpen(false)"
   ></div>
-  <div class="hidden w-[600px] max-w-[300px] md:max-w-[300px] xl:max-w-[600px] lg:h-full lg:flex"></div>
+  <div
+    class="hidden w-[600px] max-w-[300px] md:max-w-[300px] xl:max-w-[600px] lg:h-full lg:flex"
+  ></div>
   <div
     :class="navBarIsOpen ? 'visible' : 'hidden'"
-    class="fixed top-0 animate-pop-up lg:animate-none left-0 h-[658px]
-           rounded-tr-xl z-1000 rounded-br-xl px-16 pr-20 bg-[#11101A] lg:z-40
-           lg:bg-transparent lg:h-96 lg:top-[124px] lg:flex lg:flex-col
-    ">
+    class="fixed top-0 animate-pop-up lg:animate-none left-0 h-[658px] rounded-tr-xl z-1000 rounded-br-xl px-16 pr-20 bg-[#11101A] lg:z-40 lg:bg-transparent lg:h-96 lg:top-[124px] lg:flex lg:flex-col"
+  >
     <div
       class="flex w-full items-center h-[60px] gap-3 text-white mt-14 lg:mt-0"
     >
@@ -27,7 +27,7 @@
           class="text-xs text-start opacity-70 hover:opacity-100"
           @click="hideItems"
         >
-          {{ $t('edit_your_profile') }}
+          {{ $t("edit_your_profile") }}
         </router-link>
       </div>
     </div>
@@ -40,9 +40,13 @@
             @click="hideItems"
           >
             <HomeSvg
-              :fill-color="routeName === 'home' || routePath.includes('/quotes/create') ? '#FF0000' : '#FFFFFF'"
+              :fill-color="
+                routeName === 'home' || routePath.includes('/quotes/create')
+                  ? '#FF0000'
+                  : '#FFFFFF'
+              "
             />
-            <p>{{ $t('news_feed') }}</p>
+            <p>{{ $t("news_feed") }}</p>
           </router-link>
         </li>
         <li>
@@ -54,7 +58,7 @@
             <CameraReelsSvg
               :fill-color="routePath.includes('movies') ? '#FF0000' : '#FFFFFF'"
             />
-            <p>{{ $t('list_of_movies') }}</p>
+            <p>{{ $t("list_of_movies") }}</p>
           </router-link>
         </li>
       </ul>
@@ -91,10 +95,13 @@ export default {
     }
   },
   methods: {
-    ...mapActions(useStylesStore, ["setNavbarIsOpen", "setDesktopSearchBarIsOpen"]),
+    ...mapActions(useStylesStore, [
+      "setNavbarIsOpen",
+      "setDesktopSearchBarIsOpen",
+    ]),
     ...mapActions(useUserStore, ["setUser"]),
     hideItems() {
-      window.scrollTo({top: 0, behavior: 'smooth'});
+      window.scrollTo({ top: 0, behavior: "smooth" });
       this.setDesktopSearchBarIsOpen(false);
       this.setNavbarIsOpen(false);
     },

@@ -30,7 +30,7 @@
                 class="flex gap-2 items-center h-[18px]"
               >
                 <Trash />
-                <h1 class="text-sm h-full">{{ $t('delete') }}</h1>
+                <h1 class="text-sm h-full">{{ $t("delete") }}</h1>
               </router-link>
             </div>
             <h1>{{ name }}</h1>
@@ -87,7 +87,7 @@ export default {
     user: {
       type: Object,
       required: true,
-    }
+    },
   },
   methods: {
     deleteQuote() {

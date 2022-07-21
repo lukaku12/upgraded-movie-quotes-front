@@ -47,7 +47,9 @@ export default {
         .replace(/\./g, "");
     },
     localeMovie() {
-      return (this.$i18next.language === 'en') ? this.movie.title.en : this.movie.title.ka;
+      return this.$i18next.language === "en"
+        ? this.movie.title.en
+        : this.movie.title.ka;
     },
   },
 };

@@ -21,14 +21,14 @@
             :to="{ name: 'sign-up' }"
             class="bg-[#E31221] border border-[#E31221] font-semibold px-4 py-1 rounded-[4px] text-white"
           >
-            {{ $t('sign_up') }}
+            {{ $t("sign_up") }}
           </router-link>
         </div>
         <router-link
           :to="{ name: 'login' }"
           class="border border-white text-white px-5 py-1 rounded-[4px] hover:bg-[#4d4d4d]"
         >
-          {{ $t('log_in') }}
+          {{ $t("log_in") }}
         </router-link>
       </div>
     </header>
@@ -38,14 +38,14 @@
       <h1
         class="text-[#DDCCAA] text-2xl font-bold text-center xl:text-6xl xl:leading-[90px]"
       >
-        {{ $t('find_any_quote_in') }} <br />
-        {{ $t('millions_of_movie_lines') }}
+        {{ $t("find_any_quote_in") }} <br />
+        {{ $t("millions_of_movie_lines") }}
       </h1>
       <router-link
         :to="{ name: 'sign-up' }"
         class="bg-[#E31221] font-semibold px-5 py-2 rounded-[4px] text-white"
       >
-        {{ $t('get_started') }}
+        {{ $t("get_started") }}
       </router-link>
     </main>
     <div class="mt-20 w-full h-full">
@@ -70,7 +70,7 @@
     </div>
     <footer class="h-[32px] w-full bg-[#0D0B14] flex items-center pl-8">
       <p class="text-[#DDCCAA] text-[8px] font-bold">
-        © 2022 {{ $t('copyright') }}.
+        © 2022 {{ $t("copyright") }}.
       </p>
     </footer>
   </section>

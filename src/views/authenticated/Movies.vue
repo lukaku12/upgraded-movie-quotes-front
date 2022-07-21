@@ -17,8 +17,8 @@
         <div
           class="flex flex-col gap-5 lg:flex-row lg:items-center lg:h-[37px] text-center"
         >
-          <h1 class="text-xl xl:text-2xl">{{ $t('my_list_of_movies') }}</h1>
-          <p>({{ $t('total') }} {{ searchedMovies.length }})</p>
+          <h1 class="text-xl xl:text-2xl">{{ $t("my_list_of_movies") }}</h1>
+          <p>({{ $t("total") }} {{ searchedMovies.length }})</p>
         </div>
         <div class="flex items-center lg:w-[58%] lg:justify-end lg:gap-4">
           <DesktopSearch
@@ -35,7 +35,7 @@
             class="bg-[#E31221] border border-[#E31221] px-5 py-1 rounded-[4px] text-white flex justify-center items-center gap-2 text-center"
           >
             <Plus />
-            {{ $t('add_movie') }}
+            {{ $t("add_movie") }}
           </router-link>
         </div>
       </div>
@@ -96,9 +96,12 @@ export default {
   methods: {
     searchMovie(e) {
       this.searchValue = e.target.value;
-      this.searchedMovies = this.movies.filter((movie) =>
-        movie.title.en.toLowerCase().includes(this.searchValue.toLowerCase()) ||
-        movie.title.ka.toLowerCase().includes(this.searchValue.toLowerCase())
+      this.searchedMovies = this.movies.filter(
+        (movie) =>
+          movie.title.en
+            .toLowerCase()
+            .includes(this.searchValue.toLowerCase()) ||
+          movie.title.ka.toLowerCase().includes(this.searchValue.toLowerCase())
       );
     },
   },

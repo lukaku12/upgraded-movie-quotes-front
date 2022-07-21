@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="flex gap-4 w-11/12 border-[#efefef5b] border-t-2">
-      <PostActions :current-post="quote" :user="user"/>
+      <PostActions :current-post="quote" :user="user" />
     </div>
   </div>
 </template>
@@ -65,7 +65,9 @@ export default {
   computed: {
     ...mapState(useUserStore, ["user"]),
     localeQuote() {
-      return (this.$i18next.language === 'en') ? this.quote.title.en : this.quote.title.ka;
+      return this.$i18next.language === "en"
+        ? this.quote.title.en
+        : this.quote.title.ka;
     },
   },
   methods: {

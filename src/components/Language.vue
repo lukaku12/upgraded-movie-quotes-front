@@ -6,8 +6,8 @@
   ></div>
   <div class="relative text-white hidden md:block">
     <button class="flex items-center gap-1" @click="showLanguages">
-      <button v-if="selectedLanguage === 'en'">{{ $t('eng') }}</button>
-      <button v-else>{{ $t('geo') }}</button>
+      <button v-if="selectedLanguage === 'en'">{{ $t("eng") }}</button>
+      <button v-else>{{ $t("geo") }}</button>
       <DownArrow />
     </button>
     <button
@@ -15,14 +15,14 @@
       class="absolute top-6 z-50"
       @click="setLanguageKa"
     >
-      {{ $t('geo') }}
+      {{ $t("geo") }}
     </button>
     <button
       v-if="languagesAreVisible && selectedLanguage !== 'en'"
       class="absolute top-6 z-50"
       @click="setLanguageEn"
     >
-      {{ $t('eng') }}
+      {{ $t("eng") }}
     </button>
   </div>
 </template>
@@ -36,15 +36,15 @@ export default {
     return {
       languagesAreVisible: false,
       languages: {
-        en: { nativeName: 'English' },
-        ka: { nativeName: 'Georgian' }
-      }
+        en: { nativeName: "English" },
+        ka: { nativeName: "Georgian" },
+      },
     };
   },
   computed: {
     selectedLanguage() {
-      return this.$i18next.language
-    }
+      return this.$i18next.language;
+    },
   },
   methods: {
     showLanguages() {

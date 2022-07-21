@@ -2,7 +2,7 @@
   <div class="w-full h-auto relative text-white">
     <Field
       :name="name"
-      class="w-full bg-transparent  p-2 pr-14 rounded border border-[#efefef5b] focus:outline-none font-bold text-lg"
+      class="w-full bg-transparent p-2 pr-14 rounded border border-[#efefef5b] focus:outline-none font-bold text-lg"
       :placeholder="placeholder"
       rules="required|min:3|max:255"
       :value="value"

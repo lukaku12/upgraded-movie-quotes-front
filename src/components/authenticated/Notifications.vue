@@ -10,9 +10,9 @@
   >
     <div class="flex flex-col gap-10">
       <div class="flex justify-between">
-        <h1 class="font-bold text-2xl">{{ $t('notifications') }}</h1>
+        <h1 class="font-bold text-2xl">{{ $t("notifications") }}</h1>
         <button class="underline" @click="markAllNotificationsAsRead">
-          {{ $t('mark_as_all_read') }}
+          {{ $t("mark_as_all_read") }}
         </button>
       </div>
       <div v-if="notifications.length === 0" class="text-center">
@@ -36,7 +36,7 @@
               alt="profile"
             />
             <p v-if="notification.read_at === null" class="text-green-600">
-              {{ $t('new') }}
+              {{ $t("new") }}
             </p>
           </div>
           <div class="flex flex-col gap-5">
@@ -83,7 +83,7 @@ export default {
   mounted() {
     axios.get("notifications").then((res) => {
       this.setNotifications(res.data.data);
-      // console.log(res.data.data);
+      console.log(res.data.data);
     });
   },
   methods: {

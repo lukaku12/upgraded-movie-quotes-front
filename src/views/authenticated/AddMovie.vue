@@ -9,7 +9,7 @@
       >
         <div class="w-full relative border-b-[#efefef5b] border-b py-10">
           <div>
-            <h1>{{ $t('add_movie') }}</h1>
+            <h1>{{ $t("add_movie") }}</h1>
             <router-link
               to="/movies"
               class="absolute right-5 top-1/2 -translate-y-[50%] opacity-80 hover:opacity-100"
@@ -58,16 +58,18 @@
           >
             <span class="flex gap-4 items-center">
               <Photo />
-              {{ $t('upload_image') }}
+              {{ $t("upload_image") }}
             </span>
-            <button class="px-3 py-2 h-full bg-purple-900">{{ $t('choose_file') }}</button>
+            <button class="px-3 py-2 h-full bg-purple-900">
+              {{ $t("choose_file") }}
+            </button>
           </div>
         </div>
         <button
           type="submit"
           class="bg-[#E31221] border border-[#E31221] mt-7 font-bold px-7 py-1 rounded-[4px] text-white"
         >
-          {{ $t('add_movie') }}
+          {{ $t("add_movie") }}
         </button>
       </VueForm>
     </div>

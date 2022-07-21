@@ -6,7 +6,7 @@
     @click="setDesktopSearchBarIsOpen(true)"
   >
     <Search />
-    {{  searchTitle }}
+    {{ searchTitle }}
   </button>
   <div
     v-if="desktopSearchBarIsOpen"
