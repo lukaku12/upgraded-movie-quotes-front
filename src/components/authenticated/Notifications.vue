@@ -96,7 +96,7 @@ export default {
       axios.post("notifications/read-all");
     },
     timeDiff(date) {
-      return timeDiff(date);
+      return timeDiff(date, this.$i18next.language);
     },
   },
 };

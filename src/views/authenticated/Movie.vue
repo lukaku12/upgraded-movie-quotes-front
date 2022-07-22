@@ -26,9 +26,13 @@
           <h1 class="text-2xl text-[#DDCCAA]">
             {{ localeMovie }} ({{ movie.created_at.substring(0, 4) }})
           </h1>
-          <div class="w-full flex gap-2 font-bold mt-4">
-            <button class="bg-gray-400 py-1 px-2 rounded">Drama</button>
-            <button class="bg-gray-400 py-1 px-2 rounded">Romance</button>
+          <div class="w-full flex gap-2 font-bold mt-4 flex-wrap">
+            <span
+              v-for="genre in movie.genres"
+              :key="genre.id"
+              class="bg-gray-400 py-1 px-2 rounded"
+              >{{ genre.name }}</span
+            >
           </div>
           <div class="flex flex-col gap-4 ml-3 my-4">
             <p>{{ $t("director") }}: {{ localeDirector }}</p>

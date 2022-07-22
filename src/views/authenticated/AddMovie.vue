@@ -19,8 +19,8 @@
         </div>
         <div class="flex items-center gap-3 py-10 w-10/12 md:w-11/12">
           <img
-            class="max-w-[52px] max-h-[52px]"
-            src="@/assets/post/profile-picture.png"
+            class="max-w-[52px] max-h-[52px] rounded-[50%] aspect-square"
+            :src="'http://127.0.0.1:8000/storage/thumbnails/' + user.picture"
             alt="profile-picture"
           />
           <p>{{ user.username }}</p>
@@ -160,7 +160,7 @@ export default {
       formData.append("director_en", values.director_en);
       formData.append("director_ka", values.director_ka);
       formData.append("description_en", values.description_en);
-      formData.append("description_ka", values.description);
+      formData.append("description_ka", values.description_ka);
       formData.append("genres", JSON.stringify(this.selectedGenres));
       formData.append("thumbnail", values.thumbnail[0]);
 

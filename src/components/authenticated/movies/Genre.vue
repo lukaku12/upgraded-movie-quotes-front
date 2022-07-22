@@ -1,8 +1,12 @@
 <template>
   <button
     type="button"
-    class="bg-gray-400 py-1 px-2 rounded"
-    :class="genreIsActive ? 'opacity-90' : 'opacity-40 hover:opacity-60'"
+    class="py-1 px-2 rounded"
+    :class="
+      genreIsActive
+        ? 'bg-gray-800 text-gray-400 outline-1 outline'
+        : 'bg-gray-400 text-gray-500'
+    "
     @click="addGenreToActive(genre)"
   >
     {{ genre.name }}
