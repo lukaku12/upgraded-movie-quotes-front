@@ -10,11 +10,12 @@
         <div class="w-full relative border-b-[#efefef5b] border-b py-10">
           <div>
             <h1>{{ $t("add_movie") }}</h1>
-            <router-link
-              to="/movies"
+            <button
+              type="button"
               class="absolute right-5 top-1/2 -translate-y-[50%] opacity-80 hover:opacity-100"
+              @click="goToMoviesPage"
               ><CloseIcon
-            /></router-link>
+            /></button>
           </div>
         </div>
         <div class="flex items-center gap-3 py-10 w-10/12 md:w-11/12">
@@ -119,6 +120,7 @@ import Genre from "@/components/authenticated/movies/Genre.vue";
 import { Field } from "vee-validate";
 import { useGenresStore } from "@/stores/genres/genres";
 import axios from "@/config/axios";
+import { mapActions } from "pinia/dist/pinia.esm-browser";
 
 export default {
   name: "AddMovie",
@@ -152,6 +154,7 @@ export default {
   },
 
   methods: {
+    ...mapActions(useGenresStore, ["clearSelectedGenres"]),
     addMovie(meta, values) {
       if (!meta.valid || this.selectedGenres.length === 0) return;
       const formData = new FormData();
@@ -164,12 +167,17 @@ export default {
       formData.append("genres", JSON.stringify(this.selectedGenres));
       formData.append("thumbnail", values.thumbnail[0]);
 
-      axios.post("movies/add", formData).then((res) => {
-        console.log(res);
+      axios.post("movies/add", formData).then(() => {
+        this.clearSelectedGenres();
+        this.$router.push({ name: "movies" });
       });
     },
     updateThumbnail(e) {
       this.thumbnail = URL.createObjectURL(e.target.files[0]);
+    },
+    goToMoviesPage() {
+      this.clearSelectedGenres();
+      this.$router.push({ name: "movies" });
     },
   },
 };
