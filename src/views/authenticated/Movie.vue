@@ -31,21 +31,11 @@
             <button class="bg-gray-400 py-1 px-2 rounded">Romance</button>
           </div>
           <div class="flex flex-col gap-4 ml-3 my-4">
-            <p>{{ $t("director") }}: Nick cassavetes</p>
+            <p>{{ $t("director") }}: {{ localeDirector }}</p>
             <p>{{ $t("budget") }}: 2.000.000$</p>
           </div>
           <div class="w-full md:pr-4">
-            <p>
-              In a nursing home, resident Duke reads a romance story to an old
-              woman who has senile dementia with memory loss. In the late 1930s,
-              wealthy seventeen year-old Allie Hamilton is spending summer
-              vacation in Seabrook. Local worker Noah Calhoun meets Allie at a
-              carnival
-              <br />
-              <br />
-              In a nursing home, resident Duke reads a romance story to an old
-              woman who has senile dementia with memory loss.
-            </p>
+            <p>{{ localeDescription }}</p>
           </div>
           <div class="pb-10 border-[#efefef5b] border-b-2 md:border-none">
             <router-link
@@ -119,6 +109,16 @@ export default {
       return this.$i18next.language === "en"
         ? this.movie.title.en
         : this.movie.title.ka;
+    },
+    localeDirector() {
+      return this.$i18next.language === "en"
+        ? this.movie.director.en
+        : this.movie.director.ka;
+    },
+    localeDescription() {
+      return this.$i18next.language === "en"
+        ? this.movie.description.en
+        : this.movie.description.ka;
     },
   },
   mounted() {

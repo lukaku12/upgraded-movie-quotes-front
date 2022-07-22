@@ -51,9 +51,7 @@
               </div>
             </div>
             <p>
-              {{
-                new Date(notification.created_at).toLocaleTimeString("ka-GE")
-              }}
+              {{ timeDiff(notification.created_at) }}
             </p>
           </div>
         </div>
@@ -68,6 +66,7 @@ import { useStylesStore } from "@/stores/styling/styles";
 import { useNotificationsStore } from "@/stores/notifications/notifications";
 import ChatQuote from "../icons/ChatQuote.vue";
 import HeartFillRed from "../icons/HeartFillRed.vue";
+import timeDiff from "time-diff-for-humans";
 import axios from "@/config/axios";
 
 export default {
@@ -83,7 +82,6 @@ export default {
   mounted() {
     axios.get("notifications").then((res) => {
       this.setNotifications(res.data.data);
-      console.log(res.data.data);
     });
   },
   methods: {
@@ -96,6 +94,9 @@ export default {
     markAllNotificationsAsRead() {
       this.setAllNotificationsAsRead();
       axios.post("notifications/read-all");
+    },
+    timeDiff(date) {
+      return timeDiff(date);
     },
   },
 };

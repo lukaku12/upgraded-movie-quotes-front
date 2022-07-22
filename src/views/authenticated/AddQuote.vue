@@ -202,6 +202,12 @@ export default {
   computed: {
     ...mapState(useUserStore, ["user"]),
   },
+  mounted() {
+    document.querySelector("html").style.overflowY = "hidden";
+  },
+  unmounted() {
+    document.querySelector("html").style.overflowY = "auto";
+  },
   methods: {
     createQuote(meta, values) {
       console.log(values);

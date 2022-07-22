@@ -20,6 +20,7 @@
     "laravel-echo": "^1.12.1",
     "pinia": "^2.0.14",
     "pusher-js": "^7.1.1-beta",
+    "time-diff-for-humans": "^1.0.3",
     "vee-validate": "^4.5.11",
     "vue": "^3.2.37",
     "vue-axios": "^3.4.1",

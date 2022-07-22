@@ -61,6 +61,12 @@ export default {
       confirmPasswordValue: "",
     };
   },
+  mounted() {
+    document.querySelector("html").style.overflowY = "hidden";
+  },
+  unmounted() {
+    document.querySelector("html").style.overflowY = "auto";
+  },
   methods: {
     updateUserNameValue(e) {
       this.userNameValue = e.target.value;

@@ -43,6 +43,12 @@ export default {
       passwordValue: "",
     };
   },
+  mounted() {
+    document.querySelector("html").style.overflowY = "hidden";
+  },
+  unmounted() {
+    document.querySelector("html").style.overflowY = "auto";
+  },
   methods: {
     updateEmailValue(e) {
       this.emailValue = e.target.value;

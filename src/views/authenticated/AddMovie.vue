@@ -1,7 +1,7 @@
 <template>
   <div class="w-screen h-screen fixed top-0 left-0 bg-[#0000007c] z-50"></div>
   <div
-    class="fixed overflow-y-auto top-[84px] max-h-[calc(100vh-84px)] max-h-screen w-screen bg-landing-background-reverse md:max-h-[calc(100vh-180px)] md:top-[50%] right-0 pb-10 text-white z-50 max-w-[961px] md:left-[50%] md:translate-x-[-50%] md:translate-y-[-50%] md:rounded-[12px] font-bold"
+    class="fixed overflow-y-auto top-[84px] max-h-[calc(100vh-84px)] w-screen bg-landing-background-reverse md:max-h-[calc(100vh-180px)] md:top-[50%] right-0 pb-10 text-white z-50 max-w-[961px] md:left-[50%] md:translate-x-[-50%] md:translate-y-[-50%] md:rounded-[12px] font-bold"
   >
     <div class="flex flex-col items-center">
       <header
@@ -26,48 +26,79 @@
           <p>{{ user.username }}</p>
         </div>
       </header>
-      <VueForm class="w-10/12 h-auto flex flex-col gap-3 md:w-11/12">
-        <InputWithLang name="titleEn" placeholder="Movie name" language="Eng" />
+      <VueForm
+        v-slot="{ meta, values }"
+        class="w-10/12 h-auto flex flex-col gap-3 md:w-11/12"
+      >
         <InputWithLang
-          name="titleKa"
+          name="title_en"
+          placeholder="Movie name"
+          language="Eng"
+        />
+        <InputWithLang
+          name="title_ka"
           placeholder="ფილმის სახელი"
           language="ქარ"
         />
         <div
-          class="w-full bg-transparent h-[46px] p-2 pr-14 rounded border border-[#efefef5b] focus:outline-none font-bold text-lg"
-        ></div>
+          class="w-full bg-transparent h-auto p-2 rounded border max-h-[100px] border-[#efefef5b] overflow-y-auto justify-center font-bold text-lg flex gap-2 flex-wrap"
+        >
+          <Genre v-for="genre in genres" :key="genre.id" :genre="genre" />
+        </div>
         <InputWithLang
-          name="directorEn"
+          name="director_en"
           placeholder="Director"
           language="Eng"
         />
         <InputWithLang
-          name="directorEn"
+          name="director_ka"
           placeholder="რეჟისორი"
           language="ქარ"
         />
         <TextArea
-          name="descEn"
-          placeholder="Movie discription"
+          name="description_en"
+          placeholder="Movie description"
           language="Eng"
         />
-        <TextArea name="descKa" placeholder="ფილმის აღწერა" language="ქარ" />
+        <TextArea
+          name="description_ka"
+          placeholder="ფილმის აღწერა"
+          language="ქარ"
+        />
         <div class="w-full flex flex-col gap-3">
           <div
-            class="bg-transparent w-full py-6 px-5 text-start flex gap-4 items-center justify-between border-[#efefef5b] border rounded"
+            class="bg-transparent w-full py-6 px-5 text-start flex gap-4 items-center justify-between border-[#efefef5b] border rounded relative"
           >
             <span class="flex gap-4 items-center">
               <Photo />
               {{ $t("upload_image") }}
+              <img
+                v-if="thumbnail"
+                class="aspect-square md:aspect-video rounded-xl absolute h-full w-[170px] right-2"
+                :src="thumbnail"
+                alt="thumbnail"
+              />
             </span>
-            <button class="px-3 py-2 h-full bg-purple-900">
+            <button
+              type="button"
+              class="px-3 py-2 h-full bg-purple-900 relative"
+            >
               {{ $t("choose_file") }}
+              <Field
+                type="file"
+                name="thumbnail"
+                rules="required"
+                class="absolute w-full h-full top-0 left-0 opacity-0"
+                @change="updateThumbnail"
+              />
             </button>
           </div>
         </div>
         <button
-          type="submit"
+          :disabled="!meta.valid || selectedGenres.length === 0"
+          type="button"
           class="bg-[#E31221] border border-[#E31221] mt-7 font-bold px-7 py-1 rounded-[4px] text-white"
+          @click="addMovie(meta, values)"
         >
           {{ $t("add_movie") }}
         </button>
@@ -84,6 +115,11 @@ import Photo from "@/components/icons/Photo.vue";
 import { mapState } from "pinia";
 import { useUserStore } from "@/stores/user/user";
 import InputWithLang from "@/components/Inputs/InputWithLang.vue";
+import Genre from "@/components/authenticated/movies/Genre.vue";
+import { Field } from "vee-validate";
+import { useGenresStore } from "@/stores/genres/genres";
+import axios from "@/config/axios";
+
 export default {
   name: "AddMovie",
   components: {
@@ -92,9 +128,49 @@ export default {
     VueForm,
     CloseIcon,
     Photo,
+    Genre,
+    Field,
+  },
+  data() {
+    return {
+      genres: [],
+      thumbnail: "",
+    };
   },
   computed: {
     ...mapState(useUserStore, ["user"]),
+    ...mapState(useGenresStore, ["selectedGenres"]),
+  },
+  mounted() {
+    document.querySelector("html").style.overflowY = "hidden";
+    axios.get("genres").then((res) => {
+      this.genres = res.data;
+    });
+  },
+  unmounted() {
+    document.querySelector("html").style.overflowY = "auto";
+  },
+
+  methods: {
+    addMovie(meta, values) {
+      if (!meta.valid || this.selectedGenres.length === 0) return;
+      const formData = new FormData();
+      formData.append("title_en", values.title_en);
+      formData.append("title_ka", values.title_ka);
+      formData.append("director_en", values.director_en);
+      formData.append("director_ka", values.director_ka);
+      formData.append("description_en", values.description_en);
+      formData.append("description_ka", values.description);
+      formData.append("genres", JSON.stringify(this.selectedGenres));
+      formData.append("thumbnail", values.thumbnail[0]);
+
+      axios.post("movies/add", formData).then((res) => {
+        console.log(res);
+      });
+    },
+    updateThumbnail(e) {
+      this.thumbnail = URL.createObjectURL(e.target.files[0]);
+    },
   },
 };
 </script>

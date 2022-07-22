@@ -87,7 +87,6 @@ export default {
   mounted() {
     this.loading = true;
     axios.get("movies").then((response) => {
-      console.log(response.data);
       this.movies = response.data;
       this.searchedMovies = response.data;
       this.loading = false;
