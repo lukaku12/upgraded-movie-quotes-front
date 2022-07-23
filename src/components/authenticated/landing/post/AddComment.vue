@@ -3,10 +3,8 @@
     class="flex items-center gap-3 border-t-[#efefef5b] border-t-2 pt-5"
     @submit="addComment"
   >
-    <img
-      class="max-w-[52px] max-h-[52px] rounded-[50%] aspect-square"
-      :src="'http://127.0.0.1:8000/storage/thumbnails/' + user.picture"
-      alt="profile-picture"
+    <ProfilePicture
+      classes="max-w-[52px] max-h-[52px] rounded-[50%] aspect-square"
     />
     <Field
       v-model="commentData"
@@ -22,10 +20,11 @@
 <script>
 import { Field, Form as VueFrom } from "vee-validate";
 import axios from "@/config/axios";
+import ProfilePicture from "../../ProfilePicture.vue";
 
 export default {
   name: "PostAddComment",
-  components: { VueFrom, Field },
+  components: { VueFrom, Field, ProfilePicture },
   props: {
     currentPost: {
       type: Object,

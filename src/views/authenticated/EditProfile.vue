@@ -14,10 +14,8 @@
         <div
           class="w-full flex flex-col justify-center items-center gap-4 mb-5"
         >
-          <img
-            class="absolute top-0 -translate-y-[50%] max-w-[188px] max-h-[188px] rounded-[50%] aspect-square"
-            :src="'http://127.0.0.1:8000/storage/thumbnails/' + user.picture"
-            alt="profile-picture"
+          <ProfilePicture
+            classes="absolute top-0 -translate-y-[50%] max-w-[188px] max-h-[188px] rounded-[50%] aspect-square"
           />
           <button class="text-white text-center mt-12">
             {{ $t("upload_new_photo") }}
@@ -62,11 +60,13 @@ import BasicInput from "@/components/Inputs/BasicInput.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import { mapState, mapActions } from "pinia";
 import { useUserStore } from "@/stores/user/user";
+import ProfilePicture from "@/components/authenticated/ProfilePicture.vue";
 export default {
   name: "EditProfile",
   components: {
     AuthWrapper,
     BasicInput,
+    ProfilePicture,
   },
   computed: {
     ...mapState(useUserStore, ["user"]),

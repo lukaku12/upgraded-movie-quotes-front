@@ -14,11 +14,12 @@
     <div
       class="flex w-full items-center h-[60px] gap-3 text-white mt-14 lg:mt-0"
     >
-      <img
-        class="max-w-[52px] max-h-[52px] rounded-[50%] aspect-square"
-        :class="routeName === 'edit-profile' && 'border-green-600 border-2'"
-        :src="'http://127.0.0.1:8000/storage/thumbnails/' + user.picture"
-        alt="profile-picture"
+      <ProfilePicture
+        classes="max-w-[52px] max-h-[52px] min-h-[52px] min-w-[52px] rounded-[50%]
+      aspect-square"
+        :extra-classes="
+          routeName === 'edit-profile' ? 'border-green-600 border-2' : ''
+        "
       />
       <div class="flex flex-col items-center justify-center">
         <h1 class="font-bold h-[25px]">{{ user.username }}</h1>
@@ -73,10 +74,11 @@ import { mapState, mapActions } from "pinia";
 import { useStylesStore } from "@/stores/styling/styles";
 import { useUserStore } from "@/stores/user/user";
 import axios from "@/config/axios/index";
+import ProfilePicture from "./ProfilePicture.vue";
 
 export default {
   name: "Sidebar",
-  components: { CameraReelsSvg, HomeSvg },
+  components: { CameraReelsSvg, HomeSvg, ProfilePicture },
   computed: {
     ...mapState(useStylesStore, ["navBarIsOpen"]),
     ...mapState(useUserStore, ["user"]),

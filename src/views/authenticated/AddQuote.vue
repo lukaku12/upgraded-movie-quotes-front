@@ -18,10 +18,8 @@
           </div>
         </div>
         <div class="flex items-center gap-3 py-10 w-10/12 md:w-11/12">
-          <img
-            class="max-w-[52px] max-h-[52px] rounded-[50%] aspect-square"
-            :src="'http://127.0.0.1:8000/storage/thumbnails/' + user.picture"
-            alt="profile-picture"
+          <ProfilePicture
+            classes="max-w-[52px] max-h-[52px] rounded-[50%] aspect-square"
           />
           <p>{{ user.username }}</p>
         </div>
@@ -178,6 +176,7 @@ import DownArrow from "@/components/icons/DownArrow.vue";
 import { mapState } from "pinia/dist/pinia";
 import { useUserStore } from "@/stores/user/user";
 import LoadingAnimation from "@/components/LoadingAnimation.vue";
+import ProfilePicture from "@/components/authenticated/ProfilePicture.vue";
 export default {
   name: "AddQuote",
   components: {
@@ -189,6 +188,7 @@ export default {
     Photo,
     Field,
     DownArrow,
+    ProfilePicture,
   },
   data() {
     return {

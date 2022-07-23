@@ -1,11 +1,8 @@
 <template>
   <div class="flex items-center gap-3">
-    <img
-      class="max-w-[52px] max-h-[52px] rounded-[50%] aspect-square"
-      :src="
-        'http://127.0.0.1:8000/storage/thumbnails/' + currentPost.user.picture
-      "
-      alt="profile-picture"
+    <ProfilePicture
+      classes="max-w-[52px] max-h-[52px] rounded-[50%] aspect-square"
+      :img-src="currentPost.user.picture"
     />
     <p>{{ currentPost.user.username }}</p>
   </div>
@@ -26,8 +23,10 @@
 </template>
 
 <script>
+import ProfilePicture from "../../ProfilePicture.vue";
 export default {
   name: "PostInformation",
+  components: { ProfilePicture },
   props: {
     currentPost: {
       type: Object,
