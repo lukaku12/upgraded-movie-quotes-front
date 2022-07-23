@@ -72,7 +72,6 @@
       </main>
     </div>
   </AuthWrapper>
-  <NotFound v-if="!movieExists"></NotFound>
 </template>
 
 <script>
@@ -80,7 +79,6 @@ import Quote from "@/components/authenticated/movies/Quote.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import PopupMessage from "@/components/authenticated/PopupMessage.vue";
 import LoadingAnimation from "@/components/LoadingAnimation.vue";
-import NotFound from "@/views/NotFound.vue";
 import axios from "@/config/axios/index.js";
 import Plus from "@/components/icons/Plus.vue";
 import Thumbnail from "@/components/authenticated/Thumbnail.vue";
@@ -89,7 +87,6 @@ export default {
   name: "Movie",
   components: {
     AuthWrapper,
-    NotFound,
     Quote,
     Plus,
     PopupMessage,
@@ -99,7 +96,6 @@ export default {
   data() {
     return {
       movie: [],
-      movieExists: true,
       loading: false,
     };
   },
@@ -136,7 +132,7 @@ export default {
         this.loading = false;
       })
       .catch(() => {
-        this.movieExists = false;
+        this.$router.push("/404");
       });
   },
 };

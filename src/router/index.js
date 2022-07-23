@@ -66,6 +66,11 @@ const router = createRouter({
       beforeEnter: [isAuthenticated],
     },
     {
+      path: "/404",
+      component: NotFound,
+      name: "404",
+    },
+    {
       path: "/:notFound(.*)",
       component: NotFound,
       name: "not-found",

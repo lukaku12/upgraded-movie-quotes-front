@@ -35,8 +35,8 @@
               src="@/assets/post/profile-picture.png"
               alt="profile"
             />
-            <p v-if="notification.read_at === null" class="text-green-600">
-              {{ $t("new") }}
+            <p class="text-green-600 h-[25px]">
+              {{ notification.read_at === null ? $t("new") : "" }}
             </p>
           </div>
           <div class="flex flex-col gap-5">

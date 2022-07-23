@@ -125,6 +125,9 @@ export default {
         this.quote = response.data;
         this.dataIsFetched = true;
         this.loading = false;
+      })
+      .catch(() => {
+        this.$router.push("/404");
       });
   },
   methods: {
