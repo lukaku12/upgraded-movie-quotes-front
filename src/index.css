@@ -7,8 +7,14 @@
   src: url(./assets/fonts/Montserrat-Regular.ttf);
 }
 
+@font-face {
+  font-family: Helvetica;
+  src: url(@/assets/fonts/HelveticaGeoMedium.ttf);
+}
+
 * {
   font-family: Montserrat;
+  font-family: Helvetica;
 }
 
 html,
