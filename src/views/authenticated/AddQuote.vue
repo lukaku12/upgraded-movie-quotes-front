@@ -96,12 +96,9 @@
               class="flex w-full py-1 h-auto bg-black gap-6 items-center cursor-pointer hover:outline outline-1 outline-gray-600"
               @click="selectMovie(movie)"
             >
-              <img
-                class="h-full max-h-[108px] max-w-[155px] rounded-lg aspect-square md:aspect-video"
-                :src="
-                  'http://127.0.0.1:8000/storage/thumbnails/' + movie.thumbnail
-                "
-                alt="post-image"
+              <Thumbnail
+                classes="h-full max-h-[108px] max-w-[155px] rounded-lg aspect-square md:aspect-video"
+                :img-src="movie.thumbnail"
               />
               <div class="flex flex-col gap-2">
                 <div class="flex h-auto items-center justify-center">
@@ -126,13 +123,9 @@
           v-if="chosenMovie.length !== 0 && !fetchedMoviesAreVisible"
           class="flex w-full py-1 h-auto bg-black gap-6 items-center hover:outline outline-1 outline-gray-600"
         >
-          <img
-            class="h-full max-h-[108px] max-w-[155px] rounded-lg aspect-square md:aspect-video"
-            :src="
-              'http://127.0.0.1:8000/storage/thumbnails/' +
-              chosenMovie.thumbnail
-            "
-            alt="post-image"
+          <Thumbnail
+            classes="h-full max-h-[108px] max-w-[155px] rounded-lg aspect-square md:aspect-video"
+            :img-src="chosenMovie.thumbnail"
           />
           <div class="flex flex-col gap-2">
             <div class="flex h-auto items-center justify-center">
@@ -177,6 +170,7 @@ import { mapState } from "pinia/dist/pinia";
 import { useUserStore } from "@/stores/user/user";
 import LoadingAnimation from "@/components/LoadingAnimation.vue";
 import ProfilePicture from "@/components/authenticated/ProfilePicture.vue";
+import Thumbnail from "@/components/authenticated/Thumbnail.vue";
 export default {
   name: "AddQuote",
   components: {
@@ -189,6 +183,7 @@ export default {
     Field,
     DownArrow,
     ProfilePicture,
+    Thumbnail,
   },
   data() {
     return {

@@ -9,10 +9,9 @@
         :to="'/movies/' + movie.slug"
         class="w-full overflow-hidden rounded-2xl h-full cursor-pointer max-h-[450px]"
       >
-        <img
-          class="w-full h-full max-h-[371px] scale-110 rounded-2xl hover:scale-100 duration-300"
-          :src="'http://127.0.0.1:8000/storage/thumbnails/' + movie.thumbnail"
-          alt="post-image"
+        <Thumbnail
+          classes="w-full h-full max-h-[371px] scale-110 rounded-2xl hover:scale-100 duration-300"
+          :img-src="movie.thumbnail"
         />
       </router-link>
       <div class="flex flex-col gap-4">
@@ -30,9 +29,10 @@
 
 <script>
 import ChatQuote from "@/components/icons/ChatQuote.vue";
+import Thumbnail from "../Thumbnail.vue";
 export default {
   name: "Movie",
-  components: { ChatQuote },
+  components: { ChatQuote, Thumbnail },
   props: {
     movie: {
       type: Object,

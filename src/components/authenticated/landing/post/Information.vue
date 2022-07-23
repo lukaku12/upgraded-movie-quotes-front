@@ -14,19 +14,19 @@
         }})
       </p>
     </div>
-    <img
-      class="w-full max-h-[501px] rounded-2xl"
-      :src="'http://127.0.0.1:8000/storage/thumbnails/' + currentPost.thumbnail"
-      alt="post-image"
+    <Thumbnail
+      classes="w-full max-h-[501px] rounded-2xl"
+      :img-src="currentPost.thumbnail"
     />
   </div>
 </template>
 
 <script>
 import ProfilePicture from "../../ProfilePicture.vue";
+import Thumbnail from "../../Thumbnail.vue";
 export default {
   name: "PostInformation",
-  components: { ProfilePicture },
+  components: { ProfilePicture, Thumbnail },
   props: {
     currentPost: {
       type: Object,

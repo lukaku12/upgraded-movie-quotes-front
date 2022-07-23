@@ -1,10 +1,9 @@
 <template>
   <div class="border-t-[#efefef5b] border-t-2 py-4 gap-3 flex flex-col">
     <div class="flex items-center gap-3">
-      <img
-        class="max-w-[45px] max-h-[45px] rounded-[50%] aspect-square"
-        :src="'http://127.0.0.1:8000/storage/thumbnails/' + comment.picture"
-        alt="profile-picture"
+      <ProfilePicture
+        classes="max-w-[45px] max-h-[45px] rounded-[50%] aspect-square"
+        :img-src="comment.picture"
       />
       <p class="font-bold">{{ comment.username }}</p>
     </div>
@@ -15,8 +14,10 @@
 </template>
 
 <script>
+import ProfilePicture from "../../ProfilePicture.vue";
 export default {
   name: "PostComment",
+  components: { ProfilePicture },
   props: {
     comment: {
       type: Object,

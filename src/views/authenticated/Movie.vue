@@ -16,10 +16,9 @@
         class="flex flex-col xl:flex-row px-5 md:px-10 py-8 xl:px-0 gap-5 w-full text-white"
       >
         <div class="flex flex-col gap-5 w-full xl:w-[60%] xl:max-w-[809px]">
-          <img
-            class="h-full max-h-[450px] rounded-2xl aspect-square md:aspect-video xl:aspect-auto"
-            :src="'http://127.0.0.1:8000/storage/thumbnails/' + movie.thumbnail"
-            alt="post-image"
+          <Thumbnail
+            classes="h-full max-h-[450px] rounded-2xl aspect-square md:aspect-video xl:aspect-auto"
+            :img-src="movie.thumbnail"
           />
         </div>
         <div class="w-full xl:w-[40%]">
@@ -84,6 +83,7 @@ import LoadingAnimation from "@/components/LoadingAnimation.vue";
 import NotFound from "@/views/NotFound.vue";
 import axios from "@/config/axios/index.js";
 import Plus from "@/components/icons/Plus.vue";
+import Thumbnail from "@/components/authenticated/Thumbnail.vue";
 
 export default {
   name: "Movie",
@@ -94,6 +94,7 @@ export default {
     Plus,
     PopupMessage,
     LoadingAnimation,
+    Thumbnail,
   },
   data() {
     return {

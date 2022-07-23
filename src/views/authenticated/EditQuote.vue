@@ -41,9 +41,7 @@
           <img
             class="w-full aspect-square md:aspect-video rounded-xl"
             :src="
-              thumbnail === ''
-                ? 'http://127.0.0.1:8000/storage/thumbnails/' + quote.thumbnail
-                : thumbnail
+              thumbnail === '' ? storageImagePath + quote.thumbnail : thumbnail
             "
             alt="thumbnail"
           />
@@ -103,6 +101,7 @@ export default {
   data() {
     return {
       quote: {},
+      storageImagePath: import.meta.env.VITE_LARAVEL_STORAGE_BASE_URL,
       thumbnail: "",
       dataIsFetched: false,
       apiError: "",

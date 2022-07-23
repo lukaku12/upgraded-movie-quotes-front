@@ -32,10 +32,9 @@
         ></TextArea>
       </div>
       <div class="w-10/12 md:w-11/12 flex items-center justify-center my-5">
-        <img
-          class="w-full aspect-square md:aspect-video rounded-xl"
-          :src="'http://127.0.0.1:8000/storage/thumbnails/' + quote.thumbnail"
-          alt="thumbnail"
+        <Thumbnail
+          classes="w-full aspect-square md:aspect-video rounded-xl"
+          :img-src="quote.thumbnail"
         />
       </div>
       <div class="flex gap-4 w-10/12 md:w-11/12 mb-4">
@@ -66,6 +65,7 @@ import PostAddComment from "@/components/authenticated/landing/post/AddComment.v
 import { useUserStore } from "@/stores/user/user";
 import axios from "@/config/axios/index.js";
 import { mapState } from "pinia";
+import Thumbnail from "@/components/authenticated/Thumbnail.vue";
 
 export default {
   name: "ViewQuote",
@@ -77,6 +77,7 @@ export default {
     AuthWrapper,
     TextArea,
     LoadingAnimation,
+    Thumbnail,
   },
   data() {
     return {

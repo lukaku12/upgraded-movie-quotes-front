@@ -10,10 +10,9 @@
       class="w-full flex flex-col md:w-11/12 md:flex-row items-center md:items-start gap-6"
     >
       <div class="w-11/12 h-full">
-        <img
-          class="w-full h-full max-h-[371px] aspect-video rounded-2xl duration-300"
-          :src="'http://127.0.0.1:8000/storage/thumbnails/' + quote.thumbnail"
-          alt="post-image"
+        <Thumbnail
+          classes="w-full h-full max-h-[371px] aspect-video rounded-2xl duration-300"
+          :img-src="quote.thumbnail"
         />
       </div>
       <div class="w-11/12 h-full flex flex-col justify-center items-center">
@@ -44,9 +43,10 @@ import ThreeDots from "@/components/icons/ThreeDots.vue";
 import PostActions from "@/components/authenticated/landing/post/Actions.vue";
 import { mapState } from "pinia";
 import { useUserStore } from "@/stores/user/user";
+import Thumbnail from "../Thumbnail.vue";
 export default {
   name: "Quote",
-  components: { PostActions, QuoteOptions, ThreeDots },
+  components: { PostActions, QuoteOptions, ThreeDots, Thumbnail },
   props: {
     quote: {
       type: Object,

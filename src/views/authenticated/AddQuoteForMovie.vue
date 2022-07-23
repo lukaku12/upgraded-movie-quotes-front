@@ -34,10 +34,9 @@
         <div
           class="flex w-10/12 md:w-11/12 py-3 my-3 h-auto bg-black rounded-lg gap-6 items-center"
         >
-          <img
-            class="h-full max-h-[108px] max-w-[155px] rounded-lg aspect-square md:aspect-video"
-            :src="'http://127.0.0.1:8000/storage/thumbnails/' + movie.thumbnail"
-            alt="post-image"
+          <Thumbnail
+            classes="h-full max-h-[108px] max-w-[155px] rounded-lg aspect-square md:aspect-video"
+            :img-src="movie.thumbnail"
           />
           <div class="flex flex-col gap-2">
             <div class="flex h-auto items-center justify-center">
@@ -78,6 +77,7 @@ import { Form as VueForm } from "vee-validate";
 import axios from "@/config/axios/index.js";
 import { mapState } from "pinia";
 import { useUserStore } from "@/stores/user/user";
+import Thumbnail from "@/components/authenticated/Thumbnail.vue";
 export default {
   name: "AddQuoteForMovie",
   components: {
@@ -88,6 +88,7 @@ export default {
     VueForm,
     PopupMessage,
     LoadingAnimation,
+    Thumbnail,
   },
   data() {
     return {
