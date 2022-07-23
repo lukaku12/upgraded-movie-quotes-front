@@ -1,5 +1,5 @@
 <template>
-  <AddMovie v-if="addMovieIsVisible"></AddMovie>
+  <AddMovie v-if="addMovieIsVisible" @add-movie="(movie) => movies.unshift(movie)"></AddMovie>
   <AuthWrapper>
     <div
       v-if="loading"
@@ -53,6 +53,7 @@
 </template>
 
 <script>
+
 import DesktopSearch from "@/components/authenticated/DesktopSearch.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import LoadingAnimation from "@/components/LoadingAnimation.vue";
@@ -69,20 +70,22 @@ export default {
     Movie,
     DesktopSearch,
     LoadingAnimation,
-    Plus,
+    Plus
   },
+  emits: ["updatedcount"],
   data() {
     return {
       movies: [],
       searchValue: "",
       searchedMovies: [],
       loading: false,
+      count: 0
     };
   },
   computed: {
     addMovieIsVisible() {
       return this.$route.name === "add-movie";
-    },
+    }
   },
   mounted() {
     this.loading = true;
@@ -102,7 +105,7 @@ export default {
             .includes(this.searchValue.toLowerCase()) ||
           movie.title.ka.toLowerCase().includes(this.searchValue.toLowerCase())
       );
-    },
-  },
+    }
+  }
 };
 </script>

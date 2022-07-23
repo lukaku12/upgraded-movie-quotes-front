@@ -14,8 +14,9 @@
               type="button"
               class="absolute right-5 top-1/2 -translate-y-[50%] opacity-80 hover:opacity-100"
               @click="goToMoviesPage"
-              ><CloseIcon
-            /></button>
+            >
+              <CloseIcon />
+            </button>
           </div>
         </div>
         <div class="flex items-center gap-3 py-10 w-10/12 md:w-11/12">
@@ -133,6 +134,7 @@ export default {
     Genre,
     Field,
   },
+  emits: ["addMovie"],
   data() {
     return {
       genres: [],
@@ -167,9 +169,13 @@ export default {
       formData.append("genres", JSON.stringify(this.selectedGenres));
       formData.append("thumbnail", values.thumbnail[0]);
 
-      axios.post("movies/add", formData).then(() => {
+      axios.post("movies/add", formData).then((res) => {
         this.clearSelectedGenres();
         this.$router.push({ name: "movies" });
+        // TODO: add movie to movies page after sending data to api
+        let addedMovie = res.data;
+        addedMovie.quotes = [];
+        this.$emit("addMovie", res.data);
       });
     },
     updateThumbnail(e) {
