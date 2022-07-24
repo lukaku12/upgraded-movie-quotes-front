@@ -15,7 +15,7 @@
       </h1>
     </div>
     <slot />
-    <div class="flex w-full justify-center mt-10 font-bold">
+    <div v-if="redirectToTitle" class="flex w-full justify-center mt-10 font-bold">
       <h1 class="text-[#6C757D]">{{ redirectToTitle }}&nbsp;</h1>
       <router-link
         :to="{ name: redirectUrlName }"
@@ -41,15 +41,15 @@ export default {
     },
     redirectToTitle: {
       type: String,
-      required: true,
+      default: "",
     },
     redirectTo: {
       type: String,
-      required: true,
+      default: "",
     },
     redirectUrlName: {
       type: String,
-      required: true,
+      default: "",
     },
   },
   data() {

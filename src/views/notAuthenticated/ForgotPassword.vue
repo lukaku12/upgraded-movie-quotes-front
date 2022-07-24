@@ -1,5 +1,7 @@
 <template>
+  <CheckYourEmail v-if="emailIsSent"/>
   <FormLayout
+    v-else
     :main-title="$t('forgot_password')"
     :sub-title="$t('forgot_password_message')"
     redirect-to-title=""
@@ -12,7 +14,7 @@
         name="email"
         type="email"
         :placeholder="$t('enter_your_email')"
-        rules="required|min:8|max:15"
+        rules="required|email"
       />
       <button
         type="button"
@@ -20,9 +22,11 @@
         :disabled="!meta.valid"
         @click="sendEmail(meta, values)"
       >
-        {{ $t("send_instructions") }}
+        {{ !emailIsSending ? $t("send_instructions") : $t("sending") }}
       </button>
-      <div class="flex gap-2 mt-5 w-full items-center justify-center text-[white]">
+      <div
+        class="flex gap-2 mt-5 w-full items-center justify-center text-[white]"
+      >
         <router-link
           to="/login"
           class="flex items-center gap-3 opacity-70 hover:opacity-100"
@@ -40,16 +44,32 @@ import FormLayout from "@/components/notAuthenticated/FormLayout.vue";
 import { Form as VueForm } from "vee-validate";
 import BasicInput from "@/components/Inputs/BasicInput.vue";
 import LeftArrow from "@/components/icons/LeftArrow.vue";
+import axios from "@/config/axios";
+import CheckYourEmail from "@/components/notAuthenticated/CheckYourEmail.vue";
 export default {
   components: {
+    CheckYourEmail,
     LeftArrow,
     FormLayout,
     BasicInput,
     VueForm,
   },
+  data() {
+    return {
+      emailIsSent: false,
+      emailIsSending: false,
+    };
+  },
   methods: {
     sendEmail(meta, values) {
-      console.log(meta, values);
+      this.emailIsSending = true;
+      console.log(meta);
+      const data = { email: values.email }
+      console.log(data);
+      axios.post("forget-password", data).then(() => {
+        this.emailIsSent = true;
+        this.emailIsSending = false;
+      });
     },
   },
 };
