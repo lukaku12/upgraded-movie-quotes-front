@@ -14,28 +14,7 @@
         {{ subTitle }}
       </h1>
     </div>
-    <VeeForm v-slot="{ handleSubmit, meta, values }" as="div" class="w-10/12">
-      <form @submit.prevent="handleSubmit($event, submitForm(meta, values))">
-        <slot />
-        <p class="text-center text-red-600">{{ apiErrors }}</p>
-        <div class="flex flex-col w-full mt-4 gap-4">
-          <button
-            type="submit"
-            class="w-full bg-[#E31221] py-[7px] rounded-[4px] text-white"
-          >
-            {{ action }}
-          </button>
-          <button
-            type="button"
-            class="w-full border border-white py-[7px] text-white rounded-[4px] flex justify-center items-center gap-2 font-bold"
-            @click="googleAuth"
-          >
-            <GoogleIcon />
-            <p class="pt-[3px]">{{ googleAction }} {{ $t("with_google") }}</p>
-          </button>
-        </div>
-      </form>
-    </VeeForm>
+    <slot />
     <div class="flex w-full justify-center mt-10 font-bold">
       <h1 class="text-[#6C757D]">{{ redirectToTitle }}&nbsp;</h1>
       <router-link
@@ -48,28 +27,15 @@
 </template>
 
 <script>
-import axios from "@/config/axios/index.js";
-import { Form as VeeForm } from "vee-validate";
-import { setJwtToken } from "@/helpers/jwt";
-import GoogleIcon from "../icons/GoogleIcon.vue";
-
 export default {
   name: "FormLayout",
-  components: { VeeForm, GoogleIcon },
+  components: {},
   props: {
     mainTitle: {
       type: String,
       required: true,
     },
     subTitle: {
-      type: String,
-      required: true,
-    },
-    action: {
-      type: String,
-      required: true,
-    },
-    googleAction: {
       type: String,
       required: true,
     },
@@ -85,10 +51,6 @@ export default {
       type: String,
       required: true,
     },
-    requestUrl: {
-      type: String,
-      required: true,
-    },
   },
   data() {
     return {
@@ -98,29 +60,6 @@ export default {
   methods: {
     redirectToHome() {
       this.$router.push({ name: "home" });
-    },
-    submitForm(meta, values) {
-      if (!meta.valid) return;
-      axios
-        .post(this.requestUrl, values)
-        .then((response) => {
-          setJwtToken(response.data.access_token, response.data.expires_in);
-          this.$router.replace({ name: "home" });
-          setTimeout(() => {
-            document.location.reload();
-          }, 100);
-        })
-        .catch((err) => {
-          this.apiErrors = JSON.parse(err.request.response);
-        });
-    },
-    googleAuth() {
-      window.location.href = "http://localhost:8000/api/auth/redirect";
-      // axios
-      //   .get("/auth/redirect", { params: { provider: "google" } })
-      //   .then((response) => {
-      //     window.location.href = "http://localhost:8000/auth/google/redirect";
-      //   });
     },
   },
 };

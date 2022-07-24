@@ -6,8 +6,6 @@
 <script>
 import NotAuthLanding from "@/views/notAuthenticated/Landing.vue";
 import AuthLanding from "@/views/authenticated/Landing.vue";
-import { useNotificationsStore } from "@/stores/notifications/notifications";
-import { mapActions } from "pinia";
 
 export default {
   components: {

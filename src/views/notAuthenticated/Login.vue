@@ -1,46 +1,58 @@
 <template>
-  <form-layout
+  <FormLayout
     :main-title="$t('log_in_to_your_account')"
     :sub-title="$t('welcome_back_please_enter_your_details')"
-    :action="$t('sign_in')"
-    :google-action="$t('sign_in')"
     :redirect-to-title="$t('dont_have_an_account')"
     :redirect-to="$t('sign_up')"
     redirect-url-name="sign-up"
-    request-url="login"
   >
-    <basic-input
-      :title="$t('email')"
-      name="email"
-      :placeholder="$t('enter_your_email')"
-      :value="emailValue"
-      :on-input="updateEmailValue"
-      rules="required|email"
-    ></basic-input>
-    <basic-input
-      :title="$t('password')"
-      name="password"
-      type="password"
-      :placeholder="$t('password')"
-      :value="passwordValue"
-      :on-input="updatePasswordValue"
-      rules="required|min:8|max:15"
-    ></basic-input>
-    <check-box></check-box>
-  </form-layout>
+    <VueForm v-slot="{ meta, values }" as="div" class="w-10/12">
+      <basicInput
+        :title="$t('email')"
+        name="email"
+        :placeholder="$t('enter_your_email')"
+        rules="required|email"
+      />
+      <basicInput
+        :title="$t('password')"
+        name="password"
+        type="password"
+        :placeholder="$t('password')"
+        rules="required|min:8|max:15"
+      />
+      <CheckBox/>
+      <p class="text-center text-red-600">{{ apiErrors }}</p>
+      <div class="flex flex-col w-full mt-4 gap-4">
+        <button
+          type="button"
+          class="w-full bg-[#E31221] py-[7px] rounded-[4px] text-white"
+          :disabled="!meta.valid"
+          @click="login(meta, values)"
+        >
+          {{ $t("sign_in") }}
+        </button>
+        <GoogleAuth :google-action="$t('sign_in')" />
+      </div>
+    </VueForm>
+  </FormLayout>
 </template>
 
 <script>
 import BasicInput from "@/components/Inputs/BasicInput.vue";
 import CheckBox from "@/components/Inputs/CheckBox.vue";
 import FormLayout from "@/components/notAuthenticated/FormLayout.vue";
+import GoogleAuth from "@/components/notAuthenticated/GoogleAuth.vue";
+import { Form as VueForm } from "vee-validate";
+import { setJwtToken } from "@/helpers/jwt";
+import axios from "@/config/axios";
 export default {
   name: "Login",
-  components: { BasicInput, CheckBox, FormLayout },
+  components: { GoogleAuth, BasicInput, CheckBox, FormLayout, VueForm },
   data() {
     return {
       emailValue: "",
       passwordValue: "",
+      apiErrors: "",
     };
   },
   mounted() {
@@ -50,11 +62,20 @@ export default {
     document.querySelector("html").style.overflowY = "auto";
   },
   methods: {
-    updateEmailValue(e) {
-      this.emailValue = e.target.value;
-    },
-    updatePasswordValue(e) {
-      this.passwordValue = e.target.value;
+    login(meta, values) {
+      if (!meta.valid) return;
+      axios
+        .post("login", values)
+        .then((response) => {
+          setJwtToken(response.data.access_token, response.data.expires_in);
+          this.$router.replace({ name: "home" });
+          setTimeout(() => {
+            document.location.reload();
+          }, 100);
+        })
+        .catch((err) => {
+          this.apiErrors = JSON.parse(err.request.response);
+        });
     },
   },
 };
