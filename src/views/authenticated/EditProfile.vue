@@ -8,7 +8,8 @@
       >
         {{ $t("my_profile") }}
       </h1>
-      <div
+      <VueForm
+        v-slot="{ values, meta }"
         class="w-full flex flex-col justify-center items-center h-auto bg-[#11101A] px-4 py-16 md:p-16 lg:rounded-xl relative mt-40 max-w-[936px]"
       >
         <div
@@ -16,41 +17,50 @@
         >
           <ProfilePicture
             classes="absolute top-0 -translate-y-[50%] max-w-[188px] max-h-[188px] rounded-[50%] aspect-square"
+            :src="picture === '' ? storageImagePath + user.picture : picture"
           />
-          <button class="text-white text-center mt-12">
+          <button class="text-white text-center mt-12 relative">
             {{ $t("upload_new_photo") }}
+            <Field
+              type="file"
+              name="picture"
+              class="w-full h-full absolute z-20 top-0 left-0 opacity-0"
+              @change="updatePicture"
+            />
           </button>
         </div>
         <BasicInput
           :title="$t('username')"
-          :on-input="TODO"
-          :value="user.username || ''"
+          :value="user.username"
           :placeholder="$t('enter_username')"
+          rules="required|min:3|max:20"
           name="username"
-        ></BasicInput>
-        <BasicInput
+        />
+       <BasicInput
           :title="$t('email')"
           type="email"
-          :on-input="TODO"
           :value="user.email || ''"
           :placeholder="$t('enter_email')"
+          rules="required|email"
           name="email"
-        ></BasicInput>
+        />
         <BasicInput
           :title="$t('password')"
           type="password"
-          :on-input="TODO"
           :value="user.password || ''"
           :placeholder="$t('enter_password')"
+          rules="required|min:6|max:20"
           name="password"
-        ></BasicInput>
+        />
         <button
           type="button"
+          :disabled="!meta.valid"
           class="bg-[#E31221] border border-[#E31221] mt-7 font-bold px-7 py-1 rounded-[4px] text-white"
+          @click="EditProfile(meta, values)"
         >
           {{ $t("save_changes") }}
         </button>
-      </div>
+      </VueForm>
     </div>
   </AuthWrapper>
 </template>
@@ -60,22 +70,60 @@ import BasicInput from "@/components/Inputs/BasicInput.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import { mapState, mapActions } from "pinia";
 import { useUserStore } from "@/stores/user/user";
+import { Form as VueForm, Field } from "vee-validate";
 import ProfilePicture from "@/components/authenticated/ProfilePicture.vue";
+import axios from "@/config/axios";
 export default {
   name: "EditProfile",
   components: {
     AuthWrapper,
     BasicInput,
     ProfilePicture,
+    Field,
+    VueForm,
+  },
+  data() {
+    return {
+      storageImagePath: import.meta.env.VITE_LARAVEL_STORAGE_BASE_URL,
+      picture: "",
+    };
   },
   computed: {
     ...mapState(useUserStore, ["user"]),
   },
+  mounter() {
+    this.updateUser();
+  },
   methods: {
     ...mapActions(useUserStore, ["setUser"]),
-    TODO() {
-      return;
+    EditProfile(_, values) {
+      const formData = new FormData();
+      formData.append("username", values.username);
+      if (values.picture) {
+        formData.append("picture", values.picture[0]);
+      }
+      axios
+        .post("user", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          this.updateUser();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
+    updatePicture(e) {
+      this.picture = URL.createObjectURL(e.target.files[0]);
+    },
+    updateUser () {
+      axios.get("user").then((response) => {
+        this.setUser(response.data);
+      });
+    }
   },
 };
 </script>

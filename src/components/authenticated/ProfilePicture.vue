@@ -1,7 +1,7 @@
 <template>
   <keep-alive>
     <img
-      :class="classes + ' ' + extraClasses"
+      :class="classes + ' min-w-[32px] min-h-[32px] ' + extraClasses"
       :src="src"
       alt="profile-picture"
     />

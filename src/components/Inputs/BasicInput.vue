@@ -9,7 +9,6 @@
       :placeholder="placeholder"
       :rules="rules"
       :value="value"
-      @input="onInput"
     />
     <ErrorMessage class="text-red-600" :name="name"></ErrorMessage>
   </div>
@@ -38,10 +37,6 @@ export default {
     },
     value: {
       type: String,
-      required: true,
-    },
-    onInput: {
-      type: Function,
       required: true,
     },
     rules: {
