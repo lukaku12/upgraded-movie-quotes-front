@@ -27,6 +27,8 @@ import Post from "@/components/authenticated/landing/Post.vue";
 import AddQuoteComponent from "@/components/authenticated/landing/AddQuote.vue";
 import AddQuote from "@/views/authenticated/AddQuote.vue";
 import axios from "@/config/axios";
+import { mapActions } from "pinia";
+import { useNotificationsStore } from "@/stores/notifications/notifications";
 export default {
   name: "AuthLanding",
   components: {
@@ -52,6 +54,16 @@ export default {
   },
   mounted() {
     this.scroll();
+
+    axios.get("user").then((res) => {
+      window.Echo.private("notify-user." + res.data.id).listen(
+        "NotifyUser",
+        (e) => {
+          this.addNotification(e[0]);
+          console.log(e[0]);
+        }
+      );
+    });
 
     this.loading = true;
     axios.get(`quotes?page=${this.currentPage}`).then((response) => {
@@ -84,6 +96,7 @@ export default {
     });
   },
   methods: {
+    ...mapActions(useNotificationsStore, ["addNotification"]),
     loadMore() {
       this.loadingMorePosts = true;
       this.currentPage++;
