@@ -12,12 +12,12 @@
       }}</label>
     </div>
     <div class="text-right">
-      <button
-        type="button"
+      <router-link
+        :to="{ name: 'forgot-password' }"
         class="text-[#0D6EFD] font-bold text-base underline"
       >
         {{ $t("forgot_password") }}
-      </button>
+      </router-link>
     </div>
   </div>
 </template>

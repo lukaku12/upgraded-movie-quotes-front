@@ -76,4 +76,7 @@ export const messagesEn = {
     "Sorry, but you don’t have permission to access this page",
   return_home: "Return Home",
   not_found: "We cant see the page you are looking for",
+  forgot_password_message: "Enter the email and we’ll send an email with instructions to reset your password",
+  send_instructions: "Send instructions",
+  back_to_log_in: "Back to log in",
 };

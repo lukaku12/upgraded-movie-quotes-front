@@ -1,5 +1,7 @@
 <template>
+  <ForgotPassword v-if="routeForgotPassword"/>
   <FormLayout
+    v-else
     :main-title="$t('log_in_to_your_account')"
     :sub-title="$t('welcome_back_please_enter_your_details')"
     :redirect-to-title="$t('dont_have_an_account')"
@@ -20,7 +22,7 @@
         :placeholder="$t('password')"
         rules="required|min:8|max:15"
       />
-      <CheckBox/>
+      <CheckBox />
       <p class="text-center text-red-600">{{ apiErrors }}</p>
       <div class="flex flex-col w-full mt-4 gap-4">
         <button
@@ -42,18 +44,22 @@ import BasicInput from "@/components/Inputs/BasicInput.vue";
 import CheckBox from "@/components/Inputs/CheckBox.vue";
 import FormLayout from "@/components/notAuthenticated/FormLayout.vue";
 import GoogleAuth from "@/components/notAuthenticated/GoogleAuth.vue";
+import ForgotPassword from "@/views/notAuthenticated/ForgotPassword.vue";
 import { Form as VueForm } from "vee-validate";
 import { setJwtToken } from "@/helpers/jwt";
 import axios from "@/config/axios";
 export default {
   name: "Login",
-  components: { GoogleAuth, BasicInput, CheckBox, FormLayout, VueForm },
+  components: { GoogleAuth, BasicInput, CheckBox, FormLayout, VueForm, ForgotPassword },
   data() {
     return {
-      emailValue: "",
-      passwordValue: "",
       apiErrors: "",
     };
+  },
+  computed: {
+    routeForgotPassword() {
+      return this.$route.path === "/forgot-password";
+    },
   },
   mounted() {
     document.querySelector("html").style.overflowY = "hidden";

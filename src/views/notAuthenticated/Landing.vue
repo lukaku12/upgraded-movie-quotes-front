@@ -1,5 +1,5 @@
 <template>
-  <login v-if="routeLogin"></login>
+  <login v-if="routeLogin || routeForgotPassword"></login>
   <Register v-else-if="routeRegister"></Register>
   <section
     class="w-full h-full flex flex-col items-center bg-landing-background overflow-y-auto"
@@ -106,6 +106,9 @@ export default {
     },
     routeRegister() {
       return this.$route.path === "/register";
+    },
+    routeForgotPassword() {
+      return this.$route.path === "/forgot-password";
     },
   },
 };
