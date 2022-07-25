@@ -54,7 +54,6 @@ import BasicInput from "@/components/Inputs/BasicInput.vue";
 import FormLayout from "@/components/notAuthenticated/FormLayout.vue";
 import GoogleAuth from "@/components/notAuthenticated/GoogleAuth.vue";
 import { Form as VueForm } from "vee-validate";
-import { setJwtToken } from "@/helpers/jwt";
 import axios from "@/config/axios";
 
 export default {
@@ -74,11 +73,16 @@ export default {
   methods: {
     register(meta, values) {
       if (!meta.valid) return;
+      const data = {
+        username: values.username,
+        email: values.email,
+        password: values.password,
+        confirm_password: values.confirm_password,
+      };
       axios
-        .post("register/create", values)
+        .post("register/create", data)
         .then((response) => {
-          setJwtToken(response.data.token);
-          this.$router.push("/");
+          console.log(response);
         })
         .catch((error) => {
           this.apiErrors = error.response.data.message;
