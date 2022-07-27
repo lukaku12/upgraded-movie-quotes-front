@@ -140,13 +140,13 @@ export default {
       const landingQuoteTop = document.getElementById("landing-quote").offsetTop;
       if (scrollTop > landingQuoteTop) {
         this.mainIsHidden = false;
-        this.styles = "width: 100vw; height: 100vh; top: 0; left: 0; position: fixed; z-index: 500;";
-        this.styles2 = `width: 100vw; height: 100vh; top: calc(100vh + 644px); left: 0; position: absolute; z-index: 500;`;
+        this.styles = "width: 100vw; height: 100vh; top: 0; left: 0; position: fixed; z-index: 500; background-image: linear-gradient(180deg, #11101A 100%, #08080D 50%, #000000 0%)";
+        this.styles2 = `width: 100vw; height: 100vh; top: calc(100vh + 644px); left: 0; position: absolute; z-index: 500; background-image: linear-gradient(180deg, #11101A 100%, #08080D 50%, #000000 0%)`;
         if ( scrollTop > screenHeight + 644 ) {
-          this.styles2 = "width: 100vw; height: 100vh; top: 0; left: 0; position: fixed; z-index: 500;";
+          this.styles2 = "width: 100vw; height: 100vh; top: 0; left: 0; position: fixed; z-index: 500; background-image: linear-gradient(180deg, #11101A 100%, #08080D 50%, #000000 0%)";
         }
         
-        this.styles3 = "width: 100vw; height: 100vh; top: calc(200vh + 644px);; left: 0; position: absolute; z-index: 1000; ";
+        this.styles3 = "width: 100vw; height: 100vh; top: calc(200vh + 644px);; left: 0; position: absolute; z-index: 1000; background-image: linear-gradient(180deg, #11101A 100%, #08080D 50%, #000000 0%)";
       } if (scrollTop < 644) {
         this.mainIsHidden = true;
         this.styles = "";

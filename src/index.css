@@ -24,10 +24,12 @@ body {
 
 .landing-quote-image {
   mask-image: linear-gradient(to right, transparent 7%, black);
+  background-color: black;
 }
 
 .Interstellar {
   mask-image: linear-gradient(to bottom, transparent 1%, black);
+  opacity: 90%;
 }
 
 svg:hover .heart {

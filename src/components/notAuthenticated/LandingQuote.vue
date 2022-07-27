@@ -1,6 +1,6 @@
 <template>
   <section
-    class="flex flex-col items-center justify-center w-screen h-screen bg-landing-background-reverse relative"
+    class="flex flex-col items-center justify-center w-screen h-screen relative"
   >
     <div class="flex w-full z-40 text-white font-bold">
       <h1 class="pl-8 pr-1 text-[20px] xl:text-[50px] md:pl-20">&#9866;</h1>
