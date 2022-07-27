@@ -38,7 +38,7 @@
       class="h-full w-full mt-44 flex flex-col items-center justify-center gap-8 mb-10"
     >
       <h1
-        class="text-[#DDCCAA] text-2xl font-bold text-center xl:text-6xl xl:leading-[90px]"
+        class="text-[#DDCCAA] text-2xl h-[190px] xl:h-auto font-bold text-center xl:text-6xl xl:leading-[90px]"
       >
         {{ $t("find_any_quote_in") }} <br />
         {{ $t("millions_of_movie_lines") }}
