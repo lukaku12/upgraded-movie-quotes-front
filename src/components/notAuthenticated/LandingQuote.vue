@@ -1,6 +1,6 @@
 <template>
   <section
-    class="flex flex-col items-center justify-center w-full h-[431px] md:h-[600px] xl:aspect-video xl:h-auto relative"
+    class="flex flex-col items-center justify-center w-screen h-screen bg-landing-background-reverse relative"
   >
     <div class="flex w-full z-40 text-white font-bold">
       <h1 class="pl-8 pr-1 text-[20px] xl:text-[50px] md:pl-20">&#9866;</h1>
@@ -16,8 +16,14 @@
     <div class="w-full h-full absolute">
       <img
         :class="movie === 'ინტერსტელარი' ? 'Interstellar' : movie"
-        class="w-full h-full opacity-90 landing-quote-image"
+        class="w-full hidden md:block h-full opacity-90 landing-quote-image transition-all"
         :src="image"
+        alt="interstellar-image"
+      />
+      <img
+        :class="movie === 'ინტერსტელარი' ? 'Interstellar' : movie"
+        class="w-full block md:hidden h-full opacity-90 landing-quote-image transition-all"
+        :src="mobileImage"
         alt="interstellar-image"
       />
     </div>
@@ -40,6 +46,10 @@ export default {
       required: true,
     },
     year: {
+      type: String,
+      required: true,
+    },
+    mobileImage: {
       type: String,
       required: true,
     },
