@@ -32,6 +32,29 @@
           ></TextArea>
         </div>
         <div
+          class="flex w-10/12 md:w-11/12 py-3 my-3 h-auto bg-black rounded-lg gap-6 items-center relative"
+        >
+          <button
+            class="bg-black w-full py-6 px-5 text-start flex gap-4 items-center"
+          >
+            <Photo />
+            {{ $t("upload_image") }}
+          </button>
+          <Field
+            type="file"
+            name="thumbnail"
+            rules="required"
+            class="w-full h-full absolute z-20 top-0 left-0 opacity-0"
+            @change="updateThumbnail"
+          />
+          <img
+            v-if="thumbnail"
+            class="h-full top-0 right-0 z-30 absolute aspect-square md:aspect-video"
+            :src="thumbnail"
+            alt="thumbnail"
+          />
+        </div>
+        <div
           class="flex w-10/12 md:w-11/12 py-3 my-3 h-auto bg-black rounded-lg gap-6 items-center"
         >
           <Thumbnail
@@ -42,14 +65,12 @@
             <div class="flex h-auto items-center justify-center">
               <CameraReelsSvg fill-color="#FFFFFF" />
               <h1 class="text-xs md:text-xl mx-3">
-                {{
-                  $i18next.language === "en" ? movie.title.en : movie.title.ka
-                }}
+                {{ localeMovie }}
                 ({{ movie.created_at.substring(0, 4) }})
               </h1>
             </div>
             <p class="text-xs md:text-xl">
-              {{ $t("director") }}: Nick cassavetes
+              {{ $t("director") }}: {{ localeDirector }}
             </p>
           </div>
         </div>
@@ -57,7 +78,7 @@
           type="button"
           :disabled="!meta.valid"
           class="bg-[#E31221] w-10/12 md:w-11/12 border border-[#E31221] mt-1 font-bold px-7 py-2 rounded-[4px] text-white"
-          @click="addQuote(values)"
+          @click="addQuote(meta, values)"
         >
           {{ $t("add_quote") }}
         </button>
@@ -73,11 +94,12 @@ import QuoteWrapper from "@/components/authenticated/movies/QuoteWrapper.vue";
 import LoadingAnimation from "@/components/LoadingAnimation.vue";
 import PopupMessage from "@/components/authenticated/PopupMessage.vue";
 import CameraReelsSvg from "@/components/icons/CameraReels.vue";
-import { Form as VueForm } from "vee-validate";
+import { Form as VueForm, Field } from "vee-validate";
 import axios from "@/config/axios/index.js";
 import { mapState } from "pinia";
 import { useUserStore } from "@/stores/user/user";
 import Thumbnail from "@/components/authenticated/Thumbnail.vue";
+import Photo from "@/components/icons/Photo.vue";
 export default {
   name: "AddQuoteForMovie",
   components: {
@@ -89,11 +111,14 @@ export default {
     PopupMessage,
     LoadingAnimation,
     Thumbnail,
+    Photo,
+    Field,
   },
   data() {
     return {
       movie: {},
       dataIsFetched: false,
+      thumbnail: "",
       apiSuccess: "",
       apiError: "",
       loading: false,
@@ -106,6 +131,16 @@ export default {
     },
     quoteId() {
       return this.$route.params.quote;
+    },
+    localeDirector() {
+      return this.$i18next.language === "en"
+        ? this.movie.director.en
+        : this.movie.director.ka;
+    },
+    localeMovie() {
+      return this.$i18next.language === "en"
+        ? this.movie.title.en
+        : this.movie.title.ka;
     },
   },
   mounted() {
@@ -123,15 +158,16 @@ export default {
       });
   },
   methods: {
-    addQuote(values) {
+    addQuote(meta, values) {
       this.apiError = "";
-      const data = {
-        title_en: values.title_en,
-        title_ka: values.title_ka,
-        movie_id: this.movie.id,
-      };
+      if (!meta.valid) return;
+      const formData = new FormData();
+      formData.append("title_en", values.title_en);
+      formData.append("title_ka", values.title_ka);
+      formData.append("movie_id", this.movie.id);
+      formData.append("thumbnail", values.thumbnail[0]);
       axios
-        .post(`movies/${this.movieSlug}/quote/add`, data)
+        .post(`movies/${this.movieSlug}/quote/add`, formData)
         .then((response) => {
           this.$router.push({
             path: `/movies/${this.movieSlug}`,
@@ -143,6 +179,9 @@ export default {
         .catch(() => {
           this.apiError = "Something went wrong!";
         });
+    },
+    updateThumbnail(e) {
+      this.thumbnail = URL.createObjectURL(e.target.files[0]);
     },
   },
 };
