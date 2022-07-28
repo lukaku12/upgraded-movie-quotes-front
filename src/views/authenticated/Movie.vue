@@ -29,7 +29,7 @@
             <div class="bg-[#24222F] flex gap-4 px-5 py-2 rounded-[10px]">
               <router-link :to="{name: 'edit-movie'}"><Pen /></router-link>
               <p class="font-light">|</p>
-              <button><Trash/></button>
+              <button @click="deleteMovie"><Trash/></button>
             </div>
           </div>
           <div class="w-full flex gap-2 font-bold mt-4 flex-wrap">
@@ -146,5 +146,12 @@ export default {
         this.$router.push("/404");
       });
   },
+  methods: {
+    deleteMovie() {
+      axios.post(`movies/${this.movieSlug}/remove`).then(() => {
+        this.$router.push("/movies");
+      });
+    }
+  }
 };
 </script>

@@ -183,6 +183,7 @@ export default {
 
       axios.post(`movies/${this.movieSlug}/edit`, formData).then((res) => {
         this.clearSelectedGenres();
+        this.$router.push(`/movies/${this.movieSlug}`);
         let addedMovie = res.data;
         addedMovie.quotes = [];
       });
