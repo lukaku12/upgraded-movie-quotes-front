@@ -52,14 +52,6 @@ export default {
       type: String,
       default: "",
     },
-    movies: {
-      type: Object,
-      default: () => {},
-    },
-    searchMovie: {
-      type: Function,
-      default: () => {},
-    },
     placeholder: {
       type: String,
       default: "Enter @ to search movies, Enter # to search quotes",
@@ -69,11 +61,16 @@ export default {
       default: "Search By",
     },
   },
+  emits: ['searchMovie', 'search'],
   computed: {
     ...mapState(useStylesStore, ["desktopSearchBarIsOpen"]),
   },
   methods: {
     ...mapActions(useStylesStore, ["setDesktopSearchBarIsOpen"]),
+    searchMovie(e) {
+      this.$emit("searchMovie", e);
+      this.$emit("search", e);
+    }
   },
 };
 </script>

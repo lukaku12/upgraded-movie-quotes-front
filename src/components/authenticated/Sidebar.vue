@@ -42,7 +42,7 @@
           >
             <HomeSvg
               :fill-color="
-                routeName === 'home' || routePath.includes('/quotes/create')
+                routeName === 'home' || routePath.includes('/quotes/create') || routeName === 'search'
                   ? '#FF0000'
                   : '#FFFFFF'
               "
@@ -57,7 +57,7 @@
             @click="hideItems"
           >
             <CameraReelsSvg
-              :fill-color="routePath.includes('movies') ? '#FF0000' : '#FFFFFF'"
+              :fill-color="routePath.includes('/movies') ? '#FF0000' : '#FFFFFF'"
             />
             <p>{{ $t("list_of_movies") }}</p>
           </router-link>

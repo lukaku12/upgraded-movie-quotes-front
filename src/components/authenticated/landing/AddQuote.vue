@@ -10,7 +10,7 @@
       <PencilSquare />
       <p>{{ $t("write_new_quote") }}</p>
     </router-link>
-    <DesktopSearch :search-title="$t('search')" />
+    <DesktopSearch :search-title="$t('search')" @search="(e) => search(e)" />
   </div>
 </template>
 
@@ -28,6 +28,31 @@ export default {
   },
   methods: {
     ...mapActions(useStylesStore, ["setDesktopSearchBarIsOpen"]),
+    search(e) {
+      const event = e;
+      if (this.desktopSearchBarIsOpen) {
+        document.body.addEventListener("keypress", (e) => {
+          if (e.key === "Enter") {
+            const searchValue = event.target.value;
+            let filteredSearchValue;
+            let searchType;
+            if (searchValue.includes("@")) {
+              searchType = "&type=movie";
+              filteredSearchValue = searchValue.replace("@", "");
+            } else if (searchValue.includes("#")) {
+              searchType = "&type=quote";
+              filteredSearchValue = searchValue.replace("#", "");
+            } else {
+              return;
+            }
+            const searchRoute = `/search?value=${
+              filteredSearchValue + searchType
+            }`;
+            this.$router.push(searchRoute);
+          }
+        });
+      }
+    },
   },
 };
 </script>

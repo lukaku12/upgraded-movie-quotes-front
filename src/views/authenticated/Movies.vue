@@ -22,13 +22,12 @@
         </div>
         <div class="flex items-center lg:w-[58%] lg:justify-end lg:gap-4">
           <DesktopSearch
-            :movies="movies"
-            :search-value="searchValue"
-            :search-movie="searchMovie"
             :placeholder="$t('search') + '...'"
-            opened-search-bar-width="w-[56%]"
-            closed-search-bar-width="lg:w-[30%]"
             :search-title="$t('search')"
+            closed-search-bar-width="lg:w-[30%]"
+            opened-search-bar-width="w-[56%]"
+            :search-value="searchValue"
+            @search-movie="e => searchMovie(e)"
           ></DesktopSearch>
           <router-link
             to="/movies/add"
@@ -72,7 +71,7 @@ export default {
     LoadingAnimation,
     Plus
   },
-  emits: ["updatedcount"],
+  emits: ["addMovie", "searchMovie"],
   data() {
     return {
       movies: [],

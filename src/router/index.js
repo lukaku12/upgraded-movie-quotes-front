@@ -10,6 +10,7 @@ import ViewQuote from "@/views/authenticated/ViewQuote.vue";
 import EditQuote from "@/views/authenticated/EditQuote.vue";
 import AddQuoteForMovie from "@/views/authenticated/AddQuoteForMovie.vue";
 import EditMovie from "@/views/authenticated/EditMovie.vue";
+import SearchedItems from "@/views/authenticated/SearchedItems.vue";
 // import Forbidden from "@/views/Forbidden.vue";
 
 const router = createRouter({
@@ -20,6 +21,7 @@ const router = createRouter({
     { path: "/register", component: Landing, name: "sign-up" },
     { path: "/forgot-password", component: Landing, name: "forgot-password" },
     { path: "/reset-password/:token", component: Landing, name: "reset-password" },
+    { path: "/search", component: SearchedItems, name: "search", beforeEnter: [isAuthenticated], },
     {
       path: "/quotes/create",
       component: Landing,
