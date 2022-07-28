@@ -177,14 +177,14 @@ export default {
       formData.append("description_en", values.description_en);
       formData.append("description_ka", values.description_ka);
       formData.append("genres", JSON.stringify(this.selectedGenres));
-      formData.append("thumbnail", values.thumbnail[0]);
+      if (values.thumbnail) {
+        formData.append("thumbnail", values.thumbnail[0]);
+      }
 
-      axios.post("movies/add", formData).then((res) => {
+      axios.post(`movies/${this.movieSlug}/edit`, formData).then((res) => {
         this.clearSelectedGenres();
-        this.$router.push({ name: "movies" });
         let addedMovie = res.data;
         addedMovie.quotes = [];
-        this.$emit("addMovie", res.data);
       });
     },
     updateThumbnail(e) {

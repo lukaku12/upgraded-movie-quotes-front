@@ -117,6 +117,10 @@ export default {
       if (values.picture) {
         formData.append("picture", values.picture[0]);
       }
+      if (this.passwordsAreVisible){
+        formData.append("password", values.password);
+        formData.append("confirm_password", values.confirm_password);
+      }
       axios
         .post("user", formData, {
           headers: {
