@@ -36,7 +36,7 @@
           rules="required|min:3|max:20"
           name="username"
         />
-       <BasicInput
+        <BasicInput
           :title="$t('email')"
           type="email"
           :value="user.email || ''"
@@ -44,14 +44,28 @@
           rules="required|email"
           name="email"
         />
-        <BasicInput
-          :title="$t('password')"
-          type="password"
-          :value="user.password || ''"
-          :placeholder="$t('enter_password')"
-          rules="required|min:6|max:20"
-          name="password"
-        />
+        <div class="w-full my-4">
+          <button type="button" class="underline text-blue-800 font-normal" @click="showPassword">
+            Change Password
+          </button>
+        </div>
+        <div v-if="passwordsAreVisible" class="w-full">
+          <BasicInput
+            :title="$t('password')"
+            type="password"
+            :placeholder="$t('new_password_placeholder')"
+            rules="required|min:6|max:20"
+            name="password"
+          />
+
+          <BasicInput
+            :title="$t('confirm_password')"
+            type="password"
+            :placeholder="$t('confirm_password')"
+            rules="required|min:6|max:20"
+            name="confirm_password"
+          />
+        </div>
         <button
           type="button"
           :disabled="!meta.valid"
@@ -86,12 +100,13 @@ export default {
     return {
       storageImagePath: import.meta.env.VITE_LARAVEL_STORAGE_BASE_URL,
       picture: "",
+      passwordsAreVisible: false,
     };
   },
   computed: {
     ...mapState(useUserStore, ["user"]),
   },
-  mounter() {
+  mounted() {
     this.updateUser();
   },
   methods: {
@@ -119,11 +134,14 @@ export default {
     updatePicture(e) {
       this.picture = URL.createObjectURL(e.target.files[0]);
     },
-    updateUser () {
+    updateUser() {
       axios.get("user").then((response) => {
         this.setUser(response.data);
       });
-    }
+    },
+    showPassword() {
+      this.passwordsAreVisible = !this.passwordsAreVisible;
+    },
   },
 };
 </script>
