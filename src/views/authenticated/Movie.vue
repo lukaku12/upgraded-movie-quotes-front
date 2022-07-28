@@ -22,9 +22,16 @@
           />
         </div>
         <div class="w-full xl:w-[40%]">
-          <h1 class="text-2xl text-[#DDCCAA]">
-            {{ localeMovie }} ({{ movie.created_at.substring(0, 4) }})
-          </h1>
+          <div class="flex justify-between items-center">
+            <h1 class="text-2xl text-[#DDCCAA]">
+              {{ localeMovie }} ({{ movie.created_at.substring(0, 4) }})
+            </h1>
+            <div class="bg-[#24222F] flex gap-4 px-5 py-2 rounded-[10px]">
+              <router-link :to="{name: 'edit-movie'}"><Pen /></router-link>
+              <p class="font-light">|</p>
+              <button><Trash/></button>
+            </div>
+          </div>
           <div class="w-full flex gap-2 font-bold mt-4 flex-wrap">
             <span
               v-for="genre in movie.genres"
@@ -82,10 +89,14 @@ import LoadingAnimation from "@/components/LoadingAnimation.vue";
 import axios from "@/config/axios/index.js";
 import Plus from "@/components/icons/Plus.vue";
 import Thumbnail from "@/components/authenticated/Thumbnail.vue";
+import Pen from "@/components/icons/Pen.vue";
+import Trash from "@/components/icons/Trash.vue";
 
 export default {
   name: "Movie",
   components: {
+    Trash,
+    Pen,
     AuthWrapper,
     Quote,
     Plus,

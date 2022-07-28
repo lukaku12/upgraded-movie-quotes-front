@@ -91,4 +91,5 @@ export const messagesKa = {
   success: "წარმატებით",
   success_message: "თქვენი პაროლი წარმატებით შეიცვალა",
   go_to_my_news_feed: "გადადით თქვენს ნიუს ფიდზე",
+  edit_movie: "ფილმის რედაქტირება",
 };

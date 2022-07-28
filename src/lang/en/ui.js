@@ -91,4 +91,5 @@ export const messagesEn = {
   success: "Success",
   success_message: "Your password has been changed successfully",
   go_to_my_news_feed: "Go to my news feed",
+  edit_movie: "Edit movie",
 };
