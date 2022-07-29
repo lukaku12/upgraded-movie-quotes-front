@@ -16,4 +16,16 @@ const axiosInstance = axios.create({
   },
 });
 
+axiosInstance.interceptors.response.use(function (response) {
+  return response;
+}, function (error) {
+  if (error.response.status === 404) {
+    window.location.href = "/404";
+  }
+  if (error.response.status === 403) {
+    window.location.href = "/forbidden";
+  }
+  return Promise.reject(error);
+});
+
 export default axiosInstance;

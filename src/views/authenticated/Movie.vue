@@ -142,9 +142,6 @@ export default {
         this.movie = response.data;
         this.loading = false;
       })
-      .catch(() => {
-        this.$router.push("/404");
-      });
   },
   methods: {
     deleteMovie() {

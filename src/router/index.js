@@ -11,7 +11,7 @@ import EditQuote from "@/views/authenticated/EditQuote.vue";
 import AddQuoteForMovie from "@/views/authenticated/AddQuoteForMovie.vue";
 import EditMovie from "@/views/authenticated/EditMovie.vue";
 import SearchedItems from "@/views/authenticated/SearchedItems.vue";
-// import Forbidden from "@/views/Forbidden.vue";
+import Forbidden from "@/views/Forbidden.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -76,6 +76,7 @@ const router = createRouter({
       name: "edit-profile",
       beforeEnter: [isAuthenticated],
     },
+    { path: "/forbidden", component: Forbidden, name: "forbidden" },
     {
       path: "/404",
       component: NotFound,

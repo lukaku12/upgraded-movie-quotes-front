@@ -145,17 +145,12 @@ export default {
   },
   mounted() {
     this.loading = true;
-    axios
-      .get(`movies/${this.movieSlug}`)
-      .then((response) => {
-        console.log(response.data);
-        this.movie = response.data;
-        this.dataIsFetched = true;
-        this.loading = false;
-      })
-      .catch(() => {
-        this.$router.push("/404");
-      });
+    axios.get(`movies/${this.movieSlug}`).then((response) => {
+      console.log(response.data);
+      this.movie = response.data;
+      this.dataIsFetched = true;
+      this.loading = false;
+    });
   },
   methods: {
     addQuote(meta, values) {
