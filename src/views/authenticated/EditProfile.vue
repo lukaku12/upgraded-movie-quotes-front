@@ -1,7 +1,7 @@
 <template>
   <AuthWrapper>
     <div
-      class="w-full flex flex-col items-center min-h-[calc(100vh-86px)] bg-main-background"
+      class="w-full flex flex-col min-h-[calc(100vh-86px)] bg-main-background"
     >
       <h1
         class="w-full font-bold text-white text-2xl text-start hidden lg:block max-w-[936px]"

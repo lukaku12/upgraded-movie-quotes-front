@@ -92,4 +92,5 @@ export const messagesEn = {
   success_message: "Your password has been changed successfully",
   go_to_my_news_feed: "Go to my news feed",
   edit_movie: "Edit movie",
+  no_results_found: "No results found",
 };

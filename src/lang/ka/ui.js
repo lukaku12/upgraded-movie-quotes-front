@@ -92,4 +92,5 @@ export const messagesKa = {
   success_message: "თქვენი პაროლი წარმატებით შეიცვალა",
   go_to_my_news_feed: "გადადით თქვენს ნიუს ფიდზე",
   edit_movie: "ფილმის რედაქტირება",
+  no_results_found: "შედეგი ვერ მოიძებნა",
 };
