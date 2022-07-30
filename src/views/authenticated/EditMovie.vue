@@ -1,6 +1,8 @@
 <template>
   <AuthWrapper>
-    <div class="flex flex-col items-center text-white max-w-[961px] mb-10 bg-landing-background-reverse">
+    <div
+      class="flex flex-col items-center text-white max-w-[961px] mb-10 bg-landing-background-reverse"
+    >
       <header
         class="w-full h-auto text-center text-xl font-bold relative flex flex-col items-center"
       >
@@ -70,14 +72,14 @@
           language="ქარ"
         />
         <div class="w-full flex flex-col gap-3">
-          <div
-            class="w-full flex items-center justify-center my-5 relative"
-          >
+          <div class="w-full flex items-center justify-center my-5 relative">
             <img
               class="w-full aspect-square md:aspect-video rounded-xl"
               :src="
-              thumbnail === '' ? storageImagePath + movie.thumbnail : thumbnail
-            "
+                thumbnail === ''
+                  ? storageImagePath + movie.thumbnail
+                  : thumbnail
+              "
               alt="thumbnail"
             />
             <div
@@ -137,7 +139,7 @@ export default {
     Genre,
     Field,
     ProfilePicture,
-    AuthWrapper
+    AuthWrapper,
   },
   emits: ["addMovie"],
   data() {
@@ -153,7 +155,7 @@ export default {
     ...mapState(useGenresStore, ["selectedGenres"]),
     movieSlug() {
       return this.$route.params.movie;
-    }
+    },
   },
   mounted() {
     axios.get("genres").then((res) => {

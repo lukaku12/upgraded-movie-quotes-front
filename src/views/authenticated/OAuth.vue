@@ -17,6 +17,6 @@ export default {
   mounted() {
     setJwtToken(this.token, this.expiresIn);
     window.location.href = "/";
-  }
-}
+  },
+};
 </script>

@@ -22,8 +22,17 @@ const router = createRouter({
     { path: "/oauth", component: OAuth, name: "oauth" },
     { path: "/register", component: Landing, name: "sign-up" },
     { path: "/forgot-password", component: Landing, name: "forgot-password" },
-    { path: "/reset-password/:token", component: Landing, name: "reset-password" },
-    { path: "/search", component: SearchedItems, name: "search", beforeEnter: [isAuthenticated], },
+    {
+      path: "/reset-password/:token",
+      component: Landing,
+      name: "reset-password",
+    },
+    {
+      path: "/search",
+      component: SearchedItems,
+      name: "search",
+      beforeEnter: [isAuthenticated],
+    },
     {
       path: "/quotes/create",
       component: Landing,

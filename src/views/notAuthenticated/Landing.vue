@@ -77,7 +77,10 @@
         year="2003"
       ></landing-quote>
     </div>
-    <footer :class="mainIsHidden && 'opacity-0'" class="h-[32px] w-full bg-[#0D0B14] flex items-center pl-8">
+    <footer
+      :class="mainIsHidden && 'opacity-0'"
+      class="h-[32px] w-full bg-[#0D0B14] flex items-center pl-8"
+    >
       <p class="text-[#DDCCAA] text-[8px] font-bold">
         © 2022 {{ $t("copyright") }}.
       </p>
@@ -137,24 +140,28 @@ export default {
     handleScroll() {
       const scrollTop = window.pageYOffset;
       const screenHeight = window.innerHeight;
-      const landingQuoteTop = document.getElementById("landing-quote").offsetTop;
+      const landingQuoteTop =
+        document.getElementById("landing-quote").offsetTop;
       if (scrollTop > landingQuoteTop) {
         this.mainIsHidden = false;
-        this.styles = "width: 100vw; height: 100vh; top: 0; left: 0; position: fixed; z-index: 500; background-image: linear-gradient(180deg, #11101A 100%, #08080D 50%, #000000 0%)";
+        this.styles =
+          "width: 100vw; height: 100vh; top: 0; left: 0; position: fixed; z-index: 500; background-image: linear-gradient(180deg, #11101A 100%, #08080D 50%, #000000 0%)";
         this.styles2 = `width: 100vw; height: 100vh; top: calc(100vh + 644px); left: 0; position: absolute; z-index: 500; background-image: linear-gradient(180deg, #11101A 100%, #08080D 50%, #000000 0%)`;
-        if ( scrollTop > screenHeight + 644 ) {
-          this.styles2 = "width: 100vw; height: 100vh; top: 0; left: 0; position: fixed; z-index: 500; background-image: linear-gradient(180deg, #11101A 100%, #08080D 50%, #000000 0%)";
+        if (scrollTop > screenHeight + 644) {
+          this.styles2 =
+            "width: 100vw; height: 100vh; top: 0; left: 0; position: fixed; z-index: 500; background-image: linear-gradient(180deg, #11101A 100%, #08080D 50%, #000000 0%)";
         }
-        
-        this.styles3 = "width: 100vw; height: 100vh; top: calc(200vh + 644px);; left: 0; position: absolute; z-index: 1000; background-image: linear-gradient(180deg, #11101A 100%, #08080D 50%, #000000 0%)";
-      } if (scrollTop < 644) {
+
+        this.styles3 =
+          "width: 100vw; height: 100vh; top: calc(200vh + 644px);; left: 0; position: absolute; z-index: 1000; background-image: linear-gradient(180deg, #11101A 100%, #08080D 50%, #000000 0%)";
+      }
+      if (scrollTop < 644) {
         this.mainIsHidden = true;
         this.styles = "";
         this.styles2 = "";
         this.styles3 = "";
       }
     },
-  
   },
 };
 </script>

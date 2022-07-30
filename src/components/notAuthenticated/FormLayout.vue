@@ -15,7 +15,10 @@
       </h1>
     </div>
     <slot />
-    <div v-if="redirectToTitle" class="flex w-full justify-center mt-10 font-bold">
+    <div
+      v-if="redirectToTitle"
+      class="flex w-full justify-center mt-10 font-bold"
+    >
       <h1 class="text-[#6C757D]">{{ redirectToTitle }}&nbsp;</h1>
       <router-link
         :to="{ name: redirectUrlName }"

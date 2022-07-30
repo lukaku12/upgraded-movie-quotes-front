@@ -1,5 +1,5 @@
 <template>
-  <CheckYourEmail v-if="emailIsSent"/>
+  <CheckYourEmail v-if="emailIsSent" />
   <FormLayout
     v-else
     :main-title="$t('forgot_password')"
@@ -64,7 +64,7 @@ export default {
     sendEmail(meta, values) {
       this.emailIsSending = true;
       console.log(meta);
-      const data = { email: values.email }
+      const data = { email: values.email };
       console.log(data);
       axios.post("forget-password", data).then(() => {
         this.emailIsSent = true;

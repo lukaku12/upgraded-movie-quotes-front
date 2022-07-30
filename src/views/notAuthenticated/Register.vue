@@ -41,9 +41,9 @@
           :disabled="!meta.valid"
           @click="register(meta, values)"
         >
-          {{ $t('get_started') }}
+          {{ $t("get_started") }}
         </button>
-        <GoogleAuth :google-action="$t('sign_up')"/>
+        <GoogleAuth :google-action="$t('sign_up')" />
       </div>
     </VueForm>
   </FormLayout>

@@ -27,9 +27,9 @@
               {{ localeMovie }} ({{ movie.created_at.substring(0, 4) }})
             </h1>
             <div class="bg-[#24222F] flex gap-4 px-5 py-2 rounded-[10px]">
-              <router-link :to="{name: 'edit-movie'}"><Pen /></router-link>
+              <router-link :to="{ name: 'edit-movie' }"><Pen /></router-link>
               <p class="font-light">|</p>
-              <button @click="deleteMovie"><Trash/></button>
+              <button @click="deleteMovie"><Trash /></button>
             </div>
           </div>
           <div class="w-full flex gap-2 font-bold mt-4 flex-wrap">
@@ -135,20 +135,18 @@ export default {
   },
   mounted() {
     this.loading = true;
-    axios
-      .get(`movies/${this.movieSlug}`)
-      .then((response) => {
-        console.log(response.data);
-        this.movie = response.data;
-        this.loading = false;
-      })
+    axios.get(`movies/${this.movieSlug}`).then((response) => {
+      console.log(response.data);
+      this.movie = response.data;
+      this.loading = false;
+    });
   },
   methods: {
     deleteMovie() {
       axios.post(`movies/${this.movieSlug}/remove`).then(() => {
         this.$router.push("/movies");
       });
-    }
-  }
+    },
+  },
 };
 </script>

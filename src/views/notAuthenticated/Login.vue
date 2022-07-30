@@ -1,5 +1,5 @@
 <template>
-  <ForgotPassword v-if="routeForgotPassword"/>
+  <ForgotPassword v-if="routeForgotPassword" />
   <FormLayout
     v-else
     :main-title="$t('log_in_to_your_account')"
@@ -50,7 +50,14 @@ import { setJwtToken } from "@/helpers/jwt";
 import axios from "@/config/axios";
 export default {
   name: "Login",
-  components: { GoogleAuth, BasicInput, CheckBox, FormLayout, VueForm, ForgotPassword },
+  components: {
+    GoogleAuth,
+    BasicInput,
+    CheckBox,
+    FormLayout,
+    VueForm,
+    ForgotPassword,
+  },
   data() {
     return {
       apiErrors: "",

@@ -61,7 +61,7 @@ export default {
       default: "Search By",
     },
   },
-  emits: ['searchMovie', 'search'],
+  emits: ["searchMovie", "search"],
   computed: {
     ...mapState(useStylesStore, ["desktopSearchBarIsOpen"]),
   },
@@ -70,7 +70,7 @@ export default {
     searchMovie(e) {
       this.$emit("searchMovie", e);
       this.$emit("search", e);
-    }
+    },
   },
 };
 </script>

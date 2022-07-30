@@ -1,6 +1,6 @@
 <template>
   <NotAuthLanding v-if="!isAuthenticated"></NotAuthLanding>
-  <ResetPassword v-if="!isAuthenticated && routeIsPasswordReset"/>
+  <ResetPassword v-if="!isAuthenticated && routeIsPasswordReset" />
   <AuthLanding v-if="isAuthenticated"></AuthLanding>
 </template>
 

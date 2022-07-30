@@ -1,5 +1,5 @@
 <template>
-  <PasswordResetSuccessfully v-if="passwordIsUpdated"/>
+  <PasswordResetSuccessfully v-if="passwordIsUpdated" />
   <FormLayout
     v-else
     :main-title="$t('create_new_password')"

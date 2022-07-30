@@ -18,7 +18,9 @@
         ></Post>
       </div>
       <div v-if="searchNotFound" class="max-w-[1024px] w-[100%] mt-24">
-        <h1 class="text-white text-center text-3xl">{{ $t('no_results_found') }}</h1>
+        <h1 class="text-white text-center text-3xl">
+          {{ $t("no_results_found") }}
+        </h1>
       </div>
     </div>
   </AuthWrapper>
@@ -83,6 +85,6 @@ export default {
           this.loading = false;
         });
     },
-  }
+  },
 };
 </script>

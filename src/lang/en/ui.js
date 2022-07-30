@@ -76,16 +76,19 @@ export const messagesEn = {
     "Sorry, but you don’t have permission to access this page",
   return_home: "Return Home",
   not_found: "We cant see the page you are looking for",
-  forgot_password_message: "Enter the email and we’ll send an email with instructions to reset your password",
+  forgot_password_message:
+    "Enter the email and we’ll send an email with instructions to reset your password",
   send_instructions: "Send instructions",
   back_to_log_in: "Back to log in",
   sending: "Sending...",
   check_your_email: "Check your email",
-  we_have_send_email_message: "We have sent an email with instructions to reset your password",
+  we_have_send_email_message:
+    "We have sent an email with instructions to reset your password",
   go_to_my_mail: "Go to my mail",
   skip_i_will_confirm_later: "Skip, I'll confirm later",
   create_new_password: "Create new password",
-  create_new_password_message: "Your new password must be different from previous used passwords",
+  create_new_password_message:
+    "Your new password must be different from previous used passwords",
   new_password_placeholder: "At least 8 & max.15 lower case characters",
   reset_password: "Reset password",
   success: "Success",

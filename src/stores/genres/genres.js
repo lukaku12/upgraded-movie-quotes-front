@@ -7,14 +7,16 @@ export const useGenresStore = defineStore({
   }),
   actions: {
     setGenres(payload) {
-      if(this.selectedGenres.includes(payload)) {
-        this.selectedGenres = this.selectedGenres.filter(genre => genre !== payload);
-      }else {
+      if (this.selectedGenres.includes(payload)) {
+        this.selectedGenres = this.selectedGenres.filter(
+          (genre) => genre !== payload
+        );
+      } else {
         this.selectedGenres.push(payload);
       }
     },
     clearSelectedGenres() {
       this.selectedGenres = [];
-    }
+    },
   },
 });

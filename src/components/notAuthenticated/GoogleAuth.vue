@@ -14,13 +14,13 @@ import GoogleIcon from "@/components/icons/GoogleIcon.vue";
 export default {
   name: "GoogleAuth",
   components: { GoogleIcon },
-  props:{
+  props: {
     googleAction: {
       type: String,
       required: true,
     },
   },
-  methods:{
+  methods: {
     googleAuth() {
       window.location.href = "http://localhost:8000/api/auth/redirect";
       // axios
@@ -29,6 +29,6 @@ export default {
       //     window.location.href = "http://localhost:8000/auth/google/redirect";
       //   });
     },
-  }
-}
+  },
+};
 </script>

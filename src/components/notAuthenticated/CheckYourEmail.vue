@@ -5,9 +5,11 @@
   <section
     class="w-screen h-screen fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col pb-16 items-center bg-login-background md:w-full md:h-auto md:max-w-2xl md:rounded-[10px] z-50"
   >
-    <main class="py-14 flex flex-col justify-center items-center text-white gap-5 w-7/12 text-center">
+    <main
+      class="py-14 flex flex-col justify-center items-center text-white gap-5 w-7/12 text-center"
+    >
       <SendEmailCheck />
-      <h1 class="text-[32px]">{{ $t('check_your_email') }}</h1>
+      <h1 class="text-[32px]">{{ $t("check_your_email") }}</h1>
       <p>{{ $t("we_have_send_email_message") }}</p>
       <button
         type="button"

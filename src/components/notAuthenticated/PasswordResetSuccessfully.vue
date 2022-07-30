@@ -26,7 +26,7 @@ import SuccessCheckmark from "@/components/icons/SuccessCheckmark.vue";
 export default {
   name: "PasswordResetSuccessfully",
   components: {
-    SuccessCheckmark
-  }
-}
+    SuccessCheckmark,
+  },
+};
 </script>
