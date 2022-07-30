@@ -45,7 +45,11 @@
           name="email"
         />
         <div class="w-full my-4">
-          <button type="button" class="underline text-blue-800 font-normal" @click="showPassword">
+          <button
+            type="button"
+            class="underline text-blue-800 font-normal"
+            @click="showPassword"
+          >
             Change Password
           </button>
         </div>
@@ -76,6 +80,11 @@
         </button>
       </VueForm>
     </div>
+    <PopupMessage
+      v-if="apiErrors"
+      :message="apiErrors"
+      text-color="text-red-600"
+    />
   </AuthWrapper>
 </template>
 
@@ -87,6 +96,7 @@ import { useUserStore } from "@/stores/user/user";
 import { Form as VueForm, Field } from "vee-validate";
 import ProfilePicture from "@/components/authenticated/ProfilePicture.vue";
 import axios from "@/config/axios";
+import PopupMessage from "@/components/authenticated/PopupMessage.vue";
 export default {
   name: "EditProfile",
   components: {
@@ -95,12 +105,14 @@ export default {
     ProfilePicture,
     Field,
     VueForm,
+    PopupMessage,
   },
   data() {
     return {
       storageImagePath: import.meta.env.VITE_LARAVEL_STORAGE_BASE_URL,
       picture: "",
       passwordsAreVisible: false,
+      apiErrors: "",
     };
   },
   computed: {
@@ -113,11 +125,13 @@ export default {
     ...mapActions(useUserStore, ["setUser"]),
     EditProfile(_, values) {
       const formData = new FormData();
-      formData.append("username", values.username);
+      if (values.username !== this.user.username) {
+        formData.append("username", values.username);
+      }
       if (values.picture) {
         formData.append("picture", values.picture[0]);
       }
-      if (this.passwordsAreVisible){
+      if (this.passwordsAreVisible) {
         formData.append("password", values.password);
         formData.append("confirm_password", values.confirm_password);
       }
@@ -132,7 +146,11 @@ export default {
           this.updateUser();
         })
         .catch((error) => {
-          console.log(error);
+          this.apiErrors = error.response.data.message;
+          setTimeout(() => {
+            this.apiErrors = "";
+          }, 3000);
+          console.log(error.response.data.message);
         });
     },
     updatePicture(e) {

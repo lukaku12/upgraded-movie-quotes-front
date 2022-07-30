@@ -12,12 +12,14 @@ import AddQuoteForMovie from "@/views/authenticated/AddQuoteForMovie.vue";
 import EditMovie from "@/views/authenticated/EditMovie.vue";
 import SearchedItems from "@/views/authenticated/SearchedItems.vue";
 import Forbidden from "@/views/Forbidden.vue";
+import OAuth from "@/views/authenticated/OAuth.vue";
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: "/", component: Landing, name: "home" },
     { path: "/login", component: Landing, name: "login" },
+    { path: "/oauth", component: OAuth, name: "oauth" },
     { path: "/register", component: Landing, name: "sign-up" },
     { path: "/forgot-password", component: Landing, name: "forgot-password" },
     { path: "/reset-password/:token", component: Landing, name: "reset-password" },
