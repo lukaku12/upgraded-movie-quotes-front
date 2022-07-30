@@ -14,7 +14,7 @@
     :class="openedSearchBarWidth"
   >
     <input
-      :value="searchValue"
+      :value="searchValue || searchWithSymbol || ''"
       class="text-white w-full pl-9 pr-5 h-[37px] border-[#efefef5b] border-b-2 bg-transparent focus:outline-none"
       type="text"
       :placeholder="placeholder"
@@ -62,8 +62,20 @@ export default {
     },
   },
   emits: ["searchMovie", "search"],
+  data() {
+    return {
+      searchedText: this.$route.query.value,
+    };
+  },
   computed: {
     ...mapState(useStylesStore, ["desktopSearchBarIsOpen"]),
+    searchWithSymbol() {
+      if (this.$route.query.type === "movie") {
+        return "@" + this.searchedText;
+      }
+      return "#" + this.searchedText;
+
+    }
   },
   methods: {
     ...mapActions(useStylesStore, ["setDesktopSearchBarIsOpen"]),

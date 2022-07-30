@@ -13,6 +13,8 @@
         class="text-white focus:outline-0 bg-transparent font-bold py-1 w-full"
         type="text"
         :placeholder="$t('search')"
+        autofocus
+        @input="search"
       />
     </div>
     <div class="w-full flex flex-col items-start gap-12 ml-12 mt-10">
@@ -44,6 +46,32 @@ export default {
   },
   methods: {
     ...mapActions(useStylesStore, ["setSearchBarIsOpen"]),
+    search(e) {
+      const event = e;
+      if (this.searchBarIsOpen) {
+        document.body.addEventListener("keypress", (e) => {
+          if (e.key === "Enter") {
+            const searchValue = event.target.value;
+            let filteredSearchValue;
+            let searchType;
+            if (searchValue.includes("@")) {
+              searchType = "&type=movie";
+              filteredSearchValue = searchValue.replace("@", "");
+            } else if (searchValue.includes("#")) {
+              searchType = "&type=quote";
+              filteredSearchValue = searchValue.replace("#", "");
+            } else {
+              return;
+            }
+            const searchRoute = `/search?value=${
+              filteredSearchValue + searchType
+            }`;
+            this.$router.push(searchRoute);
+            this.setSearchBarIsOpen(false);
+          }
+        });
+      }
+    },
   },
 };
 </script>
