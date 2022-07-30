@@ -4,7 +4,7 @@
     @click="redirectToHome"
   ></div>
   <section
-    class="w-screen h-screen fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col pb-16 items-center bg-login-background md:w-full md:h-auto md:max-w-2xl md:rounded-[10px] z-50"
+    class="w-screen max-h-screen overflow-y-auto h-screen fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col pb-16 items-center bg-login-background md:w-full md:h-auto md:max-w-2xl md:rounded-[10px] z-50"
   >
     <div class="text-center flex flex-col gap-3 mt-20 mb-10">
       <h1 class="text-white text-[24px] font-bold">

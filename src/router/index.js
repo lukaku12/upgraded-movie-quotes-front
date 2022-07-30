@@ -28,6 +28,11 @@ const router = createRouter({
       name: "reset-password",
     },
     {
+      path: "/email-is-verified",
+      component: Landing,
+      name: "email-is-verified",
+    },
+    {
       path: "/search",
       component: SearchedItems,
       name: "search",

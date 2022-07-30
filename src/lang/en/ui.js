@@ -93,7 +93,11 @@ export const messagesEn = {
   reset_password: "Reset password",
   success: "Success",
   success_message: "Your password has been changed successfully",
-  go_to_my_news_feed: "Go to my news feed",
+  go_to_login: "Go to login",
   edit_movie: "Edit movie",
   no_results_found: "No results found",
+  activate_account_message: "Please check your email and follow the instructions to activate your account.",
+  loading: "Loading...",
+  thank_you: "Thank you",
+  your_account_has_been_activated: "Your account has been activated",
 };

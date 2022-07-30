@@ -93,7 +93,11 @@ export const messagesKa = {
   reset_password: "პაროლის აღდგენა",
   success: "წარმატებით",
   success_message: "თქვენი პაროლი წარმატებით შეიცვალა",
-  go_to_my_news_feed: "გადადით თქვენს ნიუს ფიდზე",
+  go_to_login: "გადადით შესვლის გვერდზე",
   edit_movie: "ფილმის რედაქტირება",
   no_results_found: "შედეგი ვერ მოიძებნა",
+  activate_account_message: "გთხოვთ, შეამოწმოთ თქვენი ელფოსტა და მიჰყევით ინსტრუქციას თქვენი ანგარიშის გასააქტიურებლად.",
+  loading: "იტვირთება...",
+  thank_you: "გმადლობთ!",
+  your_account_has_been_activated: "თქვენი ანგარიში გააქტიურებულია",
 };

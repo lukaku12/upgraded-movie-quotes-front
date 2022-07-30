@@ -1,6 +1,7 @@
 <template>
   <NotAuthLanding v-if="!isAuthenticated"></NotAuthLanding>
   <ResetPassword v-if="!isAuthenticated && routeIsPasswordReset" />
+  <EmailIsVerified v-if="!isAuthenticated && routeIsEmailIsVerified" />
   <AuthLanding v-if="isAuthenticated"></AuthLanding>
 </template>
 
@@ -8,9 +9,11 @@
 import NotAuthLanding from "@/views/notAuthenticated/Landing.vue";
 import AuthLanding from "@/views/authenticated/Landing.vue";
 import ResetPassword from "@/views/notAuthenticated/ResetPassword.vue";
+import EmailIsVerified from "@/views/notAuthenticated/EmailIsVerified.vue";
 
 export default {
   components: {
+    EmailIsVerified,
     ResetPassword,
     NotAuthLanding,
     AuthLanding,
@@ -21,6 +24,9 @@ export default {
     },
     routeIsPasswordReset() {
       return this.$route.name === "reset-password";
+    },
+    routeIsEmailIsVerified() {
+      return this.$route.name === "email-is-verified";
     },
   },
 };

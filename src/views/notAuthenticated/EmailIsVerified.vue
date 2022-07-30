@@ -9,8 +9,8 @@
       class="pt-14 flex flex-col justify-center items-center text-white gap-5 w-7/12 text-center"
     >
       <SuccessCheckmark />
-      <h1 class="text-[32px]">{{ $t("success") + "!" }}</h1>
-      <p>{{ $t("success_message") }}</p>
+      <h1 class="text-[32px]">{{ $t("thank_you") + "!" }}</h1>
+      <p>{{ $t("your_account_has_been_activated") }}</p>
       <router-link
         :to="{name: 'login'}"
         type="button"
@@ -25,9 +25,15 @@
 <script>
 import SuccessCheckmark from "@/components/icons/SuccessCheckmark.vue";
 export default {
-  name: "PasswordResetSuccessfully",
+  name: "EmailIsVerified",
   components: {
     SuccessCheckmark,
   },
+  mounted() {
+    document.querySelector('html').style.overflowY = "hidden";
+  },
+  unmounted() {
+    document.querySelector('html').style.overflowY = "auto";
+  }
 };
 </script>

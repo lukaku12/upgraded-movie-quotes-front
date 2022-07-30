@@ -10,7 +10,7 @@
     >
       <SendEmailCheck />
       <h1 class="text-[32px]">{{ $t("check_your_email") }}</h1>
-      <p>{{ $t("we_have_send_email_message") }}</p>
+      <p>{{ notificationText }}</p>
       <button
         type="button"
         class="w-full bg-[#E31221] py-[7px] rounded-[4px] text-white mt-5"
@@ -27,5 +27,11 @@
 import SendEmailCheck from "@/components/icons/SendEmailCheck.vue";
 export default {
   components: { SendEmailCheck },
+  props: {
+    notificationText: {
+      type: String,
+      default: "",
+    },
+  }
 };
 </script>

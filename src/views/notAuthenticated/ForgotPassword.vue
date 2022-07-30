@@ -1,5 +1,5 @@
 <template>
-  <CheckYourEmail v-if="emailIsSent" />
+  <CheckYourEmail v-if="emailIsSent" :notification-text="$t('we_have_send_email_message')" />
   <FormLayout
     v-else
     :main-title="$t('forgot_password')"

@@ -1,5 +1,7 @@
 <template>
+  <CheckYourEmail v-if="emailIsSent" :notification-text="$t('activate_account_message')" />
   <FormLayout
+    v-else
     :main-title="$t('create_an_account')"
     :sub-title="$t('start_your_journey')"
     :redirect-to-title="$t('already_have_an_account')"
@@ -41,7 +43,7 @@
           :disabled="!meta.valid"
           @click="register(meta, values)"
         >
-          {{ $t("get_started") }}
+          {{isLoading ? $t("loading") : $t("get_started") }}
         </button>
         <GoogleAuth :google-action="$t('sign_up')" />
       </div>
@@ -55,13 +57,16 @@ import FormLayout from "@/components/notAuthenticated/FormLayout.vue";
 import GoogleAuth from "@/components/notAuthenticated/GoogleAuth.vue";
 import { Form as VueForm } from "vee-validate";
 import axios from "@/config/axios";
+import CheckYourEmail from "@/components/notAuthenticated/CheckYourEmail.vue";
 
 export default {
   name: "Register",
-  components: { GoogleAuth, BasicInput, FormLayout, VueForm },
+  components: { CheckYourEmail, GoogleAuth, BasicInput, FormLayout, VueForm },
   data() {
     return {
       apiErrors: "",
+      emailIsSent: false,
+      isLoading: false,
     };
   },
   mounted() {
@@ -72,6 +77,7 @@ export default {
   },
   methods: {
     register(meta, values) {
+      this.isLoading = true;
       if (!meta.valid) return;
       const data = {
         username: values.username,
@@ -83,6 +89,8 @@ export default {
         .post("register/create", data)
         .then((response) => {
           console.log(response);
+          this.isLoading = false;
+          this.emailIsSent = true;
         })
         .catch((error) => {
           this.apiErrors = error.response.data.message;
