@@ -28,6 +28,7 @@
           v-if="optionsAreVisible"
           :quote-id="quote.id"
           :movie-slug="movieSlug"
+          @delete-quote="id => deleteQuote(id)"
         ></QuoteOptions>
       </div>
     </div>
@@ -57,6 +58,7 @@ export default {
       required: true,
     },
   },
+emits: ['delete-quote'],
   data() {
     return {
       optionsAreVisible: false,
@@ -73,6 +75,9 @@ export default {
   methods: {
     toggleOptions() {
       this.optionsAreVisible = !this.optionsAreVisible;
+    },
+    deleteQuote(id) {
+      this.$emit("delete-quote", id);
     },
   },
 };

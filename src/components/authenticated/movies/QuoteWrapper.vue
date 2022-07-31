@@ -24,14 +24,14 @@
               <button v-if="viewQuote" @click="deleteQuote">
                 <Trash />
               </button>
-              <router-link
+              <button
                 v-else
-                to=""
                 class="flex gap-2 items-center h-[18px]"
+                @click="deleteQuote"
               >
                 <Trash />
                 <h1 class="text-sm h-full">{{ $t("delete") }}</h1>
-              </router-link>
+              </button>
             </div>
             <h1>{{ name }}</h1>
             <router-link

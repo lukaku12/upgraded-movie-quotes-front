@@ -74,6 +74,7 @@
             :key="quote.id"
             :quote="quote"
             :movie-slug="movie.slug"
+            @delete-quote="id => deleteQuote(id)"
           ></Quote>
         </div>
       </main>
@@ -146,6 +147,9 @@ export default {
       axios.post(`movies/${this.movieSlug}/remove`).then(() => {
         this.$router.push("/movies");
       });
+    },
+    deleteQuote(id) {
+      this.movie.quotes = this.movie.quotes.filter((quote) => quote.id !== id);
     },
   },
 };

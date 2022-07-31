@@ -40,6 +40,7 @@ export default {
       required: true,
     },
   },
+  emits: ['delete-quote'],
   computed: {
     currentRoute() {
       return this.$route.path;
@@ -51,6 +52,7 @@ export default {
         .delete("movies/" + this.movieSlug + "/quote/" + this.quoteId)
         .then((response) => {
           console.log(response);
+          this.$emit("delete-quote", this.quoteId);
           this.$router.push("/movies/" + this.movieSlug);
         })
         .catch((error) => {
