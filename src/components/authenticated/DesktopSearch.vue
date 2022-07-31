@@ -72,8 +72,10 @@ export default {
     searchWithSymbol() {
       if (this.$route.query.type === "movie") {
         return "@" + this.searchedText;
+      }else if (this.$route.query.type === "quote") {
+        return "#" + this.searchedText;
       }
-      return "#" + this.searchedText;
+      return '';
 
     }
   },

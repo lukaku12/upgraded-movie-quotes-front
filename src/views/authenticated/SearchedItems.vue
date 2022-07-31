@@ -63,7 +63,9 @@ export default {
   watch: {
     $route: {
       handler() {
-        this.getSearchedItems();
+        if (this.$route.name === "search") {
+          this.getSearchedItems();
+        }
       },
       immediate: true,
     },
