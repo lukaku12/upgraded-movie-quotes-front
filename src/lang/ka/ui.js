@@ -100,4 +100,6 @@ export const messagesKa = {
   loading: "იტვირთება...",
   thank_you: "გმადლობთ!",
   your_account_has_been_activated: "თქვენი ანგარიში გააქტიურებულია",
+  your_provided_credentials_are_not_valid: "თქვენი მითითებული მონაცემები არასწორია",
+  email_already_exists: "ელფოსტა უკვე არსებობს!",
 };

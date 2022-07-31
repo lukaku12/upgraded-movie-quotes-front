@@ -35,7 +35,7 @@
         placeholder="Password"
         rules="required|min:8|max:15"
       />
-      <p class="text-center text-red-600">{{ apiErrors }}</p>
+      <li v-for="apiError in apiErrors" :key="apiError" class="text-red-600">{{ apiError[0] }}</li>
       <div class="flex flex-col w-full mt-4 gap-4">
         <button
           type="button"
@@ -48,6 +48,7 @@
         <GoogleAuth :google-action="$t('sign_up')" />
       </div>
     </VueForm>
+    <PopupMessage v-if="oauthError" :message="oauthError" text-color="text-red-600"/>
   </FormLayout>
 </template>
 
@@ -58,19 +59,24 @@ import GoogleAuth from "@/components/notAuthenticated/GoogleAuth.vue";
 import { Form as VueForm } from "vee-validate";
 import axios from "@/config/axios";
 import CheckYourEmail from "@/components/notAuthenticated/CheckYourEmail.vue";
+import PopupMessage from "@/components/authenticated/PopupMessage.vue";
 
 export default {
   name: "Register",
-  components: { CheckYourEmail, GoogleAuth, BasicInput, FormLayout, VueForm },
+  components: { PopupMessage, CheckYourEmail, GoogleAuth, BasicInput, FormLayout, VueForm },
   data() {
     return {
       apiErrors: "",
+      oauthError: "",
       emailIsSent: false,
       isLoading: false,
     };
   },
   mounted() {
     document.querySelector("html").style.overflowY = "hidden";
+    if (this.$route.query.error === '409'){
+      this.oauthError = this.$t("email_already_exists");
+    }
   },
   unmounted() {
     document.querySelector("html").style.overflowY = "auto";
@@ -93,7 +99,12 @@ export default {
           this.emailIsSent = true;
         })
         .catch((error) => {
-          this.apiErrors = error.response.data.message;
+          if (error.response.status === 422) {
+            this.apiErrors = error.response.data.errors;
+          } else {
+            this.apiErrors = 'Something went wrong, please try again later.';
+          }
+          this.isLoading = false;
         });
     },
   },

@@ -22,8 +22,8 @@
         :placeholder="$t('password')"
         rules="required|min:8|max:15"
       />
+      <p class=" text-red-600">{{ apiErrors }}</p>
       <CheckBox />
-      <p class="text-center text-red-600">{{ apiErrors }}</p>
       <div class="flex flex-col w-full mt-4 gap-4">
         <button
           type="button"
@@ -76,6 +76,7 @@ export default {
   },
   methods: {
     login(meta, values) {
+      this.apiErrors = "";
       if (!meta.valid) return;
       axios
         .post("login", values)
@@ -87,7 +88,11 @@ export default {
           }, 100);
         })
         .catch((err) => {
-          this.apiErrors = JSON.parse(err.request.response);
+          if (err.response.status) {
+            this.apiErrors = this.$t('your_provided_credentials_are_not_valid');
+          } else {
+            this.apiErrors = 'Something went wrong';
+          }
         });
     },
   },
