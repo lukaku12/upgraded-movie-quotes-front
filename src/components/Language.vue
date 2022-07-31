@@ -29,6 +29,7 @@
 
 <script>
 import DownArrow from "./icons/DownArrow.vue";
+import { setLocale } from '@vee-validate/i18n';
 export default {
   name: "Language",
   components: { DownArrow },
@@ -55,10 +56,12 @@ export default {
     },
     setLanguageKa() {
       this.$i18next.changeLanguage("ka");
+      setLocale("ka");
       this.languagesAreVisible = false;
     },
     setLanguageEn() {
       this.$i18next.changeLanguage("en");
+      setLocale("en");
       this.languagesAreVisible = false;
     },
   },
