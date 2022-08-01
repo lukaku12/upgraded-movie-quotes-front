@@ -36,7 +36,7 @@
 import { mapActions } from "pinia";
 import { useStylesStore } from "@/stores/styling/styles";
 import { mapState } from "pinia";
-import LeftArrow from "../icons/LeftArrow.vue";
+import LeftArrow from "@/components/icons/LeftArrow.vue";
 
 export default {
   name: "MobileSearch",

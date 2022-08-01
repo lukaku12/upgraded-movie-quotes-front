@@ -64,8 +64,8 @@
 import { mapState, mapActions } from "pinia";
 import { useStylesStore } from "@/stores/styling/styles";
 import { useNotificationsStore } from "@/stores/notifications/notifications";
-import ChatQuote from "../icons/ChatQuote.vue";
-import HeartFillRed from "../icons/HeartFillRed.vue";
+import ChatQuote from "@/components/icons/ChatQuote.vue";
+import HeartFillRed from "@/components/icons/HeartFillRed.vue";
 import timeDiff from "time-diff-for-humans";
 import axios from "@/config/axios";
 

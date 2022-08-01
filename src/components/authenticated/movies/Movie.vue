@@ -29,7 +29,7 @@
 
 <script>
 import ChatQuote from "@/components/icons/ChatQuote.vue";
-import Thumbnail from "../Thumbnail.vue";
+import Thumbnail from "@/components/authenticated/Thumbnail.vue";
 export default {
   name: "Movie",
   components: { ChatQuote, Thumbnail },

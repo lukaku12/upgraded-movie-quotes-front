@@ -56,10 +56,10 @@ import { mapActions, mapState } from "pinia";
 import { useStylesStore } from "@/stores/styling/styles";
 import Language from "@/components/Language.vue";
 import axios from "@/config/axios";
-import BurgerMenu from "../icons/BurgerMenu.vue";
-import Search from "../icons/Search.vue";
-import Triangle from "../icons/Triangle.vue";
-import NotificationBell from "../icons/NotificationBell.vue";
+import BurgerMenu from "@/components/icons/BurgerMenu.vue";
+import Search from "@/components/icons/Search.vue";
+import Triangle from "@/components/icons/Triangle.vue";
+import NotificationBell from "@/components/icons/NotificationBell.vue";
 import { useNotificationsStore } from "@/stores/notifications/notifications";
 import { useUserStore } from "@/stores/user/user";
 

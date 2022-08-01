@@ -28,7 +28,7 @@
           v-if="optionsAreVisible"
           :quote-id="quote.id"
           :movie-slug="movieSlug"
-          @delete-quote="id => deleteQuote(id)"
+          @delete-quote="(id) => deleteQuote(id)"
         ></QuoteOptions>
       </div>
     </div>
@@ -44,7 +44,7 @@ import ThreeDots from "@/components/icons/ThreeDots.vue";
 import PostActions from "@/components/authenticated/landing/post/Actions.vue";
 import { mapState } from "pinia";
 import { useUserStore } from "@/stores/user/user";
-import Thumbnail from "../Thumbnail.vue";
+import Thumbnail from "@/components/authenticated/Thumbnail.vue";
 export default {
   name: "Quote",
   components: { PostActions, QuoteOptions, ThreeDots, Thumbnail },
@@ -58,7 +58,7 @@ export default {
       required: true,
     },
   },
-emits: ['delete-quote'],
+  emits: ["delete-quote"],
   data() {
     return {
       optionsAreVisible: false,

@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import ProfilePicture from "../../ProfilePicture.vue";
-import Thumbnail from "../../Thumbnail.vue";
+import ProfilePicture from "@/components/authenticated/ProfilePicture.vue";
+import Thumbnail from "@/components/authenticated/Thumbnail.vue";
 export default {
   name: "PostInformation",
   components: { ProfilePicture, Thumbnail },

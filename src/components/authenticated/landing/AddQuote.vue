@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import DesktopSearch from "../DesktopSearch.vue";
+import DesktopSearch from "@/components/authenticated/DesktopSearch.vue";
 import { mapState, mapActions } from "pinia";
 import { useStylesStore } from "@/stores/styling/styles";
 import PencilSquare from "@/components/icons/PencilSquare.vue";

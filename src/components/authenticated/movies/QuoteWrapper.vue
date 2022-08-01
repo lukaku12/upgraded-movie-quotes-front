@@ -58,7 +58,7 @@ import Pen from "@/components/icons/Pen.vue";
 import Trash from "@/components/icons/Trash.vue";
 import CloseIcon from "@/components/icons/CloseIcon.vue";
 import axios from "@/config/axios";
-import ProfilePicture from "../ProfilePicture.vue";
+import ProfilePicture from "@/components/authenticated/ProfilePicture.vue";
 export default {
   name: "QuoteWrapper",
   components: { Pen, Trash, CloseIcon, ProfilePicture },

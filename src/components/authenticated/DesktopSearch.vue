@@ -34,7 +34,7 @@
 <script>
 import { mapActions, mapState } from "pinia";
 import { useStylesStore } from "@/stores/styling/styles";
-import Search from "../icons/Search.vue";
+import Search from "@/components/icons/Search.vue";
 import CloseIcon from "@/components/icons/CloseIcon.vue";
 export default {
   name: "DesktopSearch",
@@ -72,12 +72,11 @@ export default {
     searchWithSymbol() {
       if (this.$route.query.type === "movie") {
         return "@" + this.searchedText;
-      }else if (this.$route.query.type === "quote") {
+      } else if (this.$route.query.type === "quote") {
         return "#" + this.searchedText;
       }
-      return '';
-
-    }
+      return "";
+    },
   },
   methods: {
     ...mapActions(useStylesStore, ["setDesktopSearchBarIsOpen"]),

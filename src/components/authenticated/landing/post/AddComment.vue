@@ -20,7 +20,7 @@
 <script>
 import { Field, Form as VueFrom } from "vee-validate";
 import axios from "@/config/axios";
-import ProfilePicture from "../../ProfilePicture.vue";
+import ProfilePicture from "@/components/authenticated/ProfilePicture.vue";
 
 export default {
   name: "PostAddComment",

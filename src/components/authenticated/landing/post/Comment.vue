@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import ProfilePicture from "../../ProfilePicture.vue";
+import ProfilePicture from "@/components/authenticated/ProfilePicture.vue";
 export default {
   name: "PostComment",
   components: { ProfilePicture },
