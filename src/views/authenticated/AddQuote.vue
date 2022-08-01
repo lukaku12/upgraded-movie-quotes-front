@@ -205,7 +205,6 @@ export default {
   },
   methods: {
     createQuote(meta, values) {
-      console.log(values);
       if (!meta.valid || this.chosenMovie.length === 0) return;
       const formData = new FormData();
       formData.append("title_en", values.title_en);
@@ -225,9 +224,6 @@ export default {
             params: { apiSuccess: response.data },
             props: true,
           });
-        })
-        .catch((err) => {
-          console.log(err);
         });
     },
     updateThumbnail(e) {
@@ -242,16 +238,13 @@ export default {
       axios
         .get("movies")
         .then((res) => {
-          console.log(res);
           this.movies = res.data;
           this.fetchingMovies = false;
           this.fetchedMoviesAreVisible = true;
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
           this.fetchingMovies = false;
         });
-      console.log("fetching movies");
     },
     selectMovie(movie) {
       this.chosenMovie = movie;

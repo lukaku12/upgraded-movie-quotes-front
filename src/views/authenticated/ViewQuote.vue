@@ -101,7 +101,6 @@ export default {
     axios
       .get(`movies/${this.movieSlug}/quote/${this.quoteId}`)
       .then((response) => {
-        console.log(response.data);
         this.quote = response.data;
         this.dataIsFetched = true;
         this.loading = false;

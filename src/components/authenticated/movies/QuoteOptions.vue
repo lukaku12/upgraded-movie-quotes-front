@@ -40,7 +40,7 @@ export default {
       required: true,
     },
   },
-  emits: ['delete-quote'],
+  emits: ["delete-quote"],
   computed: {
     currentRoute() {
       return this.$route.path;
@@ -50,13 +50,9 @@ export default {
     deleteQuote() {
       axios
         .delete("movies/" + this.movieSlug + "/quote/" + this.quoteId)
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           this.$emit("delete-quote", this.quoteId);
           this.$router.push("/movies/" + this.movieSlug);
-        })
-        .catch((error) => {
-          console.log(error);
         });
     },
   },

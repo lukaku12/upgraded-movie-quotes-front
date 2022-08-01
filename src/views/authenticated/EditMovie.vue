@@ -161,7 +161,6 @@ export default {
     axios.get("genres").then((res) => {
       this.genres = res.data;
     });
-    console.log(this.movieSlug);
     axios.get(`movies/${this.movieSlug}/edit`).then((res) => {
       this.movie = res.data;
       this.setGenres = this.movie.genres;

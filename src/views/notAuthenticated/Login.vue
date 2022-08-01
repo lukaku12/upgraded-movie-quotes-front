@@ -22,7 +22,7 @@
         :placeholder="$t('password')"
         rules="required|min:8|max:15"
       />
-      <p class=" text-red-600">{{ apiErrors }}</p>
+      <p class="text-red-600">{{ apiErrors }}</p>
       <CheckBox />
       <div class="flex flex-col w-full mt-4 gap-4">
         <button
@@ -88,13 +88,14 @@ export default {
           }, 100);
         })
         .catch((err) => {
-          console.log(err);
-          if (err.response.data.error === 'User Does not exist!') {
-            this.apiErrors = this.$t('your_provided_credentials_are_not_valid');
-          } else if(err.response.data.error === 'Please verify your email first!') {
-            this.apiErrors = this.$t('please_verify_your_email_first');
+          if (err.response.data.error === "User Does not exist!") {
+            this.apiErrors = this.$t("your_provided_credentials_are_not_valid");
+          } else if (
+            err.response.data.error === "Please verify your email first!"
+          ) {
+            this.apiErrors = this.$t("please_verify_your_email_first");
           } else {
-            this.apiErrors = 'Something went wrong';
+            this.apiErrors = "Something went wrong";
           }
         });
     },

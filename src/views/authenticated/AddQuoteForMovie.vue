@@ -146,7 +146,6 @@ export default {
   mounted() {
     this.loading = true;
     axios.get(`movies/${this.movieSlug}`).then((response) => {
-      console.log(response.data);
       this.movie = response.data;
       this.dataIsFetched = true;
       this.loading = false;

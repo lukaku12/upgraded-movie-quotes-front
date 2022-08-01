@@ -141,8 +141,7 @@ export default {
             "Content-Type": "multipart/form-data",
           },
         })
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           this.updateUser();
         })
         .catch((error) => {
@@ -150,7 +149,6 @@ export default {
           setTimeout(() => {
             this.apiErrors = "";
           }, 3000);
-          console.log(error.response.data.message);
         });
     },
     updatePicture(e) {

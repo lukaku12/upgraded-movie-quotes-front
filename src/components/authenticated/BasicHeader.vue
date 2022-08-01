@@ -87,18 +87,12 @@ export default {
       "setNotificationBarIsOpen",
     ]),
     logout() {
-      axios
-        .post("logout")
-        .then((response) => {
-          console.log(response);
-          document.cookie =
-            "jwt_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-          // this.$router.push({ name: "home" });
-          document.location.reload();
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      axios.post("logout").then(() => {
+        document.cookie =
+          "jwt_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        // this.$router.push({ name: "home" });
+        document.location.reload();
+      });
     },
   },
 };

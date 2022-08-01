@@ -74,7 +74,7 @@
             :key="quote.id"
             :quote="quote"
             :movie-slug="movie.slug"
-            @delete-quote="id => deleteQuote(id)"
+            @delete-quote="(id) => deleteQuote(id)"
           ></Quote>
         </div>
       </main>
@@ -137,7 +137,6 @@ export default {
   mounted() {
     this.loading = true;
     axios.get(`movies/${this.movieSlug}`).then((response) => {
-      console.log(response.data);
       this.movie = response.data;
       this.loading = false;
     });

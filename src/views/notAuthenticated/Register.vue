@@ -1,5 +1,8 @@
 <template>
-  <CheckYourEmail v-if="emailIsSent" :notification-text="$t('activate_account_message')" />
+  <CheckYourEmail
+    v-if="emailIsSent"
+    :notification-text="$t('activate_account_message')"
+  />
   <FormLayout
     v-else
     :main-title="$t('create_an_account')"
@@ -35,7 +38,9 @@
         placeholder="Password"
         rules="required|min:8|max:15"
       />
-      <li v-for="apiError in apiErrors" :key="apiError" class="text-red-600">{{ apiError[0] }}</li>
+      <li v-for="apiError in apiErrors" :key="apiError" class="text-red-600">
+        {{ apiError[0] }}
+      </li>
       <div class="flex flex-col w-full mt-4 gap-4">
         <button
           type="button"
@@ -43,12 +48,16 @@
           :disabled="!meta.valid"
           @click="register(meta, values)"
         >
-          {{isLoading ? $t("loading") : $t("get_started") }}
+          {{ isLoading ? $t("loading") : $t("get_started") }}
         </button>
         <GoogleAuth :google-action="$t('sign_up')" />
       </div>
     </VueForm>
-    <PopupMessage v-if="oauthError" :message="oauthError" text-color="text-red-600"/>
+    <PopupMessage
+      v-if="oauthError"
+      :message="oauthError"
+      text-color="text-red-600"
+    />
   </FormLayout>
 </template>
 
@@ -63,7 +72,14 @@ import PopupMessage from "@/components/authenticated/PopupMessage.vue";
 
 export default {
   name: "Register",
-  components: { PopupMessage, CheckYourEmail, GoogleAuth, BasicInput, FormLayout, VueForm },
+  components: {
+    PopupMessage,
+    CheckYourEmail,
+    GoogleAuth,
+    BasicInput,
+    FormLayout,
+    VueForm,
+  },
   data() {
     return {
       apiErrors: "",
@@ -74,7 +90,7 @@ export default {
   },
   mounted() {
     document.querySelector("html").style.overflowY = "hidden";
-    if (this.$route.query.error === '409'){
+    if (this.$route.query.error === "409") {
       this.oauthError = this.$t("email_already_exists");
     }
   },
@@ -93,8 +109,7 @@ export default {
       };
       axios
         .post("register/create", data)
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           this.isLoading = false;
           this.emailIsSent = true;
         })
@@ -102,7 +117,7 @@ export default {
           if (error.response.status === 422) {
             this.apiErrors = error.response.data.errors;
           } else {
-            this.apiErrors = 'Something went wrong, please try again later.';
+            this.apiErrors = "Something went wrong, please try again later.";
           }
           this.isLoading = false;
         });

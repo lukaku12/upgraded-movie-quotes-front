@@ -53,21 +53,17 @@ export default {
         { quote_id: this.currentPost.id },
         { headers: { "X-Socket-Id": window.Echo.socketId() } }
       );
-      axios
-        .post(
-          "notify-user",
-          {
-            quote_id: this.currentPost.id,
-            user_id: this.user.id,
-            username: this.user.username,
-            read_at: null,
-            message: `Reacted to your quote`,
-          },
-          { headers: { "X-Socket-Id": window.Echo.socketId() } }
-        )
-        .then((res) => {
-          console.log(res);
-        });
+      axios.post(
+        "notify-user",
+        {
+          quote_id: this.currentPost.id,
+          user_id: this.user.id,
+          username: this.user.username,
+          read_at: null,
+          message: `Reacted to your quote`,
+        },
+        { headers: { "X-Socket-Id": window.Echo.socketId() } }
+      );
     },
     unlikeQuote() {
       const userLike = this.postLikes.filter(

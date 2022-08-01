@@ -61,21 +61,17 @@ export default {
         .then(() => {
           this.commentData = "";
         });
-      axios
-        .post(
-          "notify-user",
-          {
-            quote_id: this.currentPost.id,
-            user_id: this.user.id,
-            username: this.user.username,
-            read_at: null,
-            message: `Commented to your movie quote`,
-          },
-          { headers: { "X-Socket-Id": window.Echo.socketId() } }
-        )
-        .then((res) => {
-          console.log(res);
-        });
+      axios.post(
+        "notify-user",
+        {
+          quote_id: this.currentPost.id,
+          user_id: this.user.id,
+          username: this.user.username,
+          read_at: null,
+          message: `Commented to your movie quote`,
+        },
+        { headers: { "X-Socket-Id": window.Echo.socketId() } }
+      );
     },
   },
 };

@@ -60,7 +60,6 @@ export default {
         "NotifyUser",
         (e) => {
           this.addNotification(e[0]);
-          console.log(e[0]);
         }
       );
     });

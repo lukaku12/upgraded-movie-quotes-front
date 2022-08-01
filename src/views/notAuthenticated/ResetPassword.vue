@@ -82,15 +82,9 @@ export default {
         password: values.password,
         password_confirmation: values.password_confirmation,
       };
-      axios
-        .post("/reset-password", data)
-        .then((res) => {
-          console.log(res);
-          this.passwordIsUpdated = true;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      axios.post("/reset-password", data).then(() => {
+        this.passwordIsUpdated = true;
+      });
     },
   },
 };
