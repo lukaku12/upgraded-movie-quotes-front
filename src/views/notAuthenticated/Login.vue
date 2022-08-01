@@ -88,8 +88,11 @@ export default {
           }, 100);
         })
         .catch((err) => {
-          if (err.response.status) {
+          console.log(err);
+          if (err.response.data.error === 'User Does not exist!') {
             this.apiErrors = this.$t('your_provided_credentials_are_not_valid');
+          } else if(err.response.data.error === 'Please verify your email first!') {
+            this.apiErrors = this.$t('please_verify_your_email_first');
           } else {
             this.apiErrors = 'Something went wrong';
           }

@@ -102,4 +102,5 @@ export const messagesEn = {
   your_account_has_been_activated: "Your account has been activated",
   your_provided_credentials_are_not_valid: "Your provided credentials are not valid",
   email_already_exists: "Email already exists!",
+  please_verify_your_email_first: "Please verify your email first",
 };
