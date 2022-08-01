@@ -96,11 +96,13 @@ export const messagesEn = {
   go_to_login: "Go to login",
   edit_movie: "Edit movie",
   no_results_found: "No results found",
-  activate_account_message: "Please check your email and follow the instructions to activate your account.",
+  activate_account_message:
+    "Please check your email and follow the instructions to activate your account.",
   loading: "Loading...",
   thank_you: "Thank you",
   your_account_has_been_activated: "Your account has been activated",
-  your_provided_credentials_are_not_valid: "Your provided credentials are not valid",
+  your_provided_credentials_are_not_valid:
+    "Your provided credentials are not valid",
   email_already_exists: "Email already exists!",
   please_verify_your_email_first: "Please verify your email first",
 };

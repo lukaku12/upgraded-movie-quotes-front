@@ -96,11 +96,14 @@ export const messagesKa = {
   go_to_login: "გადადით შესვლის გვერდზე",
   edit_movie: "ფილმის რედაქტირება",
   no_results_found: "შედეგი ვერ მოიძებნა",
-  activate_account_message: "გთხოვთ, შეამოწმოთ თქვენი ელფოსტა და მიჰყევით ინსტრუქციას თქვენი ანგარიშის გასააქტიურებლად.",
+  activate_account_message:
+    "გთხოვთ, შეამოწმოთ თქვენი ელფოსტა და მიჰყევით ინსტრუქციას თქვენი ანგარიშის გასააქტიურებლად.",
   loading: "იტვირთება...",
   thank_you: "გმადლობთ!",
   your_account_has_been_activated: "თქვენი ანგარიში გააქტიურებულია",
-  your_provided_credentials_are_not_valid: "თქვენი მითითებული მონაცემები არასწორია",
+  your_provided_credentials_are_not_valid:
+    "თქვენი მითითებული მონაცემები არასწორია",
   email_already_exists: "ელფოსტა უკვე არსებობს!",
-  please_verify_your_email_first: "გთხოვთ, დაადასტუროთ მეილი სანამ გაივლით ავტორიზაციას",
+  please_verify_your_email_first:
+    "გთხოვთ, დაადასტუროთ მეილი სანამ გაივლით ავტორიზაციას",
 };

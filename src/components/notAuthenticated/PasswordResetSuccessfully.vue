@@ -12,7 +12,7 @@
       <h1 class="text-[32px]">{{ $t("success") + "!" }}</h1>
       <p>{{ $t("success_message") }}</p>
       <router-link
-        :to="{name: 'login'}"
+        :to="{ name: 'login' }"
         type="button"
         class="w-full bg-[#E31221] py-[7px] rounded-[4px] text-white mt-5"
       >

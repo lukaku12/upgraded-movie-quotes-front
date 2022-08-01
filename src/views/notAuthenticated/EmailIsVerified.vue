@@ -12,7 +12,7 @@
       <h1 class="text-[32px]">{{ $t("thank_you") + "!" }}</h1>
       <p>{{ $t("your_account_has_been_activated") }}</p>
       <router-link
-        :to="{name: 'login'}"
+        :to="{ name: 'login' }"
         type="button"
         class="w-full bg-[#E31221] py-[7px] rounded-[4px] text-white mt-5"
       >
@@ -30,10 +30,10 @@ export default {
     SuccessCheckmark,
   },
   mounted() {
-    document.querySelector('html').style.overflowY = "hidden";
+    document.querySelector("html").style.overflowY = "hidden";
   },
   unmounted() {
-    document.querySelector('html').style.overflowY = "auto";
-  }
+    document.querySelector("html").style.overflowY = "auto";
+  },
 };
 </script>
