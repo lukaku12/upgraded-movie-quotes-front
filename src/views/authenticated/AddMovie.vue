@@ -172,7 +172,6 @@ export default {
       axios.post("movies/add", formData).then((res) => {
         this.clearSelectedGenres();
         this.$router.push({ name: "movies" });
-        // TODO: add movie to movies page after sending data to api
         let addedMovie = res.data;
         addedMovie.quotes = [];
         this.$emit("addMovie", res.data);

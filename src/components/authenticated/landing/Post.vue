@@ -24,7 +24,11 @@
         {{ !showAllComments ? $t("show_all_comments") : $t("hide_comments") }}
       </button>
 
-      <PostAddComment :current-post="currentPost" :user="user" />
+      <PostAddComment
+        :current-post="currentPost"
+        :user="user"
+        @add-comment="(data) => addComment(data)"
+      />
     </div>
   </div>
 </template>
@@ -58,6 +62,9 @@ export default {
   methods: {
     setShowAllComments() {
       this.showAllComments = !this.showAllComments;
+    },
+    addComment(data) {
+      this.currentPost.comments.push(data);
     },
   },
 };

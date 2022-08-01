@@ -23,11 +23,6 @@ export default {
   methods: {
     googleAuth() {
       window.location.href = "http://localhost:8000/api/auth/redirect";
-      // axios
-      //   .get("/auth/redirect", { params: { provider: "google" } })
-      //   .then((response) => {
-      //     window.location.href = "http://localhost:8000/auth/google/redirect";
-      //   });
     },
   },
 };

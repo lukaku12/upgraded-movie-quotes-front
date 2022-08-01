@@ -35,6 +35,7 @@ export default {
       required: true,
     },
   },
+  emits: ["addComment"],
   data() {
     return {
       commentData: "",
@@ -43,13 +44,13 @@ export default {
   methods: {
     addComment() {
       if (this.commentData === "") return;
-      // eslint-disable-next-line vue/no-mutating-props
-      this.currentPost.comments.push({
+      const data = {
         body: this.commentData,
         user_id: this.user.id,
         username: this.user.username,
         picture: this.user.picture,
-      });
+      };
+      this.$emit("addComment", data);
       const sendCommentData = {
         quote_id: this.currentPost.id,
         comment_body: this.commentData,
@@ -72,6 +73,7 @@ export default {
         },
         { headers: { "X-Socket-Id": window.Echo.socketId() } }
       );
+      this.commentData = "";
     },
   },
 };
