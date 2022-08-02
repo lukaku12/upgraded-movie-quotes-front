@@ -6,7 +6,7 @@ window.Pusher = Pusher;
 
 window.Echo = new Echo({
   broadcaster: "pusher",
-  key: import.meta.env.VITE_WEBSOCKETS_KEY,
+  key: import.meta.env.VITE_PUSHER_KEY,
   authEndpoint: import.meta.env.VITE_API_BASE_URL + "broadcasting/auth",
   auth: {
     headers: {
