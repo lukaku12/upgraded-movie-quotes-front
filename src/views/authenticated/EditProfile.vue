@@ -43,9 +43,11 @@
           :placeholder="$t('enter_email')"
           rules="required|email"
           name="email"
+          :read-only="userIsSignInWithGoogle"
         />
         <div class="w-full my-4">
           <button
+            v-if="!userIsSignInWithGoogle"
             type="button"
             class="underline text-blue-800 font-normal"
             @click="showPassword"
@@ -117,6 +119,9 @@ export default {
   },
   computed: {
     ...mapState(useUserStore, ["user"]),
+    userIsSignInWithGoogle() {
+      return this.user.google_id !== null;
+    },
   },
   mounted() {
     this.updateUser();

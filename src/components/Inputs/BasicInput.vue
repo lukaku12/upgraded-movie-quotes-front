@@ -9,6 +9,7 @@
       :placeholder="placeholder"
       :rules="rules"
       :value="value"
+      :readonly="readOnly"
     />
     <ErrorMessage class="text-red-600" :name="name"></ErrorMessage>
   </div>
@@ -42,6 +43,10 @@ export default {
     rules: {
       type: String,
       default: "required",
+    },
+    readOnly: {
+      type: Boolean,
+      default: false,
     },
   },
 };
