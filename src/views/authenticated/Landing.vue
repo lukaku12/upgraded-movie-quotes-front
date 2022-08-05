@@ -105,20 +105,22 @@ export default {
       });
     },
     scroll() {
-      window.onscroll = () => {
-        let bottomOfWindow =
-          Math.max(
-            window.pageYOffset,
-            document.documentElement.scrollTop,
-            document.body.scrollTop
-          ) +
-            window.innerHeight ===
-          document.documentElement.offsetHeight;
-        if (bottomOfWindow) {
-          if (this.lastPage === this.currentPage) return;
-          this.loadMore();
-        }
-      };
+      if (this.$route.name === "landing") {
+        window.onscroll = () => {
+          let bottomOfWindow =
+            Math.max(
+              window.pageYOffset,
+              document.documentElement.scrollTop,
+              document.body.scrollTop
+            ) +
+              window.innerHeight ===
+            document.documentElement.offsetHeight;
+          if (bottomOfWindow) {
+            if (this.lastPage === this.currentPage) return;
+            this.loadMore();
+          }
+        };
+      }
     },
   },
 };

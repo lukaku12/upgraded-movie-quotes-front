@@ -6,7 +6,7 @@
       as="textarea"
       class="w-full bg-transparent h-[86px] min-h-[86px] max-h-[162px] p-2 pr-14 rounded border border-[#efefef5b] focus:outline-none font-bold text-lg"
       :placeholder="placeholder"
-      rules="required|min:3|max:255"
+      rules="required|min:3|max:600"
       :readonly="readOnly"
       :value="value"
       @input="onInput"

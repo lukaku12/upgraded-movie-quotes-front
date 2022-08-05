@@ -161,7 +161,10 @@ export default {
       formData.append("movie_id", this.movie.id);
       formData.append("thumbnail", values.thumbnail[0]);
       axios
-        .post(`movies/${this.movieSlug}/quote/add`, formData)
+        .post(`quotes/create`, formData,{
+        headers: {
+          "Content-Type": "multipart/form-data",
+        }})
         .then((response) => {
           this.$router.push({
             path: `/movies/${this.movieSlug}`,
