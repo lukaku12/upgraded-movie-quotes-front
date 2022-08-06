@@ -143,7 +143,7 @@ export default {
   },
   methods: {
     deleteMovie() {
-      axios.post(`movies/${this.movieSlug}/remove`).then(() => {
+      axios.delete(`movies/${this.movieSlug}`).then(() => {
         this.$router.push("/movies");
       });
     },

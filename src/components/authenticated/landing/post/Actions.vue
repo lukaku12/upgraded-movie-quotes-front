@@ -49,7 +49,7 @@ export default {
       this.postLikes.push({ user_id: this.user.id });
 
       axios.post(
-        "like/add",
+        "like",
         { quote_id: this.currentPost.id },
         { headers: { "X-Socket-Id": window.Echo.socketId() } }
       );
@@ -71,11 +71,7 @@ export default {
       );
       this.postLikes.splice(this.postLikes.indexOf(userLike[0]), 1);
 
-      axios.post(
-        "like/remove",
-        { quote_id: this.currentPost.id },
-        { headers: { "X-Socket-Id": window.Echo.socketId() } }
-      );
+      axios.delete("like", { data: { quote_id: this.currentPost.id } });
     },
   },
 };

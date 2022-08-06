@@ -169,7 +169,7 @@ export default {
       formData.append("genres", JSON.stringify(this.selectedGenres));
       formData.append("thumbnail", values.thumbnail[0]);
 
-      axios.post("movies/add", formData).then((res) => {
+      axios.post("movies", formData).then((res) => {
         this.clearSelectedGenres();
         this.$router.push({ name: "movies" });
         let addedMovie = res.data;

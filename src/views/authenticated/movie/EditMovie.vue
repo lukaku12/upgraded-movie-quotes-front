@@ -161,7 +161,7 @@ export default {
     axios.get("genres").then((res) => {
       this.genres = res.data;
     });
-    axios.get(`movies/${this.movieSlug}/edit`).then((res) => {
+    axios.get(`movies/${this.movieSlug}`).then((res) => {
       this.movie = res.data;
       this.setGenres = this.movie.genres;
     });
@@ -182,7 +182,7 @@ export default {
         formData.append("thumbnail", values.thumbnail[0]);
       }
 
-      axios.post(`movies/${this.movieSlug}/edit`, formData).then((res) => {
+      axios.post(`movies/${this.movieSlug}`, formData).then((res) => {
         this.clearSelectedGenres();
         this.$router.push(`/movies/${this.movieSlug}`);
         let addedMovie = res.data;
