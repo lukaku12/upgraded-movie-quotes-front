@@ -30,11 +30,7 @@
           <div
             class="flex flex-col justify-center items-center gap-3 min-w-[60px]"
           >
-            <img
-              class="w-[60px] h-[60px]"
-              src="@/assets/post/profile-picture.png"
-              alt="profile"
-            />
+            <ProfilePicture class="w-[60px] h-[60px]" />
             <p class="text-green-600 h-[25px]">
               {{ notification.read_at === null ? $t("new") : "" }}
             </p>
@@ -68,10 +64,11 @@ import ChatQuote from "@/components/icons/ChatQuote.vue";
 import HeartFillRed from "@/components/icons/HeartFillRed.vue";
 import timeDiff from "time-diff-for-humans";
 import axios from "@/config/axios";
+import ProfilePicture from "./ProfilePicture.vue";
 
 export default {
   name: "Notifications",
-  components: { ChatQuote, HeartFillRed },
+  components: { ChatQuote, HeartFillRed, ProfilePicture },
   computed: {
     ...mapState(useStylesStore, ["notificationBarIsOpen"]),
     ...mapState(useNotificationsStore, [
