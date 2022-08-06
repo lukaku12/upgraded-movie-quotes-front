@@ -3,9 +3,9 @@
     <div class="flex items-center gap-3">
       <ProfilePicture
         classes="max-w-[45px] max-h-[45px] rounded-[50%] aspect-square"
-        :img-src="comment.picture"
+        :img-src="comment.user.picture"
       />
-      <p class="font-bold">{{ comment.username }}</p>
+      <p class="font-bold">{{ comment.user.username }}</p>
     </div>
     <div class="lg:pl-[56px] lg:-mt-4">
       <p class="font-medium">{{ comment.body }}</p>
