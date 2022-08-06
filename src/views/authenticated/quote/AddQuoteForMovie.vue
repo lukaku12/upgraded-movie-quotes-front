@@ -95,7 +95,7 @@ import LoadingAnimation from "@/components/LoadingAnimation.vue";
 import PopupMessage from "@/components/authenticated/PopupMessage.vue";
 import CameraReelsSvg from "@/components/icons/CameraReels.vue";
 import { Form as VueForm, Field } from "vee-validate";
-import axios from "@/config/axios/index.js";
+import axios from "@/config/axios";
 import { mapState } from "pinia";
 import { useUserStore } from "@/stores/user/user";
 import Thumbnail from "@/components/authenticated/Thumbnail.vue";

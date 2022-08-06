@@ -25,7 +25,7 @@ import LoadingAnimation from "@/components/LoadingAnimation.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import Post from "@/components/authenticated/landing/Post.vue";
 import AddQuoteComponent from "@/components/authenticated/landing/AddQuote.vue";
-import AddQuote from "@/views/authenticated/AddQuote.vue";
+import AddQuote from "@/views/authenticated/quote/AddQuote.vue";
 import axios from "@/config/axios";
 import { mapActions } from "pinia";
 import { useNotificationsStore } from "@/stores/notifications/notifications";

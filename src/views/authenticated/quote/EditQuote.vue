@@ -80,7 +80,7 @@ import { Form as VueForm, Field } from "vee-validate";
 import QuoteWrapper from "@/components/authenticated/movies/QuoteWrapper.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import LoadingAnimation from "@/components/LoadingAnimation.vue";
-import axios from "@/config/axios/index.js";
+import axios from "@/config/axios";
 import Photo from "@/components/icons/Photo.vue";
 import PopupMessage from "@/components/authenticated/PopupMessage.vue";
 import { mapState } from "pinia";

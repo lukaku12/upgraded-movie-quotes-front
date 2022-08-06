@@ -59,9 +59,9 @@ import DesktopSearch from "@/components/authenticated/DesktopSearch.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import LoadingAnimation from "@/components/LoadingAnimation.vue";
 import Movie from "@/components/authenticated/movies/Movie.vue";
-import AddMovie from "@/views/authenticated/AddMovie.vue";
+import AddMovie from "@/views/authenticated/movie/AddMovie.vue";
 import Plus from "@/components/icons/Plus.vue";
-import axios from "@/config/axios/index.js";
+import axios from "@/config/axios";
 
 export default {
   name: "Movies",

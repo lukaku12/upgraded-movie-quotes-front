@@ -63,7 +63,7 @@ import PostComment from "@/components/authenticated/landing/post/Comment.vue";
 import PostActions from "@/components/authenticated/landing/post/Actions.vue";
 import PostAddComment from "@/components/authenticated/landing/post/AddComment.vue";
 import { useUserStore } from "@/stores/user/user";
-import axios from "@/config/axios/index.js";
+import axios from "@/config/axios";
 import { mapState } from "pinia";
 import Thumbnail from "@/components/authenticated/Thumbnail.vue";
 

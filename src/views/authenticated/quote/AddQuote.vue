@@ -162,7 +162,7 @@ import TextArea from "@/components/Inputs/TextArea.vue";
 import { Field } from "vee-validate";
 import CameraReelsSvg from "@/components/icons/CameraReels.vue";
 import { Form as VueForm } from "vee-validate";
-import axios from "@/config/axios/index.js";
+import axios from "@/config/axios";
 import CloseIcon from "@/components/icons/CloseIcon.vue";
 import Photo from "@/components/icons/Photo.vue";
 import DownArrow from "@/components/icons/DownArrow.vue";

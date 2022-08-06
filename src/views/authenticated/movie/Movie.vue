@@ -87,7 +87,7 @@ import Quote from "@/components/authenticated/movies/Quote.vue";
 import AuthWrapper from "@/components/authenticated/Wrapper.vue";
 import PopupMessage from "@/components/authenticated/PopupMessage.vue";
 import LoadingAnimation from "@/components/LoadingAnimation.vue";
-import axios from "@/config/axios/index.js";
+import axios from "@/config/axios";
 import Plus from "@/components/icons/Plus.vue";
 import Thumbnail from "@/components/authenticated/Thumbnail.vue";
 import Pen from "@/components/icons/Pen.vue";
