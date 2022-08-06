@@ -30,7 +30,7 @@
           <div
             class="flex flex-col justify-center items-center gap-3 min-w-[60px]"
           >
-            <ProfilePicture class="w-[60px] h-[60px]" />
+            <ProfilePicture classes="w-[60px] h-[60px]" />
             <p class="text-green-600 h-[25px]">
               {{ notification.read_at === null ? $t("new") : "" }}
             </p>
@@ -78,7 +78,7 @@ export default {
   },
   mounted() {
     axios.get("notifications").then((res) => {
-      this.setNotifications(res.data.data);
+      this.setNotifications(res.data);
     });
   },
   methods: {
