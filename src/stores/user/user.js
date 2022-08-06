@@ -4,12 +4,12 @@ export const useUserStore = defineStore({
   id: "user",
   state: () => ({
     user: {
-      created_at: "",
+      id: null,
+      username: "",
       email: "",
       email_verified_at: null,
-      id: null,
       updated_at: "",
-      username: "",
+      created_at: "",
     },
   }),
   actions: {
