@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import DownArrow from "./icons/DownArrow.vue";
+import DownArrow from "@/components/icons/DownArrow.vue";
 import { setLocale } from "@vee-validate/i18n";
 export default {
   name: "Language",

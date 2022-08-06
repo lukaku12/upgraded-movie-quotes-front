@@ -64,7 +64,7 @@ import ChatQuote from "@/components/icons/ChatQuote.vue";
 import HeartFillRed from "@/components/icons/HeartFillRed.vue";
 import timeDiff from "time-diff-for-humans";
 import axios from "@/config/axios";
-import ProfilePicture from "./ProfilePicture.vue";
+import ProfilePicture from "@/components/authenticated/ProfilePicture.vue";
 
 export default {
   name: "Notifications",

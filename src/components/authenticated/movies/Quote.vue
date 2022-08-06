@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import QuoteOptions from "./QuoteOptions.vue";
+import QuoteOptions from "@/components/authenticated/movies/QuoteOptions.vue";
 import ThreeDots from "@/components/icons/ThreeDots.vue";
 import PostActions from "@/components/authenticated/landing/post/Actions.vue";
 import { mapState } from "pinia";

@@ -78,7 +78,7 @@ import { mapState, mapActions } from "pinia";
 import { useStylesStore } from "@/stores/styling/styles";
 import { useUserStore } from "@/stores/user/user";
 import axios from "@/config/axios/index";
-import ProfilePicture from "./ProfilePicture.vue";
+import ProfilePicture from "@/components/authenticated/ProfilePicture.vue";
 
 export default {
   name: "Sidebar",
