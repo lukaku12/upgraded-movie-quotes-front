@@ -105,7 +105,7 @@ export default {
       });
     },
     scroll() {
-      if (this.$route.name === "landing") {
+      if (this.$route.name === "home") {
         window.onscroll = () => {
           let bottomOfWindow =
             Math.max(
