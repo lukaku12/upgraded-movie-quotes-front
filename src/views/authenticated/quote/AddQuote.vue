@@ -212,7 +212,7 @@ export default {
       formData.append("movie_id", this.chosenMovie.id);
       formData.append("thumbnail", values.thumbnail[0]);
       axios
-        .post("quotes/create", formData, {
+        .post("quotes", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
