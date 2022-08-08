@@ -108,7 +108,7 @@ export default {
         confirm_password: values.confirm_password,
       };
       axios
-        .post("register/create", data)
+        .post("register", data)
         .then(() => {
           this.isLoading = false;
           this.emailIsSent = true;
