@@ -7,7 +7,7 @@ import "@/index.css";
 
 import App from "./App.vue";
 import router from "./router";
-import i18n from "@/lang/index";
+import i18n from "@/config/i18n";
 
 const app = i18n(createApp(App));
 
