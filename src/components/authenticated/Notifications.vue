@@ -16,7 +16,7 @@
         </button>
       </div>
       <div v-if="notifications.length === 0" class="text-center">
-        <p>No News Notifications!</p>
+        <p>{{ $t('no_new_notifications') }}!</p>
       </div>
       <div
         v-else

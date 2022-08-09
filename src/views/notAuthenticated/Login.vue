@@ -27,6 +27,7 @@
       <div class="flex flex-col w-full mt-4 gap-4">
         <button
           type="button"
+          id="login"
           class="w-full bg-[#E31221] py-[7px] rounded-[4px] text-white"
           :disabled="!meta.valid"
           @click="login(meta, values)"

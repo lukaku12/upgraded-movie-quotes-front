@@ -31,11 +31,13 @@
         class="w-10/12 h-auto flex flex-col gap-3 md:w-11/12"
       >
         <InputWithLang
+          id="title_en"
           name="title_en"
           placeholder="Movie name"
           language="Eng"
         />
         <InputWithLang
+          id="title_ka"
           name="title_ka"
           placeholder="ფილმის სახელი"
           language="ქარ"
@@ -46,21 +48,25 @@
           <Genre v-for="genre in genres" :key="genre.id" :genre="genre" />
         </div>
         <InputWithLang
+          id="director_en"
           name="director_en"
           placeholder="Director"
           language="Eng"
         />
         <InputWithLang
+          id="director_ka"
           name="director_ka"
           placeholder="რეჟისორი"
           language="ქარ"
         />
         <TextArea
+          id="description_en"
           name="description_en"
           placeholder="Movie description"
           language="Eng"
         />
         <TextArea
+          id="description_ka"
           name="description_ka"
           placeholder="ფილმის აღწერა"
           language="ქარ"
@@ -85,6 +91,7 @@
             >
               {{ $t("choose_file") }}
               <Field
+                id="thumbnail"
                 type="file"
                 name="thumbnail"
                 rules="required"
@@ -95,6 +102,7 @@
           </div>
         </div>
         <button
+          id="addMovie"
           :disabled="!meta.valid || selectedGenres.length === 0"
           type="button"
           class="bg-[#E31221] border border-[#E31221] mt-7 font-bold px-7 py-1 rounded-[4px] text-white"
