@@ -1,8 +1,8 @@
 import i18next from "i18next";
 import I18NextVue from "i18next-vue";
 import LanguageDetector from "i18next-browser-languagedetector";
-import { messagesEn } from "@/config/i18n/lang/en";
-import { messagesKa } from "@/config/i18n/lang/ka";
+import { messagesEn } from "@/lang/translations/en";
+import { messagesKa } from "@/lang/translations/ka";
 
 i18next.use(LanguageDetector).init({
   lang: "ka",

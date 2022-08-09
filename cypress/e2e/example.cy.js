@@ -67,8 +67,6 @@ describe("Add Movie", () => {
       .then((fileContent) => {
         cy.get("input[type='file']").attachFile({ fileContent, fileName: "movie-thumbnail.png", mimeType: "image/png" });
       });
-    // cy.get("#thumbnail").attachFile("movie-thumbnail.png");
-
 
     cy.get("#addMovie").click();
 
