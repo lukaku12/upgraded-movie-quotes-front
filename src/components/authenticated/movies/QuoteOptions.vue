@@ -49,7 +49,7 @@ export default {
   methods: {
     deleteQuote() {
       axios
-        .delete("movies/" + this.movieSlug + "/quote/" + this.quoteId)
+        .delete("/quote/" + this.quoteId)
         .then(() => {
           this.$emit("delete-quote", this.quoteId);
           this.$router.push("/movies/" + this.movieSlug);

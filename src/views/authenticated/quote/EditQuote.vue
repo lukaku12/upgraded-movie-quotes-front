@@ -120,7 +120,7 @@ export default {
   mounted() {
     this.loading = true;
     axios
-      .get(`movies/${this.movieSlug}/quote/${this.quoteId}`)
+      .get(`quote/${this.quoteId}`)
       .then((response) => {
         this.quote = response.data;
         this.dataIsFetched = true;
@@ -140,7 +140,7 @@ export default {
       }
 
       axios
-        .post(`movies/${this.movieSlug}/quote/${this.quoteId}`, formData, {
+        .post(`quote/${this.quoteId}`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

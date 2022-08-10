@@ -99,7 +99,7 @@ export default {
   mounted() {
     this.loading = true;
     axios
-      .get(`movies/${this.movieSlug}/quote/${this.quoteId}`)
+      .get(`quote/${this.quoteId}`)
       .then((response) => {
         this.quote = response.data;
         this.dataIsFetched = true;
