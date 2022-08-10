@@ -65,12 +65,12 @@
             <div class="flex h-auto items-center justify-center">
               <CameraReelsSvg fill-color="#FFFFFF" />
               <h1 class="text-xs md:text-xl mx-3">
-                {{ localeMovie }}
+                {{ movie.title[locale] }}
                 ({{ movie.created_at.substring(0, 4) }})
               </h1>
             </div>
             <p class="text-xs md:text-xl">
-              {{ $t("director") }}: {{ localeDirector }}
+              {{ $t("director") }}: {{ movie.director[locale] }}
             </p>
           </div>
         </div>
@@ -132,15 +132,8 @@ export default {
     quoteId() {
       return this.$route.params.quote;
     },
-    localeDirector() {
-      return this.$i18next.language === "en"
-        ? this.movie.director.en
-        : this.movie.director.ka;
-    },
-    localeMovie() {
-      return this.$i18next.language === "en"
-        ? this.movie.title.en
-        : this.movie.title.ka;
+    locale() {
+      return this.$i18next.language
     },
   },
   mounted() {

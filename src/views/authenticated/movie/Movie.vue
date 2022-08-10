@@ -24,7 +24,7 @@
         <div class="w-full xl:w-[40%]">
           <div class="flex justify-between items-center">
             <h1 class="text-2xl text-[#DDCCAA]">
-              {{ localeMovie }} ({{ movie.created_at.substring(0, 4) }})
+              {{ movie.title[locale] }} ({{ movie.created_at.substring(0, 4) }})
             </h1>
             <div class="bg-[#24222F] flex gap-4 px-5 py-2 rounded-[10px]">
               <router-link :to="{ name: 'edit-movie' }"><Pen /></router-link>
@@ -41,11 +41,11 @@
             >
           </div>
           <div class="flex flex-col gap-4 ml-3 my-4">
-            <p>{{ $t("director") }}: {{ localeDirector }}</p>
+            <p>{{ $t("director") }}: {{ movie.director[locale] }}</p>
             <p>{{ $t("budget") }}: 2.000.000$</p>
           </div>
           <div class="w-full md:pr-4">
-            <p>{{ localeDescription }}</p>
+            <p>{{ movie.description[locale] }}</p>
           </div>
           <div class="pb-10 border-[#efefef5b] border-b-2 md:border-none">
             <router-link
@@ -118,21 +118,9 @@ export default {
     apiSuccess() {
       return this.$route.params.apiSuccess;
     },
-    localeMovie() {
-      return this.$i18next.language === "en"
-        ? this.movie.title.en
-        : this.movie.title.ka;
-    },
-    localeDirector() {
-      return this.$i18next.language === "en"
-        ? this.movie.director.en
-        : this.movie.director.ka;
-    },
-    localeDescription() {
-      return this.$i18next.language === "en"
-        ? this.movie.description.en
-        : this.movie.description.ka;
-    },
+    locale() {
+      return this.$i18next.language
+    }
   },
   mounted() {
     this.loading = true;

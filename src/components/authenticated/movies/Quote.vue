@@ -17,7 +17,7 @@
       </div>
       <div class="w-11/12 h-full flex flex-col justify-center items-center">
         <h1 class="text-start text-[#CED4DA] text-2xl z-10 mr-4">
-          "{{ localeQuote }}"
+          "{{ quote.title[locale] }}"
         </h1>
       </div>
       <div class="absolute right-5 bottom-5 md:top-5 w-[30px] h-[30px]">
@@ -66,10 +66,8 @@ export default {
   },
   computed: {
     ...mapState(useUserStore, ["user"]),
-    localeQuote() {
-      return this.$i18next.language === "en"
-        ? this.quote.title.en
-        : this.quote.title.ka;
+    locale() {
+      return this.$i18next.language
     },
   },
   methods: {

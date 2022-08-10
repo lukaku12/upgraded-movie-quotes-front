@@ -9,7 +9,7 @@
   <div class="flex flex-col gap-5 mt-3">
     <div class="flex">
       <p>
-        “{{ localeQuote }}” {{ $t("movie") }}-{{ localeMovie }} ({{
+        “{{ currentPost.title[locale] }}” {{ $t("movie") }}-{{ currentPost.movie.title[locale] }} ({{
           currentPost.movieReleaseDate || 2021
         }})
       </p>
@@ -34,16 +34,9 @@ export default {
     },
   },
   computed: {
-    localeQuote() {
-      return this.$i18next.language === "en"
-        ? this.currentPost.title.en
-        : this.currentPost.title.ka;
-    },
-    localeMovie() {
-      return this.$i18next.language === "en"
-        ? this.currentPost.movie.title.en
-        : this.currentPost.movie.title.ka;
-    },
+    locale() {
+      return this.$i18next.language
+    }
   },
 };
 </script>

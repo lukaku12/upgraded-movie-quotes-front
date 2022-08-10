@@ -16,7 +16,7 @@
       </router-link>
       <div class="flex flex-col gap-4">
         <h1 class="text-2xl md:text-base">
-          {{ localeMovie }} ({{ movie.created_at.substring(0, 4) }})
+          {{ movie.title[locale] }} ({{ movie.created_at.substring(0, 4) }})
         </h1>
         <p class="flex gap-3">
           {{ movie.quotes.length }}
@@ -46,10 +46,8 @@ export default {
         .toLowerCase()
         .replace(/\./g, "");
     },
-    localeMovie() {
-      return this.$i18next.language === "en"
-        ? this.movie.title.en
-        : this.movie.title.ka;
+    locale() {
+      return this.$i18next.language
     },
   },
 };
