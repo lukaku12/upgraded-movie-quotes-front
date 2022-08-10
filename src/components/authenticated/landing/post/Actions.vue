@@ -71,7 +71,7 @@ export default {
       );
       this.postLikes.splice(this.postLikes.indexOf(userLike[0]), 1);
 
-      axios.delete("like", { data: { quote_id: this.currentPost.id } });
+      axios.delete(`like/${this.currentPost.id}`);
     },
   },
 };
