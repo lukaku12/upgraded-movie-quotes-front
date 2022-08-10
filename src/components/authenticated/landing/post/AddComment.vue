@@ -44,13 +44,12 @@ export default {
   methods: {
     addComment() {
       if (this.commentData === "") return;
-      const data = {
+      this.$emit("addComment", {
         body: this.commentData,
         user_id: this.user.id,
         username: this.user.username,
         picture: this.user.picture,
-      };
-      this.$emit("addComment", data);
+      });
       const sendCommentData = {
         quote_id: this.currentPost.id,
         comment_body: this.commentData,
