@@ -30,7 +30,7 @@
           <div
             class="flex flex-col justify-center items-center gap-3 min-w-[60px]"
           >
-            <ProfilePicture classes="w-[60px] h-[60px]" />
+            <ProfilePicture classes="w-[60px] h-[60px] rounded-[50%]" />
             <p class="text-green-600 h-[25px]">
               {{ notification.read_at === null ? $t("new") : "" }}
             </p>

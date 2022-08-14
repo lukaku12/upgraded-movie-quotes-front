@@ -52,10 +52,10 @@ export default {
       });
       const sendCommentData = {
         quote_id: this.currentPost.id,
-        comment_body: this.commentData,
+        body: this.commentData,
       };
       axios
-        .post("comment/add", sendCommentData, {
+        .post("comment", sendCommentData, {
           headers: { "X-Socket-Id": window.Echo.socketId() },
         })
         .then(() => {
