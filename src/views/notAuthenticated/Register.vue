@@ -117,7 +117,7 @@ export default {
           if (error.response.status === 422) {
             this.apiErrors = error.response.data.errors;
           } else {
-            this.apiErrors = "Something went wrong, please try again later.";
+            this.oauthError = "Something went wrong, please try again later.";
           }
           this.isLoading = false;
         });

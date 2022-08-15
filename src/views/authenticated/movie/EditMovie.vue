@@ -105,7 +105,7 @@
           class="bg-[#E31221] border border-[#E31221] mt-7 font-bold px-7 py-1 rounded-[4px] text-white"
           @click="addMovie(meta, values)"
         >
-          {{ $t("add_movie") }}
+          {{ $t("edit_movie") }}
         </button>
       </VueForm>
     </div>
